@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-br">
+
+  <head>
+    <!-- Required meta tags -->
+    <!--Utilizei-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Site de Receitas, Missão prática Nivel-1, Mundo-2, Faculdade estácio de Sá, Desenvolvimento Full Stack">
+    <meta name="keywords" content="Receitas culinárias,Culinária caseira,Culinária internacional, Culinária saudável,Culinária vegetariana, Culinária vegana,Receitas rápidas,Receitas fáceis, Receitas simples,Receitas para iniciantes,Receitas para crianças,Receitas de sobremesas, Receitas de bolos, Receitas de massas,Receitas de carnes,Receitas de peixes,Receitas de saladas,Receitas de sopas">
+    <link rel="stylesheet" type="text/css" href="suporte.css">
+    <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>SUPORTE</title>
+  </head>
+  
+<body>
+<!--! DIV INICIAL-->
+<div class="container-fluid m-0 p-0">
+   
+   <!--! CABEÇALHO DA PAGINA-->
+    <!--TODO: MENU-->
+    <!--MENU-->
+    <header>
+        <div>
+            <ul class="menu nav container-fluid justify-content-evenly bg-warning">
+                <li class="nav-item">
+                <a href="index.html" class="nav-link  text-dark" >Início</a>
+                </li>
+
+                <li class="nav-item ">              
+                    <a href="receitas.html" class="nav-link text-dark" >Receitas</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="sobre.html" class="nav-link text-dark" >Sobre</a>
+                </li>
+            </ul>
+        </div>
+        <br>
+
+               
+    </header>
+    <!--!  FIM CABEÇALHO-->
+
+    
+<!--! MAIN-->
+
+    <div  class="nuvem nav mt-4 ms-2 ">
+
+        <!--todo: CARD 1-->
+            <div class=" corpo card">
+        <!--CARD HEADER-->
+              
+                <div class=" card-header bg-warning">
+                    <h3 class="card-title">Formulário de Contato</h3>
+                    <p class="card-text">Preencha o Formulário e nos envie sua Opinião</p>
+                    <h6 class="m-0 p-0">Gostaria de saber o que Achou do meu Trabalho</h6>
+                </div>
+        
+                <ul class="card-body  nav ">
+
+                    <li class="fundo_imagem nav-item text-center container-xxl m-1 p-0">
+                                                
+                        <img src="log170.png ">
+                        
+                        <p>
+                                                 
+                            Antes de mais nada, quero agradecer por ter vizualizado essa página. 
+                            Tentei aplicar as tecnicas passada dentro da matéria atual e técnicas no semestre passado.
+                        </p>
+                                                
+                             <ol class="text-start ms-2">
+
+                                <h6>Ferramentas</h6>
+                                <li>HTML (Técnicas de Formatação, Semântica, Bootstrap.)</li>
+                                <li>CSS (Técnicas de Formatação, Desigeer)</li>
+                                <li>PHP (Conexção com Banco, Interpretação dos Dados Passado pelo usuário)</li>
+                                <li>JAVASCRIPT (No uso do Botão , dropdown)</li>
+                                <li>PYTHON (Envio da mensagem por Email)</li>
+                
+                            </ol>
+                    </li>
+                                 
+            
+                                  
+                 <!--FORMULÁRIO-->      
+                    <li class=" text-center nav-item container-xxl  mt-1 p-0">           
+                                    
+                                    <form id="formularios" class=" text-start" name="fDuvidas" action="" method="get"> <!--get ou post-->
+                                       
+                                        <label>Nome:</label>
+                                        <input id="nome" type="text" name="fNomme">
+                                        <label >Email:</label>
+                                        <input type="Email" name="fEmail">
+                                        <label >WhatsApp: </label>
+                                        <input type="tel" name="fTelefone">
+                                        <label>Deixe Seu Comentário sobre o Site:</label>
+                                        <br>
+                                        <textarea class="msgDuvidas" name="fTextduvidas" cols="" rows="9" ></textarea>
+                                        <input class="enviar bg-primary" type="submit" name="fEnviar" value="Enviar" id="enviar">
+                                        <input class="reset bg-info" type="reset" name="fEnviar" value="Limpar">
+                                  
+                                    </form>
+                
+                                </li>
+                
+            <!--
+                USEI O ATRIBUTO TARGET COM O PARAMETRO BLANK QUE PERMITE ABRIR MAIS DE UMA JANELA EM JANELAS DIFERENTES
+
+                USEI O RECURSO DO BOOTSTRAPDA CLASSE BTN PARA QUE O LINK FIQUE COM O FORMATO DE UM BOTÃO
+                            
+            -->
+           
+                </ul>
+              <!--RODAPÉ-->
+              <div class=" card-footer bg-warning ">
+                <div class="w-100">  
+                <h6>Se Preferir deixe seu comentário em meu WhatsApp. Desde já Agraceço e espero ter agradado</h6>
+                </div>
+                 <!--BOTÃO-->
+                 <div>
+                 <a href="https://wa.me/5591996293532?text=Faculadade+Est%C3%A1cio+de+S%C3%A1"  target="_blank"  class="btn btn-success">WhatsApp</a>
+                 
+                </div>
+                <br>
+                </div>
+            </div>
+
+</div>
+
+
+
+   
+<!--! DIV FINAL-->
+</div>
+   
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="suporte.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>

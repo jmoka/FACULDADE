@@ -1,0 +1,78 @@
+body{
+    background-image: url(pratos.jpg);
+}
+
+
+.menu{
+    position:fixed;
+    width: 100%;
+    height: auto;
+  
+    z-index: 999;
+    
+}
+
+
+.nuvem{
+    position:relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 125px;
+   
+    
+
+}
+
+ 
+
+#img{
+    max-width: 100%;
+       
+ }
+
+
+
+.card-title:hover{
+    background-color: brown;
+}
+
+.nav-item{
+    padding: 10px;
+
+}
+
+.m{
+    display:flow-root;
+    
+}
+
+h3:hover{
+background-color: rgb(165, 42, 48);
+color: blue
+          
+
+}
+h4:hover{
+    background-color: rgb(165, 42, 48);
+    color: blue
+          
+    }
+h3{
+    color: rgb(8, 8, 8);
+          
+    
+}
+
+h4{
+    color: rgb(156, 223, 32);
+          
+
+
+}
+
+li:hover{
+    background-color: rgb(165, 42, 48);
+    color: white;
+   
+}
+

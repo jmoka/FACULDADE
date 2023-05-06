@@ -1,0 +1,37 @@
+
+body{
+background-image: url(pratos.jpg);
+
+
+}
+
+.menu{
+    
+    position:fixed;
+    width: 100%;
+    height: 8%;
+    color: crimson;
+    z-index: 999;
+    
+}
+
+
+.corpo{
+
+    height: 420px;
+    width: 850px;
+
+            
+
+}
+
+.nuvem{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    top: 90px;
+    
+}
+
+
+

@@ -1,0 +1,76 @@
+
+body{
+    background-image: url(pratos.jpg);
+    
+    
+    }
+    
+    .menu{
+        
+        position:fixed;
+        width: 100%;
+        height: 8%;
+        color: crimson;
+        z-index: 999;
+        
+    }
+    
+    
+    .corpo{
+    
+        height: 60%;
+        width: 85%;
+        
+    
+                
+    
+    }
+    
+    .nuvem{
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        top: 40px;
+        
+    }
+        
+    input{
+    display:block;
+    width: 100%;
+    
+   }
+
+   .fundo_imagem{
+    background-color:snow;
+    
+    
+   }
+
+   
+/*
+! FORMATAÇÃO DOS FORMULÁRIOS
+
+* id=form_pg_suporte
+
+*/
+
+#formularios{
+    /*COR DO Texto*/
+    background-color: aquamarine;
+    background-image: url(pratos.jpg);
+    border: 2px;
+    color: blue; 
+    padding: 6px; 
+    
+    }
+   
+.card-footer{
+    display: flex;
+    
+   }    
+
+.msgDuvidas{
+    width: 100%;
+    
+    
+}

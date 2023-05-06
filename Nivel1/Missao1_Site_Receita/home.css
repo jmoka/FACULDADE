@@ -1,0 +1,49 @@
+
+body{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-image: url(pratos.jpg);
+   
+}
+
+footer{
+   background-color: black;
+   color: white;
+   position: static;
+   
+   }
+
+main{
+   margin: 0%;
+   padding: 0%;
+   width: 100%
+   }
+  
+
+.menu{
+ color: #fc0707;
+ height: 25px;
+
+ }
+
+.cPrincipal{
+
+margin-top: 15%;
+background-color: bisque;
+
+}
+
+.titulo{
+
+color: #fc0707;
+align-self: center;
+}
+
+ 
+.inicioContaninerPrincipal{
+   height: 100%;
+   width: 100%;
+     
+}
+
