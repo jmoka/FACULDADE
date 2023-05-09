@@ -12,12 +12,5 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import capa from '@/components/capa.vue'; // @ is an alias to /src
-
-@Options({
-  components: {
-    capa,
-  },
-})
 export default class CapaView extends Vue {}
 </script>
