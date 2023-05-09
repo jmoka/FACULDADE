@@ -21,7 +21,7 @@ import Compn_Consumo_API from '@/components/Compn_Consumo_API.vue'; // @ is an a
    
   },
 })
-export default class OrdenacaoView extends Vue {}
+export default class ConsumoAPI_View extends Vue {}
 
 </script>
 

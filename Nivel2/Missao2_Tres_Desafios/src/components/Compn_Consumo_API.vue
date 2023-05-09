@@ -64,6 +64,7 @@
       </footer>
 
     </div>
+  
 </template>
 
 <script lang="ts">
@@ -220,8 +221,8 @@ export default class App extends Vue {
 }
 
 .img{
-  height: 80%;
-  width: 80%;
+  height: 70%;
+  width: 70%;
 }
 
 .stilo1{
@@ -240,10 +241,7 @@ export default class App extends Vue {
 
 .divMain{
   display: flex;
-  height: 100%;
-  width: 100%;
-  border: 2px solid blue;
-  padding: 20px;
+   border: 2px solid blue;
   }
 
 main{

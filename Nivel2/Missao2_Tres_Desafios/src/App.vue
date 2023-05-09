@@ -1,8 +1,9 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
+    <router-link to="/">Capa</router-link> |
     <router-link to="/ordenando">Ordenando</router-link>|
-    <router-link to="/api">API</router-link>|
+    <router-link to="/receitas">Receitas</router-link>|
+    <router-link to="/api">API</router-link>|    
   </nav>
   <div>
     <router-view />
@@ -13,6 +14,7 @@
 <script>
 import { defineComponent } from 'vue';
 import { useRouter } from 'vue-router';
+
 
 export default defineComponent({
   name: 'App',
@@ -26,6 +28,7 @@ export default defineComponent({
       },
     };
   },
+ 
 });
 </script>
 
@@ -52,7 +55,7 @@ nav {
 }
 
 nav a {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
   color: #2c3e50;
 }

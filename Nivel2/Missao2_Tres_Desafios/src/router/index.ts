@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import CapaView from '../views/CapaView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'capa',
+    component: CapaView
   },
   {
     path: '/ordenando',
@@ -16,6 +16,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/api',
     name: 'api',
     component: () => import(/* webpackChunkName: "about" */ '../views/ConsumoAPI_View.vue')
+  },
+  {
+    path: '/receitas',
+    name: 'receitas',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ReceitasView.vue')
   }
 ]
 

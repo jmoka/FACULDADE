@@ -5,6 +5,7 @@
   
  <!-- renderização da pagina -->
  <div id="containerPrincipal"></div>
+
 </template>
 
 <script lang="ts">
@@ -24,7 +25,8 @@ import { Options, Vue } from 'vue-class-component';
 
   methods: {
     btnTeste() {
-      /* eslint-disable prefer-const */
+
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
@@ -245,8 +247,7 @@ const shuffle = (array: any[]) => {
       botaoRadio3.checked = false;
       botaoRadio4.checked = false;
       botaoRadio5.checked = false;
-      saida.splice(0, saida.length);
-      btnOrdenar.className = "removendoClasse"
+      saida.splice(0, saida.length);    
     
     }
   });
@@ -584,7 +585,7 @@ mounted(){
   this.btnTeste();
 }
 })
-export default class Compn_Ordenacao1 extends Vue {
+export default class Compn_Ordenacao extends Vue {
 message: any;
 }
 </script>
@@ -647,11 +648,12 @@ message: any;
   background-color: yellow;
   color: red;}
 
+
 .divRadio{
- text-align: start;
+ display:flex;
+ align:start;
  padding-left: 20%;
 }
-
 </style>
 
 
