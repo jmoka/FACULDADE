@@ -1,8 +1,7 @@
 import React from "react";
 
-
 export default function Lista (props:any){
-    console.log("livros",props.livros())
+
     
     return(
         
@@ -25,3 +24,5 @@ export default function Lista (props:any){
 
     )
 }
+
+

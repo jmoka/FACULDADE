@@ -15,17 +15,23 @@
 // parâmetros da função, mas não há uma tipagem específica para elas:
 
 
+// corrija o codigo 
+
+import { Link } from "react-router-dom";
 
 export default function Header(){
 
     return (
         <header >
-            <thead>
+            <nav>
                 <tr>
-                    <th scope="col" className="px-2 py-1 fs-5">  <a  href= "#"> Catálogo</a>  </th>
-                    <th scope="col" className="px-2 py-1 fs-5"> <a  href="#">Novo</a> </th>
+                <th scope="col" className="px-2 py-1 fs-5"> <Link to="/capa">Inicio</Link> </th>
+                    <th scope="col" className="px-2 py-1 fs-5">  <Link to="/formulario">Formulário</Link>  </th>
+                    <th scope="col" className="px-2 py-1 fs-5"> <Link to="/Completo">Completo</Link> </th>
+                    
                 </tr>
-            </thead>
+            </nav>
+            
        </header>
     )
 

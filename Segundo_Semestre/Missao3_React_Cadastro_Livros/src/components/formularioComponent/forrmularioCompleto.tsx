@@ -107,8 +107,9 @@ export default function Formulario() {
         </button>
       </form>
 
-      <Lista livros={livrosCadastrados} />
-       
+      
+       <Lista livros={livrosCadastrados} />
  </>  
+ 
   );
 }
