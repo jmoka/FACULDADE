@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const url = 'mongodb+srv://jota:Jota1979@m3.tpn14ft.mongodb.net/';
+const url ='mongodb+srv://jota:jota1979@livraria.av4j4ri.mongodb.net/';
 
 // Função para estabelecer a conexão com o banco de dados
 async function Conectar() {
@@ -10,15 +10,14 @@ async function Conectar() {
   console.log('Conexão estabelecida com o banco de dados.');
   console.log(client.db)
   return client;
-  }catch{
+  }catch{ 
     console.log('Conexão Não estabelecida com o banco de dados Verificar Código - Bloco Conexão.js.');
   }
 }
-
 // Função para fechar a conexão com o banco de dados
 async function FecharConexao() {
   try{
-  const client = new MongoClient(url, { useUnifiedTopology: true });
+  const client = new MongoClient(url);
   await client.close();
   console.log('Conexão com o banco de dados encerrada.');
   }catch{
@@ -27,4 +26,3 @@ async function FecharConexao() {
 }
 
 export { Conectar, FecharConexao };
-Conectar()
