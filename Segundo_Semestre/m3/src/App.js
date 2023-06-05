@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import {Formulario} from "./component/formularios_component_pasta/fromulario_cadastro_compoenent.js"
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <Formulario/>
     </div>
   );
 }
