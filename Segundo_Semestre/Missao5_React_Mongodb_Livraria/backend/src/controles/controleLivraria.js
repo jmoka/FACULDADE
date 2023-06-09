@@ -7,13 +7,17 @@ module.exports ={
         console.log("HOME TESTE")
         return res.json(useLivraria)
     },
-    async all (req, res){
-        const page = req.query;
-        const useLivraria = await Livraria.paginate({},{page, limit: 5});       
+    async todos (req, res){
+        const {page} = req.query;
+        const useLivraria = await Livraria.paginate({},{page, limit:3});       
         return res.json({useLivraria})
     },
-    async tes (req, res){
-        // const useLivraria = await Livraria.get(req.body);
-        return res.json({msg:"mensagem rota nova"})
-    }
+    async registro (req, res){
+        const useLivraria = await Livraria.findById(req.params.id);       
+        return res.json({useLivraria})
+    },
+    async atualizar (req, res){
+        const useLivraria = await Livraria.findByIdAndUpdate(req.params.id, req.body, {new:true});       
+        return res.json({useLivraria})
+    },
 }
