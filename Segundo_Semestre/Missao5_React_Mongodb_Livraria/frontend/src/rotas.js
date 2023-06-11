@@ -9,7 +9,7 @@ const Rotas = () => (
     <Routes>
     <Route exact path="/" Component={""} /> 
     <Route exact path="/todos" Component={Select} /> 
-    <Route exact path="/insert" Component={Insert} /> 
+    <Route exact path="/inserir" Component={Insert} /> 
     
     </Routes>
   </BrowserRouter>

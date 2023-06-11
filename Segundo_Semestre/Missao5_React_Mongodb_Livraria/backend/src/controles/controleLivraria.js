@@ -8,7 +8,7 @@ module.exports ={
     },
     async todos (req, res){
         const {page} = req.query;
-        const useLivraria = await Livraria.paginate({},{page, limit:20});    
+        const useLivraria = await Livraria.paginate({},{page, limit:1000});    
         console.log("useLivraria",useLivraria.docs)   
         return res.json(useLivraria);
         
