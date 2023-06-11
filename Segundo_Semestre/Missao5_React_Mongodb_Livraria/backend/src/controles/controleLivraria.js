@@ -21,4 +21,8 @@ module.exports ={
         const useLivraria = await Livraria.findByIdAndUpdate(req.params.id, req.body, {new:true});       
         return res.json({useLivraria})
     },
+    async deletar (req, res){
+        const useLivraria = await Livraria.findByIdAndDelete(req.params.id, req.body, {new:true});
+        return res.send({useLivraria});
+    },
 }

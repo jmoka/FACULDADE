@@ -22,8 +22,8 @@ export default function App() {
 
   const createPost = () => {
     axios.post(baseURL, {
-      titulo: "joão tavares fafus",
-      resumo: "resdumo",
+      titulo: "Cupu Gay",
+      resumo: "Cupu Gay zão",
       editora: "edira",
       autores: ["aures"],
       exposto: true
