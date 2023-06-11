@@ -6,14 +6,17 @@ function Consumo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/todos');
-
+        const response = await fetch("http://localhost:3001/home/sistema");
+        console.log(response);
+      
         if (!response.ok) {
           throw new Error('Erro ao buscar os dados');
         }
         const data = await response.json();
+        console.log("data",data.docs);
 
-        setTodos(data);
+
+        setTodos(data.docs);
       } catch (error) {
         console.error('Erro:', error);
       }
@@ -21,15 +24,15 @@ function Consumo() {
 
     fetchData();
   }, []);
+  console.log("todos",todos)
 
-  const livros = todos.useLivraria && todos.useLivraria.docs;
 
   return (
     <div className="App">
       <h1>Lista de Tarefas</h1>
-      {livros && livros.length > 0 ? (
+      {todos.length > 0 ? (
         <ul>
-          {livros.map((doc, index) => (
+          {todos.map((doc, index) => (
             <li key={doc._id}>
               <h2>Título: {doc.titulo}</h2>
               <p>Resumo: {doc.resumo}</p>

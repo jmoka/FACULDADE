@@ -2,15 +2,15 @@ import axios from "axios";
 import React from "react";
 import './select.css'
 
-const baseURL = "http://localhost:3001";
+const baseURL = "http://localhost:3001/home/sistema";
 
-export default function App() {
+export default function Select() {
   const [posts, setPosts] = React.useState([]);
 
   React.useEffect(() => {
-    axios.get(`${baseURL}/todos`).then((response) => {
-     
-      setPosts(response.data.useLivraria.docs);
+    axios.get(baseURL).then((response) => {
+      console.log(response.data.docs);
+      setPosts(response.data.docs);
     });
   }, []);
 

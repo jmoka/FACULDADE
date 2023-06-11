@@ -1,17 +1,12 @@
 import React from 'react';
 import Header from './componentes/header/header';
-// import Routes from './rotas';
-// import Consumo from './consumo'
-import Select from './paginas/select/select'
-import Insert from './paginas/insert/insert'
+import Routes from './rotas';
+
 function App() {
   return (
     <div className="App">
       <Header />
-      {/* <Consumo /> */}
-      
-      <Select />
-      <Insert/> 
+       <Routes />
       
       <h1>JOTA CONTABILIDADE</h1>
     </div>

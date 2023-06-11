@@ -8,12 +8,13 @@ module.exports ={
     },
     async todos (req, res){
         const {page} = req.query;
-        const useLivraria = await Livraria.paginate({},{page, limit:20});       
-        return res.json(useLivraria.docs);
+        const useLivraria = await Livraria.paginate({},{page, limit:20});    
+        console.log("useLivraria",useLivraria.docs)   
+        return res.json(useLivraria);
         
     },
     async registro (req, res){
-        const useLivraria = await Livraria.findById(req.params.id);       
+        const useLivraria = await Livraria.findById(req.params.id);          
         return res.json({useLivraria})
     },
     async atualizar (req, res){
