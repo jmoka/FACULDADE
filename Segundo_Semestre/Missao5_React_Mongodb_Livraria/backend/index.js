@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 requireDir('./src/modelos')
 app.use('/', require('./src/rotas/rotabeckend'))
-app.listen(27017)
+app.listen(3001)
 
 
 //!* Conexão banco de dados

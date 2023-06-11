@@ -9,7 +9,7 @@ module.exports ={
     },
     async todos (req, res){
         const {page} = req.query;
-        const useLivraria = await Livraria.paginate({},{page, limit:3});       
+        const useLivraria = await Livraria.paginate({},{page, limit:20});       
         return res.json({useLivraria})
     },
     async registro (req, res){

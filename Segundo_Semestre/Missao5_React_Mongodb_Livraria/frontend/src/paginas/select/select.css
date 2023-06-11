@@ -1,0 +1,33 @@
+.div1{
+    margin: 20px auto 0;
+    padding: 5 20px;
+    max-width: 700px;
+    background-color: aquamarine;
+}
+
+.div1 h1{
+    background: aliceblue;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.div1 h2{
+    background-color: burlywood;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 3px;
+   
+}
+
+.div2{ 
+    font-size: 23px;
+    color:black;
+    margin-top: 5px;
+    line-height: 24px;
+    text-align: center;
+    background-color:cornsilk;
+}
+
