@@ -3,14 +3,14 @@ const Livraria = mongoose.model('useLivraria')
 
 module.exports ={
     async insert (req, res){
-         const useLivraria = await Livraria.create(req.body);
-        console.log("HOME TESTE")
+         const useLivraria = await Livraria.create(req.body);       
         return res.json(useLivraria)
     },
     async todos (req, res){
         const {page} = req.query;
         const useLivraria = await Livraria.paginate({},{page, limit:20});       
-        return res.json({useLivraria})
+        return res.json(useLivraria.docs);
+        
     },
     async registro (req, res){
         const useLivraria = await Livraria.findById(req.params.id);       

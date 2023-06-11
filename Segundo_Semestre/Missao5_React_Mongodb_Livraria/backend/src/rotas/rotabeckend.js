@@ -5,9 +5,9 @@ const controleLivraria = require('../controles/controleLivraria');
 
 
 
-rotabeckend.post('/insert', controleLivraria.insert);
-rotabeckend.get('/todos', controleLivraria.todos);
-rotabeckend.get('/registro/:id', controleLivraria.registro);
-rotabeckend.put('/atualizar/:id', controleLivraria.atualizar);
+rotabeckend.post('/sistema', controleLivraria.insert);
+rotabeckend.get('/sistema', controleLivraria.todos);
+rotabeckend.get('/sistema/:id', controleLivraria.registro);
+rotabeckend.put('/sistema/:id', controleLivraria.atualizar);
 
 module.exports = rotabeckend    

@@ -9,7 +9,7 @@ const app =express()
 app.use(express.json());
 app.use(cors());
 requireDir('./src/modelos')
-app.use('/', require('./src/rotas/rotabeckend'))
+app.use('/home', require('./src/rotas/rotabeckend'))
 app.listen(3001)
 
 
@@ -17,7 +17,7 @@ app.listen(3001)
   const conexao=(() => {
     try {      
         const url = 'mongodb+srv://jota:jota1979@mongodb.bn8l1m2.mongodb.net/ ';
-        const urll = 'mongodb://localhost:27017/'
+       
         mongoose.connect(url, {useNewUrlParser: true})
         console.log("Banco de dados Conectado")
         
