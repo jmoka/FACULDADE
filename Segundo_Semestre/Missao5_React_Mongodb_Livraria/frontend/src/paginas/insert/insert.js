@@ -20,13 +20,14 @@ export default function App() {
       });
   }, []);
 
-  const createPost = () => {
+  const createPost = (json) => {
     axios.post(baseURL, {
-      titulo: "Cupu Gay",
-      resumo: "Cupu Gay zão",
-      editora: "edira",
-      autores: ["aures"],
-      exposto: true
+      // titulo: "Cupu Gay",
+      // resumo: "Cupu Gay zão",
+      // editora: "edira",
+      // autores: ["aures"],
+      // exposto: true
+      json
     })
     .then((response) => {
       if (response.data.docs) {

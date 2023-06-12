@@ -18,7 +18,7 @@ app.listen(3001)
     try {      
         const url = 'mongodb+srv://jota:jota1979@mongodb.bn8l1m2.mongodb.net/ ';
        
-        mongoose.connect(url, {useNewUrlParser: true})
+        mongoose.connect(url, {socketTimeoutMS: 30000}, {useNewUrlParser: true})
         console.log("Banco de dados Conectado")
         
     } catch (error) {
