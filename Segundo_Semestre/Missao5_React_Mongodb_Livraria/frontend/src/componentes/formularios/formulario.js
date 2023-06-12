@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const baseURL = "http://localhost:3001/home/sistema";
@@ -10,7 +10,22 @@ export default function Formulario() {
   const [autores, setAutores] = useState("");
   const [exposto, setExposto] = useState(false);
   const [posts, setPosts] = useState([]);
-  const [editingPostId, setEditingPostId] = useState(null);
+  const [id_Livro, setid_Livro] = useState(null);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const fetchPosts = () => {
+    axios
+      .get(baseURL)
+      .then((response) => {
+        setPosts(response.data.docs);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,16 +38,13 @@ export default function Formulario() {
       exposto: exposto,
     };
 
-    if (editingPostId) {
+    if (id_Livro) {
       axios
-        .put(`${baseURL}/${editingPostId}`, novoLivro)
+        .put(`${baseURL}/${id_Livro}`, novoLivro)
         .then(() => {
-          setPosts(
-            posts.map((post) =>
-              post._id === editingPostId ? { _id: editingPostId, ...novoLivro } : post
-            )
-          );
-          setEditingPostId(null);
+          fetchPosts(); // Refetch posts after updating
+          setid_Livro(null);
+          limparFormulario();
         })
         .catch((error) => {
           console.log(error);
@@ -40,35 +52,39 @@ export default function Formulario() {
     } else {
       axios
         .post(baseURL, novoLivro)
-        .then((response) => {
-          console.log(response.data);
-          setPosts([...posts, response.data]);
+        .then(() => {
+          fetchPosts(); // Refetch posts after creating
+          limparFormulario();
         })
         .catch((error) => {
           console.log(error);
         });
     }
-
-    // Limpar os campos do formulário após o envio
-    setTitulo("");
-    setResumo("");
-    setEditora("");
-    setAutores("");
-    setExposto(false);
   };
 
-  const handleDelete = (id) => {
+  const handleDeletar = (id) => {
     axios
       .delete(`${baseURL}/${id}`)
       .then(() => {
-        setPosts(posts.filter((post) => post._id !== id));
+        fetchPosts(); // Refetch posts after deletion
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const handleUpdate = (id) => {
+  const handleDeletarAll = () => {
+    axios
+      .delete(baseURL)
+      .then(() => {
+        fetchPosts(); // Refetch posts after deletion
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleAtualizar = (id) => {
     const selectedPost = posts.find((post) => post._id === id);
     if (selectedPost) {
       setTitulo(selectedPost.titulo);
@@ -76,19 +92,16 @@ export default function Formulario() {
       setEditora(selectedPost.editora);
       setAutores(selectedPost.autores.join(","));
       setExposto(selectedPost.exposto);
-      setEditingPostId(id);
+      setid_Livro(id);
     }
   };
 
-  const handleShowAll = () => {
-    axios
-      .get(baseURL)
-      .then((response) => {
-        setPosts(response.data.docs);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const limparFormulario = () => {
+    setTitulo("");
+    setResumo("");
+    setEditora("");
+    setAutores("");
+    setExposto(false);
   };
 
   return (
@@ -139,9 +152,15 @@ export default function Formulario() {
           />
         </label>
         <br />
-        <button type="submit">{editingPostId ? "Atualizar" : "Criar Postagem"}</button>
+        <button type="submit">{id_Livro ? "Atualizar" : "Criar Postagem"}</button>
+        {id_Livro && (
+          <>
+            <button type="button" onClick={() => handleDeletar(id_Livro)}>Deletar</button>
+            <button type="button" onClick={() => setid_Livro(null)}>Cancelar</button>
+          </>
+        )}
       </form>
-      <button onClick={handleShowAll}>Mostrar Todos</button>
+      <button onClick={handleDeletarAll}>Deletar Todos</button>
       {posts.length === 0 ? (
         <div>Nenhum post!</div>
       ) : (
@@ -151,8 +170,8 @@ export default function Formulario() {
             <p>{post.resumo}</p>
             <p>{post.editora}</p>
             <p>{post.autores.join(", ")}</p>
-            <button onClick={() => handleDelete(post._id)}>Deletar</button>
-            <button onClick={() => handleUpdate(post._id)}>Atualizar</button>
+            <button onClick={() => handleDeletar(post._id)}>Deletar</button>
+            <button onClick={() => handleAtualizar(post._id)}>Atualizar</button>
           </div>
         ))
       )}
