@@ -14,6 +14,7 @@ public class TestesPF {
 	try {
 
 		Scanner sc = new Scanner(System.in);
+		String nome_arq = "dados.dat";
 		int cod  = 1;
 		Integer id = null;
 		String nome = null;
@@ -35,25 +36,25 @@ public class TestesPF {
 			Integer idParaAlterar;
 			System.out.println("Vamos Incluir uma Pessoa Fisica");			
 			
-			if(pessoa.obter(1)==null) {
+			if(pessoa.obter(1, nome_arq)==null) {
 				idParaAlterar = 1;				
 			}else{				
-				idParaAlterar = pessoa.tamanho()+1;				
+				idParaAlterar = pessoa.tamanho(nome_arq)+1;				
 			};					
 			
-			PessoaFisica existente = pessoa.obter(idParaAlterar);
+			PessoaFisica existente = pessoa.obter(idParaAlterar, nome_arq);
 			
 			if(existente == null) {
-			
+				
 			System.out.println("Qual Nome ?");
 			nome = sc.nextLine();
 			System.out.println("Qual CPF ?");
 			cpf = sc.nextLine();
 			System.out.println("Qual Idade ?");
 			idade = sc.nextInt();
-			pessoa.inserir(new PessoaFisica(cod,idParaAlterar, nome, cpf, idade));
-			pessoa.ListaPessoas.add(new PessoaFisica(cod, idParaAlterar, nome, cpf, idade));
-			pessoa.persistir("dodos_pf.dat");
+			pessoa.inserir(new PessoaFisica(cod,idParaAlterar, nome, cpf, idade), nome_arq);
+		//	pessoa.ListaPessoas.add(new PessoaFisica(cod, idParaAlterar, nome, cpf, idade));
+			pessoa.persistir(nome_arq);
 			System.out.println("Pessoa Cadastrarda com Sucesso..");
 			}else {
 				System.out.println("ID  ja Cadastrado");
@@ -63,7 +64,7 @@ public class TestesPF {
 		    System.out.println("Vamos Alterar uma Pessoa Fisica");
 		    System.out.println("Qual e o ID da pessoa que deseja alterar?");
 		    idParaAlterar = sc.nextInt();		    
-		    PessoaFisica pessoaExistente = pessoa.obter(idParaAlterar);		    
+		    PessoaFisica pessoaExistente = pessoa.obter(idParaAlterar, nome_arq);		    
 		    if (pessoaExistente != null) {
 		        sc.nextLine(); 		        
 		        System.out.println("Qual e o novo Nome?");
@@ -74,9 +75,9 @@ public class TestesPF {
 		        idade = sc.nextInt();
 		        
 		        PessoaFisica pessoaAtualizada = new PessoaFisica(cod, idParaAlterar,nome,cpf, idade);
-		        pessoa.alterar(pessoaAtualizada);
+		        pessoa.alterar(pessoaAtualizada, nome_arq);
 		       
-		        pessoa.persistir("dados_pf.dat");
+		        pessoa.persistir(nome_arq);
 		        
 		        System.out.println("Pessoa Alterada com Sucesso.");
 		    } else {
@@ -88,12 +89,12 @@ public class TestesPF {
 			System.out.println("Vamos Excruir uma Pessoa Fisica");
 			System.out.println("Qual a ID?");
 			idParaAlterar = sc.nextInt();		    
-		    PessoaFisica p_Existente = pessoa.obter(idParaAlterar);		    
+		    PessoaFisica p_Existente = pessoa.obter(idParaAlterar, nome_arq);		    
 		    if (p_Existente != null) {
 		      
-		        pessoa.excluir(idParaAlterar);
+		        pessoa.excluir(idParaAlterar, nome_arq);
 		       
-		        pessoa.persistir("dados_pf.dat");
+		        pessoa.persistir(nome_arq);
 		        
 		        System.out.println("Pessoa Excluida com Sucesso.");
 		    } else {
@@ -106,7 +107,7 @@ public class TestesPF {
 		    System.out.println("Vamos Obter uma Pessoa Fisica");
 		    System.out.println("Qual a ID?");
 		    id = sc.nextInt();
-		    PessoaFisica pessoaEncontrada = pessoa.obter(id);
+		    PessoaFisica pessoaEncontrada = pessoa.obter(id, nome_arq);
 
 		    if (pessoaEncontrada != null) {
 		        System.out.println("Pessoa Obtida com Sucesso:");
@@ -126,10 +127,10 @@ public class TestesPF {
 			break;
 			
 		case 7:
-			pessoa.obterTodos_pf_pj(1);
+			pessoa.obterTodos_pf_pj(1, nome_arq);
 			break;
 		case 8:
-			pessoa.excluirPF_PJ(1);
+			pessoa.excluirPF_PJ(1, nome_arq);
 			break;
 	};
 

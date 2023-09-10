@@ -1,62 +1,51 @@
 package controle;
 
-import java.util.ArrayList;
-
 import entidades.PessoaFisica;
 import entidades.PessoaJuridica;
 import genciadores.Gerenciador_Pessoas;
+import genciadores.Testes;
 
 public class main_procedimento1 {
 
 	public static void main(String[] args) {
 
-		// ESTANCIAÇÃO DOS GERENCIADORES PF E PJ
-		Gerenciador_Pessoas<PessoaFisica> g_pf = new Gerenciador_Pessoas<>();
-		Gerenciador_Pessoas<PessoaJuridica> g_pj = new Gerenciador_Pessoas<>();
+		Testes t = new Testes();
+		Gerenciador_Pessoas<PessoaJuridica> pessoaPJ = new Gerenciador_Pessoas<>();
+		Gerenciador_Pessoas<PessoaFisica> pessoaPF = new Gerenciador_Pessoas<>();
+		String nome_arqPF = "dados1.dat";
+		int pf = 1;
+		int pj = 2;
+		String nome_arqPJ = nome_arqPF; // pode ate achar redundante , mas a ideia e ja deixar pronto para se o caso
+										// quizer criar um rquivo pj separado
+										// eu optei em ter somente 1
 
-		// INSERÇÃO DE DADOS NA LISTA PF
-		g_pf.inserir(new PessoaFisica(23, "jota", "3455", 23));
-		g_pf.inserir(new PessoaFisica(25, "paulo", "342", 12));
+		Object jota = new PessoaFisica(pf, 1, "jota", "7678", 23);
+		Object maria = new PessoaFisica(pf, 2, "maria", "987", 23);
+		pessoaPF.carregar(nome_arqPF);
 
-		// INSERÇÃO DE DADOS NA LISTA PJ
-		g_pj.inserir(new PessoaJuridica(12, "jota empresas", "23567890000190"));
-		g_pj.inserir(new PessoaJuridica(123, "letro empresas", "3456789000000123"));
+		pessoaPF.ListaPessoas.add((PessoaFisica) jota);
+		pessoaPF.ListaPessoas.add((PessoaFisica) maria);
+		pessoaPF.persistir(nome_arqPF);
 
-		// PF
-		// PERSISTENCIA DOS DADOS NA MEMÓRIA
-		g_pf.persistir("dodos_pf.dat");
-		// CRIAÇÃO DE UMA NOVA LISTA <PessoaFisica> PARA RECUPERAR OS ARQUIVOS DA
-		// MEMÓRIA
-		ArrayList<PessoaFisica> pf_recuperada = g_pf.("dodos_pf.dat");
+		Object magazine_jota = new PessoaJuridica(pj, 3, "magazine_jota", "2345670000198");
+		Object magazine_maria = new PessoaJuridica(pj, 4, "magazine_maria", "67856710000190");
+		pessoaPJ.carregar(nome_arqPJ);
+		pessoaPJ.ListaPessoas.add((PessoaJuridica) magazine_jota);
+		pessoaPJ.ListaPessoas.add((PessoaJuridica) magazine_maria);
+		pessoaPJ.persistir(nome_arqPJ);
+		
+		
+		pessoaPF.obterTodos_pf_pj(1, nome_arqPF);
+		pessoaPF.obterTodos_pf_pj(2, nome_arqPF);
 
-		System.out.println("======================");
-		System.out.println("Pessoa Fisica Registrada");
-		System.out.println("======================");
-		System.out.println(" ");
-		for (PessoaFisica pf : pf_recuperada) {
-
-			System.out.println(pf);
-		}
-		;
-
-		// PJ
-		// PERSISTENCIA DOS DADOS NA MEMÓRIA	
-		g_pj.persistir("dodos_pj.dat");
-		// CRIAÇÃO DE UMA NOVA LISTA <PessoaFisica> PARA RECUPERAR OS ARQUIVOS DA
-		// MEMÓRIA
-
-		ArrayList<PessoaFisica> pj_recuperada = g_pj.deserializarPessoas("dodos_pj.dat");
-		System.out.println(" ");
-		System.out.println("======================");
-		System.out.println("Pessoa Juridica Registrada");
-		System.out.println("======================");
-		for (PessoaFisica pj : pj_recuperada) {
-
-			System.out.println(pj);
-
-		}
-		;
-
-	}
-
+		/*
+		pessoaPF.excluirtodos(nome_arqPF);
+		pessoaPF.excluirtodos(nome_arqPJ);
+		pessoaPJ.persistir(nome_arqPJ);
+		pessoaPJ.persistir(nome_arqPF);
+		
+		pessoaPF.obterTodos_pf_pj(1, nome_arqPF);
+		pessoaPF.obterTodos_pf_pj(2, nome_arqPJ);
+*/
+	};
 }

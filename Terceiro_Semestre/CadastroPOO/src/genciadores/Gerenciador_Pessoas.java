@@ -38,20 +38,21 @@ public class Gerenciador_Pessoas<G extends Pessoa> {
 		}
 
 	}
+	
 
 	// Adicionar
 
-	public void inserir(G pessoa) {
+	public void inserir(G pessoa, String nome_arq) {
 		
-		carregar("dados_pf.dat");
+		carregar(nome_arq);
 		ListaPessoas.add(pessoa);
-		persistir("dados_pf.dat");
+		persistir(nome_arq);
 
 	}
 
 	// Alterar
-	public void alterar(G pessoa) {
-		carregar("dados_pf.dat");
+	public void alterar(G pessoa, String nome_arq) {
+		carregar(nome_arq);
 		int index = encontrarIndexPorId(pessoa.getId());
 		if (index != -1) {
 			ListaPessoas.set(index, pessoa);
@@ -61,18 +62,18 @@ public class Gerenciador_Pessoas<G extends Pessoa> {
 	}
 
 	// Excluir
-	public void excluir(int id) {
-		carregar("dados_pf.dat");
+	public void excluir(int id, String nome_arq) {
+		carregar(nome_arq);
 		int index = encontrarIndexPorId(id);
 		if (index != -1) {
 			ListaPessoas.remove(index);
 
 		}
-		persistir("dados_pf.dat");
+		persistir(nome_arq);
 	}
 	// Excluir Todos
 
-	public void excluirtodos() {
+	public void excluirtodos(String nome_arq) {
 		for (G Lpessoas : ListaPessoas) {
 			if (Lpessoas == null) {
 				System.out.println("Lista Vazia");
@@ -82,12 +83,12 @@ public class Gerenciador_Pessoas<G extends Pessoa> {
 			;
 		}
 		System.out.println("Lista Deletada");
-		persistir("dados_pf.dat");
+		persistir(nome_arq);
 	};
 
 	// Obter
-	public G obter(Integer id) {
-		carregar("dados_pf.dat");
+	public G obter(Integer id, String nome_arq) {
+		carregar(nome_arq);
 		for (G pessoa : ListaPessoas) {
 			if (Integer.valueOf(pessoa.getId()).equals(id)) {
 				return pessoa;
@@ -98,8 +99,8 @@ public class Gerenciador_Pessoas<G extends Pessoa> {
 
 	
 	// Obter TodosPF_PJ
-		public G obterTodos_pf_pj(int cod) {
-			carregar("dados_pf.dat");
+		public G obterTodos_pf_pj(int cod, String nome_arq) {
+			carregar(nome_arq);
 			
 			
 		   Prints.pf_pj(cod);
@@ -110,7 +111,7 @@ public class Gerenciador_Pessoas<G extends Pessoa> {
 		        }
 		    }
 
-		    persistir("dados_pf.dat");
+		    persistir(nome_arq);
 			return null;
 
 		};
@@ -126,14 +127,14 @@ public class Gerenciador_Pessoas<G extends Pessoa> {
 		return -1;
 	};
 
-	public int tamanho() {
-		carregar("dados_pf.dat");
+	public int tamanho(String nome_arq) {
+		carregar(nome_arq);
 		return ListaPessoas.size();
 	};
 	
 	
-	public void excluirPF_PJ(int num) {
-	    carregar("dados_pf.dat");
+	public void excluirPF_PJ(int num, String nome_arq) {
+	    carregar(nome_arq);
 
 	    Iterator<G> iterator = ListaPessoas.iterator();
 	    while (iterator.hasNext()) {
@@ -148,7 +149,7 @@ public class Gerenciador_Pessoas<G extends Pessoa> {
 	    }
 
 	   
-	    persistir("dados_pf.dat");
+	    persistir(nome_arq);
 	}
 
 	

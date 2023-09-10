@@ -13,6 +13,7 @@ public class TestesPJ {
 	try {
 
 		Scanner sc = new Scanner(System.in);
+		String nome_arq = "dados.dat";
 		int cod  = 2;
 		Integer id = null;
 		String nome = null;
@@ -33,13 +34,13 @@ public class TestesPJ {
 			Integer idParaAlterar;
 			System.out.println("Vamos Incluir uma Pessoa Juridica");			
 			
-			if(pessoa.obter(1)==null) {
+			if(pessoa.obter(1, nome_arq)==null) {
 				idParaAlterar = 1;				
 			}else{				
-				idParaAlterar = pessoa.tamanho()+1;				
+				idParaAlterar = pessoa.tamanho(nome_arq)+1;				
 			};					
 			
-			PessoaJuridica existente = pessoa.obter(idParaAlterar);
+			PessoaJuridica existente = pessoa.obter(idParaAlterar, nome_arq);
 			
 			if(existente == null) {
 			//sc.nextLine();
@@ -47,9 +48,9 @@ public class TestesPJ {
 			nome = sc.nextLine();
 			System.out.println("Qual CNPJ ?");
 			cnpj = sc.nextLine();			
-			pessoa.inserir(new PessoaJuridica(cod, idParaAlterar,nome, cnpj ));
-			pessoa.ListaPessoas.add(new PessoaJuridica(cod, idParaAlterar, nome, cnpj));
-			pessoa.persistir("dodos_pf.dat");
+			pessoa.inserir(new PessoaJuridica(cod, idParaAlterar,nome, cnpj ), nome_arq);
+			//pessoa.ListaPessoas.add(new PessoaJuridica(cod, idParaAlterar, nome, cnpj));
+			pessoa.persistir(nome_arq);
 			System.out.println("Pessoa Juridica Cadastrarda com Sucesso..");
 			}else {
 				System.out.println("ID  ja Cadastrado");
@@ -59,7 +60,7 @@ public class TestesPJ {
 		    System.out.println("Vamos Alterar uma Pessoa Juridica");
 		    System.out.println("Qual e o ID da Pessoa Juridica que deseja alterar?");
 		    idParaAlterar = sc.nextInt();		    
-		    PessoaJuridica pessoaExistente = pessoa.obter(idParaAlterar);		    
+		    PessoaJuridica pessoaExistente = pessoa.obter(idParaAlterar, nome_arq);		    
 		    if (pessoaExistente != null) {
 		        sc.nextLine(); 		        
 		        System.out.println("Qual e o nava Razao?");
@@ -67,9 +68,9 @@ public class TestesPJ {
 		        System.out.println("Qual e o novo CNPJ?");
 		        cnpj = sc.next();		      
 		        PessoaJuridica pessoaAtualizada = new PessoaJuridica(cod, idParaAlterar,nome,cnpj);
-		        pessoa.alterar(pessoaAtualizada);
+		        pessoa.alterar(pessoaAtualizada, nome_arq);
 		       
-		        pessoa.persistir("dados_pf.dat");
+		        pessoa.persistir(nome_arq);
 		        
 		        System.out.println("Pessoa Juridica Alterada com Sucesso.");
 		    } else {
@@ -81,12 +82,12 @@ public class TestesPJ {
 			System.out.println("Vamos Excruir uma Pessoa Juridica Fisica");
 			System.out.println("Qual a ID?");
 			idParaAlterar = sc.nextInt();		    
-		    PessoaJuridica p_Existente = pessoa.obter(idParaAlterar);		    
+		    PessoaJuridica p_Existente = pessoa.obter(idParaAlterar, nome_arq);		    
 		    if (p_Existente != null) {
 		      
-		        pessoa.excluir(idParaAlterar);
+		        pessoa.excluir(idParaAlterar, nome_arq);
 		       
-		        pessoa.persistir("dados_pf.dat");
+		        pessoa.persistir(nome_arq);
 		        
 		        System.out.println("Pessoa Juridica Excluida com Sucesso.");
 		    } else {
@@ -99,7 +100,7 @@ public class TestesPJ {
 		    System.out.println("Vamos Obter uma Pessoa Juridica");
 		    System.out.println("Qual a ID?");
 		    id = sc.nextInt();
-		    PessoaJuridica pessoaEncontrada = pessoa.obter(id);
+		    PessoaJuridica pessoaEncontrada = pessoa.obter(id, nome_arq);
 
 		    if (pessoaEncontrada != null) {
 		        System.out.println("Pessoa Juridica Obtida com Sucesso:");
@@ -119,10 +120,10 @@ public class TestesPJ {
 			break;
 			
 		case 7:
-			pessoa.obterTodos_pf_pj(2);
+			pessoa.obterTodos_pf_pj(2, nome_arq);
 			break;
 		case 8:
-			pessoa.excluirPF_PJ(2);
+			pessoa.excluirPF_PJ(2, nome_arq);
 			break;
 	};
 
