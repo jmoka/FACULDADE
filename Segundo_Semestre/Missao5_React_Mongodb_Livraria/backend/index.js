@@ -12,11 +12,13 @@ requireDir('./src/modelos')
 app.use('/home', require('./src/rotas/rotabeckend'))
 app.listen(3001)
 
+// "mongodb+srv://jota:jota1979@n2m5.4m694ph.mongodb.net/"
 
 //!* Conexão banco de dados
   const conexao=(() => {
-    try {      
-        const url = 'mongodb+srv://jota:jota1979@mongodb.bn8l1m2.mongodb.net/ ';
+    try {     
+        // const url = 'mongodb+srv://jota:jota1979@mongodb.bn8l1m2.mongodb.net/ ';
+        const url = 'mongodb+srv://jota:jota1979@n2m5.4m694ph.mongodb.net/';
        
         mongoose.connect(url, {useNewUrlParser: true})
         console.log("Banco de dados Conectado")

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Select from './paginas/select/select';
-import Insert from './paginas/insert/insert';
+import Insert from './paginas/insert/inserir';
 import Atualizar from './paginas/update/atualizar'
 import Deletar from './paginas/delete/deletar'
 
