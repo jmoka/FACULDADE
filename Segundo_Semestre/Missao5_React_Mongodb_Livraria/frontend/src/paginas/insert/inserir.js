@@ -39,6 +39,31 @@ export default function Inserir(props) {
       });
   }, []);
 
+<<<<<<< HEAD:Segundo_Semestre/Missao5_React_Mongodb_Livraria/frontend/src/paginas/insert/inserir.js
+=======
+  const createPost = (json) => {
+    axios.post(baseURL, {
+      // titulo: "Cupu Gay",
+      // resumo: "Cupu Gay zão",
+      // editora: "edira",
+      // autores: ["aures"],
+      // exposto: true
+      json
+    })
+    .then((response) => {
+      if (response.data.docs) {
+        console.log(response.data.docs);
+        setPosts([...posts, response.data.docs]);
+      } else {
+        console.log("Erro: response.data.docs é undefined");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+
+>>>>>>> cf7952ee8ed16e9a63834d6bc5516a35aba05c1d:Segundo_Semestre/Missao5_React_Mongodb_Livraria/frontend/src/paginas/insert/insert.js
   if (loading) {
     return <div>Loading...</div>;
   }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 // import {
 //   criarlivro,
@@ -10,6 +11,12 @@ import {criarlivro,} from "../../paginas/insert/inserir";
 import {atualizarlivro} from "../../paginas/update/atualizar";
 import {deletarlivro} from "../../paginas/delete/deletar";
 import {buscarlivro} from "../../paginas/select/selecionar";
+=======
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+const baseURL = "http://localhost:3001/home/sistema";
+>>>>>>> cf7952ee8ed16e9a63834d6bc5516a35aba05c1d
 
 export default function Formulario() {
   const [titulo, setTitulo] = useState("");
@@ -17,6 +24,7 @@ export default function Formulario() {
   const [editora, setEditora] = useState("");
   const [autores, setAutores] = useState("");
   const [exposto, setExposto] = useState(false);
+<<<<<<< HEAD
   const [idDeletar, setIdDeletar] = useState("");
   const [idAtualizar, setIdAtualizar] = useState("");
   const [novoTitulo, setNovoTitulo] = useState("");
@@ -26,6 +34,25 @@ export default function Formulario() {
   const [novoExposto, setNovoExposto] = useState(false);
   const [termoBusca, setTermoBusca] = useState("");
   const [livrosEncontrados, setLivrosEncontrados] = useState([]);
+=======
+  const [posts, setPosts] = useState([]);
+  const [id_Livro, setid_Livro] = useState(null);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const fetchPosts = () => {
+    axios
+      .get(baseURL)
+      .then((response) => {
+        setPosts(response.data.docs);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+>>>>>>> cf7952ee8ed16e9a63834d6bc5516a35aba05c1d
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,6 +65,7 @@ export default function Formulario() {
       exposto: exposto,
     };
 
+<<<<<<< HEAD
     criarlivro(novoLivro)
       .then((response) => {
         console.log("Livro cadastrado com sucesso!");
@@ -90,6 +118,72 @@ export default function Formulario() {
       .catch((error) => {
         console.log("Erro ao buscar os livros:", error);
       });
+=======
+    if (id_Livro) {
+      axios
+        .put(`${baseURL}/${id_Livro}`, novoLivro)
+        .then(() => {
+          fetchPosts(); // Refetch posts after updating
+          setid_Livro(null);
+          limparFormulario();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      axios
+        .post(baseURL, novoLivro)
+        .then(() => {
+          fetchPosts(); // Refetch posts after creating
+          limparFormulario();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
+  const handleDeletar = (id) => {
+    axios
+      .delete(`${baseURL}/${id}`)
+      .then(() => {
+        fetchPosts(); // Refetch posts after deletion
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleDeletarAll = () => {
+    axios
+      .delete(baseURL)
+      .then(() => {
+        fetchPosts(); // Refetch posts after deletion
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleAtualizar = (id) => {
+    const selectedPost = posts.find((post) => post._id === id);
+    if (selectedPost) {
+      setTitulo(selectedPost.titulo);
+      setResumo(selectedPost.resumo);
+      setEditora(selectedPost.editora);
+      setAutores(selectedPost.autores.join(","));
+      setExposto(selectedPost.exposto);
+      setid_Livro(id);
+    }
+  };
+
+  const limparFormulario = () => {
+    setTitulo("");
+    setResumo("");
+    setEditora("");
+    setAutores("");
+    setExposto(false);
+>>>>>>> cf7952ee8ed16e9a63834d6bc5516a35aba05c1d
   };
 
   return (
@@ -140,6 +234,7 @@ export default function Formulario() {
           />
         </label>
         <br />
+<<<<<<< HEAD
         <button type="submit">Cadastrar Livro</button>
       </form>
 
@@ -242,6 +337,31 @@ export default function Formulario() {
           ))
         )}
       </div>
+=======
+        <button type="submit">{id_Livro ? "Atualizar" : "Criar Postagem"}</button>
+        {id_Livro && (
+          <>
+            <button type="button" onClick={() => handleDeletar(id_Livro)}>Deletar</button>
+            <button type="button" onClick={() => setid_Livro(null)}>Cancelar</button>
+          </>
+        )}
+      </form>
+      <button onClick={handleDeletarAll}>Deletar Todos</button>
+      {posts.length === 0 ? (
+        <div>Nenhum post!</div>
+      ) : (
+        posts.map((post) => (
+          <div key={post._id}>
+            <h2>{post.titulo}</h2>
+            <p>{post.resumo}</p>
+            <p>{post.editora}</p>
+            <p>{post.autores.join(", ")}</p>
+            <button onClick={() => handleDeletar(post._id)}>Deletar</button>
+            <button onClick={() => handleAtualizar(post._id)}>Atualizar</button>
+          </div>
+        ))
+      )}
+>>>>>>> cf7952ee8ed16e9a63834d6bc5516a35aba05c1d
     </div>
   );
 }
