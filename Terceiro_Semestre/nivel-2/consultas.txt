@@ -1,0 +1,95 @@
+CONSULTAR USUARIOS
+
+*TABELA USUÁRIOS*
+<TODOS>
+	SELECT * FROM table_usuario; 
+
+	<RETORNA COLUNA NOME>
+		SELECT Nome FROM table_usuario;
+
+	<RETORNA AS COLUNAS ID, NOME>
+		SELECT idTable_Usuario, Nome FROM table_usuario;
+
+<CONSULTA POR ID>
+	<RETORNA TODAS AS COLUNAS>
+		SELECT * FROM table_usuario WHERE idTable_Usuario = 2 ; 
+
+	<RETORNENDO COLUNA NOME>
+		SELECT Nome FROM table_usuario WHERE idTable_Usuario = 2; 
+
+	<RETORNANDO AS COLUNAS ID E NOME>
+		SELECT idTable_Usuario, Nome FROM table_usuario WHERE idTable_Usuario = 2; 
+
+<CONSULTAR POR NOME>
+	<RETORNA TODAS AS COLUNAS>
+		SELECT * FROM table_usuario WHERE Nome = 'joão';
+
+	<RETORNA COLUNA NOME>
+		SELECT Nome FROM table_usuario WHERE Nome="joão";
+
+	<RETORNA AS COLUNAS ID E NOME>
+		SELECT idTable_Usuario, Nome From table_usuario  WHERE Nome = 'joão'
+
+<CONSULTAR SENHA>
+	<RETORNANDO TODAS AS SENHAS NA COLUNA SENHA>
+			SELECT senha FROM table_senhas;
+
+	<RETORNANDO TODAS AS SENHAS NA COLUNA ID USUARIO E SENHA>
+			SELECT tu.Nome AS NomeUsuario, ts.senha AS Senha_Usuario
+			FROM table_usuario tu 
+			INNER JOIN table_senhas ts 
+			ON tu.Table_senhas_idTable_senhas = ts.idTable_senhas;
+
+
+	<CONSULTAR POR ID DA SENHA>
+		<RETORNANDO COLUNA SENHA>
+			SELECT senha FROM table_senhas WHERE idTable_senhas = 2;
+
+	<CONSULTAR POR ID DO USUARIOS>
+		<RETORNANDO COLUNA ID_USUARIO, NOME E SENHA>
+			SELECT tu.idTable_Usuario AS id_Usuario, tu.Nome AS Nome_Usuario, ts.senha
+			FROM table_Usuario tu
+			INNER JOIN table_senhas ts 
+			ON tu.Table_senhas_idTable_senhas = ts.idTable_senhas
+			WHERE tu.idTable_Usuario = 2;
+
+<CONSULTA ENDEREÇO USUARIO POR ID DO USUARIO>
+	<CONSULTAR POR ID DO USUARIO>
+		SELECT tu.idTable_Usuario AS id_Usuario, tu.Nome AS Nome_Usuario, CONCAT(te.logradouro, ', ', te.numero_endereco, ', ', te.barro_endereco, ', ', te.cidade, ', ', te.estado, ', CEP: ', te.cep) AS Endereco_Completo
+		FROM table_usuario tu INNER JOIN table_endereco te 
+		ON tu.idTable_Usuario = te.Table_Usuario_idTable_Usuario
+		WHERE tu.idTable_Usuario = 2;
+
+<CONSULTA TELEFONE POR ID DO USUARIO>
+	SELECT tu.idTable_Usuario AS id_Usuario, tt.numero AS Telefone
+	FROM table_usuario tu 	INNER JOIN table_telefones tt 
+	ON tu.idTable_Usuario = tt.Table_Usuario_idTable_Usuario
+	WHERE tu.idTable_Usuario = 2;
+
+<CONSULTA ENDEREÇO COM TELEFONE DO USUARIO CONSULTANDO POR ID>
+	SELECT  tu.idTable_Usuario AS id_Usuario, tu.Nome AS Nome_Usuario, CONCAT(te.logradouro, ', ', te.numero_endereco, ', ', te.barro_endereco, ', ', te.cidade, ', ', te.estado, ', CEP: ', te.cep) AS Endereco_Completo,
+    	tt.numero AS Telefone
+	FROM table_usuario tu INNER JOIN table_endereco te 
+	ON tu.idTable_Usuario = te.Table_Usuario_idTable_Usuario
+	INNER JOIN table_telefones tt 
+	ON tu.idTable_Usuario = tt.Table_Usuario_idTable_Usuario
+	WHERE tu.idTable_Usuario = 2;
+
+
+
+
+	
+
+==========================================================
+
+CONSULTAR PESSOAS
+
+TODAS
+SELECT * FROM table_pessoas;
+
+POR-ID
+SELECT * FROM table_pessoas WHERE idTable_pessoas = 3;
+
+POR-NOME
+SELECT * FROM table_pessoas WHERE nome = 'pessoa_joao';
+
