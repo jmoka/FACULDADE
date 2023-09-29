@@ -13,24 +13,22 @@ Todos os códigos solicitados neste roteiro de aula;
 Os resultados da execução dos códigos também devem ser apresentados;
 Análise e Conclusão:
 
-Como são implementadas as diferentes cardinalidades, basicamente 1X1,
-1XN ou NxN, em um banco de dados relacional?
+Quais as vantagens e desvantagens do uso de herança?
 
-Que tipo de relacionamento deve ser utilizado para representar o uso de
-herança em bancos de dados relacionais?
+Por que a interface Serializable é necessária ao efetuar persistência em
+arquivos binários?
 
-Como o SQL Server Management Studio permite a melhoria da
-produtividade nas tarefas relacionadas ao gerenciamento do banco de
-dados?
-=======================================================================
-Relatório discente de acompanhamento
+Como o paradigma funcional é utilizado pela API stream no Java?
 
+Quando trabalhamos com Java, qual padrão de desenvolvimento é adotado
+na persistência de dados em arquivos?
+==================================================================================
 Os Relatórios de Práticas deverão ser confeccionados em arquivo no formato
 PDF, com a Logo da Universidade, nome do Campus, nome do Curso, nome da
 Disciplina, número da Turma, semestre letivo, nome dos integrantes da Prática.
 Além disso, o projeto deve ser armazenado em um repositório no GIT e o
-respectivo endereço deve constar na documentação. A documentação do projeto
-deve conter:
+respectivo endereço deve constar na documentação (PDF). A documentação do
+projeto deve conter:
 
 Título da Prática;
 Objetivo da Prática;
@@ -38,11 +36,10 @@ Todos os códigos solicitados neste roteiro de aula;
 Os resultados da execução dos códigos também devem ser apresentados;
 Análise e Conclusão:
 
-Quais as diferenças no uso de sequence e identity?
+O que são elementos estáticos e qual o motivo para o método main adotar
+esse modificador?
 
-Qual a importância das chaves estrangerias para a consistência do banco?
+Para que serve a classe Scanner?
 
-Quais operadores do SQL pertencem à álgebra relacional e quais são
-definidos no cálculo relacional?
+Como o uso de classes de repositório impactou na organização do código?
 
-Como é feito o agrupamento em consultas, e qual requisito é obrigatório?
