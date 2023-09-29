@@ -1,0 +1,21 @@
+Relatório discente de acompanhamento
+
+Os Relatórios de Práticas deverão ser confeccionados em arquivo no formato
+PDF, com a Logo da Universidade, nome do Campus, nome do Curso, nome da
+Disciplina, número da Turma, semestre letivo, nome dos integrantes da Prática.
+Além disso, o projeto deve ser armazenado em um repositório no GIT e o
+respectivo endereço deve constar na documentação. A documentação do projeto
+deve conter:
+
+Título da Prática;
+Objetivo da Prática;
+Todos os códigos solicitados neste roteiro de aula;
+Os resultados da execução dos códigos também devem ser apresentados;
+Análise e Conclusão:
+Como são implementadas as diferentes cardinalidades, basicamente 1X1,
+1XN ou NxN, em um banco de dados relacional?
+Que tipo de relacionamento deve ser utilizado para representar o uso de
+herança em bancos de dados relacionais?
+Como o SQL Server Management Studio permite a melhoria da
+produtividade nas tarefas relacionadas ao gerenciamento do banco de
+dados?

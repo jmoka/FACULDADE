@@ -1,3 +1,5 @@
+-- 3 - Explorar a sintaxe SQL na criação das estruturas do banco (DDL).
+
 CREATE TABLE Table_Compra (
   idTable_Compra INT UNSIGNED NOT NULL AUTO_INCREMENT,
   Table_Produtos_id INT UNSIGNED NOT NULL,

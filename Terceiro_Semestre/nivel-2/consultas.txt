@@ -1,3 +1,5 @@
+Explorar a sintaxe SQL na consulta e manipulação de dados (DML)
+
 CONSULTAR USUARIOS
 
 *TABELA USUÁRIOS*

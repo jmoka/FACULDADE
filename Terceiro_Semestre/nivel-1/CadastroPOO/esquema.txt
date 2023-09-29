@@ -1,0 +1,45 @@
+import java.io.Serializable;
+
+# model_entidades
+
+Pessoa implements Serializable
+---------------
+- id: Integer
+- nome: String
+---------------
+- exibirP()
+
+
+
+PessoaFisica extende Peassoa implements Serializable
+----------------------------
+- cpf: String
+- idade: Integer
+----------------------------
+- exibirPF()
+
+
+
+
+PessoaJuridica extende Pessoa implements Serializable
+------------------------------
+- cnpj: String
+------------------------------
+exibirPJ()
+
+
+=========================================================
+# model_gerenciadores
+
+====================
+Classe generica
+- dessa forma elimina duas classe (PessoaFisicaRepo  e PessoaJuridicaRepo), tendo somente que estanciar "Classe generica<>" do tipo (PessoaFisicaRepo ou PessoaJuridicaRepo)
+====================
+-class Repo <G>
+ - G inserir()
+ - G alterar()
+ -   excluir()
+ - G obter()
+ - G obterTodos()
+
+====================
