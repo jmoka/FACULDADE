@@ -1,169 +1,135 @@
--- 3 - Explorar a sintaxe SQL na criação das estruturas do banco (DDL).
-
-CREATE TABLE Table_Compra (
-  idTable_Compra INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  Table_Produtos_id INT UNSIGNED NOT NULL,
-  PJ_Tipo_Usuario_Senha_id INT UNSIGNED NOT NULL,
-  PJ_Tipo_Usuario_id INT UNSIGNED NOT NULL,
-  Usuario_Senha_id INT UNSIGNED NOT NULL,
-  PJ_Pessoa_id INT UNSIGNED NOT NULL,
-  PJ_Tipo_id INT UNSIGNED NOT NULL,
-  PJ_id INT UNSIGNED NOT NULL,
-  Usuario_id INT UNSIGNED NOT NULL,
-  cod_usuario INT UNSIGNED NULL,
-  cod_PJ INT UNSIGNED NULL,
+CREATE TABLE compra (
+  id_compra INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_comprador_user INTEGER UNSIGNED NOT NULL,
+  id_fornecedor INTEGER UNSIGNED NOT NULL,
   data_compra DATE NULL,
-  quant_comprada INT UNSIGNED NULL,
-  cod_produto INT UNSIGNED NULL,
-  PRIMARY KEY(idTable_Compra),
-  INDEX FK_UserSenha (Usuario_id, Usuario_Senha_id),
-  INDEX FK_PessoaJuridica (PJ_id, PJ_Tipo_id, PJ_Pessoa_id, PJ_Tipo_Usuario_id, PJ_Tipo_Usuario_Senha_id),
-  INDEX FK_Produtos (Table_Produtos_id)
-);
-
-
-CREATE TABLE Table_endereco (
-  idTable_endereco INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  Table_tipo_idTable_tipo INTEGER UNSIGNED NOT NULL,
-  Table_tipo_Table_Usuario_idTable_Usuario INTEGER UNSIGNED NOT NULL,
-  Table_tipo_Table_Usuario_Table_senhas_idTable_senhas INTEGER UNSIGNED NOT NULL,
-  Table_Usuario_Table_senhas_idTable_senhas INTEGER UNSIGNED NOT NULL,
-  Table_pessoas_idTable_pessoas INTEGER UNSIGNED NOT NULL,
-  Table_Usuario_idTable_Usuario INTEGER UNSIGNED NOT NULL,
-  cod_usuario INTEGER UNSIGNED NULL,
-  logradouro VARCHAR(255) NULL,
-  numero_endereco VARCHAR(10) NULL,
-  barro_endereco VARCHAR(45) NULL,
-  cidade VARCHAR(45) NULL,
-  estado VARCHAR(2) NULL,
-  cep VARCHAR(45) NULL,
-  cod_pessoa INTEGER UNSIGNED NULL,
-  cod_tipo INTEGER UNSIGNED NULL,
-  PRIMARY KEY(idTable_endereco, Table_tipo_idTable_tipo, Table_tipo_Table_Usuario_idTable_Usuario, Table_tipo_Table_Usuario_Table_senhas_idTable_senhas),
-  INDEX Table_endereco_FKIndex1(Table_Usuario_idTable_Usuario, Table_Usuario_Table_senhas_idTable_senhas),
-  INDEX Table_endereco_FKIndex2(Table_pessoas_idTable_pessoas),
-  INDEX Table_endereco_FKIndex3(Table_tipo_idTable_tipo, Table_tipo_Table_Usuario_Table_senhas_idTable_senhas, Table_tipo_Table_Usuario_idTable_Usuario)
-);
-
-CREATE TABLE Table_pessoas (
-  idTable_pessoas INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  Table_Usuario_Table_senhas_idTable_senhas INTEGER UNSIGNED NOT NULL,
-  Table_Usuario_idTable_Usuario INTEGER UNSIGNED NOT NULL,
-  cod_usuario INTEGER UNSIGNED NULL,
-  nome VARCHAR(255) NULL,
-  PRIMARY KEY(idTable_pessoas),
-  INDEX Table_pessoas_FKIndex1(Table_Usuario_idTable_Usuario, Table_Usuario_Table_senhas_idTable_senhas)
-);
-
-CREATE TABLE Table_Pessoa_Fisica (
-  idTable_Pessoa_Fisica INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  Table_pessoas_idTable_pessoas INTEGER UNSIGNED NOT NULL,
-  Table_tipo_Table_Usuario_idTable_Usuario INTEGER UNSIGNED NOT NULL,
-  Table_tipo_Table_Usuario_Table_senhas_idTable_senhas INTEGER UNSIGNED NOT NULL,
-  Table_tipo_idTable_tipo INTEGER UNSIGNED NOT NULL,
-  cpf VARCHAR(255) NULL,
-  cod_pessoa INTEGER UNSIGNED NULL,
-  cod_tipo INTEGER UNSIGNED NULL,
-  PRIMARY KEY(idTable_Pessoa_Fisica, Table_pessoas_idTable_pessoas),
-  INDEX Table_Pessoa_Fisica_FKIndex1(Table_pessoas_idTable_pessoas),
-  INDEX Table_Pessoa_Fisica_FKIndex2(Table_tipo_idTable_tipo, Table_tipo_Table_Usuario_Table_senhas_idTable_senhas, Table_tipo_Table_Usuario_idTable_Usuario)
-);
-
-CREATE TABLE Table_Pessoa_Juridica (
-  idTable_Pessoa_Juridica INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  Table_tipo_idTable_tipo INTEGER UNSIGNED NOT NULL,
-  Table_pessoas_idTable_pessoas INTEGER UNSIGNED NOT NULL,
-  Table_tipo_Table_Usuario_idTable_Usuario INTEGER UNSIGNED NOT NULL,
-  Table_tipo_Table_Usuario_Table_senhas_idTable_senhas INTEGER UNSIGNED NOT NULL,
-  cod_pessoa INTEGER UNSIGNED NULL,
-  cnpj VARCHAR(255) NULL,
-  cod_tipo INTEGER UNSIGNED NULL,
-  PRIMARY KEY(idTable_Pessoa_Juridica, Table_tipo_idTable_tipo, Table_pessoas_idTable_pessoas, Table_tipo_Table_Usuario_idTable_Usuario, Table_tipo_Table_Usuario_Table_senhas_idTable_senhas),
-  INDEX Table_Pessoa_Juridica_FKIndex1(Table_pessoas_idTable_pessoas),
-  INDEX Table_Pessoa_Juridica_FKIndex2(Table_tipo_idTable_tipo, Table_tipo_Table_Usuario_Table_senhas_idTable_senhas, Table_tipo_Table_Usuario_idTable_Usuario)
-);
-
-
--- OBS - PRECISEI AJUSTAR OS NOMES
-CREATE TABLE Table_Produtos (
-    idTable_Produtos INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    PJ_Tipo_Table_Usuario_Senha_id INT UNSIGNED NOT NULL,
-    PJ_Tipo_Table_Usuario_id INT UNSIGNED NOT NULL,
-    Usuario_Senha_id INT UNSIGNED NOT NULL,
-    PJ_Pessoa_id INT UNSIGNED NOT NULL,
-    PJ_Tipo_id INT UNSIGNED NOT NULL,
-    PJ_id INT UNSIGNED NOT NULL,
-    Usuario_id INT UNSIGNED NOT NULL,
-    nome VARCHAR(255) NULL,
-    quantidade INT UNSIGNED NULL,
-    preco_venda DECIMAL NULL,
-    cod_usuario INT UNSIGNED NULL,
-    cod_fornecedor INT UNSIGNED NULL,
-    PRIMARY KEY (idTable_Produtos),
-    INDEX Produtos_FK_UsuarioSenha (Usuario_id, Usuario_Senha_id),
-    INDEX Produtos_FK_PessoaJuridica (PJ_id, PJ_Tipo_id, PJ_Pessoa_id, PJ_Tipo_Table_Usuario_id, PJ_Tipo_Table_Usuario_Senha_id)
-);
-
-
-CREATE TABLE Table_senhas (
-  idTable_senhas INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  login VARCHAR(255) NULL,
-  senha VARCHAR(225) NULL,
-  PRIMARY KEY(idTable_senhas)
-);
-
-CREATE TABLE Table_telefones (
-  idTable_telefones INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  Table_tipo_idTable_tipo INTEGER UNSIGNED NOT NULL,
-  Table_tipo_Table_Usuario_idTable_Usuario INTEGER UNSIGNED NOT NULL,
-  Table_tipo_Table_Usuario_Table_senhas_idTable_senhas INTEGER UNSIGNED NOT NULL,
-  Table_pessoas_idTable_pessoas INTEGER UNSIGNED NOT NULL,
-  Table_Usuario_Table_senhas_idTable_senhas INTEGER UNSIGNED NOT NULL,
-  Table_Usuario_idTable_Usuario INTEGER UNSIGNED NOT NULL,
-  cod_pessoa INTEGER UNSIGNED NULL,
-  cod_usuario INTEGER UNSIGNED NULL,
-  numero VARCHAR(20) NULL,
-  cod_tipo INTEGER UNSIGNED NULL,
-  PRIMARY KEY(idTable_telefones, Table_tipo_idTable_tipo, Table_tipo_Table_Usuario_idTable_Usuario, Table_tipo_Table_Usuario_Table_senhas_idTable_senhas),
-  INDEX Table_telefones_FKIndex1(Table_tipo_idTable_tipo, Table_tipo_Table_Usuario_Table_senhas_idTable_senhas, Table_tipo_Table_Usuario_idTable_Usuario),
-  INDEX Table_telefones_FKIndex2(Table_Usuario_idTable_Usuario, Table_Usuario_Table_senhas_idTable_senhas),
-  INDEX Table_telefones_FKIndex3(Table_pessoas_idTable_pessoas)
-);
-
-CREATE TABLE Table_tipo (
-  idTable_tipo INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  Table_Usuario_Table_senhas_idTable_senhas INTEGER UNSIGNED NOT NULL,
-  Table_Usuario_idTable_Usuario INTEGER UNSIGNED NOT NULL,
-  nome VARCHAR(255) NULL,
-  PRIMARY KEY(idTable_tipo, Table_Usuario_Table_senhas_idTable_senhas, Table_Usuario_idTable_Usuario),
-  INDEX Table_tipo_FKIndex1(Table_Usuario_idTable_Usuario, Table_Usuario_Table_senhas_idTable_senhas)
-);
-
-CREATE TABLE Table_Usuario (
-  idTable_Usuario INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  Table_senhas_idTable_senhas INTEGER UNSIGNED NOT NULL,
-  Nome VARCHAR(255) NULL,
-  cod_tipo INTEGER UNSIGNED NULL,
-  cod_senha INTEGER UNSIGNED NULL,
-  PRIMARY KEY(idTable_Usuario, Table_senhas_idTable_senhas),
-  INDEX Table_Usuario_FKIndex1(Table_senhas_idTable_senhas)
-);
-
-CREATE TABLE Table_vendas (
-  idTable_venda INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  Table_Usuario_Table_senhas_idTable_senhas INTEGER UNSIGNED NOT NULL,
-  Table_Pessoa_Fisica_Table_pessoas_idTable_pessoas INTEGER UNSIGNED NOT NULL,
-  Table_Pessoa_Fisica_idTable_Pessoa_Fisica INTEGER UNSIGNED NOT NULL,
-  Table_Produtos_idTable_Produtos INTEGER UNSIGNED NOT NULL,
-  Table_Usuario_idTable_Usuario INTEGER UNSIGNED NOT NULL,
-  cod_usuario INTEGER UNSIGNED NULL,
+  quant_comprada INTEGER UNSIGNED NULL,
   cod_produto INTEGER UNSIGNED NULL,
+  nome VARCHAR(255) NULL,
+  PRIMARY KEY(id_compra),
+  INDEX compra_FKIndex1(id_fornecedor),
+  INDEX compra_FKIndex2(id_comprador_user)
+);
+
+CREATE TABLE endereco (
+  id_end INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_user INTEGER UNSIGNED NOT NULL,
+  id_tipo INTEGER UNSIGNED NULL DEFAULT NULL,
+  endereco VARCHAR(255) NULL,
+  n_end VARCHAR(10) NULL,
+  bairro_end VARCHAR(45) NULL,
+  cidade VARCHAR(45) NULL,
+  uf VARCHAR(2) NULL,
+  cep VARCHAR(45) NULL,
+  PRIMARY KEY(id_end),
+  INDEX endereco_FKIndex1(id_tipo),
+  INDEX endereco_FKIndex2(id_user)
+);
+
+CREATE TABLE pessoa (
+  id_pessoa INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_user INTEGER UNSIGNED NOT NULL,
+  id_tipo INTEGER UNSIGNED NULL DEFAULT NULL,
+  nome VARCHAR(255) NULL,
+  PRIMARY KEY(id_pessoa),
+  INDEX pessoa_FKIndex1(id_tipo),
+  INDEX pessoa_FKIndex2(id_user)
+);
+
+CREATE TABLE pf (
+  id_pf INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  cpf VARCHAR(255) NOT NULL,
+  id_pessoa INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(id_pf),
+  INDEX pf_FKIndex1(id_pessoa)
+);
+
+CREATE TABLE pj (
+  id_pj INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  cnpj VARCHAR(255) NOT NULL,
+  id_pessoa INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(id_pj),
+  INDEX pj_FKIndex1(id_pessoa)
+);
+
+CREATE TABLE produtos (
+  id_produto INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_fornecedor INTEGER UNSIGNED NULL DEFAULT NULL,
+  id_user INTEGER UNSIGNED NOT NULL,
+  nome VARCHAR(255) NOT NULL,
+  quantidade INTEGER UNSIGNED NULL,
+  preco_venda DECIMAL NULL,
+  data_compra DATE NOT NULL,
+  PRIMARY KEY(id_produto),
+  INDEX Table_Produtos_FKIndex1(id_user),
+  INDEX Table_Produtos_FKIndex2(id_fornecedor)
+);
+
+CREATE TABLE senhas (
+  id_senha INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_user INTEGER UNSIGNED NOT NULL,
+  senha VARCHAR(225) NOT NULL,
+  login VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id_senha),
+  INDEX senhas_FKIndex1(id_user)
+);
+
+CREATE TABLE telefones (
+  id_telefone INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_user INTEGER UNSIGNED NOT NULL,
+  id_tipo INTEGER UNSIGNED NOT NULL,
+  numero VARCHAR(20) NULL,
+  PRIMARY KEY(id_telefone),
+  INDEX telefones_FKIndex3(id_tipo),
+  INDEX telefones_FKIndex2(id_user)
+);
+
+CREATE TABLE tipo_end (
+  id_tipo_end INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome INTEGER UNSIGNED NULL,
+  PRIMARY KEY(id_tipo_end)
+);
+
+CREATE TABLE tipo_pessoa (
+  id_tipo_pessoa INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome INTEGER UNSIGNED NULL,
+  PRIMARY KEY(id_tipo_pessoa)
+);
+
+CREATE TABLE tipo_telefone (
+  id_tipo_telefone INTEGER UNSIGNED NOT NULL,
+  nome VARCHAR(255) NULL,
+  PRIMARY KEY(id_tipo_telefone)
+);
+
+CREATE TABLE tipo_usuario (
+  id_tipo INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_user INTEGER UNSIGNED NOT NULL,
+  nome VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id_tipo),
+  INDEX tipo_usuario_FKIndex1(id_user)
+);
+
+CREATE TABLE usuarios (
+  id_user INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_tipo INTEGER UNSIGNED NULL DEFAULT NULL,
+  nome VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id_user),
+  INDEX usuarios_FKIndex1(id_tipo)
+);
+
+CREATE TABLE vendas (
+  id_venda INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_consumidor_pj INTEGER UNSIGNED NULL DEFAULT NULL,
+  id_consumidor_pf INTEGER UNSIGNED NULL DEFAULT NULL,
+  id_vendedor INTEGER UNSIGNED NOT NULL,
+  id_produto INTEGER UNSIGNED NOT NULL,
   quant_vendida INTEGER UNSIGNED NULL,
   data_venda DATE NULL,
-  cod_PF INTEGER UNSIGNED NULL,
-  PRIMARY KEY(idTable_venda),
-  INDEX Table_vendas_FKIndex1(Table_Usuario_idTable_Usuario, Table_Usuario_Table_senhas_idTable_senhas),
-  INDEX Table_vendas_FKIndex2(Table_Produtos_idTable_Produtos),
-  INDEX Table_vendas_FKIndex3(Table_Pessoa_Fisica_idTable_Pessoa_Fisica, Table_Pessoa_Fisica_Table_pessoas_idTable_pessoas)
+  PRIMARY KEY(id_venda),
+  INDEX Table_vendas_FKIndex1(id_produto),
+  INDEX Table_vendas_FKIndex2(id_consumidor_pf),
+  INDEX Table_vendas_FKIndex3(id_vendedor),
+  INDEX Table_vendas_FKIndex4(id_consumidor_pj)
 );
 

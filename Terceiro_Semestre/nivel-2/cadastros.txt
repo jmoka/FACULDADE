@@ -1,175 +1,37 @@
--- CADASTRO USUÁRIOS ok
-INSERT INTO table_usuario (`Table_senhas_idTable_senhas`, `Nome`, `cod_tipo`, `cod_senha`)
-VALUES 
-('1', 'João', '1', '1'),
-('2', 'Maria', '2', '2'),
-('3', 'Pedro', '3', '3'),
-('4', 'Ana', '4', '4'),
-('5', 'Luiz', '5', '5'),
-('6', 'Mariana', '6', '6'),
-('7', 'José', '7', '7'),
-('8', 'Carla', '8', '8'),
-('9', 'Antônio', '9', '9'),
-('10', 'Sofia', '10', '10');
-
-
-
--- CADASTRO DOS TIPOS ok
-INSERT INTO table_tipo (`Table_Usuario_Table_senhas_idTable_senhas`, `Table_Usuario_idTable_Usuario`, `nome`)
-VALUES 
-(1, 1, 'secretarios'),
-(2, 2, 'usuarios'),
-(3, 3, 'ti'),
-(4, 4, 'outros'),
-(5, 5, 'secretarios'),
-(6, 6, 'usuarios'),
-(7, 7, 'ti'),
-(8, 8, 'outros'),
-(9, 9, 'secretarios'),
-(10, 10, 'usuarios');
-
-
--- SENHAS DOS USUÁRIOS
-INSERT INTO table_senhas (`login`, `senha`)
-VALUES 
-('jota', '123'),
-('maria', '456'),
-('pedro', '789'),
-('ana', 'abc'),
-('luiz', 'def'),
-('mariana', 'ghi'),
-('jose', 'jkl'),
-('carla', 'mno'),
-('antonio', 'pqr'),
-('sofia', 'stu');
-
--- PESSOAS ok
-INSERT INTO table_pessoas (`Table_Usuario_Table_senhas_idTable_senhas`, `Table_Usuario_idTable_Usuario`, `cod_usuario`, `nome`)
-VALUES 
-(1, 1, 1, 'pessoa_joao'),
-(2, 2, 2, 'pessoa_maria'),
-(3, 3, 3, 'pessoa_pedro'),
-(4, 4, 4, 'pessoa_ana'),
-(5, 5, 5, 'pessoa_luiz'),
-(6, 6, 6, 'pessoa_mariana'),
-(7, 7, 7, 'pessoa_jose'),
-(8, 8, 8, 'pessoa_carla'),
-(9, 9, 9, 'pessoa_antonio'),
-(10, 10, 10, 'pessoa_sofia');
-
-
--- PESSOA FISICA ok
-INSERT INTO table_pessoa_fisica (`Table_pessoas_idTable_pessoas`, `Table_tipo_Table_Usuario_idTable_Usuario`, `Table_tipo_Table_Usuario_Table_senhas_idTable_senhas`, `Table_tipo_idTable_tipo`, `cpf`, `cod_pessoa`, `cod_tipo`)
-VALUES 
-(1, 1, 1, 1, '56789000', 1, 1),
-(2, 2, 2, 2, '56789001', 2, 2),
-(3, 3, 3, 3, '56789002', 3, 3),
-(4, 4, 4, 4, '56789003', 4, 4),
-(5, 5, 5, 5, '56789004', 5, 5),
-(6, 6, 6, 6, '56789005', 6, 6),
-(7, 7, 7, 7, '56789006', 7, 7),
-(8, 8, 8, 8, '56789007', 8, 8),
-(9, 9, 9, 9, '56789008', 9, 9),
-(10, 10, 10, 10, '56789009', 10, 10);
-
-
--- PESSOAS JURIDICAS ok
-INSERT INTO table_pessoa_juridica (`Table_tipo_idTable_tipo`, `Table_pessoas_idTable_pessoas`, `Table_tipo_Table_Usuario_idTable_Usuario`, `Table_tipo_Table_Usuario_Table_senhas_idTable_senhas`, `cod_pessoa`, `cnpj`, `cod_tipo`) 
-VALUES 
-('1', '1', '1', '1', '1', '12345678000101', '1'),
-('2', '2', '2', '2', '2', '22345678000102', '2'),
-('3', '3', '3', '3', '3', '32345678000103', '3'),
-('4', '4', '4', '4', '4', '42345678000104', '4'),
-('5', '5', '5', '5', '5', '52345678000105', '5'),
-('6', '6', '6', '6', '6', '62345678000106', '6'),
-('7', '7', '7', '7', '7', '72345678000107', '7'),
-('8', '8', '8', '8', '8', '82345678000108', '8'),
-('9', '9', '9', '9', '9', '92345678000109', '9'),
-('10', '10', '10', '10', '10', '102345678000110', '10');
-
-
-
-
--- ENDEREÇOS ok
-INSERT INTO table_endereco (`Table_tipo_idTable_tipo`, `Table_tipo_Table_Usuario_idTable_Usuario`, `Table_tipo_Table_Usuario_Table_senhas_idTable_senhas`, `Table_Usuario_Table_senhas_idTable_senhas`, `Table_pessoas_idTable_pessoas`, `Table_Usuario_idTable_Usuario`, `cod_usuario`, `logradouro`, `numero_endereco`, `barro_endereco`, `cidade`, `estado`, `cep`, `cod_pessoa`, `cod_tipo`) 
+-- CADASTRO DOS USUARIOS
+INSERT INTO usuarios (id_tipo, nome) 
 VALUES
-('1', '1', '1', '1', '1', '1', '1', 'Travessa A', '1', 'Vila A', 'Belém', 'PA', '668980010', '1', '1'),
-('2', '2', '2', '2', '2', '2', '2', 'Travessa B', '2', 'Vila B', 'Belém', 'PA', '668980011', '2', '2'),
-('3', '3', '3', '3', '3', '3', '3', 'Travessa C', '3', 'Vila C', 'Belém', 'PA', '668980012', '3', '3'),
-('4', '4', '4', '4', '4', '4', '4', 'Travessa D', '4', 'Vila D', 'Belém', 'PA', '668980013', '4', '4'),
-('5', '5', '5', '5', '5', '5', '5', 'Travessa E', '5', 'Vila E', 'Belém', 'PA', '668980014', '5', '5'),
-('6', '6', '6', '6', '6', '6', '6', 'Travessa F', '6', 'Vila F', 'Belém', 'PA', '668980015', '6', '6'),
-('7', '7', '7', '7', '7', '7', '7', 'Travessa G', '7', 'Vila G', 'Belém', 'PA', '668980016', '7', '7'),
-('8', '8', '8', '8', '8', '8', '8', 'Travessa H', '8', 'Vila H', 'Belém', 'PA', '668980017', '8', '8'),
-('9', '9', '9', '9', '9', '9', '9', 'Travessa I', '9', 'Vila I', 'Belém', 'PA', '668980018', '9', '9'),
-('10', '10', '10', '10', '10', '10', '10', 'Travessa J', '10', 'Vila J', 'Belém', 'PA', '668980019', '10', '10');
+( 1, 'Ana'),
+(2, 'Carlos'),
+(3, 'Maria'),
+(4, 'José'),
+(5, 'Sofia');
 
-
--- TELEFONES ok
-INSERT INTO table_telefones
-    (`Table_tipo_idTable_tipo`, 
-    `Table_tipo_Table_Usuario_idTable_Usuario`, 
-    `Table_tipo_Table_Usuario_Table_senhas_idTable_senhas`, 
-    `Table_pessoas_idTable_pessoas`, 
-    `Table_Usuario_Table_senhas_idTable_senhas`, 
-    `Table_Usuario_idTable_Usuario`, 
-    `cod_pessoa`, 
-    `cod_usuario`, 
-    `numero`, 
-    `cod_tipo`) 
-VALUES 
-    ('1', '1', '1', '1', '1', '1', '1', '1', '2345667', '1'),
-    ('2', '2', '2', '2', '2', '2', '2', '2', '3456789', '2'),
-    ('3', '3', '3', '3', '3', '3', '3', '3', '4567890', '3'),
-    ('4', '4', '4', '4', '4', '4', '4', '4', '5678901', '4'),
-    ('5', '5', '5', '5', '5', '5', '5', '5', '6789012', '5'),
-    ('6', '6', '6', '6', '6', '6', '6', '6', '7890123', '6'),
-    ('7', '7', '7', '7', '7', '7', '7', '7', '8901234', '7'),
-    ('8', '8', '8', '8', '8', '8', '8', '8', '9012345', '8'),
-    ('9', '9', '9', '9', '9', '9', '9', '9', '0123456', '9'),
-    ('10', '10', '10', '10', '10', '10', '10', '10', '1234567', '10');
-
-
--- PRODUTOS OK
-INSERT INTO Table_Produtos (PJ_Tipo_Table_Usuario_Senha_id, PJ_Tipo_Table_Usuario_id, Usuario_Senha_id, PJ_Pessoa_id, PJ_Tipo_id, PJ_id, Usuario_id, nome, quantidade, preco_venda, cod_usuario, cod_fornecedor)
+-- CADASTRO DO TIPO_USUARIOS
+INSERT INTO tipo_usuario (id_user, nome) 
 VALUES
-(1, 1, 1, 1, 1, 1, 1, 'Produto 1', 100, 10.99, 1, 1),
-(2, 2, 2, 2, 2, 2, 2, 'Produto 2', 150, 15.99, 2, 2),
-(3, 3, 3, 3, 3, 3, 3, 'Produto 3', 200, 20.99, 3, 3),
-(4, 4, 4, 4, 4, 4, 4, 'Produto 4', 50, 5.99, 4, 4),
-(5, 5, 5, 5, 5, 5, 5, 'Produto 5', 75, 7.99, 5, 5),
-(6, 6, 6, 6, 6, 6, 6, 'Produto 6', 120, 12.99, 6, 6),
-(7, 7, 7, 7, 7, 7, 7, 'Produto 7', 80, 8.99, 7, 7),
-(8, 8, 8, 8, 8, 8, 8, 'Produto 8', 90, 9.99, 8, 8),
-(9, 9, 9, 9, 9, 9, 9, 'Produto 9', 110, 11.99, 9, 9),
-(10, 10, 10, 10, 10, 10, 10, 'Produto 10', 130, 13.99, 10, 10);
+(1, 'ADM'),
+(2, 'VENDEDOR'),
+(3, 'COMPRADOR'),
+(4, 'SECRETARIO'),
+(5, 'ESTAGIARIO');
 
-
--- COMPRAS OK
-INSERT INTO Table_Compra (Table_Produtos_id, PJ_Tipo_Usuario_Senha_id, PJ_Tipo_Usuario_id, Usuario_Senha_id, PJ_Pessoa_id, PJ_Tipo_id, PJ_id, Usuario_id, cod_usuario, cod_PJ, data_compra, quant_comprada, cod_produto)
+-- CADASTRO DAS SENHAS
+INSERT INTO senhas (id_user, senha, login) 
 VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2023-09-27', 5, 1),
-(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, '2023-09-28', 6, 2),
-(3, 3, 3, 3, 3, 3, 3, 3, 3, 3, '2023-09-29', 7, 3),
-(4, 4, 4, 4, 4, 4, 4, 4, 4, 4, '2023-09-30', 8, 4),
-(5, 5, 5, 5, 5, 5, 5, 5, 5, 5, '2023-10-01', 9, 5),
-(6, 6, 6, 6, 6, 6, 6, 6, 6, 6, '2023-10-02', 10, 6),
-(7, 7, 7, 7, 7, 7, 7, 7, 7, 7, '2023-10-03', 11, 7),
-(8, 8, 8, 8, 8, 8, 8, 8, 8, 8, '2023-10-04', 12, 8),
-(9, 9, 9, 9, 9, 9, 9, 9, 9, 9, '2023-10-05', 13, 9),
-(10, 10, 10, 10, 10, 10, 10, 10, 10, 10, '2023-10-06', 14, 10);
+(1, '1234', 'aninha'),
+(2, '3456', 'carlinhos'),
+(3, '56789', 'mary'),
+(4, '7679', 'ze'),
+(5, '453213', 'sofi');
 
--- VENDAS OK
-INSERT INTO Table_vendas (Table_Usuario_Table_senhas_idTable_senhas, Table_Pessoa_Fisica_Table_pessoas_idTable_pessoas, Table_Pessoa_Fisica_idTable_Pessoa_Fisica, Table_Produtos_idTable_Produtos, Table_Usuario_idTable_Usuario, cod_usuario, cod_produto, quant_vendida, data_venda, cod_PF)
-VALUES 
-(1, 1, 1, 1, 1, 1, 1, 5, '2023-09-27', 1),
-(2, 2, 2, 2, 2, 2, 2, 6, '2023-09-28', 2),
-(3, 3, 3, 3, 3, 3, 3, 7, '2023-09-29', 3),
-(4, 4, 4, 4, 4, 4, 4, 8, '2023-09-30', 4),
-(5, 5, 5, 5, 5, 5, 5, 9, '2023-10-01', 5),
-(6, 6, 6, 6, 6, 6, 6, 10, '2023-10-02', 6),
-(7, 7, 7, 7, 7, 7, 7, 1, '2023-10-03', 7),
-(8, 8, 8, 8, 8, 8, 8, 2, '2023-10-04', 8),
-(9, 9, 9, 9, 9, 9, 9, 3, '2023-10-05', 9),
-(10, 10, 10, 10, 10, 10, 10, 4, '2023-10-06', 10);
+-- CADASTRO TELEFONE USUARIOS
+INSERT INTO telefones (id_user, id_tipo, numero) 
+VALUE 
+(1,1, '919232229939'),
+(2,3, '913459877988'),
+(3,2, '913688848486'),
+(4,4, '913668940488'),
+(5,5, '916678485888');
+
 
