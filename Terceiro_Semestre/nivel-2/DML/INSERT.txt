@@ -123,6 +123,67 @@ INSERT INTO pj (`cnpj`, `id_pessoa`) VALUES ('245889001990', '7');
 INSERT INTO pj (`cnpj`, `id_pessoa`) VALUES ('433789039088', '8');
 INSERT INTO pj (`cnpj`, `id_pessoa`) VALUES ('123422909800', '9');
 
+-- PESSOA FÍSICA
+INSERT INTO pf (`cpf`, `id_pessoa`) VALUES ('43446678', '1');
+INSERT INTO pf (`cpf`, `id_pessoa`) VALUES ('56789009', '2');
+INSERT INTO pf (`cpf`, `id_pessoa`) VALUES ('56789000', '3');
+INSERT INTO pf (`cpf`, `id_pessoa`) VALUES ('56890073', '4');
+INSERT INTO pf (`cpf`, `id_pessoa`) VALUES ('98900456', '5');
+
+-- COMPRAS
+INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+VALUES ('1', '1', '2023-10-30', '10', '1', 'observação da venda 1');
+
+INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+VALUES ('2', '2', '2023-11-15', '8', '2', 'observação da venda 2');
+
+INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+VALUES ('3', '3', '2023-11-20', '15', '3', 'observação da venda 3');
+
+INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+VALUES ('4', '4', '2023-12-05', '12', '4', 'observação da venda 4');
+
+INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+VALUES ('5', '5', '2023-12-10', '20', '5', 'observação da venda 5');
+
+INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+VALUES ('1', '1', '2023-12-15', '18', '1', 'observação da venda 6');
+
+INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+VALUES ('2', '2', '2023-12-20', '7', '2', 'observação da venda 7');
+
+INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+VALUES ('3', '3', '2023-12-25', '14', '3', 'observação da venda 8');
+
+INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+VALUES ('4', '4', '2023-12-30', '9', '4', 'observação da venda 9');
+
+INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+VALUES ('5', '5', '2024-01-05', '22', '5', 'observação da venda 10');
+
+-- VENDAS
+
+-- Vendas com vendedor 1
+INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('2', '1', '2', '5', '2023-12-13');
+INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('3', '1', '1', '3', '2023-12-14');
+
+-- Vendas com vendedor 2
+INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('4', '2', '2', '8', '2023-12-15');
+INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('5', '2', '3', '10', '2023-12-16');
+
+-- Vendas com vendedor 3
+INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('6', '3', '1', '2', '2023-12-17');
+INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('7', '3', '2', '7', '2023-12-18');
+
+-- Vendas com vendedor 4
+INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('8', '4', '3', '6', '2023-12-19');
+INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('9', '4', '1', '4', '2023-12-20');
+
+-- Vendas com vendedor 5
+INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('10', '5', '3', '9', '2023-12-21');
+INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('11', '5', '2', '3', '2023-12-22');
+
+
 
 
 

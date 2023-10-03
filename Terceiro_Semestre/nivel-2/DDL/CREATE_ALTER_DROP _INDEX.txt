@@ -117,7 +117,7 @@ CREATE TABLE compras (
   data_compra DATE NULL,
   quant_comprada INTEGER UNSIGNED NULL,
   cod_produto INTEGER UNSIGNED NULL,
-  nome VARCHAR(255) NULL,
+  obs VARCHAR(255) NULL,
   PRIMARY KEY(id_compra),
   INDEX compra_FKIndex1(id_fornecedor),
   INDEX compra_FKIndex2(id_comprador_user)
