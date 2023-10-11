@@ -82,17 +82,16 @@ VALUES
   (10, 5, 2, 'Travessa da Alegria', '707', 'Bairro J', 'Belém', 'PA', '66000010');
 
 -- CADASTRO PESSOAS
-INSERT INTO `teste`.`pessoa` (`id_user`, `id_tipo`, `nome`)
-VALUES
-  (1, 1, 'Ana Silva'),
-  (2, 1, 'Carlos Santos'),
-  (3, 1, 'Maria Oliveira'),
-  (4, 1, 'José Lima'),
-  (5, 1, 'Sofia Pereira'),
-  (6, 2, 'Empresa A Ltda'),
-  (7, 2, 'Empresa B S/A'),
-  (8, 2, 'Empresa C Eireli'),
-  (9, 2, 'Empresa D ME');
+
+INSERT INTO `facul2`.`pessoa` (`id_pessoa`, `id_user`, `id_tipo`, `nome`) VALUES ('1', '1', '1', 'maria');
+INSERT INTO `facul2`.`pessoa` (`id_pessoa`, `id_user`, `id_tipo`, `nome`) VALUES ('2', '1', '1', 'joão teles');
+INSERT INTO `facul2`.`pessoa` (`id_pessoa`, `id_user`, `id_tipo`, `nome`) VALUES ('3', '2', '2', 'carla roberta');
+INSERT INTO `facul2`.`pessoa` (`id_pessoa`, `id_user`, `id_tipo`, `nome`) VALUES ('4', '3', '3', 'lorisvaldo');
+INSERT INTO `facul2`.`pessoa` (`id_pessoa`, `id_user`, `id_tipo`, `nome`) VALUES ('5', '3', '4', 'debora');
+INSERT INTO `facul2`.`pessoa` (`id_pessoa`, `id_user`, `id_tipo`, `nome`) VALUES ('6', '1', '1', 'cclovis bls ltda');
+INSERT INTO `facul2`.`pessoa` (`id_pessoa`, `id_user`, `id_tipo`, `nome`) VALUES ('7', '3', '3', 'coca cola ltda');
+INSERT INTO `facul2`.`pessoa` (`id_pessoa`, `id_user`, `id_tipo`, `nome`) VALUES ('8', '3', '2', 'fanta litos ltda');
+INSERT INTO `facul2`.`pessoa` (`id_pessoa`, `id_user`, `id_tipo`, `nome`) VALUES ('9', '4', '2', 'liderltda');
 
 -- TIPO DE ENDEREÇO
 INSERT INTO tipo_end (`nome`) VALUES ('casa');
@@ -131,57 +130,58 @@ INSERT INTO pf (`cpf`, `id_pessoa`) VALUES ('56890073', '4');
 INSERT INTO pf (`cpf`, `id_pessoa`) VALUES ('98900456', '5');
 
 -- COMPRAS
-INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+INSERT INTO compra (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
 VALUES ('1', '1', '2023-10-30', '10', '1', 'observação da venda 1');
 
-INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+INSERT INTO compra (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
 VALUES ('2', '2', '2023-11-15', '8', '2', 'observação da venda 2');
 
-INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+INSERT INTO compra (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
 VALUES ('3', '3', '2023-11-20', '15', '3', 'observação da venda 3');
 
-INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+INSERT INTO compra (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
 VALUES ('4', '4', '2023-12-05', '12', '4', 'observação da venda 4');
 
-INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+INSERT INTO compra (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
 VALUES ('5', '5', '2023-12-10', '20', '5', 'observação da venda 5');
 
-INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+INSERT INTO compra (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
 VALUES ('1', '1', '2023-12-15', '18', '1', 'observação da venda 6');
 
-INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+INSERT INTO compra (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
 VALUES ('2', '2', '2023-12-20', '7', '2', 'observação da venda 7');
 
-INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+INSERT INTO compra (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
 VALUES ('3', '3', '2023-12-25', '14', '3', 'observação da venda 8');
 
-INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+INSERT INTO compra (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
 VALUES ('4', '4', '2023-12-30', '9', '4', 'observação da venda 9');
 
-INSERT INTO compras (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
+INSERT INTO compra (`id_comprador_user`, `id_fornecedor`, `data_compra`, `quant_comprada`, `cod_produto`, `obs`)
 VALUES ('5', '5', '2024-01-05', '22', '5', 'observação da venda 10');
 
 -- VENDAS
 
 -- Vendas com vendedor 1
-INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('2', '1', '2', '5', '2023-12-13');
-INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('3', '1', '1', '3', '2023-12-14');
+INSERT INTO `vendas` (`id_consumidor_pj`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`, `preco_venda`) VALUES ('6', '1', '1', '10', '2023-12-10', '30');
+INSERT INTO `vendas` (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`, `preco_venda`) VALUES ('4', '1', '2', '5', '2023-11-17', '20');
+
 
 -- Vendas com vendedor 2
-INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('4', '2', '2', '8', '2023-12-15');
-INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('5', '2', '3', '10', '2023-12-16');
+INSERT INTO `vendas` (`id_consumidor_pj`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`, `preco_venda`) VALUES ('6', '2', '3', '11', '2023-12-1', '50');
+INSERT INTO `vendas` (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`, `preco_venda`) VALUES ('2', '2', '4', '15', '2023-11-12', '200');
 
 -- Vendas com vendedor 3
-INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('6', '3', '1', '2', '2023-12-17');
-INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('7', '3', '2', '7', '2023-12-18');
+INSERT INTO `vendas` (`id_consumidor_pj`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`, `preco_venda`) VALUES ('9', '3', '1', '10', '2023-12-14', '30');
+INSERT INTO `vendas` (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`, `preco_venda`) VALUES ('1', '3', '4', '15', '2023-11-32', '200');
 
 -- Vendas com vendedor 4
-INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('8', '4', '3', '6', '2023-12-19');
-INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('9', '4', '1', '4', '2023-12-20');
+INSERT INTO `vendas` (`id_consumidor_pj`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`, `preco_venda`) VALUES ('8', '4', '2', '11', '2023-12-3', '50');
+INSERT INTO `vendas` (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`, `preco_venda`) VALUES ('3', '4', '3', '15', '2023-11-32', '200');
 
 -- Vendas com vendedor 5
-INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('10', '5', '3', '9', '2023-12-21');
-INSERT INTO vendas (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`) VALUES ('11', '5', '2', '3', '2023-12-22');
+INSERT INTO `vendas` (`id_consumidor_pj`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`, `preco_venda`) VALUES ('7', '5', '1', '11', '2023-12-3', '30');
+INSERT INTO `vendas` (`id_consumidor_pf`, `id_vendedor`, `id_produto`, `quant_vendida`, `data_venda`, `preco_venda`) VALUES ('5', '5', '3', '15', '2023-11-32', '50');
 
 
 

@@ -4,83 +4,77 @@ CONSULTAR USUARIOS
 
 *TABELA USUÁRIOS*
 <TODOS>
-	SELECT * FROM table_usuario; 
+	SELECT * FROM usuarios; 
 
 	<RETORNA COLUNA NOME>
-		SELECT Nome FROM table_usuario;
+		SELECT Nome FROM usuarios;
 
 	<RETORNA AS COLUNAS ID, NOME>
-		SELECT idTable_Usuario, Nome FROM table_usuario;
+		SELECT idTable_Usuario, Nome FROM usuarios;;
 
 <CONSULTA POR ID>
 	<RETORNA TODAS AS COLUNAS>
-		SELECT * FROM table_usuario WHERE idTable_Usuario = 2 ; 
+		SELECT * FROM usuarios WHERE idTable_Usuario = 2 ; 
 
 	<RETORNENDO COLUNA NOME>
-		SELECT Nome FROM table_usuario WHERE idTable_Usuario = 2; 
+		SELECT Nome FROM usuarios WHERE idTable_Usuario = 2; 
 
 	<RETORNANDO AS COLUNAS ID E NOME>
-		SELECT idTable_Usuario, Nome FROM table_usuario WHERE idTable_Usuario = 2; 
+		SELECT id_user, Nome FROM usuarios WHERE id_user = 2; 
 
 <CONSULTAR POR NOME>
 	<RETORNA TODAS AS COLUNAS>
-		SELECT * FROM table_usuario WHERE Nome = 'joão';
+		SELECT * FROM usuarios WHERE Nome = 'joão';
 
 	<RETORNA COLUNA NOME>
-		SELECT Nome FROM table_usuario WHERE Nome="joão";
+		SELECT Nome FROM usuarios WHERE Nome="joão";
 
 	<RETORNA AS COLUNAS ID E NOME>
-		SELECT idTable_Usuario, Nome From table_usuario  WHERE Nome = 'joão'
+		SELECT id_user, Nome From usuarios WHERE Nome = 'joão'
 
 <CONSULTAR SENHA>
 	<RETORNANDO TODAS AS SENHAS NA COLUNA SENHA>
-			SELECT senha FROM table_senhas;
+			SELECT senha FROM senhas;
 
 	<RETORNANDO TODAS AS SENHAS NA COLUNA ID USUARIO E SENHA>
 			SELECT tu.Nome AS NomeUsuario, ts.senha AS Senha_Usuario
-			FROM table_usuario tu 
-			INNER JOIN table_senhas ts 
-			ON tu.Table_senhas_idTable_senhas = ts.idTable_senhas;
+			FROM usuarios tu 
+			INNER JOIN senhas ts 
+			ON tu.id_user = ts.id_user;
 
 
 	<CONSULTAR POR ID DA SENHA>
 		<RETORNANDO COLUNA SENHA>
-			SELECT senha FROM table_senhas WHERE idTable_senhas = 2;
+			SELECT senha FROM senhas WHERE id_senha= 2;
 
 	<CONSULTAR POR ID DO USUARIOS>
 		<RETORNANDO COLUNA ID_USUARIO, NOME E SENHA>
-			SELECT tu.idTable_Usuario AS id_Usuario, tu.Nome AS Nome_Usuario, ts.senha
-			FROM table_Usuario tu
-			INNER JOIN table_senhas ts 
-			ON tu.Table_senhas_idTable_senhas = ts.idTable_senhas
-			WHERE tu.idTable_Usuario = 2;
+			SELECT tu.id_user AS id_Usuario, tu.Nome AS Nome_Usuario, ts.senha
+			FROM usuarios tu
+			INNER JOIN senhas ts 
+			ON tu.id_user = ts.id_senha
+			WHERE tu.id_user = 2;
 
 <CONSULTA ENDEREÇO USUARIO POR ID DO USUARIO>
 	<CONSULTAR POR ID DO USUARIO>
-		SELECT tu.idTable_Usuario AS id_Usuario, tu.Nome AS Nome_Usuario, CONCAT(te.logradouro, ', ', te.numero_endereco, ', ', te.barro_endereco, ', ', te.cidade, ', ', te.estado, ', CEP: ', te.cep) AS Endereco_Completo
-		FROM table_usuario tu INNER JOIN table_endereco te 
-		ON tu.idTable_Usuario = te.Table_Usuario_idTable_Usuario
-		WHERE tu.idTable_Usuario = 2;
+		SELECT tu.id_user AS id_Usuario, tu.Nome AS Nome_Usuario, CONCAT(te.endereco, ', ', te.n_end, ', ', te.bairro_end, ', ', te.cidade, ', ', te.uf, ', CEP: ', te.cep) AS Endereco_Completo
+		FROM usuarios tu INNER JOIN endereco te 
+		ON tu.id_user = te.id_user
+		WHERE tu.id_user = 2;
 
 <CONSULTA TELEFONE POR ID DO USUARIO>
-	SELECT tu.idTable_Usuario AS id_Usuario, tt.numero AS Telefone
-	FROM table_usuario tu 	INNER JOIN table_telefones tt 
-	ON tu.idTable_Usuario = tt.Table_Usuario_idTable_Usuario
-	WHERE tu.idTable_Usuario = 2;
+	SELECT tu.id_user AS id_Usuario, te.numero AS Telefone
+	FROM usuarios tu
+	INNER JOIN telefones te
+	ON tu.id_user = te.id_user
+	WHERE tu.id_user = 2;
 
 <CONSULTA ENDEREÇO COM TELEFONE DO USUARIO CONSULTANDO POR ID>
-	SELECT  tu.idTable_Usuario AS id_Usuario, tu.Nome AS Nome_Usuario, CONCAT(te.logradouro, ', ', te.numero_endereco, ', ', te.barro_endereco, ', ', te.cidade, ', ', te.estado, ', CEP: ', te.cep) AS Endereco_Completo,
-    	tt.numero AS Telefone
-	FROM table_usuario tu INNER JOIN table_endereco te 
-	ON tu.idTable_Usuario = te.Table_Usuario_idTable_Usuario
-	INNER JOIN table_telefones tt 
-	ON tu.idTable_Usuario = tt.Table_Usuario_idTable_Usuario
-	WHERE tu.idTable_Usuario = 2;
-
-
-
-
-	
+	SELECT tu.id_user AS id_Usuario, tu.Nome AS Nome_Usuario, CONCAT(te.endereco, ', ', te.n_end, ', ', te.bairro_end, ', ', te.cidade, ', ', te.uf, ', CEP: ', te.cep) AS Endereco_Completo, tt.numero AS Telefone
+	FROM usuarios tu
+	INNER JOIN endereco te ON tu.id_user = te.id_user
+	INNER JOIN telefones tt ON tu.id_user = tt.id_user	
+	WHERE tu.id_user = 2;	
 
 ==========================================================
 
@@ -94,4 +88,64 @@ SELECT * FROM table_pessoas WHERE idTable_pessoas = 3;
 
 POR-NOME
 SELECT * FROM table_pessoas WHERE nome = 'pessoa_joao';
+============================================================
+
+Calcular o valor total gasto por um comprador específico em todas as compras:
+
+	SELECT u.nome AS comprador, SUM(c.quant_comprada * p.preco_venda) AS valor_total_gasto
+	FROM compra c
+	INNER JOIN usuarios u ON c.id_comprador_user = u.id_user
+	INNER JOIN produtos p ON c.cod_produto = p.id_produto
+	GROUP BY u.nome;
+
+
+Calcular o valor total das vendas feitas por um vendedor específico:
+
+	SELECT v.*, c.nome AS consumidor, p.nome AS produto
+	FROM vendas v
+	INNER JOIN usuarios c ON v.id_consumidor_pf = c.id_user
+	INNER JOIN produtos p ON v.id_produto = p.id_produto
+	WHERE v.id_vendedor = 2;
+
+Selecionar todas as compras feitas em um intervalo de datas específico
+
+	SELECT c.*, u.nome AS comprador, f.nome AS fornecedor, p.nome AS produto
+	FROM compra c
+	INNER JOIN usuarios u ON c.id_comprador_user = u.id_user
+	INNER JOIN usuarios f ON c.id_fornecedor = f.id_user
+	INNER JOIN produtos p ON c.cod_produto = p.id_produto
+	WHERE c.data_compra BETWEEN '2023-12-1' AND '2023-12-16';
+
+Calcular o total de vendas realizadas por um vendedor específico:
+
+	SELECT u.nome AS vendedor, SUM(v.quant_vendida * v.preco_venda) AS total_vendas
+	FROM vendas v
+	INNER JOIN usuarios u ON v.id_vendedor = u.id_user
+	WHERE u.nome = 'Ana';
+
+Selecionar todas as vendas realizadas em um intervalo de datas específico
+	SELECT v.*, u.nome AS vendedor, p.nome AS produto, 
+       	IFNULL(c1.nome, c2.nome) AS consumidor
+	FROM vendas v
+	INNER JOIN usuarios u ON v.id_vendedor = u.id_user
+	INNER JOIN produtos p ON v.id_produto = p.id_produto
+	LEFT JOIN pj pj ON v.id_consumidor_pj = pj.id_pessoa
+	LEFT JOIN pf pf ON v.id_consumidor_pf = pf.id_pessoa
+	LEFT JOIN usuarios c1 ON pj.id_pessoa = c1.id_user
+	LEFT JOIN usuarios c2 ON pf.id_pessoa = c2.id_user
+	WHERE v.data_venda BETWEEN '2023-11-10' AND '2023-12-30'
+	LIMIT 0, 1000;
+
+
+Selecionar todas as vendas por vendedor id
+	SELECT * FROM vendas
+	WHERE id_vendedor = 1;
+
+Consulta por ID do vendedor:
+	SELECT * FROM vendas
+	WHERE id_consumidor_pf = 2;
+
+
+
+
 

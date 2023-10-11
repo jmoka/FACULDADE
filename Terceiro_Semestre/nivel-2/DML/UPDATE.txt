@@ -1,0 +1,31 @@
+-- UPDATE 
+
+-- USUARIOS
+	
+	-- ATUALIZAR NOME
+	
+		UPDATE usuarios SET nome = "Jolly" WHERE id_tipo = 1;
+
+-- TIPO USUARIO
+	
+	-- ATUALIZAR NOME
+	
+		UPDATE tipo_usuario SET nome = "SECRETARIO(A)" WHERE id_user = 4;
+
+-- CADASTRO SENHA
+
+	-- ATUALIZAR LOGIN COM A VERIFICAÇÃO DA SENHA
+
+		SET SQL_SAFE_UPDATES = 0;
+		UPDATE senhas SET login	= "cloves" WHERE senha = 1234;
+
+	-- ATUALIZAR LOGIN COM A VERIFICAÇÃO DA ID_SENHA
+	
+		UPDATE senhas SET login = "paulete" WHERE id_senha = 4;
+
+
+
+	
+	-- ATUALIZAR SENHA
+	
+	

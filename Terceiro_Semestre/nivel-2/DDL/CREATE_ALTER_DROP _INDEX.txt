@@ -110,7 +110,7 @@ CREATE TABLE:
 
 ============================================================================================
 
-CREATE TABLE compras (
+CREATE TABLE compra (
   id_compra INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   id_comprador_user INTEGER UNSIGNED NOT NULL,
   id_fornecedor INTEGER UNSIGNED NOT NULL,
@@ -123,8 +123,9 @@ CREATE TABLE compras (
   INDEX compra_FKIndex2(id_comprador_user)
 );
 
-CREATE TABLE enderecos (
+CREATE TABLE endereco (
   id_end INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_pessoa INTEGER UNSIGNED NOT NULL,
   id_user INTEGER UNSIGNED NOT NULL,
   id_tipo INTEGER UNSIGNED NULL DEFAULT NULL,
   endereco VARCHAR(255) NULL,
@@ -135,10 +136,11 @@ CREATE TABLE enderecos (
   cep VARCHAR(45) NULL,
   PRIMARY KEY(id_end),
   INDEX endereco_FKIndex1(id_tipo),
-  INDEX endereco_FKIndex2(id_user)
+  INDEX endereco_FKIndex2(id_user),
+  INDEX endereco_FKIndex3(id_pessoa)
 );
 
-CREATE TABLE pessoas (
+CREATE TABLE pessoa (
   id_pessoa INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   id_user INTEGER UNSIGNED NOT NULL,
   id_tipo INTEGER UNSIGNED NULL DEFAULT NULL,
@@ -198,23 +200,23 @@ CREATE TABLE telefones (
 
 CREATE TABLE tipo_end (
   id_tipo_end INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  nome INTEGER UNSIGNED NULL,
+  nome VARCHAR(255) NULL,
   PRIMARY KEY(id_tipo_end)
 );
 
-CREATE TABLE tipo_pessoas (
+CREATE TABLE tipo_pessoa (
   id_tipo_pessoa INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  nome INTEGER UNSIGNED NULL,
+  nome VARCHAR(255) NULL,
   PRIMARY KEY(id_tipo_pessoa)
 );
 
-CREATE TABLE tipo_telefones (
-  id_tipo_telefone INTEGER UNSIGNED NOT NULL,
-  nome VARCHAR(255) NULL,
+CREATE TABLE tipo_telefone (
+  id_tipo_telefone INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
   PRIMARY KEY(id_tipo_telefone)
 );
 
-CREATE TABLE tipo_usuarios (
+CREATE TABLE tipo_usuario (
   id_tipo INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   id_user INTEGER UNSIGNED NOT NULL,
   nome VARCHAR(255) NOT NULL,
@@ -238,10 +240,12 @@ CREATE TABLE vendas (
   id_produto INTEGER UNSIGNED NOT NULL,
   quant_vendida INTEGER UNSIGNED NULL,
   data_venda DATE NULL,
+  preco_venda DOUBLE PRECISION NULL,
   PRIMARY KEY(id_venda),
   INDEX Table_vendas_FKIndex1(id_produto),
   INDEX Table_vendas_FKIndex2(id_consumidor_pf),
   INDEX Table_vendas_FKIndex3(id_vendedor),
   INDEX Table_vendas_FKIndex4(id_consumidor_pj)
 );
+
 
