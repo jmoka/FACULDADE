@@ -13,11 +13,6 @@ public class PessoaFisica extends Pessoa   {
     public PessoaFisica(){
     }
 
-    public PessoaFisica(int idPessoaFisica, String Cpf) {
-        this.idPessoaFisica = idPessoaFisica;
-        this.Cpf = Cpf;
-    }
-
     public PessoaFisica(int idPessoaFisica,String nome, String logradouro, String cidade, String estado, String telefone, String email, int idUsuarioResponsavel,   String Cpf) {
         super(nome, logradouro, cidade, estado, telefone, email, idUsuarioResponsavel);
         this.idPessoaFisica = idPessoaFisica;
@@ -65,9 +60,18 @@ public class PessoaFisica extends Pessoa   {
 
     @Override
     public String toString() {
-        return "PessoaFisica{" + "idPessoaFisica=" + idPessoaFisica + ", Cpf=" + Cpf + '}';
-    }
-    
+    return "PessoaFisica{" +
+           "idPessoaFisica=" + getIdPessoaFisica() +
+           ", nome='" + getNome() + '\'' +
+           ", logradouro='" + getLogradouro() + '\'' +
+           ", cidade='" + getCidade() + '\'' +
+           ", estado='" + getEstado() + '\'' +
+           ", telefone='" + getTelefone() + '\'' +
+           ", email='" + getEmail() + '\'' +
+           ", idUsuarioResponsavel=" + getIdUsuarioResponsavel() +
+           ", cpf='" + getCpf() + '\'' +
+           '}';
+}
    
    
    

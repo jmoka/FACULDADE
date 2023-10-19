@@ -15,7 +15,7 @@ public class DbMysqlPF {
 	};	
 	
 	public static String SqlAtualizar () {
-		return "UPDATE seller " 
+		return "UPDATE pessoafisica " 
 				+ "SET nome = ?, logradouro = ?, cidade = ?, estado = ?, telefone = ?, email=?, idusuario=?, cpf=? "
 				+ "WHERE idPessoaFisica = ? ";                        
                         }
@@ -35,7 +35,7 @@ public class DbMysqlPF {
         
         
         public static String SqlBuscarPfnome() {
-		return "SELECT * FROM pessoafisica WHERE nome =?";
+		return "SELECT * FROM pessoafisica WHERE nome LIKE ?";
 	};
         
     
