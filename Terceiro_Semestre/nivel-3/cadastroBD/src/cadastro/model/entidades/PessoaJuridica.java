@@ -60,18 +60,18 @@ public class PessoaJuridica extends Pessoa   {
 
     @Override
     public String toString() {
-    return "PessoaJuridica{" +
-           "idPessoaJuridica=" + getIdPessoaJuridica()+
-           ", nome='" + getNome() + '\'' +
-           ", logradouro='" + getLogradouro() + '\'' +
-           ", cidade='" + getCidade() + '\'' +
-           ", estado='" + getEstado() + '\'' +
-           ", telefone='" + getTelefone() + '\'' +
-           ", email='" + getEmail() + '\'' +
-           ", idUsuarioResponsavel=" + getIdUsuarioResponsavel() +
-           ", cnpj='" + getCnpj() + '\'' +
+    return "idPessoaJuridica=" + getIdPessoaJuridica() + ",\n" +
+           "nome='" + getNome() + "',\n" +
+           "logradouro='" + getLogradouro() + "',\n" +
+           "cidade='" + getCidade() + "',\n" +
+           "estado='" + getEstado() + "',\n" +
+           "telefone='" + getTelefone() + "',\n" +
+           "email='" + getEmail() + "',\n" +
+           "idUsuarioResponsavel=" + getIdUsuarioResponsavel() + ",\n" +
+           "cnpj='" + getCnpj() + "'\n" +
            '}';
 }
+
    
    
    

@@ -51,7 +51,10 @@ public class ProgramaPF {
         
             int id = 5;
 		pf = (PessoaFisica) fabricaPF.buscarPorId(id);
-		System.out.println("PF Atual  " + pf);
+                System.out.println("=========================");
+		System.out.println("PF Atual");
+                 System.out.println("=========================");
+                System.out.println(pf);
                 pf.setNome("leso");
                 pf.setLogradouro("teste2");
                 pf.setCidade("maraba");
@@ -62,6 +65,11 @@ public class ProgramaPF {
 		pf.setCpf("567890987");
              
                 fabricaPF.atualizar(pf);
+                 System.out.println("=========================");
+                System.out.println("Nova PF");
+                 System.out.println("=========================");
+                System.out.println(pf.toString());
+           
                            
 
         

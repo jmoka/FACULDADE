@@ -60,16 +60,15 @@ public class PessoaFisica extends Pessoa   {
 
     @Override
     public String toString() {
-    return "PessoaFisica{" +
-           "idPessoaFisica=" + getIdPessoaFisica() +
-           ", nome='" + getNome() + '\'' +
-           ", logradouro='" + getLogradouro() + '\'' +
-           ", cidade='" + getCidade() + '\'' +
-           ", estado='" + getEstado() + '\'' +
-           ", telefone='" + getTelefone() + '\'' +
-           ", email='" + getEmail() + '\'' +
-           ", idUsuarioResponsavel=" + getIdUsuarioResponsavel() +
-           ", cpf='" + getCpf() + '\'' +
+    return "idPessoaFisica=" + getIdPessoaFisica() + ",\n" +
+           "nome='" + getNome() + "',\n" +
+           "logradouro='" + getLogradouro() + "',\n" +
+           "cidade='" + getCidade() + "',\n" +
+           "estado='" + getEstado() + "',\n" +
+           "telefone='" + getTelefone() + "',\n" +
+           "email='" + getEmail() + "',\n" +
+           "idUsuarioResponsavel=" + getIdUsuarioResponsavel() + ",\n" +
+           "cpf='" + getCpf() + "'\n" +
            '}';
 }
    
