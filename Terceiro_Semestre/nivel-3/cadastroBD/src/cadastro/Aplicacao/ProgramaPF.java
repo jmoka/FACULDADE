@@ -15,10 +15,10 @@ import java.util.List;
 public class ProgramaPF {
     public static void main(String[] args) {
         
-        //instanciação da fabrica Pessoa Fisica
+       
         EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
         List <PessoaFisica> list =new ArrayList<>();
-        //PessoaFisica pf = new PessoaFisica();
+        PessoaFisica pf = new PessoaFisica();
         
      //======================================================  
      // PESSOA FISICA
@@ -39,7 +39,7 @@ public class ProgramaPF {
         //=======================
         
             /*
-            PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorId(4);                 
+            pf = (PessoaFisica) fabricaPF.buscarPorId(4);                 
             System.out.println(pf);            
             */
         
@@ -48,11 +48,11 @@ public class ProgramaPF {
         // ATUALIZAR PESSOA FISICA
         //=======================    
            
-        /*
-            int id = 2;
-		PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorId(id);
+        
+            int id = 5;
+		pf = (PessoaFisica) fabricaPF.buscarPorId(id);
 		System.out.println("PF Atual  " + pf);
-                pf.setNome("Loloka");
+                pf.setNome("leso");
                 pf.setLogradouro("teste2");
                 pf.setCidade("maraba");
                 pf.setEstado("pa");
@@ -62,9 +62,7 @@ public class ProgramaPF {
 		pf.setCpf("567890987");
              
                 fabricaPF.atualizar(pf);
-                
-                System.out.println("PF Atual  " + pf);
-            */
+                           
 
         
         
@@ -94,12 +92,12 @@ public class ProgramaPF {
             
             
         //=======================
-        // TODOS -  PESSOA FISICA
+        // BUSCAR POR NOME
         //======================= 
-        
-            PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorNome("santos");                 
+        /*
+            pf = (PessoaFisica) fabricaPF.buscarPorNome("santos");                 
             System.out.println(pf);    
-            
+        */
     }
     
 }

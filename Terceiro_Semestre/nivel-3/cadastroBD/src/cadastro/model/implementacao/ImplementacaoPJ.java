@@ -4,10 +4,10 @@
  */
 package cadastro.model.implementacao;
 
-import cadastro.model.entidades.PessoaFisica;
-import cadastro.Db.DbMysqlPF;
+import cadastro.Db.DbMysqlPJ;
 import cadastro.Db.DB;
 import cadastro.Db.DbException;
+import cadastro.model.entidades.PessoaJuridica;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
 import java.sql.Connection; 
 import java.sql.PreparedStatement;
@@ -17,23 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
+public class ImplementacaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
 
     private Connection conn;
     
-    public ImplementacaoPF(Connection conn){
+    public ImplementacaoPJ(Connection conn){
         this.conn = conn;
     }
     
     
     @Override
-    public void Inserir(PessoaFisica Obj) {
+    public void Inserir(PessoaJuridica Obj) {
         PreparedStatement st = null;
         
     try {
-            st = conn.prepareStatement(DbMysqlPF.SqlInserirPf(),
-                    PreparedStatement.RETURN_GENERATED_KEYS);
-            st.setInt(1, Obj.getIdPessoaFisica());  
+            st = conn.prepareStatement(DbMysqlPJ.SqlInserirPj(),
+          PreparedStatement.RETURN_GENERATED_KEYS);
+            st.setInt(1, Obj.getIdPessoaJuridica());  
             st.setString(2, Obj.getNome());
             st.setString(3, Obj.getLogradouro());
             st.setString(4, Obj.getCidade());
@@ -41,7 +41,7 @@ public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
             st.setString(6, Obj.getTelefone());
             st.setString(7, Obj.getEmail());
             st.setInt(8, Obj.getIdUsuarioResponsavel());   
-            st.setString(9, Obj.getCpf());  
+            st.setString(9, Obj.getCnpj());  
                         
             int LinhasAfetadas = st.executeUpdate(); 
             
@@ -49,7 +49,7 @@ public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
                 ResultSet rs = st.getGeneratedKeys(); 
             if(rs.next()) {
                 int id = rs.getInt(1); 
-		Obj.setIdPessoaFisica(id);
+		Obj.setIdPessoaJuridica(id);
 		}
                     DB.fecharResultSet(rs); 
 				 							
@@ -66,11 +66,11 @@ public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
 	};
 
     @Override
-    public void atualizar(PessoaFisica Obj) {
+    public void atualizar(PessoaJuridica Obj) {
        		PreparedStatement st = null; 
 		try {
-			st = conn.prepareStatement(DbMysqlPF.SqlAtualizar());
-                        st.setInt(1, Obj.getIdPessoaFisica()); 
+			st = conn.prepareStatement(DbMysqlPJ.SqlAtualizar());
+                        st.setInt(1, Obj.getIdPessoaJuridica()); 
                         st.setString(2, Obj.getNome());
                         st.setString(3, Obj.getLogradouro());
                         st.setString(4, Obj.getCidade());
@@ -78,7 +78,7 @@ public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
                         st.setString(6, Obj.getTelefone());
                         st.setString(7, Obj.getEmail());
                         st.setInt(8, Obj.getIdUsuarioResponsavel());
-                        st.setString(9, Obj.getCpf());
+                        st.setString(9, Obj.getCnpj());
                        
                         st.executeUpdate();
 			
@@ -96,18 +96,17 @@ public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
     public void deletar(Integer id) {
                 PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(DbMysqlPF.SqlDeletar());
+			st = conn.prepareStatement(DbMysqlPJ.SqlDeletar());
 			st.setInt(1, id);
 			int rows = st.executeUpdate();
 			
 			if(rows == 0) {
 				throw new DbException("Id nao tem no banco de dados , corrija a numeracao");
 			}
-	
-					
+						
 		}
 		catch(SQLException e){
-			throw new DbException("Pesoa Física não delatada , erro ao deletar");
+			throw new DbException("Pessoa Juridica não delatada , erro ao deletar");
 		}
 		finally{
 			DB.fecharStatement(st);
@@ -115,17 +114,17 @@ public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
     }
 
     @Override
-    public PessoaFisica buscarPorId(Integer id) {
+    public PessoaJuridica buscarPorId(Integer id) {
                 PreparedStatement st = null;
                 ResultSet rs = null;
-                PessoaFisica pessoaFisica = null; 
+                PessoaJuridica pessoaJuridica = null; 
 
     try {
-                st = conn.prepareStatement(DbMysqlPF.SqlBuscarPfId());
+                st = conn.prepareStatement(DbMysqlPJ.SqlBuscarPjId());
                 st.setInt(1, id);
                 rs = st.executeQuery();
     if (rs.next()) {
-                int idPessoaFisica = rs.getInt("idPessoaFisica");
+                int idPessoaJuridica = rs.getInt("idPessoaJuridica");
                 String nome = rs.getString("nome");
                 String logradouro = rs.getString("logradouro");
                 String cidade = rs.getString("cidade");
@@ -133,11 +132,12 @@ public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
                 String telefone = rs.getString("telefone");
                 String email = rs.getString("Email");
                 int idUsuario = rs.getInt("idUsuario");
-                String cpf = rs.getString("cpf");
+                String cnpj = rs.getString("cnpj");
 
-            
-            pessoaFisica = new PessoaFisica(idPessoaFisica, nome, logradouro, cidade, estado, telefone, email, idUsuario, cpf);
-        }
+      
+                pessoaJuridica = new PessoaJuridica(0, nome, logradouro, cidade, estado, telefone, email, 0, cnpj);
+                    
+                    }
         
     } catch (SQLException e) {
                 throw new DbException(e.getMessage());
@@ -145,32 +145,32 @@ public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
                 DB.fecharStatement(st);
                 DB.fecharResultSet(rs);
     }  
-      return pessoaFisica; 
+      return pessoaJuridica; 
     }
 
 
     @Override
-    public List<PessoaFisica> todos() {
+    public List<PessoaJuridica> todos() {
     PreparedStatement st = null;
     ResultSet rs = null;
-    List<PessoaFisica> list = new ArrayList<PessoaFisica>();
+    List<PessoaJuridica> list = new ArrayList<PessoaJuridica>();
     try {
-        st = conn.prepareStatement(DbMysqlPF.SqlTodosPf());
+        st = conn.prepareStatement(DbMysqlPJ.SqlTodosPj());
         rs = st.executeQuery();
         
         while (rs.next()) {
-            PessoaFisica pf = new PessoaFisica();
-            pf.setIdPessoaFisica(rs.getInt("idPessoaFisica"));
-            pf.setNome(rs.getString("nome"));
-            pf.setLogradouro(rs.getString("logradouro")); 
-            pf.setCidade(rs.getString("cidade"));
-            pf.setEstado(rs.getString("estado"));
-            pf.setTelefone(rs.getString("telefone"));
-            pf.setEmail(rs.getString("Email"));
-            pf.setIdUsuarioResponsavel(rs.getInt("idUsuario"));
-            pf.setCpf(rs.getString("cpf"));
+            PessoaJuridica pj = new PessoaJuridica();
+            pj.setIdPessoaJuridica(rs.getInt("idPessoaJuridica"));
+            pj.setNome(rs.getString("nome"));
+            pj.setLogradouro(rs.getString("logradouro")); 
+            pj.setCidade(rs.getString("cidade"));
+            pj.setEstado(rs.getString("estado"));
+            pj.setTelefone(rs.getString("telefone"));
+            pj.setEmail(rs.getString("Email"));
+            pj.setIdUsuarioResponsavel(rs.getInt("idUsuario"));
+            pj.setCnpj(rs.getString("cnpj"));
             
-            list.add(pf);         
+            list.add(pj);         
         }        
         
         return list;
@@ -186,24 +186,24 @@ public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
 
 
     @Override
-    public PessoaFisica buscarPorNome(String nome) {
+    public PessoaJuridica buscarPorNome(String nome) {
     PreparedStatement st = null;
     ResultSet rs = null;
-    PessoaFisica pf = null; 
+    PessoaJuridica pj = null;
 
     try {
-        st = conn.prepareStatement(DbMysqlPF.SqlBuscarPfnome());
+        st = conn.prepareStatement(DbMysqlPJ.SqlBuscarPjnome());
         st.setString(1, "%" + nome + "%");
         rs = st.executeQuery();
 
         if (rs.next()) {
-            pf = new PessoaFisica();
-            pf.setIdPessoaFisica(rs.getInt("idPessoaFisica"));
-            pf.setNome(rs.getString("nome"));
+            pj = new PessoaJuridica();
+            pj.setIdPessoaJuridica(rs.getInt("idPessoaJuridica"));
+            pj.setNome(rs.getString("nome"));
            
         }
 
-        return pf; 
+        return pj; 
     } catch (SQLException e) {
         throw new DbException(e.getMessage());
     } finally {

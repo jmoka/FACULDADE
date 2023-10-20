@@ -9,22 +9,22 @@ public class DbMysqlPJ {
     
     public static String SqlInserirPj() {
 		return "INSERT INTO pessoajuridica "
-				+ "(nome, logradouro,cidade, estado, telefone, Email, idUsuario, cnpj) "
+				+ "(idPessoaJuridica, nome, logradouro,cidade, estado, telefone, Email, idUsuario, cnpj) "
 				+ "VALUES "
-				+ "(?, ?, ?, ?, ?, ?, ? , ?) ";
+				+ "(?,?, ?, ?, ?, ?, ?, ? ,?) ";
 	};	
 	
-	public static String SqlUpdatePj () {
-		return "UPDATE seller " 
+	public static String SqlAtualizar () {
+		return "UPDATE pessoajuridica " 
 				+ "SET nome = ?, logradouro = ?, cidade = ?, estado = ?, telefone = ?, email=?, idusuario=?, cnpj=? "
 				+ "WHERE idPessoaJuridica = ? ";                        
                         }
 	
-	public static String SqlDeleteIdPj () {
+	public static String SqlDeletar() {
 		return "DELETE FROM pessoajuridica WHERE idPessoaJuridica = ?";
 	}
         
-        public static String SqlBuscarPfIdPj() {
+        public static String SqlBuscarPjId() {
 		return "SELECT * FROM pessoajuridica WHERE idPessoaJuridica = ? ";
 	};
 	
@@ -34,8 +34,8 @@ public class DbMysqlPJ {
 	};
         
         
-        public static String SqlBuscarPfnomePj() {
-		return "SELECT * FROM pessoajuridica WHERE nome =?";
+        public static String SqlBuscarPjnome() {
+		return "SELECT * FROM pessoajuridica WHERE nome LIKE ?";
 	};
         
     

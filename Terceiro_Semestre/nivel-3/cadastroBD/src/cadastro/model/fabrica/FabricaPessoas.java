@@ -6,6 +6,7 @@ package cadastro.model.fabrica;
 
 import cadastro.Db.DB;
 import cadastro.model.implementacao.ImplementacaoPF;
+import cadastro.model.implementacao.ImplementacaoPJ;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
 
 
@@ -15,9 +16,15 @@ public class FabricaPessoas {
     public static EntidadeInterfaceDAO  PessoaFisicaFabrica() {
 		return new ImplementacaoPF(DB.getConection());
 	} 
+    
+     public static EntidadeInterfaceDAO  PessoaJuridicaFabrica() {
+		return new ImplementacaoPJ(DB.getConection());
+	} 
 	
 
 }
+
+
 
     
 
