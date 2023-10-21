@@ -9,25 +9,37 @@ import cadastro.model.util.MenuPrincipal;
 import cadastro.model.util.Testes;
 import java.util.Scanner;
 
-/**
- *
- * @author jotac
- */
-public class implementacaoMenu {
-    
-    public static void Menus(){
-        Scanner sc = new Scanner(System.in);       
+
+public class implementacaoMenu { 
+       
+    public static String MenuPrincipal(){
+        Scanner sc = new Scanner(System.in);  
         String resultado = MenuPrincipal.menuPadraoString();
         System.out.println(resultado);
-        String opcaoScolhida = sc.nextLine();         
+        String opcaoScolhida = sc.nextLine(); 
+        
         while(!(Testes.EInteiros(opcaoScolhida))){
             System.out.println("Digite Somente Numeros Inteiros ralacionadas acima"); 
             opcaoScolhida = sc.nextLine();
-        } 
-            System.out.println(MenuPfPj.menuPfPjString());
+            } 
         
+            System.out.println(MenuPfPj.menuPfPjString());
+            opcaoScolhida = sc.nextLine();
+            
+            return opcaoScolhida;
+             
+            }          
     
+    public static void MenuSecundario(){
+        Scanner sc = new Scanner(System.in);
+        String opcaoScolhida = sc.nextLine();
+        Testes.EString(opcaoScolhida);
+        
+        
     }
+   
+    
+    
 }
     
 

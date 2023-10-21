@@ -25,7 +25,7 @@ public class MenuPfPj {
         menuText.append(">>>>>>>> AGORA ESCOLHA <<<<<<<<<\n");
         menuText.append("F - Pessoa Fisica\n");
         menuText.append("J - Pessoa Juridic\n");
-        menuText.append("0 - Finalizar\n");
+        menuText.append("x - Finalizar\n");
         
         return (menuText.toString()); 
     }

@@ -5,14 +5,16 @@
 package cadastro.Aplicacao;
 
 import cadastro.model.implementacao.implementacaoMenu;
+import cadastro.model.util.Testes;
 
 public class ProgramaMenu {
      public static void main(String[] args) {
          
-        implementacaoMenu.Menus();
+        Testes.EString(implementacaoMenu.MenuPrincipal());
         
         
     }
+
 
 }
 
