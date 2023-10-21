@@ -41,11 +41,17 @@ public class implementacaoMenu {
         System.out.println("Opcao Errada, Escolha apenas F, J ou X");
         System.out.println("Vamos Tentar novamente");
     }
-    
+     sc.close();
     return opcaoEscolhida2;
         
     }
    
+   
+    public static void iniciarAcao1(String opc1, String opc2){
+    
+        Testes.acaoOpc1(opc1, opc2);
+    }
+    
     
     
 }
