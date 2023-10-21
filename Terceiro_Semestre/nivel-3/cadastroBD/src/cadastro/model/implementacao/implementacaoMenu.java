@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class implementacaoMenu { 
        
-    public static String MenuPrincipal(){
+    public static String menuPrincipal(){
         Scanner sc = new Scanner(System.in);  
         String resultado = MenuPrincipal.menuPadraoString();
         System.out.println(resultado);
@@ -27,7 +27,7 @@ public class implementacaoMenu {
              
             }          
     
-    public static String MenuSecundario(){
+    public static String menuSecundario(){
         Scanner sc = new Scanner(System.in);
         String opcaoEscolhida2;
     

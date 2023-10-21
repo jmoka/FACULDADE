@@ -11,10 +11,10 @@ public class ProgramaMenu {
      public static void main(String[] args) {
          
          // Verificar o primeiro meu
-         String opc = implementacaoMenu.MenuPrincipal();
+         String opc = implementacaoMenu.menuPrincipal();
          System.out.println(opc);
          // Testar o menu 2
-         String opc1 = implementacaoMenu.MenuSecundario();
+         String opc1 = implementacaoMenu.menuSecundario();
          System.out.println(opc1);
          
          
