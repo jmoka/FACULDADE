@@ -10,13 +10,20 @@ public class Testes {
     
     
     public static boolean EInteiros(String str) {
+           
+        int numero;
         try {
-            Integer.parseInt(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
+            numero = Integer.parseInt(str);
+            return (numero >= 0 && numero <= 5);
+        } 
+        catch (NumberFormatException e) {
+            return false; 
         }
     }
+            
+            
+            
+            
     
     
     public static boolean EaOpcao(String str){
@@ -38,17 +45,12 @@ public class Testes {
     }
        
     
-     public static Boolean EString(String opcaoScolhida){
+     public static String EString(String opcaoScolhida2){
              
-        Boolean str = EaOpcao(opcaoScolhida);
-                
-        if(!(str)){
-            System.out.println("Opcao Errada, Escolha apenas F, J ou X"); 
-            System.out.println("Vamos Tentar novamente"); 
-            implementacaoMenu.MenuSecundario();
-           }
-         System.out.println("oK"); 
-         return str;
+        if (!EaOpcao(opcaoScolhida2)) {
+         return null; 
+    }
+    return opcaoScolhida2; //
     }
     
     

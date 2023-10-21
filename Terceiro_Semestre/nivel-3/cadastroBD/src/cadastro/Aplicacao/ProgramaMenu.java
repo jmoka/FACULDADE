@@ -10,7 +10,16 @@ import cadastro.model.util.Testes;
 public class ProgramaMenu {
      public static void main(String[] args) {
          
-        Testes.EString(implementacaoMenu.MenuPrincipal());
+         // Verificar o primeiro meu
+         String opc = implementacaoMenu.MenuPrincipal();
+         System.out.println(opc);
+         // Testar o menu 2
+         String opc1 = implementacaoMenu.MenuSecundario();
+         System.out.println(opc1);
+         
+         
+         
+       
         
         
     }

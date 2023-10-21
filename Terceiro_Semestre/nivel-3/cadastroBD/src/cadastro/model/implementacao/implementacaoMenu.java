@@ -19,22 +19,30 @@ public class implementacaoMenu {
         String opcaoScolhida = sc.nextLine(); 
         
         while(!(Testes.EInteiros(opcaoScolhida))){
-            System.out.println("Digite Somente Numeros Inteiros ralacionadas acima"); 
+            System.out.println("Digite Somente Numeros Inteiros ralacionados acima de 0 a 5"); 
             opcaoScolhida = sc.nextLine();
             } 
-        
-            System.out.println(MenuPfPj.menuPfPjString());
-            opcaoScolhida = sc.nextLine();
-            
+           
             return opcaoScolhida;
              
             }          
     
-    public static void MenuSecundario(){
+    public static String MenuSecundario(){
         Scanner sc = new Scanner(System.in);
-        String opcaoScolhida = sc.nextLine();
-        Testes.EString(opcaoScolhida);
-        
+        String opcaoEscolhida2;
+    
+    while (true) {
+        System.out.println(MenuPfPj.menuPfPjString());
+        opcaoEscolhida2 = sc.nextLine();        
+        opcaoEscolhida2 = Testes.EString(opcaoEscolhida2);        
+        if (opcaoEscolhida2 != null) {
+            break; 
+        }        
+        System.out.println("Opcao Errada, Escolha apenas F, J ou X");
+        System.out.println("Vamos Tentar novamente");
+    }
+    
+    return opcaoEscolhida2;
         
     }
    
