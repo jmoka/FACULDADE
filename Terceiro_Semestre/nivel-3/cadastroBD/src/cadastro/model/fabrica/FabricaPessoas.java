@@ -5,8 +5,8 @@
 package cadastro.model.fabrica;
 
 import cadastro.Db.DB;
-import cadastro.model.implementacao.ImplementacaoPF;
-import cadastro.model.implementacao.ImplementacaoPJ;
+import cadastro.model.dao.DaoPF;
+import cadastro.model.dao.DaoPJ;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
 
 
@@ -14,11 +14,11 @@ import cadastro.model.interfacs.EntidadeInterfaceDAO;
 public class FabricaPessoas {
 
     public static EntidadeInterfaceDAO  PessoaFisicaFabrica() {
-		return new ImplementacaoPF(DB.getConection());
+		return new DaoPF(DB.getConection());
 	} 
     
      public static EntidadeInterfaceDAO  PessoaJuridicaFabrica() {
-		return new ImplementacaoPJ(DB.getConection());
+		return new DaoPJ(DB.getConection());
 	} 
 	
 

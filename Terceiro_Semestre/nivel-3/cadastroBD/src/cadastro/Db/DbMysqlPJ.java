@@ -14,13 +14,12 @@ public class DbMysqlPJ {
 				+ "(?,?, ?, ?, ?, ?, ?, ? ,?) ";
 	};	
 	
-	public static String SqlAtualizar () {
-		return "UPDATE pessoajuridica " 
-				+ "SET nome = ?, logradouro = ?, cidade = ?, estado = ?, telefone = ?, email=?, idusuario=?, cnpj=? "
-				+ "WHERE idPessoaJuridica = ? ";                        
-                        }
+	public static String SqlAtualizarPj () {
+		  return "UPDATE pessoajuridica " 
+        + "SET nome = ?, logradouro = ?, cidade = ?, estado = ?, telefone = ?, email = ?, idusuario = ?, cnpj = ? "
+        + "WHERE idPessoaJuridica = ?";  }
 	
-	public static String SqlDeletar() {
+	public static String SqlDeletarPj() {
 		return "DELETE FROM pessoajuridica WHERE idPessoaJuridica = ?";
 	}
         

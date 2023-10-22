@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cadastro.model.implementacao;
+package cadastro.model.dao;
 
 import cadastro.model.entidades.PessoaFisica;
 import cadastro.Db.DbMysqlPF;
@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
+public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
 
     private Connection conn;
     
-    public ImplementacaoPF(Connection conn){
+    public DaoPF(Connection conn){
         this.conn = conn;
     }
     
@@ -70,16 +70,16 @@ public class ImplementacaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
        		PreparedStatement st = null; 
 		try {
 			st = conn.prepareStatement(DbMysqlPF.SqlAtualizar());
-                        st.setInt(1, Obj.getIdPessoaFisica()); 
-                        st.setString(2, Obj.getNome());
-                        st.setString(3, Obj.getLogradouro());
-                        st.setString(4, Obj.getCidade());
-                        st.setString(5, Obj.getEstado());
-                        st.setString(6, Obj.getTelefone());
-                        st.setString(7, Obj.getEmail());
-                        st.setInt(8, Obj.getIdUsuarioResponsavel());
-                        st.setString(9, Obj.getCpf());
-                       
+                        st.setString(1, Obj.getNome());
+                        st.setString(2, Obj.getLogradouro());
+                        st.setString(3, Obj.getCidade());
+                        st.setString(4, Obj.getEstado());
+                        st.setString(5, Obj.getTelefone());
+                        st.setString(6, Obj.getEmail());
+                        st.setInt(7, Obj.getIdUsuarioResponsavel());
+                        st.setString(8, Obj.getCpf());
+                        st.setInt(9, Obj.getIdPessoaFisica()); // Esta deve ser a última linha
+                            
                         st.executeUpdate();
 			
 		}

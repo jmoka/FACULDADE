@@ -4,13 +4,13 @@
  */
 package cadastro.Aplicacao;
 
-import cadastro.model.implementacao.implementacaoMenu;
+import cadastro.model.dao.view.viewMenu;
 
-public class ProgramaMenu {
+public class ProgramaPrincipal {
      public static void main(String[] args) {
          
          // Verificar o primeiro meu
-         String opc1 = implementacaoMenu.menuPrincipal();
+         String opc1 = viewMenu.menuPrincipal();
          System.out.println(opc1);
          Integer num = Integer.parseInt(opc1);
          if(num==0){
@@ -19,7 +19,7 @@ public class ProgramaMenu {
                  }
           
          // Testar o menu 2
-         String opc2 = implementacaoMenu.menuSecundario();
+         String opc2 = viewMenu.menuSecundario();
          System.out.println(opc2);
           if ("x".equalsIgnoreCase(opc2)) {
                 System.out.println("Fechando o programa. Adeus!");
@@ -27,7 +27,7 @@ public class ProgramaMenu {
           } else {
                             
                 System.out.println(opc1+","+opc2);
-                implementacaoMenu.iniciarAcao1(opc1, opc2);
+                viewMenu.iniciarAcao1(opc1, opc2);
         }     
         
      }

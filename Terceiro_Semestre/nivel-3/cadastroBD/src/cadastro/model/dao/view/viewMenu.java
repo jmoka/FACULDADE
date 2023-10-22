@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cadastro.model.implementacao;
+package cadastro.model.dao.view;
 
 import cadastro.model.util.MenuPfPj;
 import cadastro.model.util.MenuPrincipal;
@@ -10,12 +10,12 @@ import cadastro.model.util.Testes;
 import java.util.Scanner;
 
 
-public class implementacaoMenu { 
+public class viewMenu { 
        
     public static String menuPrincipal(){
         Scanner sc = new Scanner(System.in);  
-        String resultado = MenuPrincipal.menuPadraoString();
-        System.out.println(resultado);
+        String menuPrincipal = MenuPrincipal.menuPadraoString();
+        System.out.println(menuPrincipal);
         String opcaoScolhida = sc.nextLine(); 
         
         while(!(Testes.EInteiros(opcaoScolhida))){
@@ -41,11 +41,10 @@ public class implementacaoMenu {
         System.out.println("Opcao Errada, Escolha apenas F, J ou X");
         System.out.println("Vamos Tentar novamente");
     }
-     sc.close();
+     
     return opcaoEscolhida2;
         
-    }
-   
+    }   
    
     public static void iniciarAcao1(String opc1, String opc2){
     

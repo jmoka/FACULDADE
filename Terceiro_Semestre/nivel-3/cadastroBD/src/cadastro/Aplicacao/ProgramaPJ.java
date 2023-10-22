@@ -47,27 +47,36 @@ public class ProgramaPJ {
         //========================
         // ATUALIZAR PESSOA JURIDICA
         //=======================    
-           
-      
-            int id = 2;
+                 
+             /*
+                int id = 2;
+            
 		pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
                 System.out.println("=========================");
 		System.out.println("PJ Atual");
-                 System.out.println("=========================");
+                System.out.println("=========================");
                 System.out.println(pj);
-                pj.setNome("Loloka ltda");
+                
+                pj.setIdPessoaJuridica(id);
+                pj.setIdUsuarioResponsavel(1);               
+                pj.setNome("lika ltda");
                 pj.setLogradouro("teste2");
                 pj.setCidade("maraba");
                 pj.setEstado("pa");
                 pj.setTelefone("56789");
-                pj.setEmail("t@t");
-                pj.setIdUsuarioResponsavel(1);
-		pj.setCnpj("567890987");             
+                pj.setEmail("t@t");              
+		pj.setCnpj("567890987"); 
+                
+                
                 fabricnpj.atualizar(pj);
+                
+                
                 System.out.println("=========================");
                 System.out.println("Nova PJ");
                 System.out.println("=========================");
                 System.out.println(pj.toString());
+                
+                */
                 
               
          

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cadastro.model.implementacao;
+package cadastro.model.dao;
 
 import cadastro.Db.DbMysqlPJ;
 import cadastro.Db.DB;
@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ImplementacaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
+public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
 
     private Connection conn;
     
-    public ImplementacaoPJ(Connection conn){
+    public DaoPJ(Connection conn){
         this.conn = conn;
     }
     
@@ -69,17 +69,17 @@ public class ImplementacaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     public void atualizar(PessoaJuridica Obj) {
        		PreparedStatement st = null; 
 		try {
-			st = conn.prepareStatement(DbMysqlPJ.SqlAtualizar());
-                        st.setInt(1, Obj.getIdPessoaJuridica()); 
-                        st.setString(2, Obj.getNome());
-                        st.setString(3, Obj.getLogradouro());
-                        st.setString(4, Obj.getCidade());
-                        st.setString(5, Obj.getEstado());
-                        st.setString(6, Obj.getTelefone());
-                        st.setString(7, Obj.getEmail());
-                        st.setInt(8, Obj.getIdUsuarioResponsavel());
-                        st.setString(9, Obj.getCnpj());
-                       
+			st = conn.prepareStatement(DbMysqlPJ.SqlAtualizarPj());
+                        st.setString(1, Obj.getNome());
+                        st.setString(2, Obj.getLogradouro());
+                        st.setString(3, Obj.getCidade());
+                        st.setString(4, Obj.getEstado());
+                        st.setString(5, Obj.getTelefone());
+                        st.setString(6, Obj.getEmail());
+                        st.setInt(7, Obj.getIdUsuarioResponsavel());
+                        st.setString(8, Obj.getCnpj());
+                        st.setInt(9, Obj.getIdPessoaJuridica()); // Esta deve ser a última linha
+                            
                         st.executeUpdate();
 			
 		}
@@ -96,7 +96,7 @@ public class ImplementacaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     public void deletar(Integer id) {
                 PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(DbMysqlPJ.SqlDeletar());
+			st = conn.prepareStatement(DbMysqlPJ.SqlDeletarPj());
 			st.setInt(1, id);
 			int rows = st.executeUpdate();
 			
@@ -135,7 +135,7 @@ public class ImplementacaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
                 String cnpj = rs.getString("cnpj");
 
       
-                pessoaJuridica = new PessoaJuridica(0, nome, logradouro, cidade, estado, telefone, email, 0, cnpj);
+                pessoaJuridica = new PessoaJuridica(idPessoaJuridica, nome, logradouro, cidade, estado, telefone, email, 0, cnpj);
                     
                     }
         

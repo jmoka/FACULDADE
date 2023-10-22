@@ -4,7 +4,7 @@
  */
 package cadastro.model.util;
 
-import cadastro.model.implementacao.implementacaoMenu;
+import cadastro.model.dao.view.daoViewPF;
 
 public class Testes {
     
@@ -47,9 +47,9 @@ public class Testes {
     switch (numero) {
         case 1:
            if ("f".equalsIgnoreCase(opc2)) {
-                inserirPf();
+                daoViewPF.inserirPf();
             } else if ("j".equalsIgnoreCase(opc2)) {
-                inserirPj();
+                daoViewPF.inserirPj();
             } else {
                 System.out.println("Opcao inválida para letra: " + opc2);
             }
@@ -57,9 +57,9 @@ public class Testes {
             break;
         case 2:
            if ("f".equalsIgnoreCase(opc2)) {
-                alterarPfId();
+                daoViewPF.alterarPfId();
             } else if ("j".equalsIgnoreCase(opc2)) {
-                alterarPjId();
+                daoViewPF.alterarPjId();
             } else {
                 System.out.println("Opcao inválida para letra: " + opc2);
             }
@@ -67,9 +67,9 @@ public class Testes {
             break;
         case 3:
             if ("f".equalsIgnoreCase(opc2)) {
-                deletarPfId();
+                daoViewPF.deletarPfId();
             } else if ("j".equalsIgnoreCase(opc2)) {
-                deletarPjId();
+                daoViewPF.deletarPjId();
             } else {
                 System.out.println("Opcao inválida para letra: " + opc2);
             }
@@ -77,9 +77,9 @@ public class Testes {
             break;
         case 4:
            if ("f".equalsIgnoreCase(opc2)) {
-                consultarPfId();
+                daoViewPF.consultarPfId();
             } else if ("j".equalsIgnoreCase(opc2)) {
-                consultarPjId();
+                daoViewPF.consultarPjId();
             } else {
                 System.out.println("Opcao inválida para letra: " + opc2);
             }
@@ -87,9 +87,9 @@ public class Testes {
             break;
         case 5:
            if ("f".equalsIgnoreCase(opc2)) {
-                consultarPfTodos();
+                daoViewPF.consultarPfTodos();
             } else if ("j".equalsIgnoreCase(opc2)) {
-                consultarPjTodos();
+                daoViewPF.consultarPjTodos();
             } else {
                 System.out.println("Opcao inválida para letra: " + opc2);
             }
@@ -103,37 +103,7 @@ public class Testes {
     return null;
 }
      
-     public static void inserirPf(){
-         System.out.println("metodo inserir pessoa Fisica");
-     }
-      public static void inserirPj(){
-         System.out.println("metodo inserir pessoa Juricica");
-     }
-      public static void alterarPfId(){
-         System.out.println("metodo alterar pessoa Fisica");
-     }
-      public static void alterarPjId(){
-         System.out.println("metodo alterar pessoa Juricica");
-     }
-      public static void deletarPfId(){
-         System.out.println("metodo deletar pessoa Fisica");
-     }
-      public static void deletarPjId(){
-         System.out.println("metodo deletar pessoa Juricica");
-     }
-     public static void consultarPfId(){
-         System.out.println("metodo consultarId pessoa Fisica");
-     }
-      public static void consultarPjId(){
-         System.out.println("metodo consultarId pessoa Juricica");
-     }
-       public static void consultarPfTodos(){
-         System.out.println("metodo consultar Todas pessoa Fisica");
-     }
-      public static void consultarPjTodos(){
-         System.out.println("metodo consultar Todas pessoa Juricica");
-     }
-      
+     
     
     
     

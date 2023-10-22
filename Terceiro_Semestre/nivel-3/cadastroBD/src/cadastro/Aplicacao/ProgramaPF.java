@@ -28,12 +28,13 @@ public class ProgramaPF {
         // INSERIR PESSOA FICICA
         //=======================
         
-            /*
-             pf = new PessoaFisica(0, "lika", "rua teste", "belém", "pa", "2222", "jo@joa", 1, "45678");
+            
+            pf = new PessoaFisica(0, "lika linda", "rua teste", "belém", "pa", "2222", "jo@joa", 1, "45678");
             fabricaPF.Inserir(pf);   
-            */
+            
            
            
+            
         //========================
         // BUSCAR POR ID PESSOA FISICA
         //=======================
@@ -47,15 +48,15 @@ public class ProgramaPF {
         //========================
         // ATUALIZAR PESSOA FISICA
         //=======================    
-           
+           /*
         
             int id = 5;
 		pf = (PessoaFisica) fabricaPF.buscarPorId(id);
                 System.out.println("=========================");
 		System.out.println("PF Atual");
-                 System.out.println("=========================");
+                System.out.println("=========================");
                 System.out.println(pf);
-                pf.setNome("leso");
+                pf.setNome("lika feia");
                 pf.setLogradouro("teste2");
                 pf.setCidade("maraba");
                 pf.setEstado("pa");
@@ -65,13 +66,13 @@ public class ProgramaPF {
 		pf.setCpf("567890987");
              
                 fabricaPF.atualizar(pf);
-                 System.out.println("=========================");
+                System.out.println("=========================");
                 System.out.println("Nova PF");
-                 System.out.println("=========================");
+                System.out.println("=========================");
                 System.out.println(pf.toString());
            
                            
-
+                */
         
         
         //========================
@@ -79,9 +80,9 @@ public class ProgramaPF {
         //======================= 
         
             /*
-            int id = 3;
-		fabricaPF.deletar(id);
-		System.out.println("Pessoa Física com Id " + id + " deletado");
+                int id1 = 5;
+		fabricaPF.deletar(id1);
+		System.out.println("Pessoa Física com Id " + id1 + " deletado");
         
             */
         
