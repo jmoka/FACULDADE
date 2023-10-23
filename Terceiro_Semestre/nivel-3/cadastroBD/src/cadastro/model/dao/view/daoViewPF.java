@@ -21,7 +21,7 @@ public class DaoViewPF {
     
     Scanner sc = new Scanner(System.in);
     
-    System.out.println("Vamos Iniciar o Cadastro da Pessoa Física");
+    System.out.println("Vamos Iniciar o Cadastro da Pessoa Fisica");
     System.out.println("Responda as Perguntas");
 
     System.out.println("Qual e o Nome?");    

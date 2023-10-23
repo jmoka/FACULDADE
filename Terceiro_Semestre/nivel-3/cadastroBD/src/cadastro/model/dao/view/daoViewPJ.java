@@ -14,6 +14,11 @@ import cadastro.model.util.Testes;
 
 public class DaoViewPJ {
     
+    //===============================
+            // INCLUIR
+    //===============================
+    
+    
     public static void inserirPJ() {
     EntidadeInterfaceDAO fabricaPJ = FabricaPessoas.PessoaJuridicaFabrica();
     
@@ -22,7 +27,7 @@ public class DaoViewPJ {
     System.out.println("Vamos Iniciar o Cadastro da Pessoa Juridica");
     System.out.println("Responda as Perguntas");
 
-    System.out.println("Qual e a Razão Social?");    
+    System.out.println("Qual e a Razao Social?");    
     String nome = sc.nextLine();
         
     System.out.println("Qual e o Logradouro?");
@@ -55,6 +60,11 @@ public class DaoViewPJ {
     System.out.println(novaPj.toString());
 }
 
+    //===============================
+            // ALTERAR POR ID
+    //===============================
+    
+    
     public static void alterarPjId(Integer id) {
         
     EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
@@ -66,55 +76,42 @@ public class DaoViewPJ {
     System.out.println("=========================");
     System.out.println("PJ Atual");
     System.out.println("=========================");
-    System.out.println(pj);
+    System.err.println(pj);
 
-    System.out.println("Vamos Iniciar a Alteração da Pessoa Jurídica");
+    System.out.println("Vamos Iniciar a Alteracao da Pessoa Juridica");
     
-    System.out.println("O que você gostaria de Trocar");
+    System.out.println("O que voce gostaria de Trocar");
     System.out.println(MenuAlteracao.menuAlteracao());
     String opcaoEscolhida = sc.nextLine();  
-   String textDigitado = Testes.oqAlterar(opcaoEscolhida); 
+    String textDigitado = Testes.oqAlterar(opcaoEscolhida); 
     pj.setNome(textDigitado);
     
-  
-    
-   
-    
-   
-    
-    
-
-  
-
-    /*
-    switch (opcaoEscolhida) {
-        case "1":
-            System.out.println("Qual é a nova Razão Social?");
-            String novaRazaoSocial = sc.nextLine();
-            pj.setNome(novaRazaoSocial);
-            break;
-        case "2":
-            // Lógica para atualizar Logradouro
-            break;
-        case "3":
-            // Lógica para atualizar Cidade
-            break;
-        // Repita para outros campos
-        case "9":
-            System.out.println("Saindo sem alterações.");
-            break;
-        default:
-            System.out.println("Opção inválida.");
-    }
-*/
-
     fabricnpj.atualizar( pj);
 
     System.out.println("=========================");
     System.out.println("Nova PJ");
     System.out.println("=========================");
-    System.out.println(pj.toString());
-     
+    System.err.println(pj.toString());
+        
+    }
     
-}
+    
+     //===============================
+            // BUSCAR POR ID
+    //===============================
+    
+    public static void consultarPjId(Integer id){
+        
+    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+    PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
+    System.err.println(pj);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }

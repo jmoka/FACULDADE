@@ -54,7 +54,7 @@ public class Testes {
             } else if ("j".equalsIgnoreCase(opc2)) {
                 DaoViewPJ.inserirPJ();
             } else {
-                System.out.println("Opcao inválida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + opc2);
             }
             System.out.println("Opcao Escolhida foi a: " + numero);
             break;
@@ -69,7 +69,7 @@ public class Testes {
                 Integer dPj = sc.nextInt(); 
                 DaoViewPJ.alterarPjId(dPj);
             } else {
-                System.out.println("Opcao inválida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + opc2);
             }
             System.out.println("Opcao Escolhida foi a: " + numero);
             break;
@@ -79,7 +79,7 @@ public class Testes {
             } else if ("j".equalsIgnoreCase(opc2)) {
                 DaoViewPJ.deletarPjId();
             } else {
-                System.out.println("Opcao inválida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + opc2);
             }
             System.out.println("Opcao Escolhida foi a: " + numero);
             break;
@@ -87,9 +87,12 @@ public class Testes {
            if ("f".equalsIgnoreCase(opc2)) {
                 DaoViewPF.consultarPfId();
             } else if ("j".equalsIgnoreCase(opc2)) {
-                DaoViewPJ.consultarPjId();
+                
+                System.out.println("Qual e O ID da Pessoa Juridica que Gostaria de Buscar");    
+                Integer idPj = sc.nextInt();
+                DaoViewPJ.consultarPjId(idPj);
             } else {
-                System.out.println("Opcao inválida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + opc2);
             }
             System.out.println("Opcao Escolhida foi a: " + numero);
             break;
@@ -99,12 +102,12 @@ public class Testes {
             } else if ("j".equalsIgnoreCase(opc2)) {
                 DaoViewPJ.consultarPjTodos();
             } else {
-                System.out.println("Opcao inválida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + opc2);
             }
             System.out.println("Opcao Escolhida foi a: " + numero);
             break;
         default:
-            System.out.println("Opcao inválida");
+            System.out.println("Opcao invalida");
             break;
     }
         return null;
@@ -117,27 +120,27 @@ public class Testes {
             String textDigitado = null;
     switch (opcaoEscolhida) {
         case "1":           
-            System.out.println("Qual é a nova Razão Social?");            
+            System.out.println("Qual a a nova Razao Social?");            
             String novaRazaoSocial = sc.nextLine();
             textDigitado = novaRazaoSocial;
                                
             break;
         case "2":
-            System.out.println("Qual é o novo Logradouro?");
+            System.out.println("Qual a o novo Logradouro?");
             String novoLogradouro = sc.nextLine();
             pj.setLogradouro(novoLogradouro);
             break;
         case "3":
-            System.out.println("Qual é a nova Cidade?");
+            System.out.println("Qual a a nova Cidade?");
             String novaCidade = sc.nextLine();
             pj.setCidade(novaCidade);
             break;
         // Repita para outros campos
         case "9":
-            System.out.println("Saindo sem alterações.");
+            System.out.println("Saindo sem alteracoes.");
             break;
         default:
-            System.out.println("Opção inválida.");
+            System.out.println("Opcoe invalida.");
     }
 
     return textDigitado;
