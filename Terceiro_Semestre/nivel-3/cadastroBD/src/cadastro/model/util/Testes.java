@@ -77,7 +77,10 @@ public class Testes {
             if ("f".equalsIgnoreCase(opc2)) {
                 DaoViewPF.deletarPfId();
             } else if ("j".equalsIgnoreCase(opc2)) {
-                DaoViewPJ.deletarPjId();
+                
+                System.out.println("Qual o Id da Pessoa Juridica que Gostaria de Deletar?");
+                Integer dPj = sc.nextInt(); 
+                DaoViewPJ.deletarPj(dPj);
             } else {
                 System.out.println("Opcao invalida para letra: " + opc2);
             }
@@ -100,7 +103,7 @@ public class Testes {
            if ("f".equalsIgnoreCase(opc2)) {
                 DaoViewPF.consultarPfTodos();
             } else if ("j".equalsIgnoreCase(opc2)) {
-                DaoViewPJ.exibirTodosPJ();
+                DaoViewPJ.exibirTodosPj();
             } else {
                 System.out.println("Opcao invalida para letra: " + opc2);
             }

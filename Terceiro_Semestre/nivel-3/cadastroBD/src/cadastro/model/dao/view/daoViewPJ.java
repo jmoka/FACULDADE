@@ -110,7 +110,11 @@ public class DaoViewPJ {
     }
     
     
-    public static void exibirTodosPJ(){
+    
+    //===============================
+            // EXIBIR TODOS
+    //===============================
+    public static void exibirTodosPj(){
     EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
   
     List <PessoaJuridica> list =new ArrayList<>();
@@ -123,4 +127,18 @@ public class DaoViewPJ {
     
         }
     }
+    
+    //===============================
+            // EXIBIR TODOS
+    //===============================
+    
+    public static void deletarPj(Integer id){
+        EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+        PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
+        System.err.println(pj);       
+        fabricnpj.deletar(id);
+	System.out.println("Pessoa Juridica com Id " + id + " deletado");
+    
+    }
+    
 }
