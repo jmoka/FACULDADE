@@ -6,24 +6,22 @@ package cadastro.model.util;
 
 import java.util.Scanner;
 
-public class MenuPrincipal {
+public class MenuAlteracao {
      private Scanner sc;
 
-    public MenuPrincipal() {
+    public MenuAlteracao() {
         // Inicialize o objeto Scanner no construtor
         sc = new Scanner(System.in);
     }
 
-    public static String menuPadraoString() {
+    public static String menuAlteracao() {
         StringBuilder menuText = new StringBuilder();
 
-        menuText.append(">>>>>>>> MENU <<<<<<<<<\n");
-        menuText.append(">>>>>>>> Escolha uma das Opcoes Abaixo <<<<<<<<<\n");
-        menuText.append("1 - Incluir\n");
-        menuText.append("2 - Alterar pelo ID\n");
-        menuText.append("3 - Deletar pelo ID\n");
-        menuText.append("4 - Buscar pelo ID\n");
-        menuText.append("5 - Exibir Todos\n");
+        menuText.append("1 - Nome\n");
+        menuText.append("2 - Endereço\n");
+        menuText.append("3 - Email\n");
+        menuText.append("4 - Telefone\n");
+        menuText.append("5 - Tudo\n");
         menuText.append("0 - Finalizar\n");
         
         return (menuText.toString()); 

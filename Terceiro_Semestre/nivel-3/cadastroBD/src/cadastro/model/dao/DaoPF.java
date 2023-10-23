@@ -183,8 +183,6 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
     }
 }
 
-
-
     @Override
     public PessoaFisica buscarPorNome(String nome) {
     PreparedStatement st = null;

@@ -9,9 +9,11 @@ import java.util.Scanner;
 
 import cadastro.model.fabrica.FabricaPessoas;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
+import cadastro.model.util.MenuAlteracao;
+import cadastro.model.util.Testes;
 
-public class daoViewPJ {
-          
+public class DaoViewPJ {
+    
     public static void inserirPJ() {
     EntidadeInterfaceDAO fabricaPJ = FabricaPessoas.PessoaJuridicaFabrica();
     
@@ -53,22 +55,66 @@ public class daoViewPJ {
     System.out.println(novaPj.toString());
 }
 
-    public static void alterarPjId(){
-         System.out.println("metodo alterar pessoa Juricica");
-     }
+    public static void alterarPjId(Integer id) {
+        
+    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+    PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
+   
     
-    public static void deletarPjId(){
-         System.out.println("metodo deletar pessoa Juricica");
-     }
+    Scanner sc = new Scanner(System.in);
+
+    System.out.println("=========================");
+    System.out.println("PJ Atual");
+    System.out.println("=========================");
+    System.out.println(pj);
+
+    System.out.println("Vamos Iniciar a Alteração da Pessoa Jurídica");
+    
+    System.out.println("O que você gostaria de Trocar");
+    System.out.println(MenuAlteracao.menuAlteracao());
+    String opcaoEscolhida = sc.nextLine();  
+   String textDigitado = Testes.oqAlterar(opcaoEscolhida); 
+    pj.setNome(textDigitado);
+    
+  
+    
    
-    public static void consultarPjId(){
-         System.out.println("metodo consultarId pessoa Juricica");
-     }
+    
    
-    public static void consultarPjTodos(){
-         System.out.println("metodo consultar Todas pessoa Juricica");
-     }
-      
+    
+    
+
+  
+
+    /*
+    switch (opcaoEscolhida) {
+        case "1":
+            System.out.println("Qual é a nova Razão Social?");
+            String novaRazaoSocial = sc.nextLine();
+            pj.setNome(novaRazaoSocial);
+            break;
+        case "2":
+            // Lógica para atualizar Logradouro
+            break;
+        case "3":
+            // Lógica para atualizar Cidade
+            break;
+        // Repita para outros campos
+        case "9":
+            System.out.println("Saindo sem alterações.");
+            break;
+        default:
+            System.out.println("Opção inválida.");
+    }
+*/
+
+    fabricnpj.atualizar( pj);
+
+    System.out.println("=========================");
+    System.out.println("Nova PJ");
+    System.out.println("=========================");
+    System.out.println(pj.toString());
      
     
+}
 }

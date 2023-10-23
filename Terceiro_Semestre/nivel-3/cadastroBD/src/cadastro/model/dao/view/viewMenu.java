@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cadastro.model.dao.view;
-
 import cadastro.model.util.MenuPfPj;
 import cadastro.model.util.MenuPrincipal;
 import cadastro.model.util.Testes;
@@ -45,11 +44,13 @@ public class viewMenu {
     return opcaoEscolhida2;
         
     }   
+  
    
     public static void iniciarAcao1(String opc1, String opc2){
     
         Testes.acaoOpc1(opc1, opc2);
     }
+    
     
     
     

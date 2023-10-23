@@ -13,7 +13,7 @@ import cadastro.model.entidades.PessoaFisica;
 
 
 
-public class daoViewPF {
+public class DaoViewPF {
        
     
     public static void inserirPf() {
@@ -54,7 +54,7 @@ public class daoViewPF {
     System.out.println(novaPf.toString());
 }
 
-    public static void alterarPfId(){
+    public static void alterarPfId(Integer id){
          System.out.println("metodo alterar pessoa Fisica");
      }
    
