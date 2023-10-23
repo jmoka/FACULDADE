@@ -22,7 +22,7 @@ public class Testes {
         try {
             numero = Integer.parseInt(str);
             
-            return (numero >= 0 && numero <= 5);
+            return (numero >= 0 && numero <= 6);
         } 
         catch (NumberFormatException e) {
             return false; 
@@ -104,6 +104,19 @@ public class Testes {
                 DaoViewPF.consultarPfTodos();
             } else if ("j".equalsIgnoreCase(opc2)) {
                 DaoViewPJ.exibirTodosPj();
+            } else {
+                System.out.println("Opcao invalida para letra: " + opc2);
+            }
+           
+            break;
+            
+        case 6:
+           if ("f".equalsIgnoreCase(opc2)) {
+                DaoViewPF.consultarPfTodos();
+            } else if ("j".equalsIgnoreCase(opc2)) {
+                System.out.println("Qual e Nome da Empresa que gastaria de Consultar");    
+                String nomePj = sc.nextLine();                
+                DaoViewPJ.buscarPjNome(nomePj);
             } else {
                 System.out.println("Opcao invalida para letra: " + opc2);
             }

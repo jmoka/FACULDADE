@@ -129,7 +129,7 @@ public class DaoViewPJ {
     }
     
     //===============================
-            // EXIBIR TODOS
+            // DELETAR TODOS
     //===============================
     
     public static void deletarPj(Integer id){
@@ -141,4 +141,14 @@ public class DaoViewPJ {
     
     }
     
+     //===============================
+            // BUSCAR POR NOME
+    //===============================
+    
+    public static void buscarPjNome(String nomePj){
+        EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+        Object pj = fabricnpj.buscarPorNome(nomePj);
+        System.err.println(pj);
+    
+    }
 }

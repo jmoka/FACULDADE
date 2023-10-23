@@ -200,6 +200,13 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
             pj = new PessoaJuridica();
             pj.setIdPessoaJuridica(rs.getInt("idPessoaJuridica"));
             pj.setNome(rs.getString("nome"));
+            pj.setLogradouro(rs.getString("logradouro")); 
+            pj.setCidade(rs.getString("cidade"));
+            pj.setEstado(rs.getString("estado"));
+            pj.setTelefone(rs.getString("telefone"));
+            pj.setEmail(rs.getString("Email"));
+            pj.setIdUsuarioResponsavel(rs.getInt("idUsuario"));
+            pj.setCnpj(rs.getString("cnpj"));
            
         }
 
@@ -212,7 +219,43 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     }
 }
 
+    @Override
+    public List<PessoaJuridica> todosNomes() {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        List<PessoaJuridica> list = new ArrayList<PessoaJuridica>();
+    try {
+        st = conn.prepareStatement(DbMysqlPJ.SqlBuscarPjnome());
+        rs = st.executeQuery();
+        
+        while (rs.next()) {
+            PessoaJuridica pj = new PessoaJuridica();
+            pj.setIdPessoaJuridica(rs.getInt("idPessoaJuridica"));
+            pj.setNome(rs.getString("nome"));
+            pj.setLogradouro(rs.getString("logradouro")); 
+            pj.setCidade(rs.getString("cidade"));
+            pj.setEstado(rs.getString("estado"));
+            pj.setTelefone(rs.getString("telefone"));
+            pj.setEmail(rs.getString("Email"));
+            pj.setIdUsuarioResponsavel(rs.getInt("idUsuario"));
+            pj.setCnpj(rs.getString("cnpj"));
+            
+            list.add(pj);         
+        }        
+        
+        return list;
+        
+    } catch (SQLException e) {
+        throw new DbException(e.getMessage());
+    } finally {
+        DB.fecharStatement(st);
+        DB.fecharResultSet(rs);
+    }
 }
+        
+    }
+
+
     
     
     
