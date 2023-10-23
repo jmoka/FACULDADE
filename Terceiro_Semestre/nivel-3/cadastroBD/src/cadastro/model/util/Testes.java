@@ -100,11 +100,11 @@ public class Testes {
            if ("f".equalsIgnoreCase(opc2)) {
                 DaoViewPF.consultarPfTodos();
             } else if ("j".equalsIgnoreCase(opc2)) {
-                DaoViewPJ.consultarPjTodos();
+                DaoViewPJ.exibirTodosPJ();
             } else {
                 System.out.println("Opcao invalida para letra: " + opc2);
             }
-            System.out.println("Opcao Escolhida foi a: " + numero);
+           
             break;
         default:
             System.out.println("Opcao invalida");

@@ -11,6 +11,8 @@ import cadastro.model.fabrica.FabricaPessoas;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
 import cadastro.model.util.MenuAlteracao;
 import cadastro.model.util.Testes;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DaoViewPJ {
     
@@ -108,10 +110,17 @@ public class DaoViewPJ {
     }
     
     
+    public static void exibirTodosPJ(){
+    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+  
+    List <PessoaJuridica> list =new ArrayList<>();
+    
+    list = fabricnpj.todos(); 
     
     
+    for(PessoaJuridica obj: list) { 
+        System.err.println(obj); 
     
-    
-    
-    
+        }
+    }
 }
