@@ -24,7 +24,8 @@ public class MenuPrincipal {
         menuText.append("3 - Deletar pelo ID\n");
         menuText.append("4 - Buscar pelo ID\n");
         menuText.append("5 - Exibir Todos\n");
-         menuText.append("6 - Buscar pelo Nome\n");
+        menuText.append("6 - Buscar pelo Nome Primeira Ocorrencia\n");
+        menuText.append("7 - Buscar pelo Nome Todas Ocorrencia\n");
         menuText.append("0 - Finalizar\n");
         
         return (menuText.toString()); 

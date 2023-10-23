@@ -142,13 +142,35 @@ public class DaoViewPJ {
     }
     
      //===============================
-            // BUSCAR POR NOME
+            // BUSCAR POR NOME PRIMEIRA OCORRENCIA
     //===============================
     
     public static void buscarPjNome(String nomePj){
         EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
         Object pj = fabricnpj.buscarPorNome(nomePj);
         System.err.println(pj);
+        
+    }
     
+    
+    //===============================
+            // BUSCAR POR NOME TODAS OCORRENCIA
+    //===============================
+    
+    public static void buscarPjNomeTodasOcorrencia(String nomePj) {
+    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+    List<PessoaJuridica> list = fabricnpj.BuscartodosNomes(nomePj);
+    
+    if (list.isEmpty()) {
+        System.out.println("Nenhuma correspondência encontrada para o nome: " + nomePj);
+    } else {
+        for (PessoaJuridica obj : list) {
+            System.err.println(obj);
+        }
     }
 }
+
+
+}
+    
+  

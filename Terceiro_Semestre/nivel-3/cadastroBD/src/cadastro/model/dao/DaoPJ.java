@@ -220,12 +220,14 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
 }
 
     @Override
-    public List<PessoaJuridica> todosNomes() {
+    public List<PessoaJuridica> BuscartodosNomes(String nome) {
         PreparedStatement st = null;
         ResultSet rs = null;
         List<PessoaJuridica> list = new ArrayList<PessoaJuridica>();
     try {
         st = conn.prepareStatement(DbMysqlPJ.SqlBuscarPjnome());
+        
+       st.setString(1, "%" + nome + "%");
         rs = st.executeQuery();
         
         while (rs.next()) {
@@ -252,6 +254,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
         DB.fecharResultSet(rs);
     }
 }
+
         
     }
 

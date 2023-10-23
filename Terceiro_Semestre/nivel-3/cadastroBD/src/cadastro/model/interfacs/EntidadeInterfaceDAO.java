@@ -13,7 +13,7 @@ public interface EntidadeInterfaceDAO<T> {
     T buscarPorId(Integer id);
     List<T> todos();
     T buscarPorNome(String nome);
-    List<T> todosNomes();;
+    List<T> BuscartodosNomes(String nome);;
 }
     
 

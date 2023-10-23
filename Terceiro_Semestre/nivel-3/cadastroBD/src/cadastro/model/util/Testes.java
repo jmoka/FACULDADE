@@ -22,7 +22,7 @@ public class Testes {
         try {
             numero = Integer.parseInt(str);
             
-            return (numero >= 0 && numero <= 6);
+            return (numero >= 0 && numero <= 7);
         } 
         catch (NumberFormatException e) {
             return false; 
@@ -117,6 +117,19 @@ public class Testes {
                 System.out.println("Qual e Nome da Empresa que gastaria de Consultar");    
                 String nomePj = sc.nextLine();                
                 DaoViewPJ.buscarPjNome(nomePj);
+            } else {
+                System.out.println("Opcao invalida para letra: " + opc2);
+            }
+           
+            break;
+            
+         case 7:
+           if ("f".equalsIgnoreCase(opc2)) {
+                DaoViewPF.consultarPfTodos();
+            } else if ("j".equalsIgnoreCase(opc2)) {
+                System.out.println("Qual e Nome da Empresa que gastaria de Consultar");    
+                String nomePj = sc.nextLine();                
+                DaoViewPJ.buscarPjNomeTodasOcorrencia(nomePj);
             } else {
                 System.out.println("Opcao invalida para letra: " + opc2);
             }
