@@ -38,13 +38,15 @@ public class DaoViewUsuario {
 }
 
     //===============================
-            // ALTERAR USUÁRIO POR ID
+            // ALTERAR NOME DO USUÁRIO POR ID
     //===============================   
     
-    public static void alterarUsuarioId(Integer id) {    
+    public static void alterarNomeUsuarioId(Integer id) {    
     Scanner sc = new Scanner(System.in);
-    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();    
-    Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id);   
+    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica(); 
+    Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id); 
+    
+   
     System.out.println("=========================");
     System.out.println("Usuario Atual");
     System.out.println("=========================");
@@ -59,81 +61,55 @@ public class DaoViewUsuario {
     System.err.println(usuario.toString());
        
     }
+    
+     //===============================
+            // ALTERAR SENHA DO USUÁRIO POR ID
+    //===============================   
+    
+    public static void alterarSenhaUsuarioId(Integer id) {    
+    Scanner sc = new Scanner(System.in);
+    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();    
+    Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id);   
+    System.out.println("=========================");
+    System.out.println("Usuario Atual");
+    System.out.println("=========================");
+    System.err.println(usuario);    
+    System.out.println("Qual a Senha do Novo Usuario");    
+    String novaSenha = sc.nextLine();        
+    usuario.setSenha(novaSenha);    
+    fabricaUsuario.atualizar(usuario);
+    System.out.println("=========================");
+    System.out.println("Usuario com Nova Senha");
+    System.out.println("=========================");
+    System.err.println(usuario.toString());
+       
+    }
   
      //===============================
             // BUSCAR USUÁRIO POR ID
     //===============================
     
     public static void consultarUsuarioId(Integer id){        
-    Scanner sc = new Scanner(System.in);
     EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();
     Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id); 
-    System.out.println("=========================");
-    System.out.println("Usuario Encontrado");
-    System.out.println("=========================");
     System.err.println(usuario);   
     
     }
-    /*
-    //===============================
-            // EXIBIR TODOS
-    //===============================
-    public static void exibirTodosPj(){
-    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
-  
-    List <PessoaJuridica> list =new ArrayList<>();
-    
-    list = fabricnpj.todos(); 
-    
-    
-    for(PessoaJuridica obj: list) { 
-        System.err.println(obj); 
-    
-        }
-    }
-    
+        
     //===============================
             // DELETAR TODOS
     //===============================
     
-    public static void deletarPj(Integer id){
-        EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
-        PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
-        System.err.println(pj);       
-        fabricnpj.deletar(id);
-	System.out.println("Pessoa Juridica com Id " + id + " deletado");
+    public static void deletarUsuarioId(Integer id){
+    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();
+    Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id); 
+    fabricaUsuario.deletar(id);
+    System.err.println(usuario);  
+    
     
     }
     
-     //===============================
-            // BUSCAR POR NOME PRIMEIRA OCORRENCIA
-    //===============================
     
-    public static void buscarPjNome(String nomePj){
-        EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
-        Object pj = fabricnpj.buscarPorNome(nomePj);
-        System.err.println(pj);
-        
-    }
-    
-    
-    //===============================
-            // BUSCAR POR NOME TODAS OCORRENCIA
-    //===============================
-    
-    public static void buscarPjNomeTodasOcorrencia(String nomePj) {
-    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
-    List<PessoaJuridica> list = fabricnpj.BuscartodosNomes(nomePj);
-    
-    if (list.isEmpty()) {
-        System.out.println("Nenhuma correspondência encontrada para o nome: " + nomePj);
-    } else {
-        for (PessoaJuridica obj : list) {
-            System.err.println(obj);
-        }
-    }
-}
-*/
 
 }
     

@@ -9,6 +9,8 @@ import cadastro.model.dao.view.DaoViewUsuario;
 import cadastro.model.entidades.Pessoa;
 import cadastro.model.entidades.PessoaJuridica;
 import cadastro.model.entidades.Usuario;
+import cadastro.model.fabrica.FabricaPessoas;
+import cadastro.model.interfacs.EntidadeInterfaceDAO;
 
 import java.util.Scanner;
 
@@ -46,6 +48,8 @@ public class Testes {
     public static Pessoa acaoOpc1(String opc1, String opc2) {
         Integer numero = Integer.parseInt(opc1); // Adicione um ponto e vírgula aqui
         Scanner sc = new Scanner(System.in);
+        EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica(); 
+    
         
     switch (numero) {
         case 1:
@@ -146,19 +150,45 @@ public class Testes {
                 
                  System.out.println("Qual o codigo do Usuario");    
                  Integer codigoEscilhido = sc.nextInt();                  
-                 DaoViewUsuario.alterarUsuarioId(codigoEscilhido);
-                              
+                 DaoViewUsuario.alterarNomeUsuarioId(codigoEscilhido);                       
                 
             } else if ("s".equalsIgnoreCase(opc2)) {
+                
+                System.out.println("Qual o codigo do Usuario");    
+                Integer codigoEscilhido = sc.nextInt();                  
+                DaoViewUsuario.alterarSenhaUsuarioId(codigoEscilhido);
             }           
             break;
-            case 10: 
-               
+            case 10:
+                                
+                System.out.println("Qual o Id do Usuario que gostaria de Consultar");
+                Integer idEscolhido = sc.nextInt();
+                Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(idEscolhido);
                 
-                
-            
+                if(usuario==null){   
+                    System.err.println("Usuario nao Encontrado");
+                    acaoOpc1("10", null);
+                    }
+                else{
+                    
+                    DaoViewUsuario.consultarUsuarioId(idEscolhido);
+                    System.out.println("Consulta Reallizada com Sucesso.");
+                }
             break;
+            case 11: 
+                System.out.println("Qual o Id do Usuario que gostaria de Deletar");
+                idEscolhido = sc.nextInt();
+                usuario = (Usuario) fabricaUsuario.buscarPorId(idEscolhido);
                 
+                 if (usuario == null) {
+                    System.err.println("Usuario nao encontrado");
+                    acaoOpc1("11", null);
+               } else {
+                    DaoViewUsuario.deletarUsuarioId(idEscolhido);
+                    System.out.println("Usuario deletado com sucesso.");
+                }         
+            break; 
+ 
         default:
             System.out.println("Opcao invalida");
             break;
