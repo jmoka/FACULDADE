@@ -13,19 +13,19 @@ import java.io.PrintStream;
  *
  * @author jotac
  */
-public class MenuPfPj {
+public class MenuUsuarioOqTrocar {
    
 
-    public MenuPfPj() {
+    public MenuUsuarioOqTrocar() {
        
     }
 
-    public static String menuPfPjString() {
+    public static String menuUsuarioOqTrocar() {
         StringBuilder menuText = new StringBuilder();
 
         menuText.append(">>>>>>>> AGORA ESCOLHA <<<<<<<<<\n");
-        menuText.append("F - Pessoa Fisica\n");
-        menuText.append("J - Pessoa Juridic\n");
+        menuText.append("N - Nome\n");
+        menuText.append("S - Senha\n");
         menuText.append("x - Finalizar\n");
         
         return (menuText.toString()); 

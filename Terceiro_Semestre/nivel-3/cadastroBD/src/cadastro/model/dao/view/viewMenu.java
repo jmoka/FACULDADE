@@ -18,7 +18,7 @@ public class viewMenu {
         String opcaoScolhida = sc.nextLine(); 
         
         while(!(Testes.EInteiros(opcaoScolhida))){
-            System.out.println("Digite Somente Numeros Inteiros ralacionados acima de 0 a 5"); 
+            System.out.println("Digite Somente Numeros Inteiros ralacionados acima de 0 a 11"); 
             opcaoScolhida = sc.nextLine();
             } 
            

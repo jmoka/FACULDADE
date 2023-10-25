@@ -19,6 +19,7 @@ public class MenuPrincipal {
 
         menuText.append(">>>>>>>> MENU <<<<<<<<<\n");
         menuText.append(">>>>>>>> Escolha uma das Opcoes Abaixo <<<<<<<<<\n");
+        menuText.append(">>>>> Cadastro Pessoa Juridica e Pessoa Fisica <<<<<\n");
         menuText.append("1 - Incluir\n");
         menuText.append("2 - Alterar pelo ID\n");
         menuText.append("3 - Deletar pelo ID\n");
@@ -26,6 +27,11 @@ public class MenuPrincipal {
         menuText.append("5 - Exibir Todos\n");
         menuText.append("6 - Buscar pelo Nome Primeira Ocorrencia\n");
         menuText.append("7 - Buscar pelo Nome Todas Ocorrencia\n");
+        menuText.append(">>>>> Cadastro Usuario <<<<<\n");
+        menuText.append("8 - Cadastar Usuario\n");
+        menuText.append("9 - Atualizar Usuario\n");
+        menuText.append("10- Consultar Usuario pelo ID\n");
+        menuText.append("11- Deletar Usuario pelo ID\n");
         menuText.append("0 - Finalizar\n");
         
         return (menuText.toString()); 

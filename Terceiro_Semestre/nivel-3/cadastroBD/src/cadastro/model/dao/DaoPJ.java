@@ -27,7 +27,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     
     
     @Override
-    public void Inserir(PessoaJuridica Obj) {
+    public void inserir(PessoaJuridica Obj) {
         PreparedStatement st = null;
         
     try {

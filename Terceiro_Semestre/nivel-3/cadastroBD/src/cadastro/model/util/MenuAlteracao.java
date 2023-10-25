@@ -4,21 +4,15 @@
  */
 package cadastro.model.util;
 
-import java.util.Scanner;
+
 
 public class MenuAlteracao {
-     private Scanner sc;
-
-    public MenuAlteracao() {
-        // Inicialize o objeto Scanner no construtor
-        sc = new Scanner(System.in);
-    }
 
     public static String menuAlteracao() {
         StringBuilder menuText = new StringBuilder();
 
         menuText.append("1 - Nome\n");
-        menuText.append("2 - Endereço\n");
+        menuText.append("2 - Endereco\n");
         menuText.append("3 - Email\n");
         menuText.append("4 - Telefone\n");
         menuText.append("5 - Tudo\n");

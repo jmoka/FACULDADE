@@ -5,12 +5,12 @@
 package cadastro.model.util;
 import cadastro.model.dao.view.DaoViewPF;
 import cadastro.model.dao.view.DaoViewPJ;
+import cadastro.model.dao.view.DaoViewUsuario;
 import cadastro.model.entidades.Pessoa;
 import cadastro.model.entidades.PessoaJuridica;
+import cadastro.model.entidades.Usuario;
 
 import java.util.Scanner;
-
-
 
 
 public class Testes {
@@ -22,7 +22,7 @@ public class Testes {
         try {
             numero = Integer.parseInt(str);
             
-            return (numero >= 0 && numero <= 7);
+            return (numero >= 0 && numero <= 11);
         } 
         catch (NumberFormatException e) {
             return false; 
@@ -135,6 +135,30 @@ public class Testes {
             }
            
             break;
+            
+         case 8:   
+             DaoViewUsuario.inserirUsuario();
+           
+            break;
+            
+         case 9:   
+             if ("n".equalsIgnoreCase(opc2)) {
+                
+                 System.out.println("Qual o codigo do Usuario");    
+                 Integer codigoEscilhido = sc.nextInt();                  
+                 DaoViewUsuario.alterarUsuarioId(codigoEscilhido);
+                              
+                
+            } else if ("s".equalsIgnoreCase(opc2)) {
+            }           
+            break;
+            case 10: 
+               
+                
+                
+            
+            break;
+                
         default:
             System.out.println("Opcao invalida");
             break;
@@ -157,15 +181,51 @@ public class Testes {
         case "2":
             System.out.println("Qual a o novo Logradouro?");
             String novoLogradouro = sc.nextLine();
+            System.out.println("Qual a Cidade?");
+            String novaCidade = sc.nextLine();
+            System.out.println("Qual a o novo Estado?");
+            String novoEstado = sc.nextLine();
+                                 
             pj.setLogradouro(novoLogradouro);
+            pj.setCidade(novaCidade);
+            pj.setEstado(novoEstado);
+            
             break;
         case "3":
-            System.out.println("Qual a a nova Cidade?");
-            String novaCidade = sc.nextLine();
+            System.out.println("Qual a o Email?");
+            String novoEmail = sc.nextLine();
+            pj.setEmail(novoEmail);
+            break;
+        case "4":
+            System.out.println("Qual e o Telefone?");
+            String novoTelefone = sc.nextLine();
+            pj.setTelefone(novoTelefone);
+            break;            
+        case "5":
+            System.out.println("Qual e a nova Razao Social?");            
+            novaRazaoSocial = sc.nextLine();
+            System.out.println("Qual e o novo Logradouro?");
+            novoLogradouro = sc.nextLine();
+            System.out.println("Qual a Cidade?");
+            novaCidade = sc.nextLine();
+            System.out.println("Qual a o novo Estado?");
+            novoEstado = sc.nextLine();
+            System.out.println("Qual a o Email?");
+            novoEmail = sc.nextLine();
+            System.out.println("Qual e o Telefone?");
+            novoTelefone = sc.nextLine();
+            System.out.println("Qual e o Novo Usuario Responsavel pela Atualização?");
+            novoTelefone = sc.nextLine();
+            
+            pj.setNome(novaRazaoSocial);
+            pj.setLogradouro(novoLogradouro);
             pj.setCidade(novaCidade);
+            pj.setEstado(novoEstado);
+            pj.setEmail(novoEmail);
+            pj.setTelefone(novoTelefone);
             break;
         // Repita para outros campos
-        case "9":
+        case "0":
             System.out.println("Saindo sem alteracoes.");
             break;
         default:
@@ -174,6 +234,69 @@ public class Testes {
 
     return textDigitado;
 }
+    
+    public static String oqAlterarUsuario(String opcaoEscolhida) {
+            Usuario usuario = new Usuario();
+            Scanner sc = new Scanner(System.in);
+            String textDigitado = null;
+    switch (opcaoEscolhida) {
+        case "1":           
+            System.out.println("Qual e o novo Usuario?");            
+            String novoUsuario = sc.nextLine();
+            textDigitado = novoUsuario;
+            System.err.println(textDigitado + "textDigitado");
+            break; 
+     /*
+        case "2":
+            System.out.println("Qual e a nova Senha");
+            String novaSenha = sc.nextLine();
+            usuario.setSenha(novaSenha);            
+            break;
+        case "3":
+            System.out.println("Qual a o Email?");
+            String novoEmail = sc.nextLine();
+            pj.setEmail(novoEmail);
+            break;
+        case "4":
+            System.out.println("Qual e o Telefone?");
+            String novoTelefone = sc.nextLine();
+            pj.setTelefone(novoTelefone);
+            break;            
+        case "5":
+            System.out.println("Qual a a nova Razao Social?");            
+            novaRazaoSocial = sc.nextLine();
+            System.out.println("Qual a o novo Logradouro?");
+            novoLogradouro = sc.nextLine();
+            System.out.println("Qual a Cidade?");
+            novaCidade = sc.nextLine();
+            System.out.println("Qual a o novo Estado?");
+            novoEstado = sc.nextLine();
+            System.out.println("Qual a o Email?");
+            novoEmail = sc.nextLine();
+            System.out.println("Qual e o Telefone?");
+            novoTelefone = sc.nextLine();
+            System.out.println("Qual e o Novo Usuario Responsavel pela Atualização?");
+            novoTelefone = sc.nextLine();
+            
+            pj.setNome(novaRazaoSocial);
+            pj.setLogradouro(novoLogradouro);
+            pj.setCidade(novaCidade);
+            pj.setEstado(novoEstado);
+            pj.setEmail(novoEmail);
+            pj.setTelefone(novoTelefone);
+            break;
+        // Repita para outros campos
+*/
+        case "0":
+            System.out.println("Saindo sem alteracoes.");
+            break;
+        default:
+            System.out.println("Opcoe invalida.");
+    }
+
+    return textDigitado;
+}
+    
     
 
     

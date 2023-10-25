@@ -7,7 +7,7 @@ package cadastro.model.interfacs;
 import java.util.List;
 
 public interface EntidadeInterfaceDAO<T> {
-    void Inserir(T obj);
+    void inserir(T obj);
     void atualizar(T obj);
     void deletar(Integer id);
     T buscarPorId(Integer id);

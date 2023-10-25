@@ -4,113 +4,77 @@
  */
 package cadastro.model.dao.view;
 
-import cadastro.model.entidades.PessoaJuridica;
+import cadastro.model.entidades.Usuario;
 import java.util.Scanner;
 
 import cadastro.model.fabrica.FabricaPessoas;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
-import cadastro.model.util.MenuAlteracao;
+import cadastro.model.util.MenuUsuarioOqTrocar;
 import cadastro.model.util.Testes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaoViewPJ {
+public class DaoViewUsuario {
     
     //===============================
-            // INCLUIR
-    //===============================
+            // INCLUIR USUÁRIO
+    //===============================    
     
-    
-    public static void inserirPJ() {
-    EntidadeInterfaceDAO fabricaPJ = FabricaPessoas.PessoaJuridicaFabrica();
-    
-    Scanner sc = new Scanner(System.in);
-    
-    System.out.println("Vamos Iniciar o Cadastro da Pessoa Juridica");
+    public static void inserirUsuario() {
+    System.err.println("tste");
+    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();  
+    System.err.println("tste");
+    Scanner sc = new Scanner(System.in); 
+    System.out.println("Vamos Iniciar o Cadastro do Usuario");
     System.out.println("Responda as Perguntas");
-
-    System.out.println("Qual e a Razao Social?");    
-    String nome = sc.nextLine();
-        
-    System.out.println("Qual e o Logradouro?");
-    String logradouro = sc.nextLine();
-    
-    System.out.println("Qual e a Cidade?");
-    String cidade = sc.nextLine();
-    
-    System.out.println("Qual e o Estado com 2 digitos, Exemplo: PA, RS, MA?");
-    String estado = sc.nextLine();
-    
-    System.out.println("Qual e o Telefone?");
-    String telefone = sc.nextLine();
-    
-    System.out.println("Qual e o Email?");
-    String email = sc.nextLine();
-    
-     System.out.println("Qual e o CNPJ?");
-     String cnpj = sc.nextLine();
-    
-    System.out.println("Qual e o Codigo do Usuario Responsavel?");
-    Integer idUsuarioResponsavel = sc.nextInt();
-    
-    PessoaJuridica novaPj = new PessoaJuridica(0, nome, logradouro, cidade, estado, telefone, email, idUsuarioResponsavel, cnpj);
-    
-    fabricaPJ.inserir(novaPj); 
-    
-    System.out.println("Cadastro da Pessoa Fisica concluido com sucesso.");
-    
-    System.err.println(novaPj.toString());
+    System.out.println("Qual e o Nome do Usuario");    
+    String nome = sc.nextLine();        
+    System.out.println("Qual a Senha Usuario");
+    String senha = sc.nextLine();    
+    Usuario novoUsuario = new Usuario(0, nome, senha);
+    fabricaUsuario.inserir(novoUsuario);    
+    System.out.println("Cadastro do Usurio concluido com sucesso.");    
+    System.err.println(novoUsuario.toString());
 }
 
     //===============================
-            // ALTERAR POR ID
-    //===============================
+            // ALTERAR USUÁRIO POR ID
+    //===============================   
     
-    
-    public static void alterarPjId(Integer id) {
-        
-    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
-    PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
-   
-    
+    public static void alterarUsuarioId(Integer id) {    
     Scanner sc = new Scanner(System.in);
-
+    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();    
+    Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id);   
     System.out.println("=========================");
-    System.out.println("PJ Atual");
+    System.out.println("Usuario Atual");
     System.out.println("=========================");
-    System.err.println(pj);
-
-    System.out.println("Vamos Iniciar a Alteracao da Pessoa Juridica");
-    
-    System.out.println("O que voce gostaria de Trocar");
-    System.out.println(MenuAlteracao.menuAlteracao());
-    String opcaoEscolhida = sc.nextLine();  
-    String textDigitado = Testes.oqAlterar(opcaoEscolhida); 
-    pj.setNome(textDigitado);
-    
-    fabricnpj.atualizar( pj);
-
+    System.err.println(usuario);    
+    System.out.println("Qual o Nome do Novo Usuario");    
+    String novoUsuario = sc.nextLine();        
+    usuario.setLogin(novoUsuario);    
+    fabricaUsuario.atualizar(usuario);
     System.out.println("=========================");
-    System.out.println("Nova PJ");
+    System.out.println("Novo Usuario");
     System.out.println("=========================");
-    System.err.println(pj.toString());
-        
+    System.err.println(usuario.toString());
+       
     }
-    
-    
+  
      //===============================
-            // BUSCAR POR ID
+            // BUSCAR USUÁRIO POR ID
     //===============================
     
-    public static void consultarPjId(Integer id){
-        
-    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
-    PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
-    System.err.println(pj);
+    public static void consultarUsuarioId(Integer id){        
+    Scanner sc = new Scanner(System.in);
+    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();
+    Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id); 
+    System.out.println("=========================");
+    System.out.println("Usuario Encontrado");
+    System.out.println("=========================");
+    System.err.println(usuario);   
+    
     }
-    
-    
-    
+    /*
     //===============================
             // EXIBIR TODOS
     //===============================
@@ -169,7 +133,7 @@ public class DaoViewPJ {
         }
     }
 }
-
+*/
 
 }
     

@@ -49,7 +49,7 @@ public class DaoViewPF {
     Integer idUsuarioResponsavel = sc.nextInt();
     PessoaFisica novaPf = new PessoaFisica(0, nome, logradouro, cidade, estado, telefone, email, idUsuarioResponsavel, cpf);
     
-    fabricaPF.Inserir(novaPf);     
+    fabricaPF.inserir(novaPf);     
     System.out.println("Cadastro da Pessoa Fisica concluido com sucesso.");    
     System.out.println(novaPf.toString());
 }
