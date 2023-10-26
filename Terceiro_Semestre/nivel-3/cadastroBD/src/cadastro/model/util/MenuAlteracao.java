@@ -15,7 +15,9 @@ public class MenuAlteracao {
         menuText.append("2 - Endereco\n");
         menuText.append("3 - Email\n");
         menuText.append("4 - Telefone\n");
-        menuText.append("5 - Tudo\n");
+        menuText.append("5 - Cnpj\n");
+        menuText.append("6 - Usuario Responsavel pelo Cadastro\n");
+        menuText.append("7 - Tudo\n");
         menuText.append("0 - Finalizar\n");
         
         return (menuText.toString()); 

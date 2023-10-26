@@ -15,22 +15,17 @@ public class ProgramaPrincipal {
      public static void main(String[] args) {
          
          // Verificar o primeiro meu
-         String opc1 = viewMenu.menuPrincipal();
-         System.out.println(opc1);
-         Integer num = Integer.parseInt(opc1);
-         
-         if(num >=1 && num<=7){
-             
-         String opc2 = viewMenu.menuSecundario();
-         
-         System.out.println(opc2);
-         
-          if ("x".equalsIgnoreCase(opc2)) {
+         String numeroOpcaoEscolhida = viewMenu.menuPrincipal();
+         Integer num = Integer.parseInt(numeroOpcaoEscolhida);         
+         if(num >=1 && num<=7){             
+         String letraEscolhida = viewMenu.menuSecundario();        
+     
+          if ("x".equalsIgnoreCase(letraEscolhida)) {
                 System.out.println("Fechando o programa. Adeus!");
                 System.exit(0);   
           } else {
                   
-                viewMenu.iniciarAcao1(opc1, opc2);
+               Testes.acaoOpc1(numeroOpcaoEscolhida, letraEscolhida);
         }     
          
          }else if(num == 8 ){    

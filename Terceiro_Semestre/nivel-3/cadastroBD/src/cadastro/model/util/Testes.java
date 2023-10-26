@@ -36,134 +36,145 @@ public class Testes {
     }
        
     
-     public static String EString(String opcaoScolhida2){
+     public static String EString(String numeroOpcaoEscolhidaAlterarScolhida2){
              
-        if (!EaOpcao(opcaoScolhida2)) {
+        if (!EaOpcao(numeroOpcaoEscolhidaAlterarScolhida2)) {
          return null; 
     }
-    return opcaoScolhida2; //
+    return numeroOpcaoEscolhidaAlterarScolhida2; //
     }
      
      
-    public static Pessoa acaoOpc1(String opc1, String opc2) {
-        Integer numero = Integer.parseInt(opc1); // Adicione um ponto e vírgula aqui
+    public static Pessoa acaoOpc1(String numeroOpcaoEscolhida, String letraEscolhida) {
+         // Adicione um ponto e vírgula aqui
         Scanner sc = new Scanner(System.in);
         EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica(); 
     
         
-    switch (numero) {
-        case 1:
-           if ("f".equalsIgnoreCase(opc2)) {
+    switch (numeroOpcaoEscolhida) {
+        case "1":
+           if ("f".equalsIgnoreCase(letraEscolhida)) {
                 DaoViewPF.inserirPf();
-            } else if ("j".equalsIgnoreCase(opc2)) {
+            } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 DaoViewPJ.inserirPJ();
             } else {
-                System.out.println("Opcao invalida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + letraEscolhida);
             }
-            System.out.println("Opcao Escolhida foi a: " + numero);
+            
             break;
-        case 2:
-           if ("f".equalsIgnoreCase(opc2)) {
+        case "2":
+           if ("f".equalsIgnoreCase(letraEscolhida)) {
                 System.out.println("Qual o Id da Pessoa Fisica que Gostaria de Alterar?");
                 Integer dPf= sc.nextInt(); 
                 DaoViewPF.alterarPfId(dPf);
-            } else if ("j".equalsIgnoreCase(opc2)) {
-                
-                System.out.println("Qual o Id da Pessoa Juridica que Gostaria de Alterar?");
-                Integer dPj = sc.nextInt(); 
-                DaoViewPJ.alterarPjId(dPj);
+            } else if ("j".equalsIgnoreCase(letraEscolhida)) {                
+               System.out.println("Qual o Id da Pessoa Juridica que Gostaria de Alterar?");
+               Integer idPj = sc.nextInt();  
+               EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+               PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(idPj);
+              
+                if(pj==null){   
+                    System.err.println("Pessoa Juridica nao Encontrado");
+                    acaoOpc1("2", "j");
+                    }
+                else{ 
+                                       
+                    DaoViewPJ.alterarPjId(idPj);
+                }      
+                                  
             } else {
-                System.out.println("Opcao invalida para letra: " + opc2);
-            }
-            System.out.println("Opcao Escolhida foi a: " + numero);
+                System.out.println("Opcao invalida para letra: " + letraEscolhida);
+                
+        }
+           
             break;
-        case 3:
-            if ("f".equalsIgnoreCase(opc2)) {
+        case "3":
+            if ("f".equalsIgnoreCase(letraEscolhida)) {
                 DaoViewPF.deletarPfId();
-            } else if ("j".equalsIgnoreCase(opc2)) {
+            } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 
                 System.out.println("Qual o Id da Pessoa Juridica que Gostaria de Deletar?");
                 Integer dPj = sc.nextInt(); 
                 DaoViewPJ.deletarPj(dPj);
             } else {
-                System.out.println("Opcao invalida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + letraEscolhida);
             }
-            System.out.println("Opcao Escolhida foi a: " + numero);
+            
             break;
-        case 4:
-           if ("f".equalsIgnoreCase(opc2)) {
+        case "4":
+           if ("f".equalsIgnoreCase(letraEscolhida)) {
                 DaoViewPF.consultarPfId();
-            } else if ("j".equalsIgnoreCase(opc2)) {
+            } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 
                 System.out.println("Qual e O ID da Pessoa Juridica que Gostaria de Buscar");    
                 Integer idPj = sc.nextInt();
                 DaoViewPJ.consultarPjId(idPj);
             } else {
-                System.out.println("Opcao invalida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + letraEscolhida);
             }
-            System.out.println("Opcao Escolhida foi a: " + numero);
+           
             break;
-        case 5:
-           if ("f".equalsIgnoreCase(opc2)) {
+        case "5":
+           if ("f".equalsIgnoreCase(letraEscolhida)) {
                 DaoViewPF.consultarPfTodos();
-            } else if ("j".equalsIgnoreCase(opc2)) {
+            } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 DaoViewPJ.exibirTodosPj();
             } else {
-                System.out.println("Opcao invalida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + letraEscolhida);
             }
            
             break;
             
-        case 6:
-           if ("f".equalsIgnoreCase(opc2)) {
+        case "6":
+           if ("f".equalsIgnoreCase(letraEscolhida)) {
                 DaoViewPF.consultarPfTodos();
-            } else if ("j".equalsIgnoreCase(opc2)) {
+            } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 System.out.println("Qual e Nome da Empresa que gastaria de Consultar");    
                 String nomePj = sc.nextLine();                
                 DaoViewPJ.buscarPjNome(nomePj);
             } else {
-                System.out.println("Opcao invalida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + letraEscolhida);
             }
            
             break;
             
-         case 7:
-           if ("f".equalsIgnoreCase(opc2)) {
+         case "7":
+           if ("f".equalsIgnoreCase(letraEscolhida)) {
                 DaoViewPF.consultarPfTodos();
-            } else if ("j".equalsIgnoreCase(opc2)) {
+            } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 System.out.println("Qual e Nome da Empresa que gastaria de Consultar");    
                 String nomePj = sc.nextLine();                
                 DaoViewPJ.buscarPjNomeTodasOcorrencia(nomePj);
             } else {
-                System.out.println("Opcao invalida para letra: " + opc2);
+                System.out.println("Opcao invalida para letra: " + letraEscolhida);
             }
            
             break;
             
-         case 8:   
+         case "8":   
              DaoViewUsuario.inserirUsuario();
            
             break;
             
-         case 9:   
-             if ("n".equalsIgnoreCase(opc2)) {
+         case "9":   
+             if ("n".equalsIgnoreCase(letraEscolhida)) {
                 
                  System.out.println("Qual o codigo do Usuario");    
                  Integer codigoEscilhido = sc.nextInt();                  
                  DaoViewUsuario.alterarNomeUsuarioId(codigoEscilhido);                       
                 
-            } else if ("s".equalsIgnoreCase(opc2)) {
+            } else if ("s".equalsIgnoreCase(letraEscolhida)) {
                 
                 System.out.println("Qual o codigo do Usuario");    
                 Integer codigoEscilhido = sc.nextInt();                  
                 DaoViewUsuario.alterarSenhaUsuarioId(codigoEscilhido);
             }           
             break;
-            case 10:
+            case "10":
                                 
                 System.out.println("Qual o Id do Usuario que gostaria de Consultar");
-                Integer idEscolhido = sc.nextInt();
-                Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(idEscolhido);
+                Integer idEsco = sc.nextInt();
+                Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(idEsco);
                 
                 if(usuario==null){   
                     System.err.println("Usuario nao Encontrado");
@@ -171,20 +182,20 @@ public class Testes {
                     }
                 else{
                     
-                    DaoViewUsuario.consultarUsuarioId(idEscolhido);
+                    DaoViewUsuario.consultarUsuarioId(idEsco);
                     System.out.println("Consulta Reallizada com Sucesso.");
                 }
             break;
-            case 11: 
+            case "11": 
                 System.out.println("Qual o Id do Usuario que gostaria de Deletar");
-                idEscolhido = sc.nextInt();
-                usuario = (Usuario) fabricaUsuario.buscarPorId(idEscolhido);
+                idEsco = sc.nextInt();
+                usuario = (Usuario) fabricaUsuario.buscarPorId(idEsco);
                 
                  if (usuario == null) {
                     System.err.println("Usuario nao encontrado");
                     acaoOpc1("11", null);
                } else {
-                    DaoViewUsuario.deletarUsuarioId(idEscolhido);
+                    DaoViewUsuario.deletarUsuarioId(idEsco);
                     System.out.println("Usuario deletado com sucesso.");
                 }         
             break; 
@@ -197,66 +208,54 @@ public class Testes {
 
 }
     
-    public static String oqAlterar(String opcaoEscolhida) {
-            PessoaJuridica pj = new PessoaJuridica();
+    public static Boolean testarOpcaoAlteracao(Integer numeroOpcaoEscolhidaAlterar , Integer idPj){
+        
+         if(numeroOpcaoEscolhidaAlterar >=0 && numeroOpcaoEscolhidaAlterar<=7 ){             
+             return true;
+                  
+         }else{
+             System.err.println("Opção Invalida!!");       
+             DaoViewPJ.alterarPjId(idPj);
+                    
+          }
+        return null;
+      
+    }
+    
+    public static String oqAlterar(Integer numeroOpcaoEscolhida, Integer idPj) {       
+            
+            EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+            String numeroOpcaoEscolhidaAlterar = Integer.toString(numeroOpcaoEscolhida);            
+            PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(idPj);        
             Scanner sc = new Scanner(System.in);
             String textDigitado = null;
-    switch (opcaoEscolhida) {
-        case "1":           
-            System.out.println("Qual a a nova Razao Social?");            
-            String novaRazaoSocial = sc.nextLine();
-            textDigitado = novaRazaoSocial;
-                               
+            
+    switch (numeroOpcaoEscolhidaAlterar) {
+        case "1":             
+            DaoViewPJ.alterarPjNome(idPj);     
             break;
         case "2":
-            System.out.println("Qual a o novo Logradouro?");
-            String novoLogradouro = sc.nextLine();
-            System.out.println("Qual a Cidade?");
-            String novaCidade = sc.nextLine();
-            System.out.println("Qual a o novo Estado?");
-            String novoEstado = sc.nextLine();
-                                 
-            pj.setLogradouro(novoLogradouro);
-            pj.setCidade(novaCidade);
-            pj.setEstado(novoEstado);
-            
+            DaoViewPJ.AlterarPjEndereço(idPj);
             break;
         case "3":
-            System.out.println("Qual a o Email?");
-            String novoEmail = sc.nextLine();
-            pj.setEmail(novoEmail);
+           DaoViewPJ.AlterarPjEmail(idPj);
             break;
         case "4":
-            System.out.println("Qual e o Telefone?");
-            String novoTelefone = sc.nextLine();
-            pj.setTelefone(novoTelefone);
+            DaoViewPJ.AlterarPjTelefone(idPj);
             break;            
         case "5":
-            System.out.println("Qual e a nova Razao Social?");            
-            novaRazaoSocial = sc.nextLine();
-            System.out.println("Qual e o novo Logradouro?");
-            novoLogradouro = sc.nextLine();
-            System.out.println("Qual a Cidade?");
-            novaCidade = sc.nextLine();
-            System.out.println("Qual a o novo Estado?");
-            novoEstado = sc.nextLine();
-            System.out.println("Qual a o Email?");
-            novoEmail = sc.nextLine();
-            System.out.println("Qual e o Telefone?");
-            novoTelefone = sc.nextLine();
-            System.out.println("Qual e o Novo Usuario Responsavel pela Atualização?");
-            novoTelefone = sc.nextLine();
-            
-            pj.setNome(novaRazaoSocial);
-            pj.setLogradouro(novoLogradouro);
-            pj.setCidade(novaCidade);
-            pj.setEstado(novoEstado);
-            pj.setEmail(novoEmail);
-            pj.setTelefone(novoTelefone);
+            DaoViewPJ.AlterarPjCnpj(idPj);
             break;
-        // Repita para outros campos
+        case "6":
+            DaoViewPJ.AlterarPjUsuarioResponsavel(idPj);
+            break;
+            
+        case "7":
+            DaoViewPJ.AlterarPjTodosItens(idPj);
+            break;
+        
         case "0":
-            System.out.println("Saindo sem alteracoes.");
+            System.out.println("Fechando o programa. Adeus!");
             break;
         default:
             System.out.println("Opcoe invalida.");
@@ -265,11 +264,11 @@ public class Testes {
     return textDigitado;
 }
     
-    public static String oqAlterarUsuario(String opcaoEscolhida) {
+    public static String oqAlterarUsuario(String numeroOpcaoEscolhida) {
             Usuario usuario = new Usuario();
             Scanner sc = new Scanner(System.in);
             String textDigitado = null;
-    switch (opcaoEscolhida) {
+    switch (numeroOpcaoEscolhida) {
         case "1":           
             System.out.println("Qual e o novo Usuario?");            
             String novoUsuario = sc.nextLine();
