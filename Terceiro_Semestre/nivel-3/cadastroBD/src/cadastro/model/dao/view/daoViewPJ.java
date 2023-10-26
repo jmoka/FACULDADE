@@ -95,7 +95,7 @@ public class DaoViewPJ {
         pessoaJuridica.setNome(novaPJ);    
         fabricaPJ.atualizar(pessoaJuridica);
         System.out.println("=========================");
-        System.out.println("Razao Social Atualizada");
+        System.out.println("Nome Pessoa Juridica Atualizado com sucesso");
         System.out.println("=========================");
         System.err.println(pessoaJuridica.toString());
     }
@@ -117,6 +117,10 @@ public class DaoViewPJ {
         pessoaJuridica.setCidade(novaCidade);
         pessoaJuridica.setEstado(novoEstado);
         fabricaPJ.atualizar(pessoaJuridica);
+        System.out.println("=========================");
+         System.out.println("Endereco Pessoa Juridica Atualizado com sucesso");
+        System.out.println("=========================");
+        System.err.println(pessoaJuridica.toString());
     }
     
    public static void AlterarPjEmail(Integer idPj){
@@ -127,6 +131,10 @@ public class DaoViewPJ {
         String novoEmail = sc.nextLine();
         pessoaJuridica.setEmail(novoEmail);
         fabricaPJ.atualizar(pessoaJuridica);
+        System.out.println("=========================");
+        System.out.println("Email Pessoa Juridica Atualizado com sucesso");
+        System.out.println("=========================");
+        System.err.println(pessoaJuridica.toString());
         
    }
    
@@ -138,6 +146,9 @@ public class DaoViewPJ {
         String novoTelefone = sc.nextLine();
         pessoaJuridica.setTelefone(novoTelefone);
         fabricaPJ.atualizar(pessoaJuridica);
+        System.out.println("=========================");
+        System.out.println("Telefone Pessoa Juridica Atualizado com sucesso");
+        System.out.println("=========================");
    }
    
    public static void AlterarPjTodosItens(Integer idPj){
@@ -161,7 +172,7 @@ public class DaoViewPJ {
         System.out.println("Qual o novo Telefone?");
         String novoTelefone = sc.nextLine();
         System.out.println("Qual Id do Usuario Responsavel?");
-        String novoUsuario = sc.nextLine();
+        Integer novoUsuario = sc.nextInt();
         
         pessoaJuridica.setNome(novaPJ); 
         pessoaJuridica.setLogradouro(novoLogradouro);
@@ -170,9 +181,12 @@ public class DaoViewPJ {
         pessoaJuridica.setEmail(novoEmail);
         pessoaJuridica.setCnpj(novoCnpj);
         pessoaJuridica.setTelefone(novoTelefone);
-        pessoaJuridica.setCnpj(novoUsuario);
+        pessoaJuridica.setIdUsuarioResponsavel(novoUsuario);
         
         fabricaPJ.atualizar(pessoaJuridica);
+        System.out.println("=========================");
+         System.out.println("Pessoa Juridica Atualizada com sucesso");
+        System.out.println("=========================");
    }
    
    public static void AlterarPjCnpj(Integer idPj){
@@ -183,6 +197,9 @@ public class DaoViewPJ {
        String novoCnpj = sc.nextLine();
        pessoajuridica.setCnpj(novoCnpj);
        fabricaPj.atualizar(pessoajuridica);
+       System.out.println("=========================");
+       System.out.println("Cnpj Pessoa Juridica Atualizado com sucesso");
+       System.out.println("=========================");
      
    }
    
@@ -191,9 +208,12 @@ public class DaoViewPJ {
        PessoaJuridica pessoajuridica = (PessoaJuridica) fabricaPj.buscarPorId(idPj);
        Scanner sc = new Scanner(System.in); 
        System.out.println("Qual Id do Usuario Responsavel?");
-       String novoUsuario = sc.nextLine();
-       pessoajuridica.setCnpj(novoUsuario);
+       Integer IdnovoUsuario = sc.nextInt();
+       pessoajuridica.setIdUsuarioResponsavel(IdnovoUsuario);
        fabricaPj.atualizar(pessoajuridica);
+       System.out.println("=========================");
+       System.out.println("Usuario responsavel pela Pessoa Juridica Atualizado com sucesso");
+       System.out.println("=========================");
        
    }
    
@@ -205,7 +225,7 @@ public class DaoViewPJ {
         
     EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
     PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
-    System.out.println("Peaaos Juridica Encontrada");
+    System.out.println("Pessoa Juridica Encontrada");
     System.err.println(pj.toString());
     
     }
@@ -230,15 +250,15 @@ public class DaoViewPJ {
     }
     
     //===============================
-            // DELETAR TODOS
+            // DELETAR POR ID
     //===============================
     
     public static void deletarPj(Integer id){
         EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
         PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
-        System.err.println(pj);       
         fabricnpj.deletar(id);
-	System.out.println("Pessoa Juridica com Id " + id + " deletado");
+	System.out.println("Pessoa Juridica Encontrada Deletada");
+        System.err.println(pj.toString());
     
     }
     
@@ -249,7 +269,8 @@ public class DaoViewPJ {
     public static void buscarPjNome(String nomePj){
         EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
         Object pj = fabricnpj.buscarPorNome(nomePj);
-        System.err.println(pj);
+        System.out.println("Pessoa Juridica Encontrada");
+        System.err.println(pj.toString());
         
     }
     
@@ -266,6 +287,8 @@ public class DaoViewPJ {
         System.out.println("Nenhuma correspondência encontrada para o nome: " + nomePj);
     } else {
         for (PessoaJuridica obj : list) {
+            System.out.println("Todas a Pessoas Juridicas Encontradas");
+           
             System.err.println(obj);
         }
     }

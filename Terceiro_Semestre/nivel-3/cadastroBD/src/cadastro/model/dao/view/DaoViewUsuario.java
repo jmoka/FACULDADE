@@ -21,9 +21,9 @@ public class DaoViewUsuario {
     //===============================    
     
     public static void inserirUsuario() {
-    System.err.println("tste");
+ 
     EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();  
-    System.err.println("tste");
+  
     Scanner sc = new Scanner(System.in); 
     System.out.println("Vamos Iniciar o Cadastro do Usuario");
     System.out.println("Responda as Perguntas");
@@ -33,7 +33,7 @@ public class DaoViewUsuario {
     String senha = sc.nextLine();    
     Usuario novoUsuario = new Usuario(0, nome, senha);
     fabricaUsuario.inserir(novoUsuario);    
-    System.out.println("Cadastro do Usurio concluido com sucesso.");    
+    System.out.println("Cadastro do Usuario concluido com sucesso.");    
     System.err.println(novoUsuario.toString());
 }
 
@@ -45,19 +45,11 @@ public class DaoViewUsuario {
     Scanner sc = new Scanner(System.in);
     EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica(); 
     Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id); 
-    
-   
-    System.out.println("=========================");
-    System.out.println("Usuario Atual");
-    System.out.println("=========================");
-    System.err.println(usuario);    
     System.out.println("Qual o Nome do Novo Usuario");    
     String novoUsuario = sc.nextLine();        
     usuario.setLogin(novoUsuario);    
     fabricaUsuario.atualizar(usuario);
-    System.out.println("=========================");
-    System.out.println("Novo Usuario");
-    System.out.println("=========================");
+    System.out.println("Nome do Usuario Alterado com sucesso.");  
     System.err.println(usuario.toString());
        
     }
@@ -70,17 +62,11 @@ public class DaoViewUsuario {
     Scanner sc = new Scanner(System.in);
     EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();    
     Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id);   
-    System.out.println("=========================");
-    System.out.println("Usuario Atual");
-    System.out.println("=========================");
-    System.err.println(usuario);    
     System.out.println("Qual a Senha do Novo Usuario");    
     String novaSenha = sc.nextLine();        
     usuario.setSenha(novaSenha);    
     fabricaUsuario.atualizar(usuario);
-    System.out.println("=========================");
-    System.out.println("Usuario com Nova Senha");
-    System.out.println("=========================");
+    System.out.println("Senha do Usuario cadastrada com sucesso.");  
     System.err.println(usuario.toString());
        
     }
@@ -92,6 +78,7 @@ public class DaoViewUsuario {
     public static void consultarUsuarioId(Integer id){        
     EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();
     Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id); 
+    System.out.println("Busca do Usuario concluida com Sucesso.");  
     System.err.println(usuario);   
     
     }
@@ -104,6 +91,7 @@ public class DaoViewUsuario {
     EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();
     Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id); 
     fabricaUsuario.deletar(id);
+    System.out.println("Usuario deletado com sucesso.");  
     System.err.println(usuario);  
     
     
