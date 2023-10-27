@@ -7,6 +7,7 @@ import cadastro.model.dao.view.DaoViewPF;
 import cadastro.model.dao.view.DaoViewPJ;
 import cadastro.model.dao.view.DaoViewUsuario;
 import cadastro.model.entidades.Pessoa;
+import cadastro.model.entidades.PessoaFisica;
 import cadastro.model.entidades.PessoaJuridica;
 import cadastro.model.entidades.Usuario;
 import cadastro.model.fabrica.FabricaPessoas;
@@ -54,7 +55,7 @@ public class Testes {
     switch (numeroOpcaoEscolhida) {
         case "1":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
-                DaoViewPF.inserirPf();
+                DaoViewPF.inserirPF();
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 DaoViewPJ.inserirPJ();
             } else {
@@ -65,8 +66,20 @@ public class Testes {
         case "2":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
                 System.out.println("Qual o Id da Pessoa Fisica que Gostaria de Alterar?");
-                Integer idPf= sc.nextInt(); 
-                DaoViewPF.alterarPfId(idPf);
+                Integer idPf = sc.nextInt();  
+                EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+                PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorId(idPf);
+                
+                if(pf==null){   
+                    System.err.println("Pessoa Fisica nao Encontrada");
+                    acaoOpc1("2", "f");
+                    }
+                else{ 
+                                       
+                    DaoViewPF.alterarPfId(idPf);
+                }    
+                
+                
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {                
                System.out.println("Qual o Id da Pessoa Juridica que Gostaria de Alterar?");
                Integer idPj = sc.nextInt();  
@@ -90,7 +103,21 @@ public class Testes {
             break;
         case "3":
             if ("f".equalsIgnoreCase(letraEscolhida)) {
-                DaoViewPF.deletarPfId();
+                
+                System.out.println("Qual o Id da Pessoa Fisica que Gostaria de Deletar?");
+                Integer idPf = sc.nextInt(); 
+                
+                EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+                PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorId(idPf);
+              
+                if(pf==null){   
+                    System.err.println("Pessoa Fisica nao Encontrada");
+                    acaoOpc1("3", "f");
+                    }
+                else{ 
+                                       
+                     DaoViewPF.deletarPf(idPf);
+                }  
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 
                 System.out.println("Qual o Id da Pessoa Juridica que Gostaria de Deletar?");
@@ -115,7 +142,23 @@ public class Testes {
             break;
         case "4":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
-                DaoViewPF.consultarPfId();
+               
+                System.out.println("Qual o Id da Pessoa Fisica que Gostaria de Buscar?");
+                Integer idPf = sc.nextInt(); 
+                
+                EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+                PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorId(idPf);
+              
+                if(pf==null){   
+                    System.err.println("Pessoa Fisica nao Encontrada");
+                    acaoOpc1("4", "f");
+                    }
+                else{ 
+                                       
+                     DaoViewPF.consultarPfId(idPf);
+                }           
+               
+            
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 
                 System.out.println("Qual e O ID da Pessoa Juridica que Gostaria de Buscar");    
@@ -139,7 +182,7 @@ public class Testes {
             break;
         case "5":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
-                DaoViewPF.consultarPfTodos();
+                 DaoViewPF.exibirTodosPf();
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 DaoViewPJ.exibirTodosPj();
             } else {
@@ -150,7 +193,23 @@ public class Testes {
             
         case "6":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
-                DaoViewPF.consultarPfTodos();
+                
+                System.out.println("Qual e Nome da Pessoa que gastaria de Consultar");    
+                String nomePf = sc.nextLine(); 
+                
+                EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+                PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorNome(nomePf);
+              
+                if(pf==null){   
+                    System.err.println("Pessoa Fisica nao Encontrada");
+                    acaoOpc1("6", "f");
+                    }
+                else{ 
+                                       
+                     DaoViewPF.buscarPfNome(nomePf);
+                } 
+               
+        
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 System.out.println("Qual e Nome da Empresa que gastaria de Consultar");    
                 String nomePj = sc.nextLine(); 
@@ -175,7 +234,22 @@ public class Testes {
             
          case "7":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
-                DaoViewPF.consultarPfTodos();
+                
+                System.out.println("Qual e Nome da Pessoa que gastaria de Consultar");    
+                String nomePf = sc.nextLine();  
+                
+                EntidadeInterfaceDAO fabricaCpf = FabricaPessoas.PessoaFisicaFabrica();
+                PessoaFisica pf = (PessoaFisica) fabricaCpf.buscarPorNome(nomePf);
+              
+                if(pf==null){   
+                    System.err.println("Pessoa Fisica nao Encontrado");
+                    acaoOpc1("7", "f");
+                    }
+                else{ 
+                                       
+                    DaoViewPF.buscarPfNomeTodasOcorrencia(nomePf);
+                }    
+           
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 System.out.println("Qual e Nome da Empresa que gastaria de Consultar");    
                 String nomePj = sc.nextLine();  
@@ -334,6 +408,72 @@ public class Testes {
 
     return textDigitado;
 }
+    
+    
+    public static String oqAlterarPf(Integer numeroOpcaoEscolhida, Integer idPf) {       
+            
+            EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+            String numeroOpcaoEscolhidaAlterar = Integer.toString(numeroOpcaoEscolhida);            
+            PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorId(idPf);        
+            Scanner sc = new Scanner(System.in);
+            String textDigitado = null;
+            
+    switch (numeroOpcaoEscolhidaAlterar) {
+        case "1":             
+            DaoViewPF.alterarPfNome(idPf);     
+            break;
+        case "2":
+            DaoViewPF.AlterarPfEndereço(idPf);
+            break;
+        case "3":
+           DaoViewPF.AlterarPfEmail(idPf);
+            break;
+        case "4":
+            DaoViewPF.AlterarPfTelefone(idPf);
+            break;            
+        case "5":
+            DaoViewPF.AlterarPfCPF(idPf);
+            break;
+        case "6":
+            DaoViewPF.AlterarPfUsuarioResponsavel(idPf);
+            break;
+            
+        case "7":
+            DaoViewPF.AlterarPfTodosItens(idPf);
+            break;
+        
+        case "0":
+            System.out.println("Fechando o programa. Adeus!");
+            break;
+        default:
+            System.out.println("Opcoe invalida.");
+    }
+
+    return textDigitado;
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public static String oqAlterarUsuario(String numeroOpcaoEscolhida) {
             Usuario usuario = new Usuario();

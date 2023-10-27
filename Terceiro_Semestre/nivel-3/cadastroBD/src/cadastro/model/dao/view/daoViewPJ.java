@@ -18,7 +18,7 @@ import java.util.List;
 public class DaoViewPJ {
     
     //===============================
-            // INCLUIR
+            // INCLUIR     
     //===============================
     
     
@@ -257,7 +257,7 @@ public class DaoViewPJ {
         EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
         PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
         fabricnpj.deletar(id);
-	System.out.println("Pessoa Juridica Encontrada Deletada");
+	System.out.println("Pessoa Juridica Deletada");
         System.err.println(pj.toString());
     
     }

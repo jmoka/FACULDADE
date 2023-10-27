@@ -30,8 +30,7 @@ public class ProgramaPF {
         
             
             pf = new PessoaFisica(0, "lika linda", "rua teste", "belém", "pa", "2222", "jo@joa", 1, "45678");
-            fabricaPF.Inserir(pf);   
-            
+            fabricaPF.inserir(pf);       
            
            
             

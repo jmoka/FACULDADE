@@ -27,21 +27,21 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     
     
     @Override
-    public void inserir(PessoaJuridica Obj) {
+    public void inserir(PessoaJuridica ObjPj) {
         PreparedStatement st = null;
         
     try {
             st = conn.prepareStatement(DbMysqlPJ.SqlInserirPj(),
           PreparedStatement.RETURN_GENERATED_KEYS);
-            st.setInt(1, Obj.getIdPessoaJuridica());  
-            st.setString(2, Obj.getNome());
-            st.setString(3, Obj.getLogradouro());
-            st.setString(4, Obj.getCidade());
-            st.setString(5, Obj.getEstado());
-            st.setString(6, Obj.getTelefone());
-            st.setString(7, Obj.getEmail());
-            st.setInt(8, Obj.getIdUsuarioResponsavel());   
-            st.setString(9, Obj.getCnpj());  
+            st.setInt(1, ObjPj.getIdPessoaJuridica());  
+            st.setString(2, ObjPj.getNome());
+            st.setString(3, ObjPj.getLogradouro());
+            st.setString(4, ObjPj.getCidade());
+            st.setString(5, ObjPj.getEstado());
+            st.setString(6, ObjPj.getTelefone());
+            st.setString(7, ObjPj.getEmail());
+            st.setInt(8, ObjPj.getIdUsuarioResponsavel());   
+            st.setString(9, ObjPj.getCnpj());  
                         
             int LinhasAfetadas = st.executeUpdate(); 
             
@@ -49,7 +49,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
                 ResultSet rs = st.getGeneratedKeys(); 
             if(rs.next()) {
                 int id = rs.getInt(1); 
-		Obj.setIdPessoaJuridica(id);
+		ObjPj.setIdPessoaJuridica(id);
 		}
                     DB.fecharResultSet(rs); 
 				 							
@@ -66,19 +66,19 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
 	};
 
     @Override
-    public void atualizar(PessoaJuridica Obj) {
+    public void atualizar(PessoaJuridica ObjPj) {
        		PreparedStatement st = null; 
 		try {
 			st = conn.prepareStatement(DbMysqlPJ.SqlAtualizarPj());
-                        st.setString(1, Obj.getNome());
-                        st.setString(2, Obj.getLogradouro());
-                        st.setString(3, Obj.getCidade());
-                        st.setString(4, Obj.getEstado());
-                        st.setString(5, Obj.getTelefone());
-                        st.setString(6, Obj.getEmail());
-                        st.setInt(7, Obj.getIdUsuarioResponsavel());
-                        st.setString(8, Obj.getCnpj());
-                        st.setInt(9, Obj.getIdPessoaJuridica()); // Esta deve ser a última linha
+                        st.setString(1, ObjPj.getNome());
+                        st.setString(2, ObjPj.getLogradouro());
+                        st.setString(3, ObjPj.getCidade());
+                        st.setString(4, ObjPj.getEstado());
+                        st.setString(5, ObjPj.getTelefone());
+                        st.setString(6, ObjPj.getEmail());
+                        st.setInt(7, ObjPj.getIdUsuarioResponsavel());
+                        st.setString(8, ObjPj.getCnpj());
+                        st.setInt(9, ObjPj.getIdPessoaJuridica()); 
                             
                         st.executeUpdate();
 			
@@ -98,9 +98,9 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
 		try {
 			st = conn.prepareStatement(DbMysqlPJ.SqlDeletarPj());
 			st.setInt(1, id);
-			int rows = st.executeUpdate();
+			int linhaAfetada = st.executeUpdate();
 			
-			if(rows == 0) {
+			if(linhaAfetada == 0) {
 				throw new DbException("Id nao tem no banco de dados , corrija a numeracao");
 			}
 						
@@ -134,7 +134,6 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
                 int idUsuario = rs.getInt("idUsuario");
                 String cnpj = rs.getString("cnpj");
 
-      
                 pessoaJuridica = new PessoaJuridica(idPessoaJuridica, nome, logradouro, cidade, estado, telefone, email, 0, cnpj);
                     
                     }

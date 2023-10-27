@@ -27,35 +27,36 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
     
     
     @Override
-    public void Inserir(PessoaFisica Obj) {
+    public void inserir(PessoaFisica objPf) {
         PreparedStatement st = null;
         
     try {
             st = conn.prepareStatement(DbMysqlPF.SqlInserirPf(),
                     PreparedStatement.RETURN_GENERATED_KEYS);
-            st.setInt(1, Obj.getIdPessoaFisica());  
-            st.setString(2, Obj.getNome());
-            st.setString(3, Obj.getLogradouro());
-            st.setString(4, Obj.getCidade());
-            st.setString(5, Obj.getEstado());
-            st.setString(6, Obj.getTelefone());
-            st.setString(7, Obj.getEmail());
-            st.setInt(8, Obj.getIdUsuarioResponsavel());   
-            st.setString(9, Obj.getCpf());  
+            st.setInt(1, objPf.getIdPessoaFisica());  
+            st.setString(2, objPf.getNome());
+            st.setString(3, objPf.getLogradouro());
+            st.setString(4, objPf.getCidade());
+            st.setString(5, objPf.getEstado());
+            st.setString(6, objPf.getTelefone());
+            st.setString(7, objPf.getEmail());
+            st.setInt(8, objPf.getIdUsuarioResponsavel());   
+            st.setString(9, objPf.getCpf());  
                         
             int LinhasAfetadas = st.executeUpdate(); 
             
             if(LinhasAfetadas > 0 ) {
                 ResultSet rs = st.getGeneratedKeys(); 
-            if(rs.next()) {
-                int id = rs.getInt(1); 
-		Obj.setIdPessoaFisica(id);
-		}
-                    DB.fecharResultSet(rs); 
+                if(rs.next()) {
+                    int id = rs.getInt(1); 
+                    objPf.setIdPessoaFisica(id);
+                    }
+                    
+                DB.fecharResultSet(rs); 
 				 							
-		}else {
-                    throw new DbException("Erro !! Nenhuma linha Afetada");
-			 }	 	
+            }else {
+                throw new DbException("Erro !! Nenhuma linha Afetada");
+                }	 	
     }
     catch(SQLException e) {
             throw new DbException(e.getMessage());
@@ -66,19 +67,19 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
 	};
 
     @Override
-    public void atualizar(PessoaFisica Obj) {
+    public void atualizar(PessoaFisica objPf) {
        		PreparedStatement st = null; 
 		try {
 			st = conn.prepareStatement(DbMysqlPF.SqlAtualizar());
-                        st.setString(1, Obj.getNome());
-                        st.setString(2, Obj.getLogradouro());
-                        st.setString(3, Obj.getCidade());
-                        st.setString(4, Obj.getEstado());
-                        st.setString(5, Obj.getTelefone());
-                        st.setString(6, Obj.getEmail());
-                        st.setInt(7, Obj.getIdUsuarioResponsavel());
-                        st.setString(8, Obj.getCpf());
-                        st.setInt(9, Obj.getIdPessoaFisica()); // Esta deve ser a última linha
+                        st.setString(1, objPf.getNome());
+                        st.setString(2, objPf.getLogradouro());
+                        st.setString(3, objPf.getCidade());
+                        st.setString(4, objPf.getEstado());
+                        st.setString(5, objPf.getTelefone());
+                        st.setString(6, objPf.getEmail());
+                        st.setInt(7, objPf.getIdUsuarioResponsavel());
+                        st.setString(8, objPf.getCpf());
+                        st.setInt(9, objPf.getIdPessoaFisica()); 
                             
                         st.executeUpdate();
 			
@@ -98,9 +99,9 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
 		try {
 			st = conn.prepareStatement(DbMysqlPF.SqlDeletar());
 			st.setInt(1, id);
-			int rows = st.executeUpdate();
+			int linhaAfetada = st.executeUpdate();
 			
-			if(rows == 0) {
+			if(linhaAfetada == 0) {
 				throw new DbException("Id nao tem no banco de dados , corrija a numeracao");
 			}
 	
@@ -202,6 +203,42 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
         }
 
         return pf; 
+    } catch (SQLException e) {
+        throw new DbException(e.getMessage());
+    } finally {
+        DB.fecharStatement(st);
+        DB.fecharResultSet(rs);
+    }
+}
+
+
+    public List<PessoaFisica> BuscartodosNomes(String nome) {
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        List<PessoaFisica> list = new ArrayList<PessoaFisica>();
+    try {
+        st = conn.prepareStatement(DbMysqlPF.SqlBuscarPfnome());
+        
+       st.setString(1, "%" + nome + "%");
+        rs = st.executeQuery();
+        
+        while (rs.next()) {
+            PessoaFisica pf = new PessoaFisica();
+            pf.setIdPessoaFisica(rs.getInt("idPessoaFisica"));
+            pf.setNome(rs.getString("nome"));
+            pf.setLogradouro(rs.getString("logradouro")); 
+            pf.setCidade(rs.getString("cidade"));
+            pf.setEstado(rs.getString("estado"));
+            pf.setTelefone(rs.getString("telefone"));
+            pf.setEmail(rs.getString("Email"));
+            pf.setIdUsuarioResponsavel(rs.getInt("idUsuario"));
+            pf.setCpf(rs.getString("cpf"));
+            
+            list.add(pf);         
+        }        
+        
+        return list;
+        
     } catch (SQLException e) {
         throw new DbException(e.getMessage());
     } finally {
