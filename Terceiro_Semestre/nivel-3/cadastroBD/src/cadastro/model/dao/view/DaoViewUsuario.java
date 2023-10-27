@@ -6,16 +6,14 @@ package cadastro.model.dao.view;
 
 import cadastro.model.entidades.Usuario;
 import java.util.Scanner;
-
 import cadastro.model.fabrica.FabricaPessoas;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
-import cadastro.model.util.MenuUsuarioOqTrocar;
-import cadastro.model.util.Testes;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
-public class DaoViewUsuario {
-    
+public class DaoViewUsuario implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
     //===============================
             // INCLUIR USUÁRIO
     //===============================    

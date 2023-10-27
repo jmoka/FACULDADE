@@ -12,10 +12,14 @@ import cadastro.model.interfacs.EntidadeInterfaceDAO;
 import cadastro.model.util.MenuAlteracao;
 import cadastro.model.util.Testes;
 import static cadastro.model.util.Testes.acaoOpc1;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaoViewPF {
+public class DaoViewPF  implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
     
     //===============================
             // INCLUIR     

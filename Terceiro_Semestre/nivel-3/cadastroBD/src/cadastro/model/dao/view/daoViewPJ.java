@@ -11,12 +11,14 @@ import cadastro.model.fabrica.FabricaPessoas;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
 import cadastro.model.util.MenuAlteracao;
 import cadastro.model.util.Testes;
-import static cadastro.model.util.Testes.acaoOpc1;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class DaoViewPJ {
+public class DaoViewPJ  implements Serializable {
     
+	private static final long serialVersionUID = 1L;
+	
     //===============================
             // INCLUIR     
     //===============================

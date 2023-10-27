@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica> {
+public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
 
     private Connection conn;
     
