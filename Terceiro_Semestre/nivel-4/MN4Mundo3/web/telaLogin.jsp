@@ -22,7 +22,7 @@
         <div class="card card-login mx-auto text-center bg-dark">
             <div class="card-header mx-auto bg-dark">
                 <span> <img src="img/logo.jpg" class="w-75" alt="Logo"> </span><br/>
-                <span class="logo_title mt-5"> Login Dashboard </span>
+                <span class="logo_title mt-5"> Login</span>
             </div>
             <div class="card-body">
                 <form action="telaLoginServlet" method="post">
@@ -48,12 +48,20 @@
                
 
                <p class="text-warning" align="left">
-                  <%= request.getAttribute("msg") %>
-               </p>
+                    <% 
+                    String msg = (String)request.getAttribute("msg");
+                        if(msg == null) {
+                            out.print("Jota Sistemas");
+                        } else {
+                            out.print(msg);
+                        }
+                    %>
+                </p>
+
                 
                 
             </div>
-                <div align="right" class = "mr-md-4"> <a href="cadastrarSenha.jsp">Cadastrar</a></div>
+                <div align="right" class = "mr-md-4"> <a href="cadastrarUsuarioSenha.jsp">Cadastrar</a></div>
         </div>
     </div>
 

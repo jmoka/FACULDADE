@@ -43,15 +43,20 @@
                             <span class="input-group-text"><i class="fas fa-key"></i></span>    
                         </div>
                         <input type="password" name="senha2" class="form-control" placeholder="Confirm Senha" id="senha2">
-                      
+                        
                     </div>
                     
-                    
-                   <div class="input-group-append ml-auto justify-content-end">
+                  
+                   <div class="input-group-append d-flex justify-content-between align-items-center">
                        
-                        <span class="text-primary mr-2 ">   Mostrar Senhas   </span>
+                       <span class="text-primary mr-2 text-align-left"> 
+                           <a href="telaLogin.jsp">Retornar ao Login </a>                           
+                       </span>
+                       
+                       <span>
+                        <span class="text-primary mr-1">   Mostrar Senhas   </span>
                         <input type="checkbox" onclick="mostrarSenha('senha', 'senha2')">
-                        
+                        </span>
                     </div>
 
                     <div class="form-group mt-2">
@@ -60,7 +65,14 @@
                 </form>
 
                 <p class="text-warning" align="left">
-                  <%= request.getAttribute("msg") %>
+                 <% 
+                        String msg = (String)request.getAttribute("msg");
+                        if(msg == null) {
+                            out.print("Jota Sistemas");
+                        } else {
+                            out.print(msg);
+                        }
+                %>
                 </p>
             </div>
         </div>

@@ -33,7 +33,7 @@ public class cadastroUserServlet extends HttpServlet {
 
                         UserServices userServices = new UserServices();
 
-                        if (senha != null && !senha.isEmpty() && senha.equals(senha2) && nome != null && !nome.isEmpty()) {
+                           if (senha != null && !senha.isEmpty() && senha.equals(senha2) && nome != null && !nome.isEmpty()) {
                             try {
                                 Pattern pattern = Pattern.compile(regex);
                                 Matcher matcher = pattern.matcher(senha);
@@ -42,8 +42,7 @@ public class cadastroUserServlet extends HttpServlet {
                                     Integer cadastro = userServices.inserir(nome, senha);
 
                                     if (cadastro == 1) {
-                                       request.setAttribute("msg", "Cadastro Efetuado com Sucesso!<br>" +
-                                                                         "<a href=\"index.jsp\">Retornar ao Login</a>");
+                                       request.setAttribute("msg", "Cadastro Efetuado com Sucesso!<br>");
 
                                     } else {
                                        request.setAttribute("msg","Erro no Cadastro. Tente Novamente.");
@@ -71,10 +70,8 @@ public class cadastroUserServlet extends HttpServlet {
                            request.setAttribute("msg","Senha não Confere");
                         }
                       
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("cadastrarSenha.jsp");
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("cadastrarUsuarioSenha.jsp");
                         dispatcher.forward(request, response);
-
-
     }   
 
      
