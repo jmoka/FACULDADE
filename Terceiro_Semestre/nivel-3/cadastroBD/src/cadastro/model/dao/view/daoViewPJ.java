@@ -7,13 +7,21 @@ package cadastro.model.dao.view;
 import cadastro.model.entidades.PessoaJuridica;
 import java.util.Scanner;
 
-import cadastro.model.fabrica.FabricaPessoas;
+
+import static cadastro.model.fabrica.FabricaPessoas.PessoaJuridicaFabrica;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
-import cadastro.model.util.MenuAlteracao;
-import cadastro.model.util.Testes;
+
+import static cadastro.model.util.MenuAlteracao.menuAlteracao;
+
+import static cadastro.model.util.Testes.acaoOpc1;
+import static cadastro.model.util.Testes.oqAlterar;
+import static cadastro.model.util.Testes.testarOpcaoAlteracao;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
+import static java.lang.System.err;
+import static java.lang.System.in;
+import static java.lang.System.out;
 
 public class DaoViewPJ  implements Serializable {
     
@@ -25,42 +33,42 @@ public class DaoViewPJ  implements Serializable {
     
     
     public static void inserirPJ() {
-    EntidadeInterfaceDAO fabricaPJ = FabricaPessoas.PessoaJuridicaFabrica();
+    EntidadeInterfaceDAO fabricaPJ = PessoaJuridicaFabrica();
     
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(in);
     
-    System.out.println("Vamos Iniciar o Cadastro da Pessoa Juridica");
-    System.out.println("Responda as Perguntas");
+        out.println("Vamos Iniciar o Cadastro da Pessoa Juridica");
+        out.println("Responda as Perguntas");
 
-    System.out.println("Qual e a Razao Social?");    
+        out.println("Qual e a Razao Social?");    
     String nome = sc.nextLine();
         
-    System.out.println("Qual e o Logradouro?");
+        out.println("Qual e o Logradouro?");
     String logradouro = sc.nextLine();
     
-    System.out.println("Qual e a Cidade?");
+        out.println("Qual e a Cidade?");
     String cidade = sc.nextLine();
     
-    System.out.println("Qual e o Estado com 2 digitos, Exemplo: PA, RS, MA?");
+        out.println("Qual e o Estado com 2 digitos, Exemplo: PA, RS, MA?");
     String estado = sc.nextLine();
     
-    System.out.println("Qual e o Telefone?");
+        out.println("Qual e o Telefone?");
     String telefone = sc.nextLine();
     
-    System.out.println("Qual e o Email?");
+        out.println("Qual e o Email?");
     String email = sc.nextLine();
     
-    System.out.println("Qual e o CNPJ?");
+        out.println("Qual e o CNPJ?");
     String cnpj = sc.nextLine();
     
-    System.out.println("Qual e o Codigo do Usuario Responsavel?");
+        out.println("Qual e o Codigo do Usuario Responsavel?");
     Integer idUsuarioResponsavel = sc.nextInt();
     
     PessoaJuridica novaPj = new PessoaJuridica(0, nome, logradouro, cidade, estado, telefone, email, idUsuarioResponsavel, cnpj);
     
     fabricaPJ.inserir(novaPj);    
      
-    System.err.println(novaPj.toString());
+        err.println(novaPj.toString());
 }
 
     //===============================
@@ -68,19 +76,19 @@ public class DaoViewPJ  implements Serializable {
     //===============================
     
     public static void alterarPjId(Integer idPj) {
-    Scanner sc = new Scanner(System.in);          
-    System.out.println("Escolha o que Gostaria de Trocar");   
-    System.out.println(MenuAlteracao.menuAlteracao());
+    Scanner sc = new Scanner(in);          
+        out.println("Escolha o que Gostaria de Trocar");   
+        out.println(menuAlteracao());
     Integer numeroOpcaoEscolhidaAlterar = sc.nextInt();      
-    Boolean testeOpcao =  Testes.testarOpcaoAlteracao(numeroOpcaoEscolhidaAlterar,idPj ); 
+    Boolean testeOpcao =  testarOpcaoAlteracao(numeroOpcaoEscolhidaAlterar,idPj ); 
     
         if(testeOpcao == true){
         
-            Testes.oqAlterar(numeroOpcaoEscolhidaAlterar,idPj);
+            oqAlterar(numeroOpcaoEscolhidaAlterar,idPj);
         
         }else{
     
-            Testes.acaoOpc1(Integer.toString(numeroOpcaoEscolhidaAlterar), Integer.toString(idPj));
+            acaoOpc1(Integer.toString(numeroOpcaoEscolhidaAlterar), Integer.toString(idPj));
         }
         
     
@@ -88,92 +96,92 @@ public class DaoViewPJ  implements Serializable {
     
     
     public static void alterarPjNome(Integer idPj){
-        EntidadeInterfaceDAO fabricaPJ = FabricaPessoas.PessoaJuridicaFabrica(); 
+        EntidadeInterfaceDAO fabricaPJ = PessoaJuridicaFabrica(); 
         PessoaJuridica pessoaJuridica = (PessoaJuridica) fabricaPJ.buscarPorId(idPj); 
-        Scanner sc = new Scanner(System.in);  
+        Scanner sc = new Scanner(in);  
              
-        System.out.println("Qual a Razao Social");    
+        out.println("Qual a Razao Social");    
         String novaPJ = sc.nextLine();        
         pessoaJuridica.setNome(novaPJ);    
         fabricaPJ.atualizar(pessoaJuridica);
-        System.out.println("=========================");
-        System.out.println("Nome Pessoa Juridica Atualizado com sucesso");
-        System.out.println("=========================");
-        System.err.println(pessoaJuridica.toString());
+        out.println("=========================");
+        out.println("Nome Pessoa Juridica Atualizado com sucesso");
+        out.println("=========================");
+        err.println(pessoaJuridica.toString());
     }
     
     
     
     public static void AlterarPjEndereço(Integer idPj){
-        EntidadeInterfaceDAO fabricaPJ = FabricaPessoas.PessoaJuridicaFabrica(); 
+        EntidadeInterfaceDAO fabricaPJ = PessoaJuridicaFabrica(); 
         PessoaJuridica pessoaJuridica = (PessoaJuridica) fabricaPJ.buscarPorId(idPj); 
-        Scanner sc = new Scanner(System.in);  
+        Scanner sc = new Scanner(in);  
         
-        System.out.println("Qual a o novo Logradouro?");
+        out.println("Qual a o novo Logradouro?");
         String novoLogradouro = sc.nextLine();
-        System.out.println("Qual a Cidade?");
+        out.println("Qual a Cidade?");
         String novaCidade = sc.nextLine();
-        System.out.println("Qual a o novo Estado?");
+        out.println("Qual a o novo Estado?");
         String novoEstado = sc.nextLine();
         pessoaJuridica.setLogradouro(novoLogradouro);
         pessoaJuridica.setCidade(novaCidade);
         pessoaJuridica.setEstado(novoEstado);
         fabricaPJ.atualizar(pessoaJuridica);
-        System.out.println("=========================");
-         System.out.println("Endereco Pessoa Juridica Atualizado com sucesso");
-        System.out.println("=========================");
-        System.err.println(pessoaJuridica.toString());
+        out.println("=========================");
+         out.println("Endereco Pessoa Juridica Atualizado com sucesso");
+        out.println("=========================");
+        err.println(pessoaJuridica.toString());
     }
     
    public static void AlterarPjEmail(Integer idPj){
-        EntidadeInterfaceDAO fabricaPJ = FabricaPessoas.PessoaJuridicaFabrica(); 
+        EntidadeInterfaceDAO fabricaPJ = PessoaJuridicaFabrica(); 
         PessoaJuridica pessoaJuridica = (PessoaJuridica) fabricaPJ.buscarPorId(idPj); 
-        Scanner sc = new Scanner(System.in);  
-        System.out.println("Qual o novo Email?");
+        Scanner sc = new Scanner(in);  
+        out.println("Qual o novo Email?");
         String novoEmail = sc.nextLine();
         pessoaJuridica.setEmail(novoEmail);
         fabricaPJ.atualizar(pessoaJuridica);
-        System.out.println("=========================");
-        System.out.println("Email Pessoa Juridica Atualizado com sucesso");
-        System.out.println("=========================");
-        System.err.println(pessoaJuridica.toString());
+        out.println("=========================");
+        out.println("Email Pessoa Juridica Atualizado com sucesso");
+        out.println("=========================");
+        err.println(pessoaJuridica.toString());
         
    }
    
    public static void AlterarPjTelefone(Integer idPj){
-        EntidadeInterfaceDAO fabricaPJ = FabricaPessoas.PessoaJuridicaFabrica(); 
+        EntidadeInterfaceDAO fabricaPJ = PessoaJuridicaFabrica(); 
         PessoaJuridica pessoaJuridica = (PessoaJuridica) fabricaPJ.buscarPorId(idPj); 
-        Scanner sc = new Scanner(System.in);  
-        System.out.println("Qual o novo Telefone?");
+        Scanner sc = new Scanner(in);  
+        out.println("Qual o novo Telefone?");
         String novoTelefone = sc.nextLine();
         pessoaJuridica.setTelefone(novoTelefone);
         fabricaPJ.atualizar(pessoaJuridica);
-        System.out.println("=========================");
-        System.out.println("Telefone Pessoa Juridica Atualizado com sucesso");
-        System.out.println("=========================");
+        out.println("=========================");
+        out.println("Telefone Pessoa Juridica Atualizado com sucesso");
+        out.println("=========================");
    }
    
    public static void AlterarPjTodosItens(Integer idPj){
        
-        EntidadeInterfaceDAO fabricaPJ = FabricaPessoas.PessoaJuridicaFabrica(); 
+        EntidadeInterfaceDAO fabricaPJ = PessoaJuridicaFabrica(); 
         PessoaJuridica pessoaJuridica = (PessoaJuridica) fabricaPJ.buscarPorId(idPj); 
-        Scanner sc = new Scanner(System.in);  
+        Scanner sc = new Scanner(in);  
         
-        System.out.println("Qual a Razao Social");    
+        out.println("Qual a Razao Social");    
         String novaPJ = sc.nextLine();        
-        System.out.println("Qual a o novo Logradouro?");
+        out.println("Qual a o novo Logradouro?");
         String novoLogradouro = sc.nextLine();
-        System.out.println("Qual a Cidade?");
+        out.println("Qual a Cidade?");
         String novaCidade = sc.nextLine();
-        System.out.println("Qual a o novo Estado?");
+        out.println("Qual a o novo Estado?");
         String novoEstado = sc.nextLine(); 
-        System.out.println("Qual o novo Email?");
+        out.println("Qual o novo Email?");
         String novoEmail = sc.nextLine();
-        System.out.println("Qual o novo Cnpj?");
+        out.println("Qual o novo Cnpj?");
         String novoCnpj = sc.nextLine();
-        System.out.println("Qual o novo Telefone?");
+        out.println("Qual o novo Telefone?");
         String novoTelefone = sc.nextLine();
-        System.out.println("Qual Id do Usuario Responsavel?");
+        out.println("Qual Id do Usuario Responsavel?");
         Integer novoUsuario = sc.nextInt();
         
         pessoaJuridica.setNome(novaPJ); 
@@ -186,36 +194,36 @@ public class DaoViewPJ  implements Serializable {
         pessoaJuridica.setIdUsuarioResponsavel(novoUsuario);
         
         fabricaPJ.atualizar(pessoaJuridica);
-        System.out.println("=========================");
-         System.out.println("Pessoa Juridica Atualizada com sucesso");
-        System.out.println("=========================");
+        out.println("=========================");
+         out.println("Pessoa Juridica Atualizada com sucesso");
+        out.println("=========================");
    }
    
    public static void AlterarPjCnpj(Integer idPj){
-       EntidadeInterfaceDAO fabricaPj = FabricaPessoas.PessoaJuridicaFabrica();
+       EntidadeInterfaceDAO fabricaPj = PessoaJuridicaFabrica();
        PessoaJuridica pessoajuridica = (PessoaJuridica) fabricaPj.buscarPorId(idPj);
-       Scanner sc = new Scanner(System.in); 
-       System.out.println("Qual o novo Cnpj?");
+       Scanner sc = new Scanner(in); 
+        out.println("Qual o novo Cnpj?");
        String novoCnpj = sc.nextLine();
        pessoajuridica.setCnpj(novoCnpj);
        fabricaPj.atualizar(pessoajuridica);
-       System.out.println("=========================");
-       System.out.println("Cnpj Pessoa Juridica Atualizado com sucesso");
-       System.out.println("=========================");
+        out.println("=========================");
+        out.println("Cnpj Pessoa Juridica Atualizado com sucesso");
+        out.println("=========================");
      
    }
    
    public static void AlterarPjUsuarioResponsavel(Integer idPj){
-       EntidadeInterfaceDAO fabricaPj = FabricaPessoas.PessoaJuridicaFabrica();
+       EntidadeInterfaceDAO fabricaPj = PessoaJuridicaFabrica();
        PessoaJuridica pessoajuridica = (PessoaJuridica) fabricaPj.buscarPorId(idPj);
-       Scanner sc = new Scanner(System.in); 
-       System.out.println("Qual Id do Usuario Responsavel?");
+       Scanner sc = new Scanner(in); 
+        out.println("Qual Id do Usuario Responsavel?");
        Integer IdnovoUsuario = sc.nextInt();
        pessoajuridica.setIdUsuarioResponsavel(IdnovoUsuario);
        fabricaPj.atualizar(pessoajuridica);
-       System.out.println("=========================");
-       System.out.println("Usuario responsavel pela Pessoa Juridica Atualizado com sucesso");
-       System.out.println("=========================");
+        out.println("=========================");
+        out.println("Usuario responsavel pela Pessoa Juridica Atualizado com sucesso");
+        out.println("=========================");
        
    }
    
@@ -225,10 +233,10 @@ public class DaoViewPJ  implements Serializable {
     
     public static void consultarPjId(Integer id){
         
-    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+    EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
     PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
-    System.out.println("Pessoa Juridica Encontrada");
-    System.err.println(pj.toString());
+        out.println("Pessoa Juridica Encontrada");
+        err.println(pj.toString());
     
     }
     
@@ -238,7 +246,7 @@ public class DaoViewPJ  implements Serializable {
             // EXIBIR TODOS
     //===============================
     public static void exibirTodosPj(){
-    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+    EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
   
     List <PessoaJuridica> list =new ArrayList<>();
     
@@ -246,7 +254,7 @@ public class DaoViewPJ  implements Serializable {
     
     
     for(PessoaJuridica obj: list) { 
-        System.err.println(obj); 
+            err.println(obj); 
     
         }
     }
@@ -256,11 +264,11 @@ public class DaoViewPJ  implements Serializable {
     //===============================
     
     public static void deletarPj(Integer id){
-        EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+        EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
         PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(id);
         fabricnpj.deletar(id);
-	System.out.println("Pessoa Juridica Deletada");
-        System.err.println(pj.toString());
+	out.println("Pessoa Juridica Deletada");
+        err.println(pj.toString());
     
     }
     
@@ -269,10 +277,10 @@ public class DaoViewPJ  implements Serializable {
     //===============================
     
     public static void buscarPjNome(String nomePj){
-        EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+        EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
         Object pj = fabricnpj.buscarPorNome(nomePj);
-        System.out.println("Pessoa Juridica Encontrada");
-        System.err.println(pj.toString());
+        out.println("Pessoa Juridica Encontrada");
+        err.println(pj.toString());
         
     }
     
@@ -282,16 +290,16 @@ public class DaoViewPJ  implements Serializable {
     //===============================
     
     public static void buscarPjNomeTodasOcorrencia(String nomePj) {
-    EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+    EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
     List<PessoaJuridica> list = fabricnpj.BuscartodosNomes(nomePj);
     
     if (list.isEmpty()) {
-        System.out.println("Nenhuma correspondência encontrada para o nome: " + nomePj);
+            out.println("Nenhuma correspondência encontrada para o nome: " + nomePj);
     } else {
         for (PessoaJuridica obj : list) {
-            System.out.println("Todas a Pessoas Juridicas Encontradas");
+                out.println("Todas a Pessoas Juridicas Encontradas");
            
-            System.err.println(obj);
+                err.println(obj);
         }
     }
 }

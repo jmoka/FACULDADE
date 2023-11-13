@@ -7,12 +7,21 @@ package cadastro.model.dao;
 import cadastro.model.entidades.PessoaFisica;
 import cadastro.Db.DbMysqlPF;
 import cadastro.Db.DB;
+import static cadastro.Db.DB.fecharResultSet;
+import static cadastro.Db.DB.fecharStatement;
 import cadastro.Db.DbException;
+import static cadastro.Db.DbMysqlPF.SqlAtualizar;
+import static cadastro.Db.DbMysqlPF.SqlBuscarPfId;
+import static cadastro.Db.DbMysqlPF.SqlBuscarPfnome;
+import static cadastro.Db.DbMysqlPF.SqlDeletar;
+import static cadastro.Db.DbMysqlPF.SqlInserirPf;
+import static cadastro.Db.DbMysqlPF.SqlTodosPf;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
 import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +40,7 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
         PreparedStatement st = null;
         
     try {
-            st = conn.prepareStatement(DbMysqlPF.SqlInserirPf(),
-                    PreparedStatement.RETURN_GENERATED_KEYS);
+            st = conn.prepareStatement(SqlInserirPf(), RETURN_GENERATED_KEYS);
             st.setInt(1, objPf.getIdPessoaFisica());  
             st.setString(2, objPf.getNome());
             st.setString(3, objPf.getLogradouro());
@@ -52,7 +60,7 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
                     objPf.setIdPessoaFisica(id);
                     }
                     
-                DB.fecharResultSet(rs); 
+                fecharResultSet(rs); 
 				 							
             }else {
                 throw new DbException("Erro !! Nenhuma linha Afetada");
@@ -62,7 +70,7 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
             throw new DbException(e.getMessage());
 		}
     finally {
-            DB.fecharStatement(st);
+            fecharStatement(st);
 		}
 	};
 
@@ -70,7 +78,7 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
     public void atualizar(PessoaFisica objPf) {
        		PreparedStatement st = null; 
 		try {
-			st = conn.prepareStatement(DbMysqlPF.SqlAtualizar());
+			st = conn.prepareStatement(SqlAtualizar());
                         st.setString(1, objPf.getNome());
                         st.setString(2, objPf.getLogradouro());
                         st.setString(3, objPf.getCidade());
@@ -88,7 +96,7 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
 			throw new DbException(e.getMessage());
 		}
 		finally {
-			DB.fecharStatement(st);
+			fecharStatement(st);
 		}
 
 	}
@@ -97,7 +105,7 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
     public void deletar(Integer id) {
                 PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(DbMysqlPF.SqlDeletar());
+			st = conn.prepareStatement(SqlDeletar());
 			st.setInt(1, id);
 			int linhaAfetada = st.executeUpdate();
 			
@@ -111,7 +119,7 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
 			throw new DbException("Pesoa Física não delatada , erro ao deletar");
 		}
 		finally{
-			DB.fecharStatement(st);
+			fecharStatement(st);
 		}
     }
 
@@ -122,7 +130,7 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
                 PessoaFisica pessoaFisica = null; 
 
     try {
-                st = conn.prepareStatement(DbMysqlPF.SqlBuscarPfId());
+                st = conn.prepareStatement(SqlBuscarPfId());
                 st.setInt(1, id);
                 rs = st.executeQuery();
     if (rs.next()) {
@@ -143,8 +151,8 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
     } catch (SQLException e) {
                 throw new DbException(e.getMessage());
     } finally {
-                DB.fecharStatement(st);
-                DB.fecharResultSet(rs);
+                fecharStatement(st);
+                fecharResultSet(rs);
     }  
       return pessoaFisica; 
     }
@@ -154,9 +162,9 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
     public List<PessoaFisica> todos() {
     PreparedStatement st = null;
     ResultSet rs = null;
-    List<PessoaFisica> list = new ArrayList<PessoaFisica>();
+    List<PessoaFisica> list = new ArrayList<>();
     try {
-        st = conn.prepareStatement(DbMysqlPF.SqlTodosPf());
+        st = conn.prepareStatement(SqlTodosPf());
         rs = st.executeQuery();
         
         while (rs.next()) {
@@ -179,8 +187,8 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
     } catch (SQLException e) {
         throw new DbException(e.getMessage());
     } finally {
-        DB.fecharStatement(st);
-        DB.fecharResultSet(rs);
+            fecharStatement(st);
+            fecharResultSet(rs);
     }
 }
 
@@ -191,7 +199,7 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
     PessoaFisica pf = null; 
 
     try {
-        st = conn.prepareStatement(DbMysqlPF.SqlBuscarPfnome());
+        st = conn.prepareStatement(SqlBuscarPfnome());
         st.setString(1, "%" + nome + "%");
         rs = st.executeQuery();
 
@@ -206,8 +214,8 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
     } catch (SQLException e) {
         throw new DbException(e.getMessage());
     } finally {
-        DB.fecharStatement(st);
-        DB.fecharResultSet(rs);
+            fecharStatement(st);
+            fecharResultSet(rs);
     }
 }
 
@@ -215,9 +223,9 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
     public List<PessoaFisica> BuscartodosNomes(String nome) {
         PreparedStatement st = null;
         ResultSet rs = null;
-        List<PessoaFisica> list = new ArrayList<PessoaFisica>();
+        List<PessoaFisica> list = new ArrayList<>();
     try {
-        st = conn.prepareStatement(DbMysqlPF.SqlBuscarPfnome());
+        st = conn.prepareStatement(SqlBuscarPfnome());
         
        st.setString(1, "%" + nome + "%");
         rs = st.executeQuery();
@@ -242,8 +250,8 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
     } catch (SQLException e) {
         throw new DbException(e.getMessage());
     } finally {
-        DB.fecharStatement(st);
-        DB.fecharResultSet(rs);
+            fecharStatement(st);
+            fecharResultSet(rs);
     }
 }
 

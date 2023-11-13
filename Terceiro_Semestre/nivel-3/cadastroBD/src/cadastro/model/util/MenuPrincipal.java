@@ -4,6 +4,7 @@
  */
 package cadastro.model.util;
 
+import static java.lang.System.in;
 import java.util.Scanner;
 
 public class MenuPrincipal {
@@ -11,7 +12,7 @@ public class MenuPrincipal {
 
     public MenuPrincipal() {
         // Inicialize o objeto Scanner no construtor
-        sc = new Scanner(System.in);
+        sc = new Scanner(in);
     }
 
     public static String menuPadraoString() {

@@ -7,12 +7,19 @@ package cadastro.model.dao.view;
 import cadastro.model.entidades.PessoaFisica;
 import java.util.Scanner;
 
-import cadastro.model.fabrica.FabricaPessoas;
+
+import static cadastro.model.fabrica.FabricaPessoas.PessoaFisicaFabrica;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
-import cadastro.model.util.MenuAlteracao;
-import cadastro.model.util.Testes;
+
+import static cadastro.model.util.MenuAlteracao.menuAlteracao;
+
 import static cadastro.model.util.Testes.acaoOpc1;
+import static cadastro.model.util.Testes.oqAlterarPf;
+import static cadastro.model.util.Testes.testarOpcaoAlteracao;
 import java.io.Serializable;
+import static java.lang.System.err;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,42 +34,42 @@ public class DaoViewPF  implements Serializable{
     
     
     public static void inserirPF() {
-    EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+    EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica();
     
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(in);
     
-    System.out.println("Vamos Iniciar o Cadastro da Pessoa Fisica");
-    System.out.println("Responda as Perguntas");
+        out.println("Vamos Iniciar o Cadastro da Pessoa Fisica");
+        out.println("Responda as Perguntas");
 
-    System.out.println("Qual e a Nome?");    
+        out.println("Qual e a Nome?");    
     String nome = sc.nextLine();
         
-    System.out.println("Qual e o Logradouro?");
+        out.println("Qual e o Logradouro?");
     String logradouro = sc.nextLine();
     
-    System.out.println("Qual e a Cidade?");
+        out.println("Qual e a Cidade?");
     String cidade = sc.nextLine();
     
-    System.out.println("Qual e o Estado com 2 digitos, Exemplo: PA, RS, MA?");
+        out.println("Qual e o Estado com 2 digitos, Exemplo: PA, RS, MA?");
     String estado = sc.nextLine();
     
-    System.out.println("Qual e o Telefone?");
+        out.println("Qual e o Telefone?");
     String telefone = sc.nextLine();
     
-    System.out.println("Qual e o Email?");
+        out.println("Qual e o Email?");
     String email = sc.nextLine();
     
-    System.out.println("Qual e o CPF?");
+        out.println("Qual e o CPF?");
     String cnpf = sc.nextLine();
     
-    System.out.println("Qual e o Codigo do Usuario Responsavel?");
+        out.println("Qual e o Codigo do Usuario Responsavel?");
     Integer idUsuarioResponsavel = sc.nextInt();
     
     PessoaFisica novaPf = new PessoaFisica(0, nome, logradouro, cidade, estado, telefone, email, idUsuarioResponsavel, cnpf);
     
     fabricaPF.inserir(novaPf);    
      
-    System.err.println(novaPf.toString());
+        err.println(novaPf.toString());
 }
 
     //===============================
@@ -70,19 +77,19 @@ public class DaoViewPF  implements Serializable{
     //===============================
     
     public static void alterarPfId(Integer idPf) {
-    Scanner sc = new Scanner(System.in);          
-    System.out.println("Escolha o que Gostaria de Trocar");   
-    System.out.println(MenuAlteracao.menuAlteracao());
+    Scanner sc = new Scanner(in);          
+        out.println("Escolha o que Gostaria de Trocar");   
+        out.println(menuAlteracao());
     Integer numeroOpcaoEscolhidaAlterar = sc.nextInt();      
-    Boolean testeOpcao =  Testes.testarOpcaoAlteracao(numeroOpcaoEscolhidaAlterar,idPf ); 
+    Boolean testeOpcao =  testarOpcaoAlteracao(numeroOpcaoEscolhidaAlterar,idPf ); 
     
         if(testeOpcao == true){
         
-            Testes.oqAlterarPf(numeroOpcaoEscolhidaAlterar,idPf);
+            oqAlterarPf(numeroOpcaoEscolhidaAlterar,idPf);
         
         }else{
     
-            Testes.acaoOpc1(Integer.toString(numeroOpcaoEscolhidaAlterar), Integer.toString(idPf));
+            acaoOpc1(Integer.toString(numeroOpcaoEscolhidaAlterar), Integer.toString(idPf));
         }
         
     
@@ -90,90 +97,90 @@ public class DaoViewPF  implements Serializable{
     
     
     public static void alterarPfNome(Integer idPf){
-        EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica(); 
+        EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica(); 
         PessoaFisica pessoaFisica = (PessoaFisica) fabricaPF.buscarPorId(idPf); 
-        Scanner sc = new Scanner(System.in);  
+        Scanner sc = new Scanner(in);  
              
-        System.out.println("Qual o Nome");    
+        out.println("Qual o Nome");    
         String novaPF = sc.nextLine();        
         pessoaFisica.setNome(novaPF);    
         fabricaPF.atualizar(pessoaFisica);
-        System.out.println("=========================");
-        System.out.println("Nome Atualizado com sucesso");
-        System.out.println("=========================");
-        System.err.println(pessoaFisica.toString());
+        out.println("=========================");
+        out.println("Nome Atualizado com sucesso");
+        out.println("=========================");
+        err.println(pessoaFisica.toString());
     }
  
     public static void AlterarPfEndereço(Integer idPf){
-        EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica(); 
+        EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica(); 
         PessoaFisica pessoaFisica = (PessoaFisica) fabricaPF.buscarPorId(idPf); 
-        Scanner sc = new Scanner(System.in);  
+        Scanner sc = new Scanner(in);  
         
-        System.out.println("Qual a o novo Logradouro?");
+        out.println("Qual a o novo Logradouro?");
         String novoLogradouro = sc.nextLine();
-        System.out.println("Qual a Cidade?");
+        out.println("Qual a Cidade?");
         String novaCidade = sc.nextLine();
-        System.out.println("Qual a o novo Estado?");
+        out.println("Qual a o novo Estado?");
         String novoEstado = sc.nextLine();
         pessoaFisica.setLogradouro(novoLogradouro);
         pessoaFisica.setCidade(novaCidade);
         pessoaFisica.setEstado(novoEstado);
         fabricaPF.atualizar(pessoaFisica);
-        System.out.println("=========================");
-         System.out.println("Endereco Atualizado com sucesso");
-        System.out.println("=========================");
-        System.err.println(pessoaFisica.toString());
+        out.println("=========================");
+         out.println("Endereco Atualizado com sucesso");
+        out.println("=========================");
+        err.println(pessoaFisica.toString());
     }
     
    public static void AlterarPfEmail(Integer idPf){
-        EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica(); 
+        EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica(); 
         PessoaFisica pessoaFisica = (PessoaFisica) fabricaPF.buscarPorId(idPf); 
-        Scanner sc = new Scanner(System.in);  
-        System.out.println("Qual o novo Email?");
+        Scanner sc = new Scanner(in);  
+        out.println("Qual o novo Email?");
         String novoEmail = sc.nextLine();
         pessoaFisica.setEmail(novoEmail);
         fabricaPF.atualizar(pessoaFisica);
-        System.out.println("=========================");
-        System.out.println("Email Atualizado com sucesso");
-        System.out.println("=========================");
-        System.err.println(pessoaFisica.toString());
+        out.println("=========================");
+        out.println("Email Atualizado com sucesso");
+        out.println("=========================");
+        err.println(pessoaFisica.toString());
         
    }
    
    public static void AlterarPfTelefone(Integer idPf){
-        EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica(); 
+        EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica(); 
         PessoaFisica pessoaFisica = (PessoaFisica) fabricaPF.buscarPorId(idPf); 
-        Scanner sc = new Scanner(System.in);  
-        System.out.println("Qual o novo Telefone?");
+        Scanner sc = new Scanner(in);  
+        out.println("Qual o novo Telefone?");
         String novoTelefone = sc.nextLine();
         pessoaFisica.setTelefone(novoTelefone);
         fabricaPF.atualizar(pessoaFisica);
-        System.out.println("=========================");
-        System.out.println("Telefone Atualizado com sucesso");
-        System.out.println("=========================");
+        out.println("=========================");
+        out.println("Telefone Atualizado com sucesso");
+        out.println("=========================");
    }
    
    public static void AlterarPfTodosItens(Integer idPf){
        
-        EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica(); 
+        EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica(); 
         PessoaFisica pessoaFisica = (PessoaFisica) fabricaPF.buscarPorId(idPf); 
-        Scanner sc = new Scanner(System.in);  
+        Scanner sc = new Scanner(in);  
         
-        System.out.println("Qual o Nome");    
+        out.println("Qual o Nome");    
         String novaPF = sc.nextLine();        
-        System.out.println("Qual a o novo Logradouro?");
+        out.println("Qual a o novo Logradouro?");
         String novoLogradouro = sc.nextLine();
-        System.out.println("Qual a Cidade?");
+        out.println("Qual a Cidade?");
         String novaCidade = sc.nextLine();
-        System.out.println("Qual a o novo Estado?");
+        out.println("Qual a o novo Estado?");
         String novoEstado = sc.nextLine(); 
-        System.out.println("Qual o novo Email?");
+        out.println("Qual o novo Email?");
         String novoEmail = sc.nextLine();
-        System.out.println("Qual o novo CPF?");
+        out.println("Qual o novo CPF?");
         String novoCpf = sc.nextLine();
-        System.out.println("Qual o novo Telefone?");
+        out.println("Qual o novo Telefone?");
         String novoTelefone = sc.nextLine();
-        System.out.println("Qual Id do Usuario Responsavel?");
+        out.println("Qual Id do Usuario Responsavel?");
         Integer novoUsuario = sc.nextInt();
         
         pessoaFisica.setNome(novaPF); 
@@ -186,36 +193,36 @@ public class DaoViewPF  implements Serializable{
         pessoaFisica.setIdUsuarioResponsavel(novoUsuario);
         
         fabricaPF.atualizar(pessoaFisica);
-        System.out.println("=========================");
-         System.out.println("Pessoa Fisica Atualizada com sucesso");
-        System.out.println("=========================");
+        out.println("=========================");
+         out.println("Pessoa Fisica Atualizada com sucesso");
+        out.println("=========================");
    }
    
    public static void AlterarPfCPF(Integer idPf){
-       EntidadeInterfaceDAO fabricaPf = FabricaPessoas.PessoaFisicaFabrica();
+       EntidadeInterfaceDAO fabricaPf = PessoaFisicaFabrica();
        PessoaFisica pessoaFisica = (PessoaFisica) fabricaPf.buscarPorId(idPf);
-       Scanner sc = new Scanner(System.in); 
-       System.out.println("Qual o novo Cnpf?");
+       Scanner sc = new Scanner(in); 
+        out.println("Qual o novo Cnpf?");
        String novoCpf = sc.nextLine();
        pessoaFisica.setCpf(novoCpf);
        fabricaPf.atualizar(pessoaFisica);
-       System.out.println("=========================");
-       System.out.println("CPF Atualizado com sucesso");
-       System.out.println("=========================");
+        out.println("=========================");
+        out.println("CPF Atualizado com sucesso");
+        out.println("=========================");
      
    }
    
    public static void AlterarPfUsuarioResponsavel(Integer idPf){
-       EntidadeInterfaceDAO fabricaPf = FabricaPessoas.PessoaFisicaFabrica();
+       EntidadeInterfaceDAO fabricaPf = PessoaFisicaFabrica();
        PessoaFisica pessoaFisica = (PessoaFisica) fabricaPf.buscarPorId(idPf);
-       Scanner sc = new Scanner(System.in); 
-       System.out.println("Qual Id do Usuario Responsavel?");
+       Scanner sc = new Scanner(in); 
+        out.println("Qual Id do Usuario Responsavel?");
        Integer IdnovoUsuario = sc.nextInt();
        pessoaFisica.setIdUsuarioResponsavel(IdnovoUsuario);
        fabricaPf.atualizar(pessoaFisica);
-       System.out.println("=========================");
-       System.out.println("Usuario responsavel pela Pessoa Física,  Atualizado com sucesso");
-       System.out.println("=========================");
+        out.println("=========================");
+        out.println("Usuario responsavel pela Pessoa Física,  Atualizado com sucesso");
+        out.println("=========================");
        
    }
    
@@ -225,10 +232,10 @@ public class DaoViewPF  implements Serializable{
     
     public static void consultarPfId(Integer id){
         
-    EntidadeInterfaceDAO fabricaPf = FabricaPessoas.PessoaFisicaFabrica();
+    EntidadeInterfaceDAO fabricaPf = PessoaFisicaFabrica();
     PessoaFisica pf = (PessoaFisica) fabricaPf.buscarPorId(id);
-    System.out.println("Pessoa Juridica Encontrada");
-    System.err.println(pf.toString());
+        out.println("Pessoa Juridica Encontrada");
+        err.println(pf.toString());
     
     }
     
@@ -238,7 +245,7 @@ public class DaoViewPF  implements Serializable{
             // EXIBIR TODOS
     //===============================
     public static void exibirTodosPf(){
-    EntidadeInterfaceDAO fabricaPf = FabricaPessoas.PessoaFisicaFabrica();
+    EntidadeInterfaceDAO fabricaPf = PessoaFisicaFabrica();
   
     List <PessoaFisica> list =new ArrayList<>();
     
@@ -246,7 +253,7 @@ public class DaoViewPF  implements Serializable{
     
     
     for(PessoaFisica obj: list) { 
-        System.err.println(obj); 
+            err.println(obj); 
     
         }
     }
@@ -256,11 +263,11 @@ public class DaoViewPF  implements Serializable{
     //===============================
     
     public static void deletarPf(Integer id){
-        EntidadeInterfaceDAO fabricaPf = FabricaPessoas.PessoaFisicaFabrica();
+        EntidadeInterfaceDAO fabricaPf = PessoaFisicaFabrica();
         PessoaFisica pf = (PessoaFisica) fabricaPf.buscarPorId(id);
         fabricaPf.deletar(id);
-	System.out.println("Pessoa Fisica Deletada");
-        System.err.println(pf.toString());
+	out.println("Pessoa Fisica Deletada");
+        err.println(pf.toString());
     
     }
     
@@ -269,10 +276,10 @@ public class DaoViewPF  implements Serializable{
     //===============================
     
     public static void buscarPfNome(String nomePf){
-        EntidadeInterfaceDAO fabricaPf = FabricaPessoas.PessoaFisicaFabrica();
+        EntidadeInterfaceDAO fabricaPf = PessoaFisicaFabrica();
         Object pf = fabricaPf.buscarPorNome(nomePf);
-        System.out.println("Pessoa Fisica Encontrada");
-        System.err.println(pf.toString());
+        out.println("Pessoa Fisica Encontrada");
+        err.println(pf.toString());
         
     }
     
@@ -282,14 +289,14 @@ public class DaoViewPF  implements Serializable{
     //===============================
     
     public static void buscarPfNomeTodasOcorrencia(String nomePf) {
-    EntidadeInterfaceDAO fabricaPf = FabricaPessoas.PessoaFisicaFabrica();
+    EntidadeInterfaceDAO fabricaPf = PessoaFisicaFabrica();
     List<PessoaFisica> list = fabricaPf.BuscartodosNomes(nomePf);
     
     if (list.isEmpty()) {
-        System.out.println("Nenhuma correspondência encontrada para o nome: " + nomePf);
+            out.println("Nenhuma correspondência encontrada para o nome: " + nomePf);
     } else {
         for (PessoaFisica obj : list) {           
-            System.err.println(obj);
+                err.println(obj);
         }
     }
 }

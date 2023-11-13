@@ -5,6 +5,7 @@
 package cadastro.model.implementacao;
 
 import cadastro.model.dao.view.viewMenu;
+import static java.lang.System.out;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,7 +43,7 @@ public class implementacaoMenuTest {
      */
     @Test
     public void testMenuPrincipal() {
-        System.out.println("MenuPrincipal");
+        out.println("MenuPrincipal");
         viewMenu.MenuPrincipal();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -53,7 +54,7 @@ public class implementacaoMenuTest {
      */
     @Test
     public void testTestandoString() {
-        System.out.println("testandoString");
+        out.println("testandoString");
         String opcaoScolhida = "";
         String expResult = "";
         String result = viewMenu.testandoString(opcaoScolhida);

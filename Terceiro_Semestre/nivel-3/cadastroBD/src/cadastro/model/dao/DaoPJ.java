@@ -6,13 +6,22 @@ package cadastro.model.dao;
 
 import cadastro.Db.DbMysqlPJ;
 import cadastro.Db.DB;
+import static cadastro.Db.DB.fecharResultSet;
+import static cadastro.Db.DB.fecharStatement;
 import cadastro.Db.DbException;
+import static cadastro.Db.DbMysqlPJ.SqlAtualizarPj;
+import static cadastro.Db.DbMysqlPJ.SqlBuscarPjId;
+import static cadastro.Db.DbMysqlPJ.SqlBuscarPjnome;
+import static cadastro.Db.DbMysqlPJ.SqlDeletarPj;
+import static cadastro.Db.DbMysqlPJ.SqlInserirPj;
+import static cadastro.Db.DbMysqlPJ.SqlTodosPj;
 import cadastro.model.entidades.PessoaJuridica;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
 import java.sql.Connection; 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +40,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
         PreparedStatement st = null;
         
     try {
-            st = conn.prepareStatement(DbMysqlPJ.SqlInserirPj(),
-          PreparedStatement.RETURN_GENERATED_KEYS);
+            st = conn.prepareStatement(SqlInserirPj(), RETURN_GENERATED_KEYS);
             st.setInt(1, ObjPj.getIdPessoaJuridica());  
             st.setString(2, ObjPj.getNome());
             st.setString(3, ObjPj.getLogradouro());
@@ -51,7 +59,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
                 int id = rs.getInt(1); 
 		ObjPj.setIdPessoaJuridica(id);
 		}
-                    DB.fecharResultSet(rs); 
+                    fecharResultSet(rs); 
 				 							
 		}else {
                     throw new DbException("Erro !! Nenhuma linha Afetada");
@@ -61,7 +69,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
             throw new DbException(e.getMessage());
 		}
     finally {
-            DB.fecharStatement(st);
+            fecharStatement(st);
 		}
 	};
 
@@ -69,7 +77,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     public void atualizar(PessoaJuridica ObjPj) {
        		PreparedStatement st = null; 
 		try {
-			st = conn.prepareStatement(DbMysqlPJ.SqlAtualizarPj());
+			st = conn.prepareStatement(SqlAtualizarPj());
                         st.setString(1, ObjPj.getNome());
                         st.setString(2, ObjPj.getLogradouro());
                         st.setString(3, ObjPj.getCidade());
@@ -87,7 +95,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
 			throw new DbException(e.getMessage());
 		}
 		finally {
-			DB.fecharStatement(st);
+			fecharStatement(st);
 		}
 
 	}
@@ -96,7 +104,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     public void deletar(Integer id) {
                 PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(DbMysqlPJ.SqlDeletarPj());
+			st = conn.prepareStatement(SqlDeletarPj());
 			st.setInt(1, id);
 			int linhaAfetada = st.executeUpdate();
 			
@@ -109,7 +117,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
 			throw new DbException("Pessoa Juridica não delatada , erro ao deletar");
 		}
 		finally{
-			DB.fecharStatement(st);
+			fecharStatement(st);
 		}
     }
 
@@ -120,7 +128,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
                 PessoaJuridica pessoaJuridica = null; 
 
     try {
-                st = conn.prepareStatement(DbMysqlPJ.SqlBuscarPjId());
+                st = conn.prepareStatement(SqlBuscarPjId());
                 st.setInt(1, id);
                 rs = st.executeQuery();
     if (rs.next()) {
@@ -141,8 +149,8 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     } catch (SQLException e) {
                 throw new DbException(e.getMessage());
     } finally {
-                DB.fecharStatement(st);
-                DB.fecharResultSet(rs);
+                fecharStatement(st);
+                fecharResultSet(rs);
     }  
       return pessoaJuridica; 
     }
@@ -152,9 +160,9 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     public List<PessoaJuridica> todos() {
     PreparedStatement st = null;
     ResultSet rs = null;
-    List<PessoaJuridica> list = new ArrayList<PessoaJuridica>();
+    List<PessoaJuridica> list = new ArrayList<>();
     try {
-        st = conn.prepareStatement(DbMysqlPJ.SqlTodosPj());
+        st = conn.prepareStatement(SqlTodosPj());
         rs = st.executeQuery();
         
         while (rs.next()) {
@@ -177,8 +185,8 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     } catch (SQLException e) {
         throw new DbException(e.getMessage());
     } finally {
-        DB.fecharStatement(st);
-        DB.fecharResultSet(rs);
+            fecharStatement(st);
+            fecharResultSet(rs);
     }
 }
 
@@ -191,7 +199,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     PessoaJuridica pj = null;
 
     try {
-        st = conn.prepareStatement(DbMysqlPJ.SqlBuscarPjnome());
+        st = conn.prepareStatement(SqlBuscarPjnome());
         st.setString(1, "%" + nome + "%");
         rs = st.executeQuery();
 
@@ -213,8 +221,8 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     } catch (SQLException e) {
         throw new DbException(e.getMessage());
     } finally {
-        DB.fecharStatement(st);
-        DB.fecharResultSet(rs);
+            fecharStatement(st);
+            fecharResultSet(rs);
     }
 }
 
@@ -222,9 +230,9 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     public List<PessoaJuridica> BuscartodosNomes(String nome) {
         PreparedStatement st = null;
         ResultSet rs = null;
-        List<PessoaJuridica> list = new ArrayList<PessoaJuridica>();
+        List<PessoaJuridica> list = new ArrayList<>();
     try {
-        st = conn.prepareStatement(DbMysqlPJ.SqlBuscarPjnome());
+        st = conn.prepareStatement(SqlBuscarPjnome());
         
        st.setString(1, "%" + nome + "%");
         rs = st.executeQuery();
@@ -249,8 +257,8 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
     } catch (SQLException e) {
         throw new DbException(e.getMessage());
     } finally {
-        DB.fecharStatement(st);
-        DB.fecharResultSet(rs);
+            fecharStatement(st);
+            fecharResultSet(rs);
     }
 }
 

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import static java.sql.DriverManager.getConnection;
 import java.sql.SQLException;
 
 
@@ -24,7 +25,7 @@ public class DB {
             try{
             Properties props = carregarDadosConection();
             String url = props.getProperty("dburl");           
-            conn =  DriverManager.getConnection(url, props);  
+            conn =  getConnection(url, props);  
                
             }
             catch(SQLException e){

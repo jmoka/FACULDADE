@@ -4,14 +4,54 @@
  */
 package cadastro.model.util;
 import cadastro.model.dao.view.DaoViewPF;
+import static cadastro.model.dao.view.DaoViewPF.AlterarPfCPF;
+import static cadastro.model.dao.view.DaoViewPF.AlterarPfEmail;
+import static cadastro.model.dao.view.DaoViewPF.AlterarPfEndereço;
+import static cadastro.model.dao.view.DaoViewPF.AlterarPfTelefone;
+import static cadastro.model.dao.view.DaoViewPF.AlterarPfTodosItens;
+import static cadastro.model.dao.view.DaoViewPF.AlterarPfUsuarioResponsavel;
+import static cadastro.model.dao.view.DaoViewPF.alterarPfId;
+import static cadastro.model.dao.view.DaoViewPF.alterarPfNome;
+import static cadastro.model.dao.view.DaoViewPF.buscarPfNome;
+import static cadastro.model.dao.view.DaoViewPF.buscarPfNomeTodasOcorrencia;
+import static cadastro.model.dao.view.DaoViewPF.consultarPfId;
+import static cadastro.model.dao.view.DaoViewPF.deletarPf;
+import static cadastro.model.dao.view.DaoViewPF.exibirTodosPf;
+import static cadastro.model.dao.view.DaoViewPF.inserirPF;
 import cadastro.model.dao.view.DaoViewPJ;
+import static cadastro.model.dao.view.DaoViewPJ.AlterarPjCnpj;
+import static cadastro.model.dao.view.DaoViewPJ.AlterarPjEmail;
+import static cadastro.model.dao.view.DaoViewPJ.AlterarPjEndereço;
+import static cadastro.model.dao.view.DaoViewPJ.AlterarPjTelefone;
+import static cadastro.model.dao.view.DaoViewPJ.AlterarPjTodosItens;
+import static cadastro.model.dao.view.DaoViewPJ.AlterarPjUsuarioResponsavel;
+import static cadastro.model.dao.view.DaoViewPJ.alterarPjId;
+import static cadastro.model.dao.view.DaoViewPJ.alterarPjNome;
+import static cadastro.model.dao.view.DaoViewPJ.buscarPjNome;
+import static cadastro.model.dao.view.DaoViewPJ.buscarPjNomeTodasOcorrencia;
+import static cadastro.model.dao.view.DaoViewPJ.consultarPjId;
+import static cadastro.model.dao.view.DaoViewPJ.deletarPj;
+import static cadastro.model.dao.view.DaoViewPJ.exibirTodosPj;
+import static cadastro.model.dao.view.DaoViewPJ.inserirPJ;
 import cadastro.model.dao.view.DaoViewUsuario;
+import static cadastro.model.dao.view.DaoViewUsuario.alterarNomeUsuarioId;
+import static cadastro.model.dao.view.DaoViewUsuario.alterarSenhaUsuarioId;
+import static cadastro.model.dao.view.DaoViewUsuario.consultarUsuarioId;
+import static cadastro.model.dao.view.DaoViewUsuario.deletarUsuarioId;
+import static cadastro.model.dao.view.DaoViewUsuario.inserirUsuario;
 import cadastro.model.entidades.Pessoa;
 import cadastro.model.entidades.PessoaFisica;
 import cadastro.model.entidades.PessoaJuridica;
 import cadastro.model.entidades.Usuario;
 import cadastro.model.fabrica.FabricaPessoas;
+import static cadastro.model.fabrica.FabricaPessoas.PessoaFisicaFabrica;
+import static cadastro.model.fabrica.FabricaPessoas.PessoaJuridicaFabrica;
+import static cadastro.model.fabrica.FabricaPessoas.UsuarioFabrica;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
+import static java.lang.Integer.parseInt;
+import static java.lang.System.err;
+import static java.lang.System.in;
+import static java.lang.System.out;
 
 import java.util.Scanner;
 
@@ -23,7 +63,7 @@ public class Testes {
            
         int numero;
         try {
-            numero = Integer.parseInt(str);
+            numero = parseInt(str);
             
             return (numero >= 0 && numero <= 11);
         } 
@@ -48,55 +88,55 @@ public class Testes {
      
     public static Pessoa acaoOpc1(String numeroOpcaoEscolhida, String letraEscolhida) {
          // Adicione um ponto e vírgula aqui
-        Scanner sc = new Scanner(System.in);
-        EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica(); 
+        Scanner sc = new Scanner(in);
+        EntidadeInterfaceDAO fabricaUsuario = UsuarioFabrica(); 
     
         
     switch (numeroOpcaoEscolhida) {
         case "1":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
-                DaoViewPF.inserirPF();
+                inserirPF();
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
-                DaoViewPJ.inserirPJ();
+                inserirPJ();
             } else {
-                System.out.println("Opcao invalida para letra: " + letraEscolhida);
+                out.println("Opcao invalida para letra: " + letraEscolhida);
             }
             
             break;
         case "2":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
-                System.out.println("Qual o Id da Pessoa Fisica que Gostaria de Alterar?");
+                out.println("Qual o Id da Pessoa Fisica que Gostaria de Alterar?");
                 Integer idPf = sc.nextInt();  
-                EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+                EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica();
                 PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorId(idPf);
                 
                 if(pf==null){   
-                    System.err.println("Pessoa Fisica nao Encontrada");
+                    err.println("Pessoa Fisica nao Encontrada");
                     acaoOpc1("2", "f");
                     }
                 else{ 
                                        
-                    DaoViewPF.alterarPfId(idPf);
+                    alterarPfId(idPf);
                 }    
                 
                 
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {                
-               System.out.println("Qual o Id da Pessoa Juridica que Gostaria de Alterar?");
+                out.println("Qual o Id da Pessoa Juridica que Gostaria de Alterar?");
                Integer idPj = sc.nextInt();  
-               EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+               EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
                PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(idPj);
               
                 if(pj==null){   
-                    System.err.println("Pessoa Juridica nao Encontrado");
+                    err.println("Pessoa Juridica nao Encontrado");
                     acaoOpc1("2", "j");
                     }
                 else{ 
                                        
-                    DaoViewPJ.alterarPjId(idPj);
+                    alterarPjId(idPj);
                 }      
                                   
             } else {
-                System.out.println("Opcao invalida para letra: " + letraEscolhida);
+                out.println("Opcao invalida para letra: " + letraEscolhida);
                 
         }
            
@@ -104,89 +144,89 @@ public class Testes {
         case "3":
             if ("f".equalsIgnoreCase(letraEscolhida)) {
                 
-                System.out.println("Qual o Id da Pessoa Fisica que Gostaria de Deletar?");
+                out.println("Qual o Id da Pessoa Fisica que Gostaria de Deletar?");
                 Integer idPf = sc.nextInt(); 
                 
-                EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+                EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica();
                 PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorId(idPf);
               
                 if(pf==null){   
-                    System.err.println("Pessoa Fisica nao Encontrada");
+                    err.println("Pessoa Fisica nao Encontrada");
                     acaoOpc1("3", "f");
                     }
                 else{ 
                                        
-                     DaoViewPF.deletarPf(idPf);
+                     deletarPf(idPf);
                 }  
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 
-                System.out.println("Qual o Id da Pessoa Juridica que Gostaria de Deletar?");
+                out.println("Qual o Id da Pessoa Juridica que Gostaria de Deletar?");
                 Integer idPj = sc.nextInt(); 
                 
-                EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+                EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
                 PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(idPj);
               
                 if(pj==null){   
-                    System.err.println("Pessoa Juridica nao Encontrado");
+                    err.println("Pessoa Juridica nao Encontrado");
                     acaoOpc1("3", "j");
                     }
                 else{ 
                                        
-                     DaoViewPJ.deletarPj(idPj);
+                     deletarPj(idPj);
                 }      
                 
             } else {
-                System.out.println("Opcao invalida para letra: " + letraEscolhida);
+                out.println("Opcao invalida para letra: " + letraEscolhida);
             }
             
             break;
         case "4":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
                
-                System.out.println("Qual o Id da Pessoa Fisica que Gostaria de Buscar?");
+                out.println("Qual o Id da Pessoa Fisica que Gostaria de Buscar?");
                 Integer idPf = sc.nextInt(); 
                 
-                EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+                EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica();
                 PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorId(idPf);
               
                 if(pf==null){   
-                    System.err.println("Pessoa Fisica nao Encontrada");
+                    err.println("Pessoa Fisica nao Encontrada");
                     acaoOpc1("4", "f");
                     }
                 else{ 
                                        
-                     DaoViewPF.consultarPfId(idPf);
+                     consultarPfId(idPf);
                 }           
                
             
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
                 
-                System.out.println("Qual e O ID da Pessoa Juridica que Gostaria de Buscar");    
+                out.println("Qual e O ID da Pessoa Juridica que Gostaria de Buscar");    
                 Integer idPj = sc.nextInt();
                 
-                EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+                EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
                 PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(idPj);
               
                 if(pj==null){   
-                    System.err.println("Pessoa Juridica nao Encontrado");
+                    err.println("Pessoa Juridica nao Encontrado");
                     acaoOpc1("4", "j");
                     }
                 else{ 
                                        
-                    DaoViewPJ.consultarPjId(idPj);
+                    consultarPjId(idPj);
                 }    
             } else {
-                System.out.println("Opcao invalida para letra: " + letraEscolhida);
+                out.println("Opcao invalida para letra: " + letraEscolhida);
             }
            
             break;
         case "5":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
-                 DaoViewPF.exibirTodosPf();
+                 exibirTodosPf();
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
-                DaoViewPJ.exibirTodosPj();
+                exibirTodosPj();
             } else {
-                System.out.println("Opcao invalida para letra: " + letraEscolhida);
+                out.println("Opcao invalida para letra: " + letraEscolhida);
             }
            
             break;
@@ -194,40 +234,40 @@ public class Testes {
         case "6":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
                 
-                System.out.println("Qual e Nome da Pessoa que gastaria de Consultar");    
+                out.println("Qual e Nome da Pessoa que gastaria de Consultar");    
                 String nomePf = sc.nextLine(); 
                 
-                EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+                EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica();
                 PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorNome(nomePf);
               
                 if(pf==null){   
-                    System.err.println("Pessoa Fisica nao Encontrada");
+                    err.println("Pessoa Fisica nao Encontrada");
                     acaoOpc1("6", "f");
                     }
                 else{ 
                                        
-                     DaoViewPF.buscarPfNome(nomePf);
+                     buscarPfNome(nomePf);
                 } 
                
         
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
-                System.out.println("Qual e Nome da Empresa que gastaria de Consultar");    
+                out.println("Qual e Nome da Empresa que gastaria de Consultar");    
                 String nomePj = sc.nextLine(); 
                 
-                EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+                EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
                 PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorNome(nomePj);
               
                 if(pj==null){   
-                    System.err.println("Pessoa Juridica nao Encontrado");
+                    err.println("Pessoa Juridica nao Encontrado");
                     acaoOpc1("6", "j");
                     }
                 else{ 
                                        
-                    DaoViewPJ.buscarPjNome(nomePj);
+                    buscarPjNome(nomePj);
                 }    
               
             } else {
-                System.out.println("Opcao invalida para letra: " + letraEscolhida);
+                out.println("Opcao invalida para letra: " + letraEscolhida);
             }
            
             break;
@@ -235,118 +275,118 @@ public class Testes {
          case "7":
            if ("f".equalsIgnoreCase(letraEscolhida)) {
                 
-                System.out.println("Qual e Nome da Pessoa que gastaria de Consultar");    
+                out.println("Qual e Nome da Pessoa que gastaria de Consultar");    
                 String nomePf = sc.nextLine();  
                 
-                EntidadeInterfaceDAO fabricaCpf = FabricaPessoas.PessoaFisicaFabrica();
+                EntidadeInterfaceDAO fabricaCpf = PessoaFisicaFabrica();
                 PessoaFisica pf = (PessoaFisica) fabricaCpf.buscarPorNome(nomePf);
               
                 if(pf==null){   
-                    System.err.println("Pessoa Fisica nao Encontrado");
+                    err.println("Pessoa Fisica nao Encontrado");
                     acaoOpc1("7", "f");
                     }
                 else{ 
                                        
-                    DaoViewPF.buscarPfNomeTodasOcorrencia(nomePf);
+                    buscarPfNomeTodasOcorrencia(nomePf);
                 }    
            
             } else if ("j".equalsIgnoreCase(letraEscolhida)) {
-                System.out.println("Qual e Nome da Empresa que gastaria de Consultar");    
+                out.println("Qual e Nome da Empresa que gastaria de Consultar");    
                 String nomePj = sc.nextLine();  
                 
-                EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+                EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
                 PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorNome(nomePj);
               
                 if(pj==null){   
-                    System.err.println("Pessoa Juridica nao Encontrado");
+                    err.println("Pessoa Juridica nao Encontrado");
                     acaoOpc1("7", "j");
                     }
                 else{ 
                                        
-                    DaoViewPJ.buscarPjNomeTodasOcorrencia(nomePj);
+                    buscarPjNomeTodasOcorrencia(nomePj);
                 }    
                         
             } else {
-                System.out.println("Opcao invalida para letra: " + letraEscolhida);
+                out.println("Opcao invalida para letra: " + letraEscolhida);
             }
            
             break;
             
          case "8":   
-             DaoViewUsuario.inserirUsuario();
+             inserirUsuario();
            
             break;
             
          case "9":   
              if ("n".equalsIgnoreCase(letraEscolhida)) {
                 
-                System.out.println("Qual o codigo do Usuario");    
+                out.println("Qual o codigo do Usuario");    
                 Integer codigoEscilhido = sc.nextInt();  
                  
-                EntidadeInterfaceDAO fabriUsuario = FabricaPessoas.UsuarioFabrica();
+                EntidadeInterfaceDAO fabriUsuario = UsuarioFabrica();
                 Usuario usuario = (Usuario) fabriUsuario.buscarPorId(codigoEscilhido);
               
                 if(usuario==null){   
-                    System.err.println("Usuario nao Encontrado");
+                    err.println("Usuario nao Encontrado");
                     acaoOpc1("9", "n");
                     }
                 else{ 
-                  DaoViewUsuario.alterarNomeUsuarioId(codigoEscilhido);  
+                    alterarNomeUsuarioId(codigoEscilhido);  
                 }  
            
             } else if ("s".equalsIgnoreCase(letraEscolhida)) {
                 
-                System.out.println("Qual o codigo do Usuario");    
+                out.println("Qual o codigo do Usuario");    
                 Integer codigoEscilhido = sc.nextInt();  
                 
-                EntidadeInterfaceDAO fabriUsuario = FabricaPessoas.UsuarioFabrica();
+                EntidadeInterfaceDAO fabriUsuario = UsuarioFabrica();
                 Usuario usuario = (Usuario) fabriUsuario.buscarPorId(codigoEscilhido);
                 
                 
                 if(usuario==null){   
-                    System.err.println("Usuario nao Encontrado");
+                    err.println("Usuario nao Encontrado");
                     acaoOpc1("9", "s");
                     }
                 else{ 
-                  DaoViewUsuario.alterarSenhaUsuarioId(codigoEscilhido);
+                    alterarSenhaUsuarioId(codigoEscilhido);
                 }  
               
             }           
             break;
             case "10":
                                 
-                System.out.println("Qual o Id do Usuario que gostaria de Consultar");
+                out.println("Qual o Id do Usuario que gostaria de Consultar");
                 Integer codigoEscilhido = sc.nextInt();
-                EntidadeInterfaceDAO fabriUsuario = FabricaPessoas.UsuarioFabrica();
+                EntidadeInterfaceDAO fabriUsuario = UsuarioFabrica();
                 Usuario usuario = (Usuario) fabriUsuario.buscarPorId(codigoEscilhido);
               
                 if(usuario==null){   
-                    System.err.println("Usuario nao Encontrado");
+                    err.println("Usuario nao Encontrado");
                     acaoOpc1("10", "j");
                     }
                 else{ 
-                 DaoViewUsuario.consultarUsuarioId(codigoEscilhido); 
+                 consultarUsuarioId(codigoEscilhido); 
                 } 
                           
             break;
             
             case "11": 
                 
-                System.out.println("Qual o Id do Usuario que gostaria de Deletar");
+                out.println("Qual o Id do Usuario que gostaria de Deletar");
                 codigoEscilhido = sc.nextInt();
                 usuario = (Usuario) fabricaUsuario.buscarPorId(codigoEscilhido);               
                      
                 if(usuario==null){   
-                    System.err.println("Usuario nao Encontrado");
+                    err.println("Usuario nao Encontrado");
                     acaoOpc1("11", "j");
                     }
                 else{ 
-                 DaoViewUsuario.deletarUsuarioId(codigoEscilhido);
+                 deletarUsuarioId(codigoEscilhido);
                 } 
             break; 
  
         default:
-            System.out.println("Opcao invalida");
+            out.println("Opcao invalida");
             break;
     }
         return null;
@@ -359,8 +399,8 @@ public class Testes {
              return true;
                   
          }else{
-             System.err.println("Opção Invalida!!");       
-             DaoViewPJ.alterarPjId(idPj);
+             err.println("Opção Invalida!!");       
+             alterarPjId(idPj);
                     
           }
         return null;
@@ -369,41 +409,41 @@ public class Testes {
     
     public static String oqAlterar(Integer numeroOpcaoEscolhida, Integer idPj) {       
             
-            EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+            EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
             String numeroOpcaoEscolhidaAlterar = Integer.toString(numeroOpcaoEscolhida);            
             PessoaJuridica pj = (PessoaJuridica) fabricnpj.buscarPorId(idPj);        
-            Scanner sc = new Scanner(System.in);
+            Scanner sc = new Scanner(in);
             String textDigitado = null;
             
     switch (numeroOpcaoEscolhidaAlterar) {
         case "1":             
-            DaoViewPJ.alterarPjNome(idPj);     
+            alterarPjNome(idPj);     
             break;
         case "2":
-            DaoViewPJ.AlterarPjEndereço(idPj);
+            AlterarPjEndereço(idPj);
             break;
         case "3":
-           DaoViewPJ.AlterarPjEmail(idPj);
+            AlterarPjEmail(idPj);
             break;
         case "4":
-            DaoViewPJ.AlterarPjTelefone(idPj);
+            AlterarPjTelefone(idPj);
             break;            
         case "5":
-            DaoViewPJ.AlterarPjCnpj(idPj);
+            AlterarPjCnpj(idPj);
             break;
         case "6":
-            DaoViewPJ.AlterarPjUsuarioResponsavel(idPj);
+            AlterarPjUsuarioResponsavel(idPj);
             break;
             
         case "7":
-            DaoViewPJ.AlterarPjTodosItens(idPj);
+            AlterarPjTodosItens(idPj);
             break;
         
         case "0":
-            System.out.println("Fechando o programa. Adeus!");
+            out.println("Fechando o programa. Adeus!");
             break;
         default:
-            System.out.println("Opcoe invalida.");
+            out.println("Opcoe invalida.");
     }
 
     return textDigitado;
@@ -412,41 +452,41 @@ public class Testes {
     
     public static String oqAlterarPf(Integer numeroOpcaoEscolhida, Integer idPf) {       
             
-            EntidadeInterfaceDAO fabricaPF = FabricaPessoas.PessoaFisicaFabrica();
+            EntidadeInterfaceDAO fabricaPF = PessoaFisicaFabrica();
             String numeroOpcaoEscolhidaAlterar = Integer.toString(numeroOpcaoEscolhida);            
             PessoaFisica pf = (PessoaFisica) fabricaPF.buscarPorId(idPf);        
-            Scanner sc = new Scanner(System.in);
+            Scanner sc = new Scanner(in);
             String textDigitado = null;
             
     switch (numeroOpcaoEscolhidaAlterar) {
         case "1":             
-            DaoViewPF.alterarPfNome(idPf);     
+            alterarPfNome(idPf);     
             break;
         case "2":
-            DaoViewPF.AlterarPfEndereço(idPf);
+            AlterarPfEndereço(idPf);
             break;
         case "3":
-           DaoViewPF.AlterarPfEmail(idPf);
+            AlterarPfEmail(idPf);
             break;
         case "4":
-            DaoViewPF.AlterarPfTelefone(idPf);
+            AlterarPfTelefone(idPf);
             break;            
         case "5":
-            DaoViewPF.AlterarPfCPF(idPf);
+            AlterarPfCPF(idPf);
             break;
         case "6":
-            DaoViewPF.AlterarPfUsuarioResponsavel(idPf);
+            AlterarPfUsuarioResponsavel(idPf);
             break;
             
         case "7":
-            DaoViewPF.AlterarPfTodosItens(idPf);
+            AlterarPfTodosItens(idPf);
             break;
         
         case "0":
-            System.out.println("Fechando o programa. Adeus!");
+            out.println("Fechando o programa. Adeus!");
             break;
         default:
-            System.out.println("Opcoe invalida.");
+            out.println("Opcoe invalida.");
     }
 
     return textDigitado;
@@ -477,26 +517,26 @@ public class Testes {
     
     public static String oqAlterarUsuario(String numeroOpcaoEscolhida) {
             Usuario usuario = new Usuario();
-            Scanner sc = new Scanner(System.in);
+            Scanner sc = new Scanner(in);
             String textDigitado = null;
     switch (numeroOpcaoEscolhida) {
         case "1":           
-            System.out.println("Qual e o novo Usuario?");            
+            out.println("Qual e o novo Usuario?");            
             String novoUsuario = sc.nextLine();
             textDigitado = novoUsuario;
             break; 
      
         case "2":
-            System.out.println("Qual e a nova Senha");
+            out.println("Qual e a nova Senha");
             String novaSenha = sc.nextLine();
             textDigitado = novaSenha;
             break;
         
         case "0":
-            System.out.println("Saindo sem alteracoes.");
+            out.println("Saindo sem alteracoes.");
             break;
         default:
-            System.out.println("Opcoe invalida.");
+            out.println("Opcoe invalida.");
     }
 
     return textDigitado;

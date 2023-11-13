@@ -15,7 +15,7 @@ public class DB {
       private static ResultSet rs;
     
     public static Connection getConnection() {
-        String url = "jdbc:mysql://localhost:3306/loja";
+        String url = "jdbc:mysql://localhost:3306/loja1";
         String usuario = "root";
         String senha = "123456";
         

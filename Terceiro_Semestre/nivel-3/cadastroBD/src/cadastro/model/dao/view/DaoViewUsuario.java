@@ -6,9 +6,13 @@ package cadastro.model.dao.view;
 
 import cadastro.model.entidades.Usuario;
 import java.util.Scanner;
-import cadastro.model.fabrica.FabricaPessoas;
+
+import static cadastro.model.fabrica.FabricaPessoas.UsuarioFabrica;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
 import java.io.Serializable;
+import static java.lang.System.err;
+import static java.lang.System.in;
+import static java.lang.System.out;
 
 public class DaoViewUsuario implements Serializable{
 
@@ -20,19 +24,19 @@ public class DaoViewUsuario implements Serializable{
     
     public static void inserirUsuario() {
  
-    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();  
+    EntidadeInterfaceDAO fabricaUsuario = UsuarioFabrica();  
   
-    Scanner sc = new Scanner(System.in); 
-    System.out.println("Vamos Iniciar o Cadastro do Usuario");
-    System.out.println("Responda as Perguntas");
-    System.out.println("Qual e o Nome do Usuario");    
+    Scanner sc = new Scanner(in); 
+        out.println("Vamos Iniciar o Cadastro do Usuario");
+        out.println("Responda as Perguntas");
+        out.println("Qual e o Nome do Usuario");    
     String nome = sc.nextLine();        
-    System.out.println("Qual a Senha Usuario");
+        out.println("Qual a Senha Usuario");
     String senha = sc.nextLine();    
     Usuario novoUsuario = new Usuario(0, nome, senha);
     fabricaUsuario.inserir(novoUsuario);    
-    System.out.println("Cadastro do Usuario concluido com sucesso.");    
-    System.err.println(novoUsuario.toString());
+        out.println("Cadastro do Usuario concluido com sucesso.");    
+        err.println(novoUsuario.toString());
 }
 
     //===============================
@@ -40,15 +44,15 @@ public class DaoViewUsuario implements Serializable{
     //===============================   
     
     public static void alterarNomeUsuarioId(Integer id) {    
-    Scanner sc = new Scanner(System.in);
-    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica(); 
+    Scanner sc = new Scanner(in);
+    EntidadeInterfaceDAO fabricaUsuario = UsuarioFabrica(); 
     Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id); 
-    System.out.println("Qual o Nome do Novo Usuario");    
+        out.println("Qual o Nome do Novo Usuario");    
     String novoUsuario = sc.nextLine();        
     usuario.setLogin(novoUsuario);    
     fabricaUsuario.atualizar(usuario);
-    System.out.println("Nome do Usuario Alterado com sucesso.");  
-    System.err.println(usuario.toString());
+        out.println("Nome do Usuario Alterado com sucesso.");  
+        err.println(usuario.toString());
        
     }
     
@@ -57,15 +61,15 @@ public class DaoViewUsuario implements Serializable{
     //===============================   
     
     public static void alterarSenhaUsuarioId(Integer id) {    
-    Scanner sc = new Scanner(System.in);
-    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();    
+    Scanner sc = new Scanner(in);
+    EntidadeInterfaceDAO fabricaUsuario = UsuarioFabrica();    
     Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id);   
-    System.out.println("Qual a Senha do Novo Usuario");    
+        out.println("Qual a Senha do Novo Usuario");    
     String novaSenha = sc.nextLine();        
     usuario.setSenha(novaSenha);    
     fabricaUsuario.atualizar(usuario);
-    System.out.println("Senha do Usuario cadastrada com sucesso.");  
-    System.err.println(usuario.toString());
+        out.println("Senha do Usuario cadastrada com sucesso.");  
+        err.println(usuario.toString());
        
     }
   
@@ -74,10 +78,10 @@ public class DaoViewUsuario implements Serializable{
     //===============================
     
     public static void consultarUsuarioId(Integer id){        
-    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();
+    EntidadeInterfaceDAO fabricaUsuario = UsuarioFabrica();
     Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id); 
-    System.out.println("Busca do Usuario concluida com Sucesso.");  
-    System.err.println(usuario);   
+        out.println("Busca do Usuario concluida com Sucesso.");  
+        err.println(usuario);   
     
     }
         
@@ -86,11 +90,11 @@ public class DaoViewUsuario implements Serializable{
     //===============================
     
     public static void deletarUsuarioId(Integer id){
-    EntidadeInterfaceDAO fabricaUsuario = FabricaPessoas.UsuarioFabrica();
+    EntidadeInterfaceDAO fabricaUsuario = UsuarioFabrica();
     Usuario usuario = (Usuario) fabricaUsuario.buscarPorId(id); 
     fabricaUsuario.deletar(id);
-    System.out.println("Usuario deletado com sucesso.");  
-    System.err.println(usuario);  
+        out.println("Usuario deletado com sucesso.");  
+        err.println(usuario);  
     
     
     }

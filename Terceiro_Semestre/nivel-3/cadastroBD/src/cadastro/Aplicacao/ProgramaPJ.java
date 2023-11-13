@@ -6,6 +6,7 @@ package cadastro.Aplicacao;
 
 import cadastro.model.entidades.PessoaJuridica;
 import cadastro.model.fabrica.FabricaPessoas;
+import static cadastro.model.fabrica.FabricaPessoas.PessoaJuridicaFabrica;
 import cadastro.model.interfacs.EntidadeInterfaceDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ public class ProgramaPJ {
     public static void main(String[] args) {
         
         //instanciação da fabrica Pessoa Fisica
-        EntidadeInterfaceDAO fabricnpj = FabricaPessoas.PessoaJuridicaFabrica();
+        EntidadeInterfaceDAO fabricnpj = PessoaJuridicaFabrica();
         List <PessoaJuridica> list =new ArrayList<>();
         PessoaJuridica pj = new PessoaJuridica();
         

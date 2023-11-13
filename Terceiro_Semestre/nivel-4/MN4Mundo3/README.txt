@@ -46,7 +46,7 @@
 ### Rode o Script
 
 	
-	CREATE SCHEMA `loja` ;
+	CREATE SCHEMA `loja1` ;
 
 	use loja;
 
