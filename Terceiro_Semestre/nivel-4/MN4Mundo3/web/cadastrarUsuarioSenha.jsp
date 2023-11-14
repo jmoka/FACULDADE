@@ -53,7 +53,7 @@
                         </div>
                     </div>
                   
-                    <div class="input-group-append d-flex justify-content-between align-items-center">
+                    <div class="mb-3 input-group-append d-flex justify-content-between align-items-center">
                        
                        <span class="text-primary mr-2 text-align-left"> 
                            <a href="telaLogin.jsp">Retornar ao Login </a>                           

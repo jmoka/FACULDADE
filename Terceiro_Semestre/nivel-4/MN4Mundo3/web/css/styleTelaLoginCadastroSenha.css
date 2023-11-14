@@ -11,12 +11,15 @@ body {
             background: #000 !important;
         }
         .card {
-            border: 1px solid #28a745;
+            border: 6px solid #28a746;
         }
         .card-login {
-            margin-top: 130px;
-            padding: 18px;
-            max-width: 30rem;
+            margin-top: 40px;
+            padding: 30px;
+            width : 50%;
+            height: 50%
+           
+            
         }
 
         .card-header {
@@ -25,7 +28,7 @@ body {
             font-family: sans-serif;
             font-size: 20px;
             font-weight: 600 !important;
-            margin-top: 10px;
+           
             border-bottom: 0;
         }
 

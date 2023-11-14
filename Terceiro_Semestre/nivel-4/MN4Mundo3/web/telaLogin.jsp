@@ -18,7 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link rel="stylesheet" type="text/css" href="css/styleTelaLoginCadastroSenha.css"/>
+    
 </head>
 <body>
     <div class="container">
@@ -71,5 +71,6 @@
             </div>
         </div>
     </div>
+                <link rel="stylesheet" type="text/css" href="css/styleTelaLoginCadastroSenha.css"/>
 </body>
 </html>
