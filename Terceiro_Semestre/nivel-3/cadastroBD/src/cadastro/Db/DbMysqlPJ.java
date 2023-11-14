@@ -9,7 +9,7 @@ public class DbMysqlPJ {
     
     public static String SqlInserirPj() {
 		return "INSERT INTO pessoajuridica "
-				+ "(idPessoaJuridica, nome, logradouro,cidade, estado, telefone, Email, idUsuario, cnpj) "
+				+ "(idPessoaJuridica, nome, logradouro,cidade, estado, telefone, email, idUsuarioResponsavel, cnpj) "
 				+ "VALUES "
 				+ "(?,?, ?, ?, ?, ?, ?, ? ,?) ";
 	};	

@@ -60,15 +60,15 @@ public class DaoViewPF  implements Serializable{
     String email = sc.nextLine();
     
         out.println("Qual e o CPF?");
-    String cnpf = sc.nextLine();
+    String cpf = sc.nextLine();
     
         out.println("Qual e o Codigo do Usuario Responsavel?");
     Integer idUsuarioResponsavel = sc.nextInt();
     
-    PessoaFisica novaPf = new PessoaFisica(0, nome, logradouro, cidade, estado, telefone, email, idUsuarioResponsavel, cnpf);
+    PessoaFisica novaPf = new PessoaFisica(0, nome, logradouro, cidade, estado, telefone, email, idUsuarioResponsavel, cpf);
     
     fabricaPF.inserir(novaPf);    
-     
+      out.println("Cadastro do Pessoa Fisica concluido com sucesso.");
         err.println(novaPf.toString());
 }
 

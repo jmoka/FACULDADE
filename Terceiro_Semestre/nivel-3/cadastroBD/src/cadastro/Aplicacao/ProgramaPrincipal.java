@@ -57,7 +57,7 @@ public class ProgramaPrincipal {
             String numn = Integer.toString(num);             
             acaoOpc1(numn, null);
              
-         }else if(num==0){
+         }else if(num==0){  
              out.println("Fechando o programa. Adeus!");
              exit(0); 
          

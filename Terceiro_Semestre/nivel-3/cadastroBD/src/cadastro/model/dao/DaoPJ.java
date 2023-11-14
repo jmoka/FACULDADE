@@ -139,7 +139,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
                 String estado = rs.getString("estado");
                 String telefone = rs.getString("telefone");
                 String email = rs.getString("Email");
-                int idUsuario = rs.getInt("idUsuario");
+                int idUsuario = rs.getInt("idUsuarioResponsavel");
                 String cnpj = rs.getString("cnpj");
 
                 pessoaJuridica = new PessoaJuridica(idPessoaJuridica, nome, logradouro, cidade, estado, telefone, email, 0, cnpj);
@@ -174,7 +174,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
             pj.setEstado(rs.getString("estado"));
             pj.setTelefone(rs.getString("telefone"));
             pj.setEmail(rs.getString("Email"));
-            pj.setIdUsuarioResponsavel(rs.getInt("idUsuario"));
+            pj.setIdUsuarioResponsavel(rs.getInt("idUsuarioResponsavel"));
             pj.setCnpj(rs.getString("cnpj"));
             
             list.add(pj);         
@@ -212,7 +212,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
             pj.setEstado(rs.getString("estado"));
             pj.setTelefone(rs.getString("telefone"));
             pj.setEmail(rs.getString("Email"));
-            pj.setIdUsuarioResponsavel(rs.getInt("idUsuario"));
+            pj.setIdUsuarioResponsavel(rs.getInt("idUsuarioResponsavel"));
             pj.setCnpj(rs.getString("cnpj"));
            
         }
@@ -246,7 +246,7 @@ public class DaoPJ implements EntidadeInterfaceDAO<PessoaJuridica> {
             pj.setEstado(rs.getString("estado"));
             pj.setTelefone(rs.getString("telefone"));
             pj.setEmail(rs.getString("Email"));
-            pj.setIdUsuarioResponsavel(rs.getInt("idUsuario"));
+            pj.setIdUsuarioResponsavel(rs.getInt("idUsuarioResponsavel"));
             pj.setCnpj(rs.getString("cnpj"));
             
             list.add(pj);         

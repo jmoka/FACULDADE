@@ -67,7 +67,7 @@ public class DaoViewPJ  implements Serializable {
     PessoaJuridica novaPj = new PessoaJuridica(0, nome, logradouro, cidade, estado, telefone, email, idUsuarioResponsavel, cnpj);
     
     fabricaPJ.inserir(novaPj);    
-     
+     out.println("Cadastro do Pessoa Juridica concluido com sucesso.");
         err.println(novaPj.toString());
 }
 

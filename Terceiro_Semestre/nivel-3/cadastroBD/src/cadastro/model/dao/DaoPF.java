@@ -140,8 +140,8 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
                 String cidade = rs.getString("cidade");
                 String estado = rs.getString("estado");
                 String telefone = rs.getString("telefone");
-                String email = rs.getString("Email");
-                int idUsuario = rs.getInt("idUsuario");
+                String email = rs.getString("email");
+                int idUsuario = rs.getInt("idUsuarioResponsavel");
                 String cpf = rs.getString("cpf");
 
             
@@ -175,8 +175,8 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
             pf.setCidade(rs.getString("cidade"));
             pf.setEstado(rs.getString("estado"));
             pf.setTelefone(rs.getString("telefone"));
-            pf.setEmail(rs.getString("Email"));
-            pf.setIdUsuarioResponsavel(rs.getInt("idUsuario"));
+            pf.setEmail(rs.getString("email"));
+            pf.setIdUsuarioResponsavel(rs.getInt("idUsuarioResponsavel"));
             pf.setCpf(rs.getString("cpf"));
             
             list.add(pf);         
@@ -238,8 +238,8 @@ public class DaoPF implements EntidadeInterfaceDAO<PessoaFisica>  {
             pf.setCidade(rs.getString("cidade"));
             pf.setEstado(rs.getString("estado"));
             pf.setTelefone(rs.getString("telefone"));
-            pf.setEmail(rs.getString("Email"));
-            pf.setIdUsuarioResponsavel(rs.getInt("idUsuario"));
+            pf.setEmail(rs.getString("email"));
+            pf.setIdUsuarioResponsavel(rs.getInt("idUsuarioResponsavel"));
             pf.setCpf(rs.getString("cpf"));
             
             list.add(pf);         

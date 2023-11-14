@@ -8,15 +8,15 @@ package cadastro.Db;
 public class DbMysqlPF {
     
     public static String SqlInserirPf() {
-		return "INSERT INTO pf "
-				+ "(idPessoaFisica, nome, logradouro,cidade, estado, telefone, Email, idUsuario, cpf) "
+		return "INSERT INTO pessoafisica "
+				+ "(idPessoaFisica, nome, logradouro,cidade, estado, telefone, email, idUsuarioResponsavel, cpf) "
 				+ "VALUES "
 				+ "(?,?, ?, ?, ?, ?, ?, ? ,?) ";
 	};	
 	
 	public static String SqlAtualizar () {
-		return "UPDATE pj " 
-				+ "SET nome = ?, logradouro = ?, cidade = ?, estado = ?, telefone = ?, email=?, idusuario=?, cpf=? "
+		return "UPDATE pessoafisica " 
+				+ "SET nome = ?, logradouro = ?, cidade = ?, estado = ?, telefone = ?, email=?, idUsuarioResponsavel=?, cpf=? "
 				+ "WHERE idPessoaFisica = ? ";                        
                         }
 	

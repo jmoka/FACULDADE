@@ -9,14 +9,14 @@ public class DbMysqlUsuario {
     
     public static String SqlInserirUsuario() {
 		return "INSERT INTO usuarios "
-				+ "(idUsuario, login, senha) "
+				+ "(idUsuario, nome, senha) "
 				+ "VALUES "
 				+ "(?,?,?) ";
 	};	
 	
 	public static String SqlAtualizarUsuario () {
         return "UPDATE usuarios " 
-           + "SET login = ?, senha = ? "
+           + "SET nome = ?, senha = ? "
            + "WHERE idUsuario = ?";  
 }
 	
