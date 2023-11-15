@@ -16,4 +16,9 @@ public class UserSql {
                        + "nome = ? " 
                        + "AND senha = ?; ";
 	};
+    
+    public static String SqlTodosUser () {
+		return "SELECT * FROM loja1.usuarios";
+	};
+    
 }

@@ -4,6 +4,7 @@
  */
 package top.jota.dao.main.entidades.interfacs;
 
+import java.util.List;
 import top.jota.dao.main.entidades.Usuario;
 
 /**
@@ -14,6 +15,7 @@ public interface UserInterfaces {
     
     public String autenticarUsuario(String nome, String senha);
     public Integer inserir(String nome, String senha);
+    public List<Usuario> findAllUser();
     
   
     

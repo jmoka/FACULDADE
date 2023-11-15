@@ -4,81 +4,87 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import top.jota.dao.DB.DB;
+
 import top.jota.dao.DB.Exception.DbException;
 import top.jota.dao.DB.sql.UserSql;
+import top.jota.dao.main.entidades.Usuario;
 
 import top.jota.dao.main.entidades.interfacs.UserInterfaces;
 
 public class UserServices implements UserInterfaces {
-     Connection conm = null;
-     PreparedStatement st = null;
-     ResultSet rs = null;
-
     @Override
-    public Integer inserir(String nome, String senha) {       
+    public Integer inserir(String nome, String senha) {
+        try (Connection conm = DB.getConnection();
+             PreparedStatement st = conm.prepareStatement(UserSql.sqlInsert(), PreparedStatement.RETURN_GENERATED_KEYS)) {
 
-        try {
-            conm = DB.getConnection();
-            st = conm.prepareStatement(UserSql.sqlInsert(), PreparedStatement.RETURN_GENERATED_KEYS);
-
-            // Passe as informações para cada parâmetro do SQL
             st.setString(1, nome);
             st.setString(2, senha);
 
-            // Execute o SQL
-            int linhasAfetadas = st.executeUpdate(); // retorna um int
+            int linhasAfetadas = st.executeUpdate();
             return linhasAfetadas;
-            
+
         } catch (SQLException e) {
-            System.err.println(  new DbException("Verifique o SQL, dados nao inseridos ==> " + e.getMessage()));
-        } finally {
-            // Feche os recursos no bloco finally
-            DB.fecharConexao();
-            DB.fecharStatiment();
-            DB.fecharResultSet();
-           
+            throw new DbException(e.getMessage());
         }
+    }
+
+    @Override
+    public String autenticarUsuario(String nome, String senha) {
+        try (Connection conm = DB.getConnection();
+             PreparedStatement st = conm.prepareStatement(UserSql.autenticarUsuário())) {
+
+            st.setString(1, nome);
+            st.setString(2, senha);
+
+            try (ResultSet rs = st.executeQuery()) {
+                if (rs.next()) {
+                    String nomeUsuario = rs.getString("nome");
+                    System.out.println("Usuario autenticado: " + nomeUsuario);
+                    return nomeUsuario;
+                } else {
+                    System.err.println("Usuario nao encontrado");
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+
         return null;
     }
 
     @Override
-    public  String autenticarUsuario(String nome, String senha) {
-    conm = DB.getConnection();
+    public List<Usuario> findAllUser() {
+        List<Usuario> list = new ArrayList<>();
 
-    try {
-        st = conm.prepareStatement(UserSql.autenticarUsuário());
-        st.setString(1, nome);
-        st.setString(2, senha);
+        try (Connection conm = DB.getConnection();
+             PreparedStatement st = conm.prepareStatement(UserSql.SqlTodosUser());
+             ResultSet rs = st.executeQuery()) {
 
-        rs = st.executeQuery(); // Execute uma consulta SELECT
-       
-        if (rs.next()) {
-            // Usuário autenticado
-            String nomeUsuario = rs.getString("nome");
-            String senhaUsuario = rs.getString("senha");
-            System.out.println("Usuario autenticado: " + nomeUsuario);
-            return nomeUsuario;
-        } else {
-            System.err.println("Usuario nao encontrado");
+            while (rs.next()) {
+                Usuario usu = new Usuario();
+                usu.setId(rs.getInt("id_user"));
+                usu.setName(rs.getString("nome"));
+                usu.setSenha(rs.getString("senha"));
+                list.add(usu);
+            }
+
+            return list;
+
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
         }
-    } catch (SQLException ex) {
-        System.err.println("Erro ao realizar consulta");
-        System.err.println(new DbException(ex.getMessage()));
-    } finally {
-        // Feche os recursos no bloco finally
-        DB.fecharConexao();
-        DB.fecharStatiment();
-        DB.fecharResultSet();
     }
+};
+    
 
-    return null;
-}
-
+    
+    
         
-     
-     }
-
+ 
     
     
 

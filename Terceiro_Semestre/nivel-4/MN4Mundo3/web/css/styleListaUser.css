@@ -1,0 +1,25 @@
+
+        body {
+            text-align: center;
+            background-color: #ced4da; 
+            color:#28a745;
+        }
+        table {
+            margin: 0 auto; 
+            margin-top: 50px; 
+        }
+       
+        .btn {
+            margin: 1px;
+        }
+
+       .table td {
+           text-align: center;
+           font-size:23px;
+           border: 3px solid #28a746;
+        }
+        
+       .table th {
+            text-align: center;
+            border: 3px solid darkorange; 
+        }
