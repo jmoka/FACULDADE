@@ -1,9 +1,9 @@
 #obs: Optei em fazer o projeto utilizando o tomcat
 ##> não consegui fazer o ping , em nenhum dos banco de dados.
-##> Instalei o glassFish, porém ele não faz o pig. vi varios videos mas não consegui , e para não deixar de fazer , fiz com tomcat
+##> Instalei o GlassFish, porém ele não faz o pig. vi varios videos mas não consegui , e para não deixar de fazer , fiz com tomcat
 ##> utilizei o banco de dados Mysql
 
-## NO estudo podemos ter 2 abordagnem para criar o caminho no servlet (referenciar a classe)
+## No estudo podemos ter 2 abordagnem para criar o caminho no servlet (referenciar a classe)
 ### A primeira usando o arquivo web.xml - com o caminho /suariosServlet
 
 	<servlet>
@@ -69,5 +69,8 @@
 	);
 
 
-	
+# Possui dois projeto.
+## Ao realizar a chamada do jsp através das servlet com tomcat consegui normalmente com a versão 10.
+## Ao utilizar nos jsp o jslt na versão 10 do tomcat não funcionou, por isso a opção de continuar o projeto com a versão 9 do tomcat
+
 

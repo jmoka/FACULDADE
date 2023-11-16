@@ -25,7 +25,8 @@ public class listaUserServlet extends HttpServlet {
                     
                 }else{
                     request.setAttribute("userList", userList);
-                     request.getRequestDispatcher("/listaUser.jsp")
+                    System.out.println("Numero de usuurios: " + userList.size());
+                    request.getRequestDispatcher("/listaUser.jsp")
                     .forward(request, response);
                 
                 }           
