@@ -6,19 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import top.jota.dao.DB.DB;
 
+import top.jota.dao.DB.DB;
 import top.jota.dao.DB.Exception.DbException;
 import top.jota.dao.DB.sql.UserSql;
 import top.jota.dao.main.entidades.Usuario;
-
 import top.jota.dao.main.entidades.interfacs.UserInterfaces;
 
 public class UserServices implements UserInterfaces {
+
     @Override
     public Integer inserir(String nome, String senha) {
-        try (Connection conm = DB.getConnection();
-             PreparedStatement st = conm.prepareStatement(UserSql.sqlInsert(), PreparedStatement.RETURN_GENERATED_KEYS)) {
+        try (Connection con = DB.getConnection();
+             PreparedStatement st = con.prepareStatement(UserSql.sqlInsert(), PreparedStatement.RETURN_GENERATED_KEYS)) {
 
             st.setString(1, nome);
             st.setString(2, senha);
@@ -33,8 +33,8 @@ public class UserServices implements UserInterfaces {
 
     @Override
     public String autenticarUsuario(String nome, String senha) {
-        try (Connection conm = DB.getConnection();
-             PreparedStatement st = conm.prepareStatement(UserSql.autenticarUsuário())) {
+        try (Connection con = DB.getConnection();
+             PreparedStatement st = con.prepareStatement(UserSql.autenticarUsuário())) {
 
             st.setString(1, nome);
             st.setString(2, senha);
@@ -60,8 +60,8 @@ public class UserServices implements UserInterfaces {
     public List<Usuario> findAllUser() {
         List<Usuario> list = new ArrayList<>();
 
-        try (Connection conm = DB.getConnection();
-             PreparedStatement st = conm.prepareStatement(UserSql.SqlTodosUser());
+        try (Connection con = DB.getConnection();
+             PreparedStatement st = con.prepareStatement(UserSql.SqlTodosUser());
              ResultSet rs = st.executeQuery()) {
 
             while (rs.next()) {
@@ -78,15 +78,21 @@ public class UserServices implements UserInterfaces {
             throw new DbException(e.getMessage());
         }
     }
-};
-    
 
-    
-    
-        
- 
-    
-    
+    @Override
+    public void deletar(Integer id) {
+        try (Connection con = DB.getConnection();
+             PreparedStatement st = con.prepareStatement(UserSql.SqlDeletar())) {
 
-    
+            st.setInt(1, id);
+            int linhaAfetada = st.executeUpdate();
 
+            if (linhaAfetada == 0) {
+                throw new DbException("Usuário não deletado, erro ao deletar. Id não encontrado no banco de dados.");
+            }
+
+        } catch (SQLException e) {
+          throw new DbException(e.getMessage());
+        }
+    }
+}

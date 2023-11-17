@@ -21,4 +21,9 @@ public class UserSql {
 		return "SELECT * FROM loja1.usuarios";
 	};
     
+    public static String SqlDeletar() {
+		return "DELETE FROM loja1.usuarios WHERE id_user = ?;";
+	}
+    
 }
+

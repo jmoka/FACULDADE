@@ -42,7 +42,8 @@
                         <td>${user.name}</td>
                         <td>
                             <button class="btn btn-success px-2">Atualizar</button>
-                            <button class="btn btn-danger px-2">Excluir</button>
+                            <a href="deletarUser?id_user=${user.id}" class="btn btn-danger px-2" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+
                         </td>
                     </tr>
                 </c:forEach>
@@ -71,4 +72,10 @@
     new DataTable('#example', {
     responsive: true
     });
+    
+    
+    function deletar(){
+        
+    }
+    
 </script>
