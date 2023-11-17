@@ -10,16 +10,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Lista de Usuários</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"/>
+    
 </head>
-<body>
+<body> 
     <div class="container">
-        <h2 class="mt-5">Lista de Usuários</h2>
+        <h2 class="mt-2 ">Lista de Usuários</h2>
 
         <c:if test="${not empty msg}">
             <div class="alert alert-info">${msg}</div>
         </c:if>
 
-        <table class="table">
+        <table id="example" class="table table-striped nowrap" style="width:100%">
             <thead>
                 <tr>
                     <th>ID</th> 
@@ -29,25 +37,38 @@
             </thead>
             <tbody>
                 <c:forEach var="user" items="${userList}">
-                    <tr class="success">
+                    <tr >
                         <td>${user.id}</td>
                         <td>${user.name}</td>
                         <td>
-                            <button class="btn btn-success">Atualizar</button>
-                            <button class="btn btn-danger">Excluir</button>
+                            <button class="btn btn-success px-2">Atualizar</button>
+                            <button class="btn btn-danger px-2">Excluir</button>
                         </td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
 
-        <a href="telaLogin.jsp" class="btn btn-primary">Voltar</a>
+        <a href="telaLogin.jsp" class="btn btn-primary px-2">Voltar</a>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="css/styleListaUser.css"/>
+    
+    
+    
+        
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="css/styleListaUser1.css"/>
 </body>
 </html>
+
+<script>
+    
+    new DataTable('#example', {
+    responsive: true
+    });
+</script>

@@ -2,7 +2,7 @@
 
 
 body {
-            background-color: #f8f9fa;
+             background: #000 !important;
         }
 
         .dashboard-container {
@@ -10,5 +10,6 @@ body {
         }
 
         .card {
-            margin-bottom: 20px;
+          border: 6px solid #28a746;
+          background-color: transparent;
         }
