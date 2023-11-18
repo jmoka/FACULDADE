@@ -72,13 +72,21 @@
                     </div>
                 </form>
                  <p class="text-warning" align="left">
-                    <% 
-                        String msg = (String)request.getAttribute("msg");
-                        if(msg != null && !msg.isEmpty()) {
-                    %>
-                        alert("<%= msg %>");
-                    <% } %>
-                </p>
+        <% 
+            
+            String msg = (String)request.getAttribute("msg");
+            
+            if(msg == null) {
+                out.print("Jota Sistemas");
+            } else {
+                out.print(msg);
+        %>
+        <a href="listaUserServlet" class="btn btn-primary px-2" onclick="return alert('Estamos retornando a Lista de Usuários')">Tentar Novamente</a>
+
+        <%
+            }
+        %>
+    </p>
             </div>
         </div>
     </div>

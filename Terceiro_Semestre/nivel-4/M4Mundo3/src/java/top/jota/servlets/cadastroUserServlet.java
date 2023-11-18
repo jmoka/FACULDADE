@@ -43,6 +43,8 @@ public class cadastroUserServlet extends HttpServlet {
 
                                     if (cadastro == 1) {
                                        request.setAttribute("msg", "Cadastro Efetuado com Sucesso!<br>");
+                                        RequestDispatcher dispatcher = request.getRequestDispatcher("telaLogin.jsp");
+                                        dispatcher.forward(request, response);
 
                                     } else {
                                        request.setAttribute("msg","Erro no Cadastro. Tente Novamente.");

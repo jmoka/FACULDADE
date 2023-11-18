@@ -22,10 +22,10 @@ public class listaUserServlet extends HttpServlet {
             List<Usuario> userList = userServices.findAllUser();
             
             if (userList == null) {
-                request.setAttribute("msg", "Lista de usuários nula");
+                request.setAttribute("msg", "Lista de usuários vazia");
             } else {
                 request.setAttribute("userList", userList);
-                System.out.println("Número de usuários: " + userList.size());
+                
             }
             
             request.getRequestDispatcher("/listaUser_1.jsp").forward(request, response);

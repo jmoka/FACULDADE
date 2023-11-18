@@ -1,25 +1,20 @@
-    /*
-     * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-     * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
-     */
-    package top.jota.servlets;
+package top.jota.servlets;
 
-    import java.io.IOException;
-    import java.io.PrintWriter;
-import static java.lang.System.out;
+import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.RequestDispatcher;
-    import javax.servlet.ServletException;
-    import javax.servlet.annotation.WebServlet;
-    import javax.servlet.http.HttpServlet;
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
-    import top.jota.dao.main.entidades.Usuario;
-    import top.jota.dao.main.entidades.services.UserServices;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import top.jota.dao.main.entidades.Usuario;
+import top.jota.dao.main.entidades.services.UserServices;
 
-
-  @WebServlet(name = "atualizarUserServlet", urlPatterns = {"/atualizarUserServlet"})
+@WebServlet(name = "atualizarUserServlet", urlPatterns = {"/atualizarUserServlet"})
 public class atualizarUserServlet extends HttpServlet {
 
     @Override
@@ -52,72 +47,78 @@ public class atualizarUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserServices userServices = new UserServices();
-        Usuario user = new Usuario();
+                       
+                        UserServices userServices = new UserServices();
+                        
+                        String id_user = request.getParameter("id_user");
+                        String nome = request.getParameter("nome");
+                        String senha = request.getParameter("senha");
+                        String senha2 = request.getParameter("senha2");
+                        
+                        int userId = Integer.parseInt(id_user);
+                        Usuario usuarioRecuperado = userServices.buscarId(userId);
+                        
+                        if (usuarioRecuperado != null) {
+                            usuarioRecuperado.setName(nome);
+                            usuarioRecuperado.setSenha(senha);
+                        } else {
+                            System.err.println("ERRO");                    }
+                        
+                        
+                        
+                        String regex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\\-_=+{};:,<.>]).{4,}$";
+                   
+                        if (senha != null && !senha.isEmpty() && senha.equals(senha2) && nome != null && !nome.isEmpty()) {
+                            try {
+                                Pattern pattern = Pattern.compile(regex);
+                                Matcher matcher = pattern.matcher(senha);
 
-        String id = request.getParameter("id_user");
-        String nome = request.getParameter("nome");
-        String senha = request.getParameter("senha");
-        String senha2 = request.getParameter("senha2");
+                                if (matcher.matches()) {
+                                    Usuario atualizado = userServices.atualizar(usuarioRecuperado);
 
-        int userId = Integer.parseInt(id);
-        Usuario usuarioRecuperado = userServices.buscarId(userId);
+                                    if (atualizado != null) {
+                                       request.setAttribute("msg", "Cadastro Efetuado com Sucesso!<br>");
+                                       response.sendRedirect("listaUserServlet");
 
-        if (usuarioRecuperado != null) {
-            usuarioRecuperado.setName(nome);
-            usuarioRecuperado.setSenha(senha);
-        } else {
-            System.err.println("ERRO");
-        }
+                                    } else {
+                                       request.setAttribute("msg","Erro no Cadastro. Tente Novamente.");
+                                    }
+                                } else {
+                                  request.setAttribute("msg", "Formato Senha Inválida!<br>" +
+                                                                    "=> Mínimo 4 Caracteres<br>" +
+                                                                    "=> Um número<br>" +
+                                                                    "=> Um Símbolo<br>" +
+                                                                    "=> Uma Letra Maiúscula");
 
-        String regex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\\-_=+{};:,<.>]).{4,}$";
+                                }
+                            } catch (Exception e) {
+                                request.setAttribute("msg","Senha já Cadastrada");
+                                RequestDispatcher dispatcher = request.getRequestDispatcher("atualizarUsuario.jsp");
+                        dispatcher.forward(request, response);
+                            }
+                        } else if (nome == null && senha == null && senha2 == null) {
+                            request.setAttribute("msg","Todos os Campos Vazios");
+                            RequestDispatcher dispatcher = request.getRequestDispatcher("atualizarUsuario.jsp");
+                        dispatcher.forward(request, response);
+                        } else if (nome == null || nome.isEmpty()) {
+                            request.setAttribute("msg","Campo nome vazio");
+                            RequestDispatcher dispatcher = request.getRequestDispatcher("atualizarUsuario.jsp");
+                        dispatcher.forward(request, response);
+                        } else if (senha == null || senha.isEmpty()) {
+                            request.setAttribute("msg","Campo senha vazio");
+                            RequestDispatcher dispatcher = request.getRequestDispatcher("atualizarUsuario.jsp");
+                        dispatcher.forward(request, response);
+                        } else if (senha2 == null || senha2.isEmpty()) {
+                           request.setAttribute("msg","Campo Confirmar senha está vazio");
+                           RequestDispatcher dispatcher = request.getRequestDispatcher("atualizarUsuario.jsp");
+                        dispatcher.forward(request, response);
+                        } else {
+                           request.setAttribute("msg","Senha não Confere");
+                           RequestDispatcher dispatcher = request.getRequestDispatcher("atualizarUsuario.jsp");
+                        dispatcher.forward(request, response);
+                        }
+                      
+                        
+    }   
 
-        if (senha != null && !senha.isEmpty() && senha.equals(senha2) && nome != null && !nome.isEmpty()) {
-
-            try {
-                Pattern pattern = Pattern.compile(regex);
-                Matcher matcher = pattern.matcher(senha);
-
-                System.out.println("Senha: " + senha);
-                System.out.println("Regex Match: " + matcher.matches());
-
-                if (matcher.matches()) {
-
-                    Usuario atualizado = userServices.atualizar(usuarioRecuperado);
-
-                    System.out.println(atualizado);
-
-                    if (atualizado != null) {
-                        request.setAttribute("msg", "Cadastro Atualizado com Sucesso!<br>");
-                        response.sendRedirect("listaUserServlet");
-                    } else {
-                        request.setAttribute("msg", "Erro no Atualizar. Tente Novamente.");
-                    }
-                } else {
-                    request.setAttribute("msg", "Formato Senha Inválida!<br>" +
-                            "=> Mínimo 4 Caracteres<br>" +
-                            "=> Um número<br>" +
-                            "=> Um Símbolo<br>" +
-                            "=> Uma Letra Maiúscula");
-                }
-            } catch (Exception e) {
-                request.setAttribute("msg", "Senha já Cadastrada");
-            }
-        } else if (nome == null || nome.isEmpty()) {
-            
-
-            String redirectURL = "atualizarUserServlet?id_user="+id;
-            response.sendRedirect(redirectURL);
-            out.println("Campo nome vazio");
-            request.setAttribute("msg", "Campo nome vazio");
-
-        } else if (senha == null || senha.isEmpty()) {
-            request.setAttribute("msg", "Campo senha vazio");
-        } else if (senha2 == null || senha2.isEmpty()) {
-            request.setAttribute("msg", "Campo Confirmar senha está vazio");
-        } else {
-            request.setAttribute("msg", "Senha não Confere");
-        }
-
-       
-    }}
+}
