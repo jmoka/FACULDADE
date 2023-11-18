@@ -50,7 +50,7 @@
             </tbody>
         </table>
 
-        <a href="telaLogin.jsp" class="btn btn-primary px-2">Voltar</a>
+        <a href="dashboerd.html" class="btn btn-primary px-2">Voltar</a>
     </div>
 
     
