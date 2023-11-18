@@ -40,9 +40,9 @@
                     <tr >
                         <td>${user.id}</td>
                         <td>${user.name}</td>
-                        <td>
-                            <button class="btn btn-success px-2">Atualizar</button>
-                            <a href="deletarUser?id_user=${user.id}" class="btn btn-danger px-2" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <td >
+                             <a href="atualizarUserServlet?id_user=${user.id}" class="btn btn-primary px-2" onclick="return confirm('Tem certeza que deseja Atualizar?')">Atualizar</a>
+                             <a href="deletarUserServlet?id_user=${user.id}" class="btn btn-danger px-2" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
 
                         </td>
                     </tr>

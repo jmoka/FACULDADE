@@ -17,7 +17,7 @@ import top.jota.dao.main.entidades.services.UserServices;
  *
  * @author jotac
  */
-@WebServlet(name = "deletarUser", urlPatterns = {"/deletarUser"})
+@WebServlet(name = "deletarUserServlet", urlPatterns = {"/deletarUserServlet"})
 public class deletarUserServlet extends HttpServlet {
 
     @Override

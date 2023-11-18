@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import static java.sql.Statement.RETURN_GENERATED_KEYS;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,4 +96,59 @@ public class UserServices implements UserInterfaces {
           throw new DbException(e.getMessage());
         }
     }
+    
+    @Override
+public Usuario atualizar(Usuario obj) {
+    PreparedStatement st = null;
+    try {
+        Connection con = DB.getConnection();
+        st = con.prepareStatement(UserSql.SqlAtualizar(), RETURN_GENERATED_KEYS);
+
+        st.setString(1, obj.getName());
+        st.setString(2, obj.getSenha());
+        st.setInt(3, obj.getId()); // Adiciona o ID na cláusula WHERE
+
+        st.executeUpdate();
+        return obj; // Retorna o usuário atualizado
+
+    } catch (SQLException e) {
+        throw new DbException(e.getMessage());
+    } finally {
+        DB.fecharStatiment();
+    }
 }
+
+
+    @Override
+    public Usuario buscarId(Integer id) {
+                PreparedStatement st = null;
+                ResultSet rs = null;
+                Usuario user = null; 
+
+    try {
+                Connection con = DB.getConnection();
+                st = con.prepareStatement(UserSql.SqlBuscarId());
+                st.setInt(1, id);
+                rs = st.executeQuery();
+    if (rs.next()) {
+                int id_user = rs.getInt("id_user");
+                String nome = rs.getString("nome");
+                String senha = rs.getString("senha");            
+
+            
+                user = new Usuario(id, nome, senha);
+        }
+        
+    } catch (SQLException e) {
+                throw new DbException(e.getMessage());
+    } finally {
+                DB.fecharStatiment();
+                DB.fecharResultSet();
+      return user; 
+    }
+    }
+
+    
+   
+}
+

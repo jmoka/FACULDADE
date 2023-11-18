@@ -25,5 +25,16 @@ public class UserSql {
 		return "DELETE FROM loja1.usuarios WHERE id_user = ?;";
 	}
     
+    public static String SqlAtualizar () {
+		  return    "UPDATE usuarios " 
+                            + "SET nome = ?, "
+                            + "senha = ? "
+                            + "WHERE id_user = ?";  
+        }
+    
+     public static String SqlBuscarId() {
+		return "SELECT * FROM usuarios WHERE id_user = ?;";
+	};
+    
 }
 

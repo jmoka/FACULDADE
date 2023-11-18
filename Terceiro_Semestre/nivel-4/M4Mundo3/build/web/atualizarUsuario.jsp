@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Cadastrar Usuário e Senha</title>
+    <title>Atualizar Usuário e Senha</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -22,63 +22,62 @@
         <div class="card card-login mx-auto text-center bg-dark">
             <div class="card-header mx-auto bg-dark">
                 <span> <img src="img/logo4.png" class="w-50" alt="Logo"> </span><br/>
-                <span class="logo_title">Cadastrar Usuário e Senha</span>
+                <span class="logo_title">Atualizar Usuário e Senha</span>
             </div>
             <div class="card-body">
-                <form action="cadastrouser" method="post">
+                <form action="atualizarUserServlet" method="post">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-star"></i></span>
+                            </div>
+                            <input type="text" name="id_user" class="form-control" value="<%= request.getAttribute("id") %>" readonly>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="nome" class="form-control" placeholder="Nome">
+                            <input type="text" name="nome" class="form-control" placeholder="Nome" value="<%= request.getAttribute("nome") %>">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="senha" class="form-control" placeholder="Senha" id="senha">
+                            <input type="password" name="senha" class="form-control" placeholder="Senha" id="senha" value="<%= request.getAttribute("senha") %>">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>    
                             </div>
-                            <input type="password" name="senha2" class="form-control" placeholder="Confirm Senha" id="senha2">
+                            <input type="password" name="senha2" class="form-control" placeholder="Confirmar Senha" id="senha2">
                         </div>
                     </div>
-                  
                     <div class="mb-3 input-group-append d-flex justify-content-between align-items-center">
-                       
-                       <span class="text-primary mr-2 text-align-left"> 
-                           <a href="telaLogin.jsp">Retornar ao Login </a>                           
-                       </span>
-                       
-                       <span>
-                        <span class="text-primary mr-1">   Mostrar Senhas   </span>
-                        <input type="checkbox" onclick="mostrarSenha('senha', 'senha2')">
+                        <span class="text-primary mr-2 text-align-left"> 
+                            <a href="telaLogin.jsp">Retornar ao Login </a>                           
+                        </span>
+                        <span>
+                            <span class="text-primary mr-1">Mostrar Senhas</span>
+                            <input type="checkbox" onclick="mostrarSenha('senha', 'senha2')">
                         </span>
                     </div>
-
                     <div class="form-group">
-                        <input type="submit" name="btn" value="Cadastrar" class="btn btn-outline-danger btn-block">
+                        <input type="submit" name="btn" value="Atualizar" class="btn btn-outline-danger btn-block">
                     </div>
                 </form>
-
-                <p class="text-warning" align="left">
+                 <p class="text-warning" align="left">
                     <% 
                         String msg = (String)request.getAttribute("msg");
-                        if(msg == null) {
-                            out.print("Jota Sistemas");
-                        } else {
-                            out.print(msg);
-                        }
+                        if(msg != null && !msg.isEmpty()) {
                     %>
+                        alert("<%= msg %>");
+                    <% } %>
                 </p>
             </div>
         </div>
@@ -96,5 +95,9 @@
             }
         }
     </script>
+    
+    
+    
 </body>
+
 </html>

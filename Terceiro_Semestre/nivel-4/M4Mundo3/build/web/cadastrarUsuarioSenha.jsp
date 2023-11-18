@@ -31,7 +31,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="nome" class="form-control" placeholder="Username">
+                            <input type="text" name="nome" class="form-control" placeholder="Nome">
                         </div>
                     </div>
 

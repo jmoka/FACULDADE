@@ -17,6 +17,8 @@ public interface UserInterfaces {
     public Integer inserir(String nome, String senha);
     public List<Usuario> findAllUser();
     public void deletar(Integer id);
+    public Usuario atualizar (Usuario obj);
+    public Usuario buscarId(Integer id);
     
   
     
