@@ -6,10 +6,11 @@ body {
         }
 
         .dashboard-container {
-            margin: 20px;
+            margin: 5px;
         }
 
-        .card {
-          border: 6px solid #28a746;
+        .card_ {
+          
           background-color: transparent;
+          height: 10px;
         }
