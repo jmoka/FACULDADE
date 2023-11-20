@@ -73,4 +73,11 @@
 ## Ao realizar a chamada do jsp através das servlet com tomcat consegui normalmente com a versão 10.
 ## Ao utilizar nos jsp o jslt na versão 10 do tomcat não funcionou, por isso a opção de continuar o projeto com a versão 9 do tomcat
 
+# Instalar as Bibliotecas
+	 MYSQL-CONECTOR-8.2.0
+	 JSTL 1.2.7 - IMPL
+	 JSTL 1.2.7 - API
+	 JDK 20
+	 TOMCAT 9
+
 
