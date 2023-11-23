@@ -1,0 +1,16 @@
+
+
+
+body {
+             background: #000 !important;
+        }
+
+        .dashboard-container {
+            margin: 5px;
+        }
+
+        .card_ {
+          
+          background-color: transparent;
+          height: 10px;
+        }
