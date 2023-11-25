@@ -28,11 +28,12 @@ public class ServidorSocket {
 
     // metodo start
     public Boolean start() {
+        
         try {
             // inicializo o servidor passando a porta
             servidor = new ServerSocket(porta);
             System.out.println("Servidor iniciado na porta: " + porta);
-
+            
             // cria um lanço infinito esperando a conexão dos clientes
             while (true) {
                 // ServerSocket é utilizado para aguardar e aceitar solicitações de conexão vindas de clientes.
@@ -43,14 +44,17 @@ public class ServidorSocket {
 
                 // Crie uma thread ou use o ExecutorService para manipular a lógica do cliente
                 executorService.execute(() -> handleClient(clienteSocket));
+                 
             }
+           
 
         } catch (IOException e) {
             System.err.println("Erro ao iniciar o servidor: " + e.getMessage());
         } finally {
             encerrarServidor();
         }
-        return null;
+        return true;
+
     }
 
     private void handleClient(Socket socket) {

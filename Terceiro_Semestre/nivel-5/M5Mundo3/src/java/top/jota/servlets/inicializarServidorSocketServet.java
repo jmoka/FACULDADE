@@ -22,8 +22,8 @@ public class inicializarServidorSocketServet extends HttpServlet {
             throws ServletException, IOException {                       
             ServidorSocket servidorSocket = new ServidorSocket();              
             Boolean server = servidorSocket.start();
-           
-            if(server == null){
+            System.err.println(server + "server");
+            if(server == true){
                 servidorSocket.start();
                 RequestDispatcher dispatcher = request.getRequestDispatcher("telaLogin.jsp");
                 dispatcher.forward(request, response);
