@@ -1,0 +1,82 @@
+<%-- 
+    Document   : dashboerd
+    Created on : 25 de nov. de 2023, 11:14:36
+    Author     : jotac
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Java</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    
+   
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" ><h1 class="m-2 my-2">Missão 4 Mundo 3</h1></a>
+    <p class="text-warning" align="left">
+                    <% 
+                        String msg = (String)request.getAttribute("msg");
+                        out.print(msg);                      
+                    %>
+
+    <div class="row">
+        <div class="col">
+            <div>
+                <div class=" text-center">
+                     <a href="telaLogin.jsp" ><h5>Login</h5></a>
+                  
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div>
+                <div class="text-center">
+                    <a href="cadastrarUsuarioSenha.jsp"> <h5>Cadastro Usuário</h5></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div >
+                <div class="text-center">
+                     <a href="listaUserServlet" ><h5>Lista de Usuários</h5></a>
+                </div>
+            </div>
+        </div>
+        
+         <div class="col ">
+            <div >
+                <div class="text-center">
+                    <h5 class = "">Cadastrar Produto</h5>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div>
+                <div class="text-center">
+                    <h5 class="">Lista Produto</h5>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div class=" container mt-1 text-center ">
+            <div>
+                <div >
+                    <span> <img src="img/logo4.png" class="w-30" alt="Logo"> </span><br/>
+                    
+                </div>
+            </div>
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="css/styleDashbord.css"/>
+</body>
+</html>
