@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ServidorSocket {
+
     //1-estancia o servidor ServerSocket
     private ServerSocket servidor;
     //2- instancia a posta e declara a mesma
@@ -26,7 +27,7 @@ public class ServidorSocket {
     }
 
     // metodo start
-    public void start() {
+    public Boolean start() {
         try {
             // inicializo o servidor passando a porta
             servidor = new ServerSocket(porta);
@@ -41,7 +42,7 @@ public class ServidorSocket {
                 System.out.println("Cliente conectado: " + clienteSocket.getRemoteSocketAddress());
 
                 // Crie uma thread ou use o ExecutorService para manipular a lógica do cliente
-               executorService.execute(() -> handleClient(clienteSocket));
+                executorService.execute(() -> handleClient(clienteSocket));
             }
 
         } catch (IOException e) {
@@ -49,6 +50,7 @@ public class ServidorSocket {
         } finally {
             encerrarServidor();
         }
+        return null;
     }
 
     private void handleClient(Socket socket) {
@@ -62,7 +64,7 @@ public class ServidorSocket {
                 receberMsg(ois);
             }
         } catch (IOException e) {
-            
+
         } finally {
             fecharSocket(socket);
         }
