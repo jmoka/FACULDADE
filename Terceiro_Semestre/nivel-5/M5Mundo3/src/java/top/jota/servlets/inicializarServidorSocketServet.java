@@ -5,6 +5,7 @@
 package top.jota.servlets;
 
 import java.io.IOException;
+import java.net.ServerSocket;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -20,15 +21,23 @@ public class inicializarServidorSocketServet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {                       
-            ServidorSocket servidorSocket = new ServidorSocket();              
-            Boolean server = servidorSocket.start();
-            System.err.println(server + "server");
-            if(server == true){
-                servidorSocket.start();
-                RequestDispatcher dispatcher = request.getRequestDispatcher("telaLogin.jsp");
-                dispatcher.forward(request, response);
-            }
             
+            ServidorSocket servidorSocket = new ServidorSocket(); 
+            
+            capa(request,response);
+            servidorSocket.start();
+          
+    
+            
+    
+            
+            
+    }
+    
+    private void capa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+          
+            RequestDispatcher dispatcher = request.getRequestDispatcher("capa.jsp");
+            dispatcher.forward(request, response);
     }
 
     @Override

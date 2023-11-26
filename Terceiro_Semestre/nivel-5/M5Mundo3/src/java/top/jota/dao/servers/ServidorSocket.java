@@ -19,41 +19,45 @@ public class ServidorSocket {
     private final ExecutorService executorService = Executors.newCachedThreadPool();
     private Scanner sc = new Scanner(System.in);
 
-    // no metodo main instancio a propria classe e passo o método start para iniciar
-    public static void main(String[] args) {
-        ServidorSocket servidorSocket = new ServidorSocket();
-        servidorSocket.start();
+    //no metodo main instancio a propria classe e passo o método start para iniciar
+          public static void main(String[] args) {
+          ServidorSocket servidorSocket = new ServidorSocket();
+          servidorSocket.start();
 
-    }
+   }
 
     // metodo start
-    public Boolean start() {
-        
+    public ServerSocket start() {
+
         try {
             // inicializo o servidor passando a porta
             servidor = new ServerSocket(porta);
-            System.out.println("Servidor iniciado na porta: " + porta);
+             
             
-            // cria um lanço infinito esperando a conexão dos clientes
-            while (true) {
-                // ServerSocket é utilizado para aguardar e aceitar solicitações de conexão vindas de clientes.
-                // accept(): Este método é chamado no ServerSocket. Ele fica bloqueado, aguardando a chegada de uma 
-                //solicitação de conexão de um cliente.
-                Socket clienteSocket = servidor.accept();
-                System.out.println("Cliente conectado: " + clienteSocket.getRemoteSocketAddress());
+                System.out.println("Servidor iniciado na porta: " + porta);
 
-                // Crie uma thread ou use o ExecutorService para manipular a lógica do cliente
-                executorService.execute(() -> handleClient(clienteSocket));
-                 
-            }
-           
+                // cria um lanço infinito esperando a conexão dos clientes
+                while (true) {
+                    // ServerSocket é utilizado para aguardar e aceitar solicitações de conexão vindas de clientes.
+                    // accept(): Este método é chamado no ServerSocket. Ele fica bloqueado, aguardando a chegada de uma 
+                    //solicitação de conexão de um cliente.
+                    Socket clienteSocket = servidor.accept();
+                    System.out.println("Cliente conectado: " + clienteSocket.getRemoteSocketAddress());
 
+                    // Crie uma thread ou use o ExecutorService para manipular a lógica do cliente
+                    executorService.execute(() -> handleClient(clienteSocket));
+                }   
+                                  
+            
+             
         } catch (IOException e) {
             System.err.println("Erro ao iniciar o servidor: " + e.getMessage());
         } finally {
             encerrarServidor();
         }
-        return true;
+        return servidor;
+       
+        
 
     }
 

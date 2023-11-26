@@ -21,7 +21,7 @@ public class telaLoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("inicializarServidorSocketServet");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("telaLogin.jsp");
         dispatcher.forward(request, response);
 
     }
