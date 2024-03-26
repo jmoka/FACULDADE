@@ -45,8 +45,8 @@ const PizzaTranslator = () => {
 
 const style = StyleSheet.create({
   container:{ flex: 1, padding: 10, justifyContent: 'center'},
-  titulo:{ marginBottom: 10, fontSize: 30, height: 40 },
-  label:{ marginBottom: 5, fontSize: 20, height: 30 },
+  titulo:{ fontSize: 20, height: 40, alignSelf: "center", color: "red" },
+  label:{ marginBottom: 5, fontSize: 20, height: 40 },
   input :{
     height: 60,
     fontSize: 20,
@@ -59,7 +59,7 @@ const style = StyleSheet.create({
     borderRadius: 10,
   },
   divisao: { height: 40, fontSize: 20 },
-  textTraducao: { marginBottom: 5, fontSize: 20, height: 30 },
+  textTraducao: { marginBottom: 5, fontSize: 20, height: 40 },
   traducao: {padding: 10, fontSize: 42}
 })
 

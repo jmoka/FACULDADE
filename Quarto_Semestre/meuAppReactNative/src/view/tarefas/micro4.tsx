@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 
     flex: 1,
 
-    paddingTop: 22,
+    paddingTop: 2,
 
   },
 
@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
 
     padding: 10,
 
-    fontSize: 18,
+    fontSize: 15,
 
-    height: 44,
+    height: 45,
 
   },
 

@@ -35,7 +35,7 @@ const Menu = () => {
       <View style={style.cabecalho}>
 
       <Text style={style.cabecalho}>Faculdade Estácio de Sá</Text>
-      <Text style={style.cabecalho}>João Luiz S Tavares</Text>
+      <Text style={style.aluno}>João Luiz S Tavares</Text>
 
 
       </View>
@@ -68,11 +68,12 @@ const Menu = () => {
 };
 
 const style = StyleSheet.create({
+  aluno:{color: "red"},
   container: { flex: 1, justifyContent: 'center' },
-  cabecalho:{alignItems:'center', fontSize:30},
-  textMenu: { fontSize: 35, marginTop:30 },
-  obs: { fontSize: 25 },
-  menu: { marginBottom: 10, fontSize: 30, marginTop: 10 },
+  cabecalho:{alignItems:'center', fontSize:15, marginTop:20},
+  textMenu: { fontSize: 20, marginTop:20, alignSelf: 'center' },
+  obs: { fontSize: 15, alignSelf:"center" },
+  menu: { marginBottom: 10, fontSize: 15, marginTop: 10 },
   label: { marginBottom: 1, fontSize: 25 },
 
   input: {
@@ -80,8 +81,8 @@ const style = StyleSheet.create({
     color: '#f1f1f1',
     fontSize: 18,
     padding: 15,
-    marginTop: 5,
-    marginBottom: 50,
+    marginTop: 2,
+
     borderRadius: 5,
   },
 });

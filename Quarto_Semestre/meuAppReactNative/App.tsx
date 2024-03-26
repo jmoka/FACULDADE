@@ -9,12 +9,16 @@ import Csimples from "./src/view/missaoPratica/ComponenteSimples";
 // ESCOLHA QUAL TAREFA GOSTARIA DE APRESENTAR
 // E SÓ TRACAR A NUMERAÇÃO (Micro?)
 // DE 2 A 4
+
+
 export default function App() {
   const num = 1;
   return (
 
     <View style={styles.container}>
+      <ScrollView>
       <Menu/>
+      </ScrollView>
     </View>
 
   );

@@ -8,9 +8,9 @@ const logo = {
 
   uri: 'https://reactnative.dev/img/tiny_logo.png',
 
-  width: 64,
+  width: 80,
 
-  height: 64,
+  height: 80,
 
 };
 
@@ -20,11 +20,11 @@ const App = () => (
 
   <ScrollView>
 
-<Text style={{fontSize:30}}>
+<Text style={{fontSize:20}}>
         Microatividade 3
     </Text>
 
-    <Text style={{fontSize: 96}}>Scroll me plz</Text>
+    <Text style={{fontSize: 30}}>Scroll me plz</Text>
 
     <Image source={logo} />
 
@@ -36,7 +36,7 @@ const App = () => (
 
     <Image source={logo} />
 
-    <Text style={{fontSize: 96}}>If you like</Text>
+    <Text style={{fontSize: 30}}>If you like</Text>
 
     <Image source={logo} />
 
@@ -48,7 +48,7 @@ const App = () => (
 
     <Image source={logo} />
 
-    <Text style={{fontSize: 96}}>Scrolling down</Text>
+    <Text style={{fontSize: 30}}>Scrolling down</Text>
 
     <Image source={logo} />
 
@@ -60,7 +60,7 @@ const App = () => (
 
     <Image source={logo} />
 
-    <Text style={{fontSize: 96}}>What's the best</Text>
+    <Text style={{fontSize: 30}}>What's the best</Text>
 
     <Image source={logo} />
 
@@ -72,7 +72,7 @@ const App = () => (
 
     <Image source={logo} />
 
-    <Text style={{fontSize: 96}}>Framework around?</Text>
+    <Text style={{fontSize: 30}}>Framework around?</Text>
 
     <Image source={logo} />
 
@@ -84,7 +84,7 @@ const App = () => (
 
     <Image source={logo} />
 
-    <Text style={{fontSize: 80}}>React Native</Text>
+    <Text style={{fontSize: 30}}>React Native</Text>
 
   </ScrollView>
 
