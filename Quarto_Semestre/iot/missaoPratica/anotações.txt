@@ -1,4 +1,4 @@
-NO CLI AZURE
+NO CLI AZURE_
 az iot hub consumer-group create --hub-name hubFacul1 --name consumerGrupo
 
 
