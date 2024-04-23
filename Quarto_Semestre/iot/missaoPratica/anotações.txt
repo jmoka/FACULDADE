@@ -1,0 +1,43 @@
+NO CLI AZURE
+az iot hub consumer-group create --hub-name hubFacul1 --name consumerGrupo
+
+
+{
+  "etag": null,
+  "id": "/subscriptions/6ab398a5-c645-477b-b859-acb76a51e8fe/resourceGroups/Faculdade_group/providers/Microsoft.Devices/IotHubs/hubFacul1/eventHubEndpoints/events/ConsumerGroups/consumerGrupo",
+  "name": "consumerGrupo",
+  "properties": {
+    "created": "Fri, 19 Apr 2024 18:26:06 GMT",
+    "properties": {
+      "name": "consumerGrupo"
+    }
+  },
+  "resourceGroup": "Faculdade_group",
+  "type": "Microsoft.Devices/IotHubs/EventHubEndpoints/ConsumerGroups"
+}
+
+
+
+OBARTER CADEIA DE CONEXAO 
+az iot hub show-connection-string --hub-name hubFacul1 --policy-name service
+
+
+{
+  "connectionString": "HostName=hubFacul1.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=IIhcNDOn++stfcBllILdGyRxI2BYtcT1wAIoTPohlkQ="
+}
+
+
+set IotHubConnectionString="HostName=hubFacul1.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=IIhcNDOn++stfcBllILdGyRxI2BYtcT1wAIoTPohlkQ="
+set EventHubConsumerGroup="consumerGrupo"
+
+$env:IotHubConnectionString="HostName=hubFacul1.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=IIhcNDOn++stfcBllILdGyRxI2BYtcT1wAIoTPohlkQ="
+
+
+$env:EventHubConsumerGroup="consumerGrupo"
+
+
+CRIAR SERVIÇO DE APLICATIVO
+az appservice plan create --name app.fulstack --resource-group Faculdade_group --sku FREE
+
+
+
