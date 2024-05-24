@@ -22,8 +22,9 @@ servidor : serverfacul
 --------------------------------------
 az configure --defaults group=Faculdade_group sql-server=serverfacul
 
-az sql db show --name DbFacul
+az sql db list
 
+az sql db show --name DbFacul
 
 az sql db show --name DbFacul | jq '{name: .name, maxSizeBytes: .maxSizeBytes,
 status: .status}'
@@ -35,57 +36,13 @@ az sql db show-connection-string --client sqlcmd --name DbFacul
 
 
 
-CREATE TABLE Drivers (DriverID INT PRIMARY KEY, Nome VARCHAR(100), CNH VARCHAR(20),Endereço VARCHAR(200),Contato VARCHAR(50));
-	INSERIR
-	INSERT INTO Drivers (DriverID, Nome, CNH, Endereço, Contato) VALUES (1, 'NomeMotorista1', 'CNH123', 'EndereçoMotorista1', 'ContatoMotorista1');
-	INSERT INTO Drivers (DriverID, Nome, CNH, Endereço, Contato) VALUES (2, 'Maria Oliveira', 'CNH456', 'EndereçoMotorista2', 'ContatoMotorista2');
-	INSERT INTO Drivers (DriverID, Nome, CNH, Endereço, Contato) VALUES (3, 'Carlos Silva', 'CNH789', 'EndereçoMotorista3', 'ContatoMotorista3');
+-- Conecte ao banco de dados e crie a tabela Drivers
+sqlcmd -S tcp:serverfacul.database.windows.net,1433 -d DbFacul -U admfacul -P Jota1@jota79 -N -l 30 -Q "CREATE TABLE Drivers (DriverID INT PRIMARY KEY, Nome VARCHAR(100), CNH VARCHAR(20), Endereço VARCHAR(200), Contato VARCHAR(50));"
 
-	SELECIONAR A TABELA
-	SELECT * FROM Drivers;
+-- Insira dados na tabela Drivers
+sqlcmd -S tcp:serverfacul.database.windows.net,1433 -d DbFacul -U admfacul -P Jota1@jota79 -N -l 30 -Q "INSERT INTO Drivers (DriverID, Nome, CNH, Endereço, Contato) VALUES (1, 'NomeMotorista1', 'CNH123', 'EndereçoMotorista1', 'ContatoMotorista1');"
 
-	ATUALIZAR
-	UPDATE Drivers SET Nome = 'JOAO TAVARES', CNH = '1234', Endereço = 'RUA NOVA', Contato = 'JOTA' WHERE DriverID = 2;
-
-	DELETAR
-	DELETE FROM Drivers WHERE DriverID = 1;
+-- Selecione todos os dados da tabela Drivers
+sqlcmd -S tcp:serverfacul.database.windows.net,1433 -d DbFacul -U admfacul -P Jota1@jota79 -N -l 30 -Q "SELECT * FROM Drivers;"
 
 
-
-
-
-
-
-CREATE TABLE Clients (ClientID INT PRIMARY KEY, Nome VARCHAR(100), Empresa VARCHAR(100), Endereço VARCHAR(200), Contato VARCHAR(50) );
-
-	INSERIR
-	INSERT INTO Clients (ClientID , Nome, Empresa , Endereço , Contato) VALUES (1, 'Cliente1', 'Empresa1', 'EndereçoCliente1', 'ContatoCliente1');
-	INSERT INTO Clients (ClientID , Nome, Empresa , Endereço , Contato) VALUES (2, 'Cliente2', 'Empresa2', 'EndereçoCliente2', 'ContatoCliente2');
-	INSERT INTO Clients (ClientID , Nome, Empresa , Endereço , Contato) VALUES (3, 'Cliente3', 'Empresa3', 'EndereçoCliente3', 'ContatoCliente3');
-	
-	SELECIONAR A TABELA
-	SELECT * FROM Clients;
-
-	ATUALIZAR
-	UPDATE Clients SET Nome = 'NovoNome', Empresa = 'NovaEmpresa', Endereço = 'NovoEndereço',Contato = 'NovoContato' WHERE ClientID = 3;
-
-
-	DELETAR
-	DELETE FROM Clients WHERE ClientID = 1;
-
-
-
-
-CREATE TABLE Orders (OrderID INT PRIMARY KEY, ClientID INT, DriverID INT, DetalhesPedido TEXT, DataEntrega DATE, Status VARCHAR(50), FOREIGN KEY (ClientID) REFERENCES Clients(ClientID), FOREIGN KEY (DriverID) REFERENCES Drivers(DriverID));
-	
-	INSERIR
-	INSERT INTO Orders (OrderID, ClientID, DriverID, DetalhesPedido, DataEntrega, Status) VALUES (1, 2, 2, 'Detalhes do pedido', '2024-04-12', 'Em andamento');
-	INSERT INTO Orders (OrderID, ClientID, DriverID, DetalhesPedido, DataEntrega, Status) VALUES (2, 3, 2, 'Detalhes do pedido', '2024-04-12', 'Em andamento');
-	INSERT INTO Orders (OrderID, ClientID, DriverID, DetalhesPedido, DataEntrega, Status) VALUES (3, 2, 3, 'Detalhes do pedido', '2024-04-12', 'Em andamento');
-
-	
-	SELECIONAR A ORDERS
-	SELECT * FROM Orders ;
-
-	DELETAR
-	DELETE FROM Orders WHERE OrderID = 1;
