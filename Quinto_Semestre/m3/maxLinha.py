@@ -9,14 +9,12 @@ subconjunto = df[['Description', 'Quantity', 'UnitPrice']]
 pd.set_option('display.max_rows', 10) 
 
 print(subconjunto)
-
 # Usando o método head(passando a qquantidade de linhas a serem salvas) no caso as 10 primeiras 
-subConjuntoLinhasEditavel = subconjunto.head(10) 
+subcConjuntoReduzido = subconjunto.head(10) 
 
-
-print(subConjuntoLinhasEditavel)
+print(subcConjuntoReduzido)
 
 # Salvando o subconjunto em um novo arquivo Excel, to_excelcria um novo arquivo excel e 
 # recebe dois parametros o nome do arquiv.xlsx e o index podenso ser false ou true caso queira que o indice seja arquivado
-subConjuntoLinhasEditavel.to_excel('subconjunto_dados.xlsx', index=False)
+subcConjuntoReduzido.to_excel('subcConjuntoReduzido.xlsx', index=False)
 print("Arquivo Excel salvo com sucesso!")
