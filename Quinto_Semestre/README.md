@@ -51,81 +51,143 @@
 <pre><code>cd m5</code></pre>
 <p>E execute:</p>
 <pre><code>python info.py</code></pre>
+Vamos analisar a explicação do código passo a passo para verificar se está correta:
 
-<h2>Projeto Final</h2>
-<p>O projeto final integra todas as micro atividades desenvolvidas, permitindo ao usuário realizar uma análise completa dos dados. Através da interface Streamlit, o usuário poderá:</p>
-<ul>
-    <li>Carregar um arquivo Excel e visualizar suas primeiras e últimas linhas.</li>
-    <li>Aplicar filtros e manipulações para visualizar subconjuntos de dados.</li>
-    <li>Visualizar gráficos que representam a análise dos dados, como gráficos de pizza para proporções.</li>
-    <li>Tratar valores nulos e gerar relatórios resumidos da análise.</li>
-</ul>
+### 1. Importações Necessárias
 
-<p>Para executar o projeto final, siga os passos abaixo:</p>
-<ol>
-    <li>Clone o repositório:</li>
-    <pre><code>git clone https://github.com/seu-usuario/repositorio.git</code></pre>
-    <li>Instale as dependências:</li>
-    <pre><code>pip install -r requirements.txt</code></pre>
-    <li>Execute o projeto final:</li>
-    <pre><code>streamlit run main.py</code></pre>
-</ol>
-
-<h3>Explicação do Código</h3>
-<p>Abaixo estão algumas partes principais do código do projeto final:</p>
-
-<h4>1. Importações Necessárias</h4>
-<pre><code>import streamlit as st
+```python
+import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt</code></pre>
-<p>Nessa parte, importamos as bibliotecas essenciais: <strong>Streamlit</strong> para a interface web, <strong>Pandas</strong> para manipulação de dados e <strong>Matplotlib</strong> para a visualização gráfica.</p>
+import matplotlib.pyplot as plt
+```
 
-<h4>2. Carregamento do Arquivo Excel</h4>
-<pre><code>uploaded_file = st.file_uploader("Escolha um arquivo Excel", type=["xlsx"])
+**Explicação:**  
+A explicação está correta. Estas importações trazem as bibliotecas essenciais para a aplicação:
+
+- **Streamlit**: Para a interface web.
+- **Pandas**: Para manipulação de dados.
+- **Matplotlib**: Para a visualização gráfica.
+
+### 2. Carregamento do Arquivo Excel
+
+```python
+uploaded_file = st.file_uploader("Escolha um arquivo Excel", type=["xlsx"])
 if uploaded_file is not None:
-    df = pd.read_excel(uploaded_file)</code></pre>
-<p>Usamos <strong>file_uploader</strong> para permitir que o usuário faça upload de um arquivo Excel. Se um arquivo for carregado, usamos <strong>pd.read_excel</strong> para lê-lo em um DataFrame.</p>
+    df = pd.read_excel(uploaded_file)
+```
 
-<h4>3. Exibição de Dados</h4>
-<pre><code>if uploaded_file is not None:
+**Explicação:**  
+A explicação está correta. O código permite ao usuário fazer upload de um arquivo Excel e, se um arquivo for carregado, ele é lido em um DataFrame usando `pd.read_excel()`.
+
+### 3. Exibição de Dados
+
+```python
+if uploaded_file is not None:
     st.write("Primeiras linhas do arquivo:")
     st.dataframe(df.head())
     st.write("Últimas linhas do arquivo:")
-    st.dataframe(df.tail())</code></pre>
-<p>Com <strong>st.write</strong> e <strong>st.dataframe</strong>, exibimos as primeiras e últimas linhas do DataFrame para visualização rápida.</p>
+    st.dataframe(df.tail())
+```
 
-<h4>4. Gráficos</h4>
-<pre><code>def plot_data(data):
+**Explicação:**  
+A explicação está correta. O código exibe as primeiras e últimas linhas do DataFrame para uma visualização rápida usando `st.write()` e `st.dataframe()`.
+
+### 4. Gráficos
+
+```python
+def plot_data(data):
     plt.figure(figsize=(10, 6))
     plt.pie(data['Vendas'], labels=data['Produto'], autopct='%1.1f%%')
     plt.title('Proporção de Vendas por Produto')
-    st.pyplot(plt)</code></pre>
-<p>Definimos uma função <strong>plot_data</strong> que gera um gráfico de pizza com as vendas de cada produto. Usamos <strong>st.pyplot</strong> para exibir o gráfico na aplicação Streamlit.</p>
+    st.pyplot(plt)
+```
 
-<h4>5. Tratamento de Valores Nulos</h4>
-<pre><code>if st.button("Tratar Valores Nulos"):
+**Explicação:**  
+A explicação está correta. A função `plot_data()` gera um gráfico de pizza com as vendas de cada produto, e `st.pyplot()` exibe o gráfico na aplicação Streamlit.
+
+### 5. Tratamento de Valores Nulos
+
+```python
+if st.button("Tratar Valores Nulos"):
     df.fillna(0, inplace=True)
-    st.success("Valores nulos tratados!")</code></pre>
-<p>Com um botão, o usuário pode optar por tratar valores nulos, substituindo-os por zero. Utilizamos <strong>st.success</strong> para informar o usuário sobre a ação realizada.</p>
+    st.success("Valores nulos tratados!")
+```
 
-<h2>Como Executar o Projeto</h2>
-<ol>
-    <li>Clone o repositório:</li>
-    <pre><code>git clone https://github.com/seu-usuario/repositorio.git</code></pre>
-    <li>Instale as dependências:</li>
-    <pre><code>pip install -r requirements.txt</code></pre>
-    <li>Execute o projeto:</li>
-    <pre><code>streamlit run main.py</code></pre>
-</ol>
+**Explicação:**  
+A explicação está correta. O código cria um botão que, quando pressionado, preenche os valores nulos com zero e informa o usuário sobre a ação realizada usando `st.success()`.
 
-<h2>Dependências</h2>
-<ul>
-    <li><strong>Python 3.12+</strong></li>
-    <li><strong>Pandas</strong></li>
-    <li><strong>Streamlit</strong></li>
-    <li><strong>Matplotlib</strong></li>
-</ul>
+### 6. Processamento dos Dados
 
-<h2>Visualização</h2>
-<p>O projeto gera gráficos de pizza que mostram a proporção do valor total de vendas por produto.</p>
-<img src="exemplo-grafico.png" alt="Gráfico de pizza gerado pelo projeto">
+```python
+quant = st.number_input("Escolha a quantidade de linhas a serem processadas:", min_value=1, max_value=10000, value=10)
+processar = st.button("Processar Dados")
+
+if processar:
+    df = pd.read_excel('dados/dados.xlsx')
+    df_selecionado = df.head(quant)
+```
+
+**Explicação:**  
+A explicação é em grande parte correta, mas poderia ser mais clara sobre o uso do número de entrada. O código permite ao usuário definir a quantidade de linhas a serem processadas (entre 1 e 10000) e, ao clicar no botão "Processar Dados", ele carrega os dados do arquivo Excel e seleciona as primeiras `quant` linhas.
+
+### 7. Preenchendo Valores Nulos
+
+O código preenche valores nulos em colunas específicas:
+
+```python
+if 'CustomerID' in df_selecionado.columns:
+    df_selecionado['CustomerID'].fillna(0, inplace=True)
+
+if 'Description' in df_selecionado.columns:
+    df_selecionado['Description'].fillna('Desconhecido', inplace=True)
+
+if 'Country' in df_selecionado.columns:
+    df_selecionado['Country'].fillna('Country', inplace=True)
+```
+
+**Explicação:**  
+A explicação está correta. O código verifica a existência de colunas específicas no DataFrame e preenche valores nulos com valores padrão.
+
+### 8. Conversão da Coluna `InvoiceDate`
+
+```python
+if 'InvoiceDate' in df_selecionado.columns:
+    df_selecionado['InvoiceDate'] = pd.to_datetime(df_selecionado['InvoiceDate'], errors='coerce')
+```
+
+**Explicação:**  
+A explicação está correta. O código converte a coluna `InvoiceDate` para o tipo datetime, tratando erros ao usar `errors='coerce'`.
+
+### 9. Eliminação de Valores Negativos
+
+```python
+if 'Quantity' in df_selecionado.columns:
+    df_selecionado = df_selecionado[df_selecionado['Quantity'] >= 0]
+```
+
+**Explicação:**  
+A explicação está correta. O código elimina valores negativos na coluna `Quantity`.
+
+### 10. Informações Após o Tratamento
+
+```python
+st.write("### Informações após o tratamento dos dados:")
+st.write(df_selecionado.describe())
+```
+
+**Explicação:**  
+A explicação está correta. O código exibe informações resumidas sobre o DataFrame após o tratamento.
+
+### 11. Gráfico de Vendas
+
+```python
+if 'Description' in df_selecionado.columns and 'Quantity' in df_selecionado.columns and 'UnitPrice' in df_selecionado.columns:
+    df_selecionado['TotalSale'] = df_selecionado['Quantity'] * df_selecionado['UnitPrice']
+```
+
+**Explicação:**  
+A explicação está correta. O código calcula o valor total de vendas para cada produto e agrupa os dados por descrição do produto para somar o total de vendas.
+
+### Conclusão
+
+A explicação do código está, em geral, correta, mas algumas partes podem ser aprimoradas para maior clareza, especialmente sobre a interação do usuário com o número de entrada e o processamento dos dados. Se precisar de ajustes específicos ou esclarecimentos adicionais, me avise!
