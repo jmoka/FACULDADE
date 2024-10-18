@@ -1,6 +1,7 @@
 <h1 style="color: #2c3e50;">Missão Prática Nível 3 | Mundo 5</h1>
 <h3 style="color: #2980b9;">Tratando a imensidão dos dados</h3>
 <h4 style="color: #8e44ad;">Missão Prática</h4>
+
 <h1 style="color: #2c3e50;">Análise da Estrutura do DataFrame</h1>
 <h3 style="color: #2980b9;">Saída do Código Python</h3>
 <p>A seguir está a explicação da saída do código executado no terminal ao rodar o script <code>info.py</code>, que mostra informações sobre o DataFrame.</p>
@@ -20,6 +21,7 @@
 </ul>
 
 <h2>Como Acessar as Micro Atividades</h2>
+
 <h3># m1 - Lendo Excel</h3>
 <p>Para acessar esta seção, você deve:</p>
 <pre><code>cd m1</code></pre>
@@ -53,6 +55,7 @@
 <pre><code>python info.py</code></pre>
 
 <h2>Explicação do Código</h2>
+
 <h3>1. Importações Necessárias</h3>
 <pre><code>import streamlit as st
 import pandas as pd
@@ -85,10 +88,9 @@ if uploaded_file is not None:
 <h3>6. Processamento dos Dados</h3>
 <pre><code>quant = st.number_input("Escolha a quantidade de linhas a serem processadas:", min_value=1, max_value=10000, value=10)
 processar = st.button("Processar Dados")
-
 if processar:
-df = pd.read_excel('dados/dados.xlsx')
-df_selecionado = df.head(quant)</code></pre>
+    df = pd.read_excel('dados/dados.xlsx')
+    df_selecionado = df.head(quant)</code></pre>
 
 <h3>7. Preenchendo Valores Nulos em Colunas Específicas</h3>
 <pre><code>if 'CustomerID' in df_selecionado.columns:
@@ -115,3 +117,14 @@ st.write(df_selecionado.describe())</code></pre>
 <h3>11. Gráfico de Vendas</h3>
 <pre><code>if 'Description' in df_selecionado.columns and 'Quantity' in df_selecionado.columns and 'UnitPrice' in df_selecionado.columns:
     df_selecionado['TotalSale'] = df_selecionado['Quantity'] * df_selecionado['UnitPrice']</code></pre>
+
+<h2>Como Executar o Programa</h2>
+<p>Para executar o programa, siga as etapas abaixo:</p>
+<ol>
+    <li>Certifique-se de ter o Python instalado em seu sistema. Você pode baixar o Python <a href="https://www.python.org/downloads/">aqui</a>.</li>
+    <li>Instale as bibliotecas necessárias. No terminal, execute:</li>
+    <pre><code>pip install streamlit pandas matplotlib openpyxl</code></pre>
+    <li>Na raiz do projeto, execute o arquivo <strong>main.py</strong> com o seguinte comando:</li>
+    <pre><code>streamlit run main.py</code></pre>
+    <li>Isso abrirá o aplicativo Streamlit em seu navegador padrão.</li>
+</ol>
