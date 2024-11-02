@@ -1,5 +1,23 @@
 # Dando Inteligência ao Software
 
+## iniciar o sistema
+
+### No termminal execute
+
+- Ativando o venv
+
+          venv\Scripts\activate
+
+- nevegue ate a pasta venv
+
+          cd venv
+
+- Execute o comando
+
+          python analise_sentimentos.py
+
+============================================================================================
+
 # Analise de Sentimentos, em Processamento de Linguagem Natural com uso de Machine Learning
 
 ## Instalando o venv (ambiente virtual (venv))
