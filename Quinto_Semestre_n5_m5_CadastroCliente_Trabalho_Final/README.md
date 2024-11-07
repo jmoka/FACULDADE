@@ -73,8 +73,6 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
                         > novo
         crie todos as variaveis de ambiente que se ancontram no aqrquivo exEnv.txt deposi salve
 
-
-
 3.  **Execução do Projeto**:
 
     - Para iniciar o servidor de desenvolvimento:
@@ -95,41 +93,47 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
 
 ### Dependências
 
-```json
-{
-  "apollo-cache-inmemory": "^1.5.1",
-  "apollo-client": "^2.5.1",
-  "apollo-link-context": "^1.0.17",
-  "apollo-link-http": "^1.5.14",
-  "core-js": "^2.6.5",
-  "graphql": "^14.2.1",
-  "graphql-tag": "^2.10.1",
-  "jsonwebtoken": "^9.0.2",
-  "vue": "^2.6.10",
-  "vuetify": "^1.5.5",
-  "vuex": "^3.0.1"
-}
-```
+        {
+        "name": "backend",
+        "version": "1.0.0",
+        "description": "Missão Pratica nivel 5 mundo 5",
+        "main": "index.js",
+        "_moduleAliases": {
+            "@data": "data"
+        },
+        "scripts": {
+            "start": "nodemon --ext js,graphql",
+            "client": "node client.js"
+        },
+        "keywords": [],
+        "author": "joao tavares",
+        "license": "ISC",
+        "dependencies": {
+            "@graphql-tools/schema": "^10.0.6",
+            "apollo-server": "^2.4.8",
+            "axios": "^1.7.7",
+            "bcrypt": "^5.1.1",
+            "cross-fetch": "^4.0.0",
+            "date-fns": "^3.6.0",
+            "dotenv": "^16.4.5",
+            "graphql": "^14.2.1",
+            "graphql-import": "^0.7.1",
+            "graphql-tag": "^2.12.6",
+            "jsonwebtoken": "^9.0.2",
+            "knex": "^3.1.0",
+            "module-alias": "^2.2.3",
+            "mysql": "^2.18.1",
+            "mysql2": "^3.11.3",
+            "node-fetch": "^3.3.2"
+        },
+        "devDependencies": {
+            "@babel/core": "^7.25.2",
+            "@babel/node": "^7.25.0",
+            "@babel/preset-env": "^7.25.4",
+            "nodemon": "^3.1.4"
+        }
 
-### DevDependencies
-
-```json
-{
-  "@vue/cli-plugin-babel": "^3.6.0",
-  "@vue/cli-plugin-eslint": "^3.6.0",
-  "@vue/cli-service": "^3.6.0",
-  "babel-eslint": "^10.0.1",
-  "eslint": "^5.16.0",
-  "eslint-plugin-vue": "^5.0.0",
-  "stylus": "^0.54.5",
-  "stylus-loader": "^3.0.1",
-  "vue-cli-plugin-vuetify": "^0.5.0",
-  "vue-template-compiler": "^2.5.21",
-  "vuetify-loader": "^1.0.5"
-}
-```
-
----
+        }
 
 ## Considerações Finais
 

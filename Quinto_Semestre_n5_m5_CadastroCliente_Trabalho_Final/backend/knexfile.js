@@ -6,7 +6,7 @@ module.exports = {
     connection: {
       host: '127.0.0.1', // ou 'localhost'
       user: 'root', // seu usuário
-      password: '123', // sua senha
+      password: '12345678', // sua senha
       database: "baseCliente",
       port: "3306"
     }
