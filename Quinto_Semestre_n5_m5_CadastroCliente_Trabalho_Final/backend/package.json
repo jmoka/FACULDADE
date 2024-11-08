@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "Missão Pratica nivel 5 mundo 5",
   "main": "index.js",
-  "_moduleAliases": {
-    "@data": "data"
-  },
   "scripts": {
-    "start": "nodemon --ext js",
-    "client": "node client.js"
+    "start": "nodemon src/index.js",
+    "client": "node client.js",
+    "build": "babel src --out-dir dist"
   },
   "keywords": [],
   "author": "joao tavares",
@@ -26,16 +24,15 @@
     "graphql-tag": "^2.12.6",
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",
-    "module-alias": "^2.2.3",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.3",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
     "@babel/node": "^7.25.0",
-    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-env": "^7.26.0",
     "nodemon": "^3.1.4"
   }
-
 }

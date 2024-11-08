@@ -100,7 +100,7 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
 
     ### Execute o sistema
 
-        nom start
+        npm start
 
 ## Dependências e DevDependencies
 
