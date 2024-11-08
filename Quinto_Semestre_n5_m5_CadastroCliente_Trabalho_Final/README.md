@@ -82,19 +82,25 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
 
 4.  **Execução do Projeto**:
 
-    - Para iniciar o servidor de desenvolvimento:
+    ### 1 - Para iniciar o servidor de desenvolvimento:
 
-      npm run serve
+        npm start
 
-    - Para compilar para produção:
+    ### 2 - Feche a aplicação
 
-      npm run build
+        ctrl+c
 
-    - Para executar o linting:
+    ### 3 - Executar as Migrations
 
-          npm run lint
+        knex migrate:latest
 
----
+    ### 4 - Executar as seeds
+
+        knex seed:run
+
+    ### Execute o sistema
+
+        nom start
 
 ## Dependências e DevDependencies
 
@@ -144,9 +150,4 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
 
 ## Considerações Finais
 
-A escolha por GraphQL e Apollo Server visa otimizar o tráfego de dados, garantindo que apenas as informações necessárias sejam enviadas e processadas. A integração de práticas seguras no desenvolvimento assegura que o sistema esteja preparado para os desafios de segurança no ambiente web atual. A combinação de tecnologias modernas e medidas de segurança robustas torna esta aplicação um exemplo prático e eficaz de desenvolvimento seguro.
-
-```
-
-Este formato `README.md` é organizado para que você possa utilizar diretamente no repositório do seu projeto.
-```
+A minha escolha por GraphQL e Apollo Server visa otimizar o tráfego de dados, garantindo que apenas as informações necessárias sejam enviadas e processadas.

@@ -19,7 +19,7 @@ function conexaoSemDB() {
             console.error("Erro ao conectar ao MySQL: " + err.message);
             return;
         }
-        console.log("Conexão estabelecida com sucesso ao MySQL (sem banco de dados).");
+
     });
 
     return conectar;
@@ -61,7 +61,7 @@ async function criarBaseDados() {
         if (err) {
             console.error("Erro ao criar a base de dados: " + err.message);
         } else {
-            console.log(`Base de dados '${dbName}' criada ou já existe. ${result}`);
+            console.log(`Base de dados '${dbName}' criada ou já existe.`);
         }
         conectar.end(); // Fechar a conexão após a criação do banco
 

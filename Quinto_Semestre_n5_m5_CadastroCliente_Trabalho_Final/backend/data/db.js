@@ -12,12 +12,12 @@ const env = process.env.NODE_ENV || 'production';
 
 // Se o ambiente for 'development', exibe um log indicando que está em desenvolvimento
 if (env === 'development') {
-    console.log(`Usando o ambiente: ${env} ( Está em Desenvolvimento)`);
+    console.log('Está em Desenvolvimento');
 }
 
 // Se o ambiente for 'production', exibe um log indicando que está em produção
 if (env === 'production') {
-    console.log(`Usando o ambiente: ${env} ( Está em Produção)`);
+    console.log('Está em Produção');
 }
 
 let db;
