@@ -1,14 +1,21 @@
-require('dotenv').config(); // Carregar variáveis de ambiente
-const knex = require('knex'); // importa o knex
-const config = require('../knexfile.js'); // atribui a variavel config as o arquivo knexfile.js 
+// Carrega as variáveis de ambiente a partir do arquivo .env
+require('dotenv').config();
 
-const env = process.env.NODE_ENV || 'production'; // Pega o ambiente ou usa 'development' como padrão
+// Importa o módulo knex para trabalhar com o banco de dados
+const knex = require('knex');
 
-// Verifica se o ambiente é 'DESENVOLVIMENTO' para mostrar logs adicionais
+// Importa as configurações do knex definidas no arquivo knexfile.js
+const config = require('../knexfile.js');
+
+// Define a variável 'env' para pegar o ambiente de execução (desenvolvimento ou produção) a partir da variável de ambiente 'NODE_ENV', ou usa 'production' como padrão
+const env = process.env.NODE_ENV || 'production';
+
+// Se o ambiente for 'development', exibe um log indicando que está em desenvolvimento
 if (env === 'development') {
     console.log(`Usando o ambiente: ${env} ( Está em Desenvolvimento)`);
 }
-// Verifica se o ambiente é 'PRODUÇÃO' para mostrar logs adicionais
+
+// Se o ambiente for 'production', exibe um log indicando que está em produção
 if (env === 'production') {
     console.log(`Usando o ambiente: ${env} ( Está em Produção)`);
 }
@@ -16,11 +23,14 @@ if (env === 'production') {
 let db;
 
 try {
+    // Tenta criar uma conexão com o banco de dados utilizando as configurações específicas para o ambiente
     db = knex(config[env]);
-    console.log(`Banco de Dados Conectado`);
+    console.log(`Banco de Dados Conectado`); // Exibe um log de sucesso ao conectar
 } catch (error) {
+    // Caso ocorra um erro na conexão, exibe a mensagem de erro e encerra o processo com código 1 (erro)
     console.error('Erro ao conectar ao banco de dados:', error.message);
-    process.exit(1); // Encerra o processo com erro
+    process.exit(1);
 }
 
-module.exports = db; // Exporta a conexão para ser usada em outros módulos
+// Exporta a conexão com o banco de dados para ser usada em outros módulos
+module.exports = db; 

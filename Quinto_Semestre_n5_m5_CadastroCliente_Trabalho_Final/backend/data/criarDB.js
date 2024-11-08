@@ -70,5 +70,6 @@ async function criarBaseDados() {
         conectarComDB.end(); // Fechar a conexão após usá-la
     });
 }
-
+//testar a criação do banco de dados
+//criarBaseDados();
 module.exports = criarBaseDados;

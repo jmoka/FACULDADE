@@ -7,7 +7,7 @@
     "@data": "data"
   },
   "scripts": {
-    "start": "nodemon --ext js,graphql",
+    "start": "nodemon --ext js",
     "client": "node client.js"
   },
   "keywords": [],
