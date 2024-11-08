@@ -73,7 +73,14 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
                         > novo
         crie todos as variaveis de ambiente que se ancontram no aqrquivo exEnv.txt deposi salve
 
-3.  **Execução do Projeto**:
+3.  **Instale o Sql em sua máquina**:
+    Dados de conexao:
+    host: '127.0.0.1', // ou 'localhost'
+    user: 'root', // seu usuário
+    password: '12345678', // sua senha
+    port: "3306"
+
+4.  **Execução do Projeto**:
 
     - Para iniciar o servidor de desenvolvimento:
 

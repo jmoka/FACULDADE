@@ -1,22 +1,23 @@
 require('dotenv').config(); // Carregar variáveis de ambiente
-const knex = require('knex');
-const config = require('../knexfile.js');
+const knex = require('knex'); // importa o knex
+const config = require('../knexfile.js'); // atribui a variavel config as o arquivo knexfile.js 
 
-const env = process.env.NODE_ENV || 'development'; // Pega o ambiente ou usa 'development' como padrão
+const env = process.env.NODE_ENV || 'production'; // Pega o ambiente ou usa 'development' como padrão
 
-// Mostrar o nome do banco de dados (opcional)
-console.log("BANCO DE DADOS: " + process.env.DB_NAME);
-
-// Verifica se o ambiente é 'development' para mostrar logs adicionais
+// Verifica se o ambiente é 'DESENVOLVIMENTO' para mostrar logs adicionais
 if (env === 'development') {
-    console.log(`Usando o ambiente: ${env}`);
+    console.log(`Usando o ambiente: ${env} ( Está em Desenvolvimento)`);
+}
+// Verifica se o ambiente é 'PRODUÇÃO' para mostrar logs adicionais
+if (env === 'production') {
+    console.log(`Usando o ambiente: ${env} ( Está em Produção)`);
 }
 
 let db;
 
 try {
     db = knex(config[env]);
-    console.log(`Conexão com o banco de dados estabelecida no ambiente: ${env}`);
+    console.log(`Banco de Dados Conectado`);
 } catch (error) {
     console.error('Erro ao conectar ao banco de dados:', error.message);
     process.exit(1); // Encerra o processo com erro

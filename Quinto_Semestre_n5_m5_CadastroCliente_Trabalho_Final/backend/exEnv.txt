@@ -2,6 +2,9 @@
 Apara uso em produção
 NODE_ENV=production
 
+Sempre que alterar as variaveis de ambiente do windows , reinicie a máquina!
+
+Se as variabeis de ambiente foram configuradas mop windows o arquivo .env não é necessário!
  
  // Copipar para dentro de .env a variavais abaixo
 
