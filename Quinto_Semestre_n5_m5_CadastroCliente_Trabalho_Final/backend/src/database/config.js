@@ -1,11 +1,11 @@
-// Carrega as variáveis de ambiente a partir do arquivo .env
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config(); // Carregar variáveis de ambiente
+
+// Agora, o knexfile.js exporta a configuração usando export
+import { config } from '../knexfile.js';
 
 // Importa o módulo knex para trabalhar com o banco de dados
-const knex = require('knex');
-
-// Importa as configurações do knex definidas no arquivo knexfile.js
-const config = require('../knexfile');
+import knex from 'knex';
 
 // Define a variável 'env' para pegar o ambiente de execução (desenvolvimento ou produção) a partir da variável de ambiente 'NODE_ENV', ou usa 'production' como padrão
 const env = process.env.NODE_ENV || 'production';
@@ -33,4 +33,4 @@ try {
 }
 
 // Exporta a conexão com o banco de dados para ser usada em outros módulos
-module.exports = db; 
+export default db;

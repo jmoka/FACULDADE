@@ -1,5 +1,5 @@
 // Importa o pacote 'jsonwebtoken' para trabalhar com tokens JWT
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 // Função para extrair o token de autorização do contexto da requisição
 function extrairTokenContext(ctx) {
@@ -63,8 +63,8 @@ function extrairObjDecoder(ctx) {
     return decodedExtraido;
 }
 
-// Exporta as funções para serem usadas em outros módulos
-module.exports = {
+// Exportação nomeada das funções
+export {
     extrairTokenContext,
     extrairDecoded,
     extrairObjDecoder

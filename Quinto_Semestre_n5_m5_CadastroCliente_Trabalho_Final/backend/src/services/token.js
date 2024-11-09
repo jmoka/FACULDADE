@@ -1,7 +1,8 @@
-const jwt = require("jsonwebtoken");
+// Importa o pacote jwt para criar e verificar tokens
+import jwt from "jsonwebtoken";
 
 // É altamente recomendável armazenar o segredo em uma variável de ambiente
-const SEGREDO_JWT = process.env.DB_SECRET  // Substitua pelo seu segredo real e mantenha-o seguro
+const SEGREDO_JWT = process.env.DB_SECRET;  // Substitua pelo seu segredo real e mantenha-o seguro
 
 // Mensagem de erro padrão para token inválido ou expirado
 const err = new Error("Token inválido ou expirado");
@@ -49,4 +50,4 @@ const Token = {
 };
 
 // Exporta o objeto com as funções para serem usadas em outros módulos
-module.exports = Token;
+export default Token;

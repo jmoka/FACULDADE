@@ -1,5 +1,7 @@
-require('dotenv').config(); // Carregar variáveis de ambiente
-const mysql = require("mysql2"); // atribui a variável mysql a biblioteca mysql2
+import dotenv from 'dotenv'; // Importando dotenv usando ES Modules
+import mysql from 'mysql2'; // Importando a biblioteca mysql2
+
+dotenv.config(); // Carregando variáveis de ambiente
 
 // Função de conexão sem banco de dados especificado
 function conexaoSemDB() {
@@ -7,11 +9,9 @@ function conexaoSemDB() {
         host: '127.0.0.1',
         user: 'root',
         password: '12345678',
-
     };
 
     const conectar = mysql.createConnection(dadosConexao); // estabelece a conexao com o banco de dados
-
 
     // verifica se a conexao foi estabelecida e retorna a conexão
     conectar.connect((err) => {
@@ -19,14 +19,13 @@ function conexaoSemDB() {
             console.error("Erro ao conectar ao MySQL: " + err.message);
             return;
         }
-
     });
 
     return conectar;
 }
 
 // Função de conexão com o banco de dados
-function conexaoComDB() {
+export default function conexaoComDB() {
     const dadosConexao = {
         host: '127.0.0.1',
         user: 'root',
@@ -50,7 +49,7 @@ function conexaoComDB() {
 }
 
 // cria a base de dados 
-async function criarBaseDados() {
+export async function criarBaseDados() {
     const conectar = conexaoSemDB(); // Conectar sem especificar o banco de dados
     const dbName = "baseCliente"; // Nome do banco de dados
 
@@ -70,6 +69,6 @@ async function criarBaseDados() {
         conectarComDB.end(); // Fechar a conexão após usá-la
     });
 }
-//testar a criação do banco de dados
-//criarBaseDados();
-module.exports = criarBaseDados;
+
+// testar a criação do banco de dados
+// criarBaseDados();

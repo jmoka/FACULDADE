@@ -1,9 +1,12 @@
+// Importa o tipo Knex (se necessário)
+import knex from 'knex';
+
 /**
  * Função responsável por aplicar a migração para criar a tabela 'perfis'.
  * @param { import("knex").Knex } knex - Objeto Knex para interagir com o banco de dados.
  * @returns { Promise<void> } - Retorna uma promessa que indica a conclusão da migração.
  */
-exports.up = function (knex, Promise) {
+export const up = function (knex) {
     return knex.schema
         // Criação da tabela 'perfis'
         .createTable('perfis', table => {
@@ -25,10 +28,10 @@ exports.up = function (knex, Promise) {
  * @param { import("knex").Knex } knex - Objeto Knex para interagir com o banco de dados.
  * @returns { Promise<void> } - Retorna uma promessa que indica a conclusão da exclusão da tabela.
  */
-exports.down = function (knex) {
+export const down = function (knex) {
     return knex.schema.dropTable('perfis'); // Exclui a tabela 'perfis' caso a migração seja revertida
 };
 
 // Desativa a transação para essa migração específica. 
 // Isso significa que, se ocorrer algum erro, as alterações não serão revertidas automaticamente.
-exports.config = { transaction: false };
+export const config = { transaction: false };

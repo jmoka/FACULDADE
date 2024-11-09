@@ -2,7 +2,7 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> } 
  */
-exports.seed = async function (knex) {
+export const seed = async function (knex) {
   try {
     // Limpa a tabela 'perfis' antes de inserir novos dados
     await knex('perfis').del();
