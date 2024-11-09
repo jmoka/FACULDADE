@@ -1,57 +1,47 @@
-// Importa o módulo de banco de dados configurado
 import db from "../../database/config.js";
-
-// Importa a função `format` da biblioteca `date-fns` para formatar datas
 import { format } from "date-fns";
 
-// Define a função assíncrona `UsuarioID` que busca um usuário pelo ID
 export async function UsuarioID(id) {
     try {
-        // Consulta no banco de dados "usuarios" com um left join na tabela "perfis"
         const usuarioID = await db("usuarios")
-            .leftJoin("perfis", "usuarios.perfil", "=", "perfis.id") // Usa leftJoin para incluir usuários sem perfil
+            .leftJoin("perfis", "usuarios.perfil", "=", "perfis.id")
             .select(
                 "usuarios.id",
                 "usuarios.nome",
                 "usuarios.email",
                 "usuarios.status",
                 "usuarios.data_criacao",
-                "perfis.nome as perfil_nome",  // Nome do perfil
-                "perfis.rotulo as perfil_rotulo" // Rótulo do perfil
+                "perfis.nome as perfil_nome",
+                "perfis.rotulo as perfil_rotulo"
             )
-            .where({ "usuarios.id": id }) // Filtra por ID do usuário
-            .first(); // Retorna apenas o primeiro registro
+            .where({ "usuarios.id": id })
+            .first();
 
         if (!usuarioID) {
             throw new Error("Não foi possível retornar nenhum usuário com esse ID");
         }
 
-        // Formata o resultado no formato esperado pelo GraphQL
         const resultado = {
             id: usuarioID.id,
             nome: usuarioID.nome,
             email: usuarioID.email,
             status: usuarioID.status,
-            dataCriacao: format(new Date(usuarioID.data_criacao), 'yyyy-MM-dd HH:mm:ss'), // Formata a data
+            dataCriacao: format(new Date(usuarioID.data_criacao), 'yyyy-MM-dd HH:mm:ss'),
             perfil: {
-                nome: usuarioID.perfil_nome || "Perfil não definido", // Retorna texto padrão se não houver perfil
-                rotulo: usuarioID.perfil_rotulo || "Rótulo não definido" // Retorna texto padrão se não houver rótulo
+                nome: usuarioID.perfil_nome || "Perfil não definido",
+                rotulo: usuarioID.perfil_rotulo || "Rótulo não definido"
             }
         };
 
-        return resultado; // Retorna o usuário formatado
+        return resultado;
     } catch (error) {
-        // Exibe uma mensagem de erro no console
         console.error("Erro ao buscar usuário:", error.message);
-        // Lança uma exceção com mensagem específica
         throw new Error("Não foi possível retornar o usuário com esse ID.");
     }
 }
 
-// Define outra função assíncrona `Usuario_ID` que também busca um usuário pelo ID
 export async function Usuario_ID(id) {
     try {
-        // Consulta no banco de dados "usuarios" com um left join na tabela "perfis"
         const UsuarioSelecionado = await db("usuarios")
             .leftJoin("perfis", "usuarios.perfil", "=", "perfis.id")
             .select(
@@ -60,36 +50,33 @@ export async function Usuario_ID(id) {
                 "usuarios.email",
                 "usuarios.status",
                 "usuarios.perfil",
-                "perfis.nome as perfil_nome",  // Nome do perfil
-                "perfis.rotulo as perfil_rotulo", // Rótulo do perfil
+                "perfis.nome as perfil_nome",
+                "perfis.rotulo as perfil_rotulo",
                 "usuarios.data_criacao"
             )
-            .where({ "usuarios.id": id-- }) // Filtra por ID do usuário e usa decremento de ID (pode ser desnecessário)
-            .first(); // Retorna apenas o primeiro registro
+            .where({ "usuarios.id": id })
+            .first();
 
         if (!UsuarioSelecionado) {
             throw new Error("Não foi possível retornar nenhum usuário com esse ID");
         }
 
-        // Formata o resultado no formato esperado pelo GraphQL
         const usuarioCadastrado = {
             id: UsuarioSelecionado.id,
             nome: UsuarioSelecionado.nome,
             email: UsuarioSelecionado.email,
             status: UsuarioSelecionado.status,
             perfil: {
-                id: UsuarioSelecionado.id,
+                id: UsuarioSelecionado.perfil,
                 nome: UsuarioSelecionado.perfil_nome,
                 rotulo: UsuarioSelecionado.perfil_rotulo
             },
             dataCriacao: UsuarioSelecionado.data_criacao
         };
 
-        return usuarioCadastrado; // Retorna o usuário formatado
+        return usuarioCadastrado;
     } catch (error) {
-        // Exibe uma mensagem de erro no console
         console.error("Erro ao buscar usuário:", error.message);
-        // Lança uma exceção com mensagem específica
         throw new Error("Não foi possível retornar o usuário com esse ID.");
     }
 }

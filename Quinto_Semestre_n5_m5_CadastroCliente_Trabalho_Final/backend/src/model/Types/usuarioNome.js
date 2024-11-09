@@ -16,6 +16,7 @@ const UsuarioNome = async (nome) => {
                 "usuarios.email", // Seleciona o e-mail do usuário
                 "usuarios.status", // Seleciona o status do usuário
                 "usuarios.data_criacao", // Seleciona a data de criação do usuário
+                "perfis.id as perfil_id", // Seleciona o id do perfil, se existir
                 "perfis.nome as perfil_nome", // Seleciona o nome do perfil, se existir
                 "perfis.rotulo as perfil_rotulo" // Seleciona o rótulo do perfil, se existir
             )
@@ -35,8 +36,9 @@ const UsuarioNome = async (nome) => {
             status: usuarioNome.status,
             dataCriacao: format(new Date(usuarioNome.data_criacao), 'yyyy-MM-dd HH:mm:ss'), // Formata a data
             perfil: {
-                nome: usuarioNome.perfil_nome || "Perfil não definido", // Retorna texto padrão se não houver perfil
-                rotulo: usuarioNome.perfil_rotulo || "Rótulo não definido" // Retorna texto padrão se não houver rótulo
+                id: usuarioNome.perfil_id || "ID Perfil não definido", // Retorna texto padrão se não houver id perfil
+                nome: usuarioNome.perfil_nome || "Nome Perfil não definido", // Retorna texto padrão se não houver nome perfil
+                rotulo: usuarioNome.perfil_rotulo || "Rótulo Perfil não definido" // Retorna texto padrão se não houver rótulo perfil
             }
         };
 

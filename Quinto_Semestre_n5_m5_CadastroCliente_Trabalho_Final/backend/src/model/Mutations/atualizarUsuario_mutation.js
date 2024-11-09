@@ -50,13 +50,6 @@ const alterarUsuario = async (user, filtro) => {
             // Imprime no console que o usuário foi atualizado com sucesso
             console.log(`Usuário com ID: ${retorno.id} atualizado com sucesso!`);
 
-            // Atualiza a tabela `usuarioPerfis` para refletir a mudança de perfil
-            await db("usuarioPerfis")
-                .where({ usuario_id: id })  // Verifica a associação do usuário pelo ID
-                .update({
-                    perfil_id: user.perfil  // Atualiza o perfil associado ao usuário
-                });
-
             // Imprime no console que a tabela `usuarioPerfis` foi atualizada
             console.log(`Tabela usuarioPerfis atualizada para o usuário com ID: ${id} e perfil ID: ${user.perfil}`);
 

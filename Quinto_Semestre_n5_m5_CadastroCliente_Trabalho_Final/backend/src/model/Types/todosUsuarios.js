@@ -16,6 +16,7 @@ async function TodosUsuarios() {
                 "usuarios.email",
                 "usuarios.status",
                 "usuarios.data_criacao",
+                "perfis.id as perfil_id", // Seleciona o id do perfil, se existir
                 "perfis.nome as perfil_nome", // Nome do perfil
                 "perfis.rotulo as perfil_rotulo" // Rótulo do perfil
             );
@@ -33,6 +34,7 @@ async function TodosUsuarios() {
             status: usuario.status,
             dataCriacao: format(new Date(usuario.data_criacao), 'yyyy-MM-dd HH:mm:ss'), // Formata a data
             perfil: {
+                id: usuario.perfil_id || "ID Perfil não definido", // Retorna texto padrão se não houver id perfil
                 nome: usuario.perfil_nome,
                 rotulo: usuario.perfil_rotulo
             }

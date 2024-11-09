@@ -162,9 +162,9 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
 
 # Query e Mutations
 
-# Querys
+## Querys
 
-## Todos os Usuários
+### Todos os Usuários
 
             query{
             usuarios{
@@ -180,4 +180,108 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
         }
         }
 
-##
+### Usuário por ID
+
+    query{
+    usuarioID(id:1) {
+        id
+        nome
+        email
+        status
+        perfil {
+        id
+        nome
+        rotulo
+        }
+        dataCriacao
+    }
+    }
+
+## Mutation
+
+### Logar
+
+    mutation {
+        loginUsuario(dados: {
+            email: "master@jotaempresa.com",
+            senha: "Master@123"
+        }) {
+            id
+            nome
+            email
+            status
+            perfil {
+            nome
+            rotulo
+            }
+        }
+        }
+
+### Novo Usuário
+
+    mutation {
+        novoUsuario(user:{
+            nome:"dev"
+            email:"dev41@dev.com"
+            senha:"123"
+            perfil:4
+            status: "ATIVO"
+    }){
+        id
+        nome
+        email
+        perfil{
+            nome
+            rotulo
+        }
+        status
+
+        }
+    }
+
+### Atualizar Usuário
+
+    mutation {
+        alterarUsuario(
+            user: {
+            nome: "brasil2"
+            email: "dev1000@dev.com"
+            status:"ATIVO"
+            perfil:3
+
+            }
+        filtro: {
+            id: 42
+            }
+    ) {
+        id
+        nome
+        email
+        status
+        perfil {
+        id
+        nome
+        rotulo
+        }
+    }
+    }
+
+### Excluir Usuário
+
+    mutation{
+        excluirUsuario(
+        filtro:{
+            id:2
+        }
+        ){
+            nome
+            id
+            email
+            status
+            dataCriacao
+            perfil{
+                nome
+                rotulo
+                }
+        }
+    }

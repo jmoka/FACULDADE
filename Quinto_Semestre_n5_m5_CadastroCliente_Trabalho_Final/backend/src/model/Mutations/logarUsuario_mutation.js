@@ -1,57 +1,55 @@
-// logarUsuario_mutation.js
+import { UsuarioEmail } from "../Types/usuarioEmail.js";
+import Token from "../../services/token.js";
+import { autenticar } from "../../services/hash.js";
 
-import { UsuarioEmail } from "../Types/usuarioEmail.js";  // Função para buscar usuário pelo e-mail
-import Token from "../../services/token.js";  // Módulo para gerar o token JWT
-import { autenticar } from "../../services/hash.js";  // Função para autenticar a senha com hash
-
-// Função principal para realizar o login do usuário
 async function logarUsuario(dados, req) {
-    // Erros personalizados para diferentes cenários
-    const errSenhaEmail = new Error("Email ou senha não cadastrado!");  // Se o e-mail ou senha não estiverem corretos
-    const erroInativo = new Error("Usuário Inativo");  // Se o usuário estiver inativo
-    const erroUsuario = new Error("Usuário não Definido");  // Erro genérico para problemas de login
+    const errSenhaEmail = new Error("Email ou senha não cadastrado!");
+    const erroInativo = new Error("Usuário Inativo");
+    const erroUsuario = new Error("Usuário não Definido");
 
     try {
-
-        // Desestrutura os dados recebidos (email e senha)
         const { email, senha } = dados;
 
-        // Buscar o usuário no banco de dados pelo email
-        const usuarioEncontrado = await UsuarioEmail(email);
+        // Normaliza e remove espaços do email
+        const normalizedEmail = email.trim().toLowerCase();
 
-        // Se o usuário não for encontrado, lança o erro de email ou senha inválidos
-        if (!usuarioEncontrado) throw errSenhaEmail;
+        // Log do e-mail recebido para depuração
+        console.log("Email recebido:", email);
+        console.log("Email normalizado:", normalizedEmail);
 
-        // Verifica se o usuário está ativo. Se não, lança erro de usuário inativo
-        if (usuarioEncontrado.status !== "ATIVO") throw erroInativo;
+        // Busca o usuário no banco de dados pelo email
+        const usuarioEncontrado = await UsuarioEmail(normalizedEmail);
 
-        // Verifica se a senha informada é válida comparando com o hash da senha armazenado
-        const senhaValida = await autenticar.autenticar(senha, usuarioEncontrado.senha);
-        if (!senhaValida) throw errSenhaEmail;  // Se a senha não for válida, lança erro de email ou senha inválidos
+        // Log do usuário encontrado para depuração
+        console.log("Usuario Encontrado:", usuarioEncontrado);
 
-        // Se tudo estiver correto, gera o token JWT para o usuário
+        if (!usuarioEncontrado) throw errSenhaEmail; // checa se existe o usuario 
+        if (usuarioEncontrado.status !== "ATIVO") throw erroInativo; // checa se o estatus esta ativo
+
+        // Verifica a comparação de senha
+
+        const senhaValida = await autenticar(senha, usuarioEncontrado.senha);
+        console.log("Senha Válida:", senhaValida);
+
+        if (!senhaValida) throw errSenhaEmail;
+
         const token = Token.gerarToken(usuarioEncontrado);
-
-        // Insere o token no cabeçalho da requisição para autenticação futura
         req.headers = {
-            authorization: `Bearer ${token}`  // Adiciona o token como Bearer no cabeçalho
-        }
+            authorization: `Bearer ${token}`
+        };
 
-        // Prepara os dados do token (tempo de emissão e expiração) para retornar junto com o usuário
         const dadosToken = {
-            iat: token.iat,  // Data de emissão do token
-            exp: token.exp,  // Data de expiração do token
-            token: token.token  // O próprio token gerado
-        }
+            iat: token.iat,
+            exp: token.exp,
+            token: token.token
+        };
 
-        // Retorna o usuário encontrado junto com os dados do token
         return { ...usuarioEncontrado, ...dadosToken };
 
     } catch (e) {
-        console.error(e);  // Log do erro real para depuração
-        throw erroUsuario;  // Lança um erro genérico caso algo dê errado
+        console.error("Erro:", e);  // Log do erro real
+        throw erroUsuario;  // Lança um erro genérico para o cliente
     }
 }
 
-// Exportação nomeada da função
 export { logarUsuario };
