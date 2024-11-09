@@ -9,7 +9,7 @@ import { importSchema } from 'graphql-import';
 import resolvers from './resolvers/index.js';  // Verifique o caminho correto e extensão do arquivo
 
 // Importa uma função que cria o banco de dados, possivelmente inicializando a base de dados
-import CriarBaseDados from "./utils/criarDB.js";  // Verifique o caminho correto e extensão do arquivo
+import { criarBaseDados } from "./utils/criarDB.js";  // Verifique o caminho correto e extensão do arquivo
 
 // Importa o contexto que será usado no Apollo Server, como informações de autenticação ou outros dados compartilhados
 import context from "./utils/context.js";  // Verifique o caminho correto e extensão do arquivo
@@ -33,7 +33,7 @@ const server = new ApolloServer({
 });
 
 // Chama a função para criar o banco de dados
-CriarBaseDados();
+criarBaseDados();
 
 // Inicia o servidor na porta 4000 e imprime a URL onde ele está sendo executado
 server.listen({ port: 4000 }).then(({ url }) => {

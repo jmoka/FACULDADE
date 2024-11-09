@@ -1,4 +1,4 @@
-import { criarHash } from '../autenticacao/hash';
+import { criarHash } from "../../services/hash.js";
 
 /**
  * Função para inserir dados iniciais na tabela 'usuarios'

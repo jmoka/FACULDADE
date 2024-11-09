@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config(); // Carregar variáveis de ambiente
 
 // Agora, o knexfile.js exporta a configuração usando export
-import { config } from '../knexfile.js';
+import config from '../../knexfile.js';
 
 // Importa o módulo knex para trabalhar com o banco de dados
 import knex from 'knex';

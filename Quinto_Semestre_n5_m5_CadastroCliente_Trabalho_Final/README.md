@@ -58,20 +58,24 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
 2.  **Configuração de Variáveis de Ambiente usundo o arquivo .env**:
     Configure as variáveis de ambiente em um arquivo `.env` para gerenciar dados sensíveis, como credenciais do banco de dados e chaves de API.
 
-    crie um arquivo chamado .env dentro da rais da pasta backend
+    Crie um arquivo chamado .env dentro da raiz da pasta backend
 
-    e copie para dentro dele o conteudo do arquivo exEnv.txt
+        .env
+
+    Copie para dentro dele o conteudo do arquivo
+
+        exEnv.txt
 
 ## obs: Sem usar o .env
 
-    No seu computador sistema operacional windows abra a barra de pesquisa e digite:
+    No seu computador, sistema operacional windows,  abra a barra de pesquisa e digite:
 
         > variaveis de ambiente
             > editar variaveis de ambiente
                 > variaveis de ambiente
                     > variaveis do sistema
                         > novo
-        crie todos as variaveis de ambiente que se ancontram no aqrquivo exEnv.txt deposi salve
+        Crie todos as variaveis de ambiente que se ancontram no aqrquivo exEnv.txt deposi salve
 
 3.  **Instale o Sql em sua máquina**:
     Dados de conexao:
@@ -89,6 +93,7 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
     ### 2 - Feche a aplicação
 
         ctrl+c
+        s + enter
 
     ### 3 - Executar as Migrations
 
@@ -107,47 +112,72 @@ A implementação foi projetada com um sistema de autenticação baseado em toke
 ### Dependências
 
         {
-        "name": "backend",
-        "version": "1.0.0",
-        "description": "Missão Pratica nivel 5 mundo 5",
-        "main": "index.js",
-        "_moduleAliases": {
-            "@data": "data"
-        },
-        "scripts": {
-            "start": "nodemon --ext js,graphql",
-            "client": "node client.js"
-        },
-        "keywords": [],
-        "author": "joao tavares",
-        "license": "ISC",
-        "dependencies": {
-            "@graphql-tools/schema": "^10.0.6",
-            "apollo-server": "^2.4.8",
-            "axios": "^1.7.7",
-            "bcrypt": "^5.1.1",
-            "cross-fetch": "^4.0.0",
-            "date-fns": "^3.6.0",
-            "dotenv": "^16.4.5",
-            "graphql": "^14.2.1",
-            "graphql-import": "^0.7.1",
-            "graphql-tag": "^2.12.6",
-            "jsonwebtoken": "^9.0.2",
-            "knex": "^3.1.0",
-            "module-alias": "^2.2.3",
-            "mysql": "^2.18.1",
-            "mysql2": "^3.11.3",
-            "node-fetch": "^3.3.2"
-        },
-        "devDependencies": {
-            "@babel/core": "^7.25.2",
-            "@babel/node": "^7.25.0",
-            "@babel/preset-env": "^7.25.4",
-            "nodemon": "^3.1.4"
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "Missão Pratica nivel 5 mundo 5",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "nodemon src/index.js",
+        "client": "node client.js",
+        "build": "webpack --mode production"
+    },
+    "babel": {
+        "presets": ["@babel/preset-env"]
+    },
+    "keywords": [],
+    "author": "joao tavares",
+    "license": "ISC",
+    "dependencies": {
+        "@graphql-tools/schema": "^10.0.6",
+        "apollo-server": "^2.4.8",
+        "axios": "^1.7.7",
+        "bcrypt": "^5.1.1",
+        "cross-fetch": "^4.0.0",
+        "date-fns": "^3.6.0",
+        "dotenv": "^16.4.5",
+        "graphql": "^14.2.1",
+        "graphql-import": "^0.7.1",
+        "graphql-tag": "^2.12.6",
+        "jsonwebtoken": "^9.0.2",
+        "knex": "^3.1.0",
+        "mysql": "^2.18.1",
+        "mysql2": "^3.11.3",
+        "node-fetch": "^3.3.2"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.25.9",
+        "@babel/core": "^7.26.0",
+        "@babel/node": "^7.25.0",
+        "@babel/preset-env": "^7.26.0",
+        "nodemon": "^3.1.4",
+        "webpack": "^5.96.1",
+        "webpack-cli": "^5.1.4"
+    }
+    }
+
+# Servidor GraphQL rodando em
+
+    http://localhost:4000/
+
+# Query e Mutations
+
+# Querys
+
+## Todos os Usuários
+
+            query{
+            usuarios{
+                id
+                nome
+                email
+                perfil{
+                    nome
+                    rotulo
+                }
+                status
+                dataCriacao
+        }
         }
 
-        }
-
-## Considerações Finais
-
-A minha escolha por GraphQL e Apollo Server visa otimizar o tráfego de dados, garantindo que apenas as informações necessárias sejam enviadas e processadas.
+##

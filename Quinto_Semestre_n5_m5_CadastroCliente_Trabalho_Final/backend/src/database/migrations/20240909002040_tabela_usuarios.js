@@ -1,10 +1,11 @@
-import { Knex } from "knex"; // Importa o tipo Knex (se precisar)
+import pkg from 'knex';
+const { Knex } = pkg; // Importa o tipo Knex do pacote knex
 
 /**
-* Função que define a migração para a criação da tabela "usuarios".
-* @param {Knex} knex - O objeto knex utilizado para interagir com o banco de dados.
-* @returns {Promise<void>} - Retorna uma Promise que resolve quando a operação de criação for concluída.
-*/
+ * Função que define a migração para a criação da tabela "usuarios".
+ * @param {Knex} knex - O objeto knex utilizado para interagir com o banco de dados.
+ * @returns {Promise<void>} - Retorna uma Promise que resolve quando a operação de criação for concluída.
+ */
 export const up = async (knex) => {
     // Criação da tabela "usuarios" com suas respectivas colunas
     await knex.schema.createTable("usuarios", (table) => {
