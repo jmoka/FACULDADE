@@ -32,7 +32,7 @@
   <a href="#passos-para-a-implementacao">Passos para a Implementação</a>
 </div>
 <div style="margin: 0 20px;">
-  <a href="#instalacaoo">Instalações</a>
+  <a href="#instalacao">Instalações</a>
 </div>
     
   </span>
