@@ -39,6 +39,7 @@ Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades
     <img src="./backend/img/vuex.webp" alt="Vuex" style="height: 100px; width: auto; border-radius: 5px;">
     <img src="./backend/img/vue.webp" alt="Vue.js" style="height: 100px; width: auto; border-radius: 5px;">
     <img src="./backend/img/html.webp" alt="HTML" style="height: 100px; width: auto; border-radius: 5px;">
+     <img src="./backend/img/mysql.webp" alt="HTML" style="height: 100px; width: auto; border-radius: 5px;">
   </div>
 </div>
 
@@ -46,7 +47,30 @@ Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades
 
 ## Introdução
 
-Este projeto demonstra a criação de um sistema Full Stack com foco em práticas de segurança. O objetivo é proteger dados sensíveis, implementar controle de acesso eficiente e minimizar vulnerabilidades com as melhores práticas do setor.
+- **Este projeto implementa um sistema Full Stack focado em segurança de dados, controle de acesso e prevenção de vulnerabilidades. A API gerencia informações de clientes e integra GraphQL para consultas e manipulações eficientes de dados, com Apollo Server. A segurança é reforçada por autenticação JWT para acesso restrito e bcrypt para criptografar senhas, alinhando-se às melhores práticas.**:
+- **O projeto utiliza bibliotecas essenciais para um sistema seguro e eficiente. No backend, e posui as seguintes dependencias:**
+
+## Dependências
+
+- **@graphql-tools/schema**: Constrói esquemas GraphQL facilmente, facilitando a criação e organização de APIs.
+- **apollo-server**: Configura o servidor GraphQL com suporte para integrações seguras e eficientes.
+- **axios**: Gerencia requisições HTTP para comunicação entre o front e o backend.
+- **bcrypt**: Criptografa senhas para proteger dados de login.
+- **cross-fetch**: Biblioteca leve para requisições `fetch` compatível com diversas plataformas.
+- **date-fns**: Facilita o gerenciamento e formatação de datas.
+- **dotenv**: Carrega variáveis de ambiente de arquivos `.env` para maior segurança e flexibilidade.
+- **graphql**: Implementa o núcleo do GraphQL para consultas e mutações de dados.
+- **graphql-import**: Importa tipos GraphQL de arquivos `.graphql`, permitindo modularização.
+- **graphql-tag**: Interpreta consultas e mutações GraphQL como literais de template.
+- **jsonwebtoken**: Gera e valida tokens JWT para autenticação segura de usuários.
+- **knex**: Builder SQL que facilita a interação com bancos de dados.
+- **mysql** e **mysql2**: Drivers para conectar e gerenciar o banco de dados MySQL.
+
+## Dependências de Desenvolvimento
+
+- **@babel/cli**, **@babel/core**, **@babel/node**, **@babel/preset-env**: Compilam código JavaScript moderno para maior compatibilidade.
+- **nodemon**: Roda o servidor em ambiente de desenvolvimento, reiniciando automaticamente ao detectar mudanças.
+- **webpack** e **webpack-cli**: Empacota e otimiza o código para produção, melhorando a performance da aplicação.
 
 ---
 
@@ -88,47 +112,132 @@ Este projeto demonstra a criação de um sistema Full Stack com foco em prática
 
 ## Passos para a Implementação
 
-0. **Baixe o repositórios**: 
+0. **Baixe o repositórios**:
 
+```bash
+ git clone git@github.com:jmoka/FACULDADE.git
+```
+
+OBS. **Localizar o Repositório**:
+
+```bash
+  O repositório baixado é o arquivo completo da faculdade, portanto o arquivo em questão para esse trabalho está localizado: "Quinto_Semestre_n5_m5_CadastroCliente_Trabalho_Final"
+  Localize essa pasta e 'abra o VSCode nesse diretório'!
+```
+
+- Antes de instalar as dependências verifique se o arquivo `package.json` está presente dentro da pasta `backend` caso não esteja tente atualizar o repositório `git pull` ou crie o arquivo e coloque o seguinte código:
+
+```bash
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Missão Pratica nivel 5 mundo 5",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "client": "node client.js",
+    "build": "webpack --mode production"
+  },
+  "babel": {
+    "presets": ["@babel/preset-env"]
+  },
+  "keywords": [],
+  "author": "joao tavares",
+  "license": "ISC",
+  "dependencies": {
+    "@graphql-tools/schema": "^10.0.6",
+    "apollo-server": "^2.4.8",
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
+    "cross-fetch": "^4.0.0",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "graphql": "^14.2.1",
+    "graphql-import": "^0.7.1",
+    "graphql-tag": "^2.12.6",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.3",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/node": "^7.25.0",
+    "@babel/preset-env": "^7.26.0",
+    "nodemon": "^3.1.4",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
+
+```
+
+## PASSOS
+
+### 1. **Instalação das Dependências**:
+
+```bash
+npm install
+```
+
+### 2. **Configuração de Variáveis de Ambiente**:
+
+#### Usando o arquivo `.env`
+
+- Após ter instalado as dependencias e configurado o `package.jsom` conforme acoma descrito, crie dentro da pasta `backend` rais do projeto um arquivo chamado `.env` e dentro dele coloque o seguinte código, ou copie o conteudo do arquivo `exEnv.tex` e cole no `.env` o codigo abaixo:
+
+```bash
+NODE_ENV=development
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=12345678
+DB_NAME=baseCliente
+DB_PORT=3306
+DB_SECRET= $2y$10$9HgMnwLBwrlqJV/jf01YDe4HatluuYRPgkpaHGhNq5W9iNdUPafpa
+```
+
+### Usando o Ambiente Windows
+
+- nesse caso não precisa criar o arquivo `.env` precisa fazer o seguinte:
+
+1.  Em seu windows pesquise por `Editar variaveis de ambiente` depois clique em `variavais de ambiente` na caixa de diálogo que vai abrir , após isso em `variavais do sistema` va em novo e crie todas avariaveis de ambiente igual o arquivo acima criado na pasta `.env`
+
+### 3. **Instale o MySQL** e configure conforme os dados de conexão fornecidos.
+
+```bash
+host: '127.0.0.1',
+user: 'root',
+password: '12345678',
+database: "baseCliente",
+port: "3306"
+```
+
+## 4. **Execução do Projeto**:
+
+- Iniciar o servidor de desenvolvimento:
   ```bash
-   git clone git@github.com:jmoka/FACULDADE.git
-   ```
-  OBS. **Localizar o Repositório**:
-
-    ```bash
-    O repositório baixado é o arquivo completo da faculdade, portanto o arquivo em questão para esse trabalho está localizado: "Quinto_Semestre_n5_m5_CadastroCliente_Trabalho_Final"
-    Localize essa pasta e 'abra o VSCode nesse diretório'!
-    ```
-
-1. **Instalação das Dependências**:
-   ```bash
-   npm install
-   ```
-2. **Configuração de Variáveis de Ambiente**:  
-   Crie o arquivo `.env` com as variáveis necessárias.
-3. **Instale o MySQL** e configure conforme os dados de conexão fornecidos.
-4. **Execução do Projeto**:
-   - Iniciar o servidor de desenvolvimento:
-     ```bash
-     npm start
-     ```
-   - Fechar a aplicação:
-     ```bash
-     ctrl + c
-     s + enter
-     ```
-   - Executar as migrations:
-     ```bash
-     knex migrate:latest
-     ```
-   - Executar as seeds:
-     ```bash
-     knex seed:run
-     ```
-   - Reiniciar o sistema:
-     ```bash
-     npm start
-     ```
+  npm start
+  ```
+- Fechar a aplicação:
+  ```bash
+  ctrl + c
+  s + enter
+  ```
+- Executar as migrations:
+  ```bash
+  knex migrate:latest
+  ```
+- Executar as seeds:
+  ```bash
+  knex seed:run
+  ```
+- Reiniciar o sistema:
+  ```bash
+  npm start
+  ```
 
 ---
 
@@ -238,5 +347,3 @@ mutation {
   }
 }
 ```
-
-
