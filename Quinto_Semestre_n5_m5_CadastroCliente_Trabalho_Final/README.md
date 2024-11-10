@@ -10,18 +10,30 @@
 
 ## Links de Navegação
 
-<div style="display:flex; justify-content: space-around; margin: 20px 0;">
-  <span style="text-align: center;">
-
- <div style="margin: 0 20px;">
-  <a href="#querys">Querys</a>
-  </div>
-    
-  </span>
-  <span style="text-align: center">
-  <div style="margin: 0 20px;">
+<div style="margin: 0 20px;">
+  <a href="#querys">Queries</a>
+</div> 
+<div style="margin: 0 20px;">
   <a href="#mutations">Mutations</a>
-  </div>
+</div>
+<div style="margin: 0 20px;">
+  <a href="#tecnologias_utilizadas">Tecnologias Utilizadas</a>
+</div>
+<div style="margin: 0 20px;">
+  <a href="#introducao">Introdução</a>
+</div>
+<div style="margin: 0 20px;">
+  <a href="#dependencias">Dependências</a>
+</div>
+<div style="margin: 0 20px;">
+  <a href="#objetivos_tecnicos_da_pratica">Objetivos Técnicos da Prática</a>
+</div>
+<div style="margin: 0 20px;">
+  <a href="#passos-para-a-implementacao">Passos para a Implementação</a>
+</div>
+<div style="margin: 0 20px;">
+  <a href="#instalacaoo">Instalações</a>
+</div>
     
   </span>
 </div>
@@ -35,7 +47,7 @@ Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades
 
 ---
 
-## Tecnologias Utilizadas
+## <a id="tecnologias_utilizadas"></a>Tecnologias Utilizadas
 
 <div style="width: 100%; overflow-x: auto; margin: 20px 0;">
   <div style="display: flex; gap: 10px;">
@@ -52,12 +64,12 @@ Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades
 
 ---
 
-## Introdução
+## <a id="introducao"></a>Introdução
 
 - **Este projeto implementa um sistema Full Stack focado em segurança de dados, controle de acesso e prevenção de vulnerabilidades. A API gerencia informações de clientes e integra GraphQL para consultas e manipulações eficientes de dados, com Apollo Server. A segurança é reforçada por autenticação JWT para acesso restrito e bcrypt para criptografar senhas, alinhando-se às melhores práticas.**:
 - **O projeto utiliza bibliotecas essenciais para um sistema seguro e eficiente. No backend, e posui as seguintes dependencias:**
 
-## Dependências
+## <a id="dependencias"></a>Dependências
 
 - **@graphql-tools/schema**: Constrói esquemas GraphQL facilmente, facilitando a criação e organização de APIs.
 - **apollo-server**: Configura o servidor GraphQL com suporte para integrações seguras e eficientes.
@@ -81,7 +93,7 @@ Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades
 
 ---
 
-## Objetivos Técnicos da Prática
+## <a id="objetivos_tecnicos_da_pratica"></a>Objetivos Técnicos da Prática
 
 ### Controle Básico de Acesso a uma API REST
 
@@ -117,7 +129,7 @@ Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades
 
 ---
 
-## Passos para a Implementação
+## <a id="passos-para-a-implementacao"></a>Passos para a Implementação
 
 0. **Baixe o repositórios**:
 
@@ -182,7 +194,7 @@ OBS. **Localizar o Repositório**:
 
 ```
 
-## PASSOS
+## <a id="instalacao"></a>Instalação
 
 ### 1. **Instalação das Dependências**:
 
