@@ -8,14 +8,21 @@
 
 ---
 
-## Botões de Navegação
+## Links de Navegação
 
 <div style="display:flex; justify-content: space-around; margin: 20px 0;">
-  <span style="text-align: center; margin:20px">
-    <a href="#querys">Querys</a>
+  <span style="text-align: center;">
+
+ <div style="margin: 0 20px;">
+  <a href="#querys">Querys</a>
+  </div>
+    
   </span>
-  <span style="text-align: center;margin:20px">
-    <a href="#mutations">Mutations</a>
+  <span style="text-align: center">
+  <div style="margin: 0 20px;">
+  <a href="#mutations">Mutations</a>
+  </div>
+    
   </span>
 </div>
 
