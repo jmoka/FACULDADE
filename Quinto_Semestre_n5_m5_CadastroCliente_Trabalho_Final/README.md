@@ -1,7 +1,3 @@
-Claro! Aqui está a estrutura final organizada e formatada com botões de navegação, informações de introdução e seções detalhadas sobre o projeto Full Stack com foco em segurança:
-
----
-
 # Projeto Final de Desenvolvimento Full Stack
 
 ## Nível 5: Software Sem Segurança Não Serve
@@ -91,6 +87,18 @@ Este projeto demonstra a criação de um sistema Full Stack com foco em prática
 ---
 
 ## Passos para a Implementação
+
+0. **Baixe o repositórios**: 
+
+  ```bash
+   git clone git@github.com:jmoka/FACULDADE.git
+   ```
+  OBS. **Localizar o Repositório**:
+
+    ```bash
+    O repositório a baixado é o arqquivo completo da faculdade, portanto o arquivo em questão paara esse trabalho está localizado: "Quinto_Semestre_n5_m5_CadastroCliente_Trabalho_Final"
+    Localize essa pasta e 'abra o VSCode nesse diretório'!
+    ```
 
 1. **Instalação das Dependências**:
    ```bash
@@ -231,4 +239,4 @@ mutation {
 }
 ```
 
-Se precisar de mais informações ou quiser fazer ajustes específicos, posso ajudar a formatar ou expandir algum tópico!
+
