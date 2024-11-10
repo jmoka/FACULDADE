@@ -96,7 +96,7 @@ Este projeto demonstra a criação de um sistema Full Stack com foco em prática
   OBS. **Localizar o Repositório**:
 
     ```bash
-    O repositório baixado é o arqquivo completo da faculdade, portanto o arquivo em questão para esse trabalho está localizado: "Quinto_Semestre_n5_m5_CadastroCliente_Trabalho_Final"
+    O repositório baixado é o arquivo completo da faculdade, portanto o arquivo em questão para esse trabalho está localizado: "Quinto_Semestre_n5_m5_CadastroCliente_Trabalho_Final"
     Localize essa pasta e 'abra o VSCode nesse diretório'!
     ```
 
