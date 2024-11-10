@@ -9,13 +9,13 @@
 ## Botões de Navegação
 
 <div style="display:flex; justify-content: space-around">
-<div style="text-align: center; margin-bottom: 10px;">
+<span style="text-align: center; margin-bottom: 10px;">
     <a href="#querys" style="color:red; text-decoration:none; padding:10px; width:100px ;background-color: transparent; border: 2px solid red; border-radius: 5px; display: block;">Querys</a>
-</div>
+</span>
 
-<div style="text-align: center;">
+<span style="text-align: center;">
     <a href="#mutations" style="color:red; text-decoration:none; padding:10px;  width:100px; background-color: transparent; border: 2px solid red; border-radius: 5px; display: block;">Mutations</a>
-</div>
+</span>
 </div>
 
 ![João Luiz](./backend/img/imag.webp)
