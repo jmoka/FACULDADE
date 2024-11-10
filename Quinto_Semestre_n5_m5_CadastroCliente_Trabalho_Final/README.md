@@ -18,15 +18,10 @@
 </div>
 </div>
 
-![João Luiz](./backend/img/img.webp)
+![João Luiz](./backend/img/imag.webp)
 
 **João Luiz Silva Tavares**  
 Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades que me permitem criar sistemas seguros, com foco na proteção de dados e no controle de acesso robusto.
-
-## Links Rápidos
-
-- [Projetos GitHub](https://github.com)
-- [Documentação](https://www.example.com)
 
 ## Tecnologias
 
