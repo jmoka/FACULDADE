@@ -1,3 +1,7 @@
+Claro! Aqui está a estrutura final organizada e formatada com botões de navegação, informações de introdução e seções detalhadas sobre o projeto Full Stack com foco em segurança:
+
+---
+
 # Projeto Final de Desenvolvimento Full Stack
 
 ## Nível 5: Software Sem Segurança Não Serve
@@ -6,82 +10,119 @@
 - **Curso:** Desenvolvimento Full Stack
 - **Aluno:** João Luiz Silva Tavares
 
+---
+
 ## Botões de Navegação
 
-<div style="display:flex; justify-content: space-around">
-<span style="text-align: center; margin: 20px 20px; ">
+<div style="display:flex; justify-content: space-around; margin: 20px 0;">
+  <span style="text-align: center;">
     <a href="#querys">Querys</a>
-</span>
-
-<span style="text-align: center; margin: 20px 20px;">
+  </span>
+  <span style="text-align: center;">
     <a href="#mutations">Mutations</a>
-</span>
+  </span>
 </div>
+
+---
 
 ![João Luiz](./backend/img/imag.webp)
 
 **João Luiz Silva Tavares**  
 Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades que me permitem criar sistemas seguros, com foco na proteção de dados e no controle de acesso robusto.
 
-## Tecnologias
+---
 
- <div style="width: 100%; overflow-x: auto; margin: 20px 0;">
-    <div style="display: flex; gap: 10px;">
-      <img src="./backend/img/css.webp" alt="CSS" style="height: 100px; width: auto; border-radius: 5px;">
-      <img src="./backend/img/graphql.webp" alt="GraphQL" style="height: 100px; width: auto; border-radius: 5px;">
-      <img src="./backend/img/js.webp" alt="JavaScript" style="height: 100px; width: auto; border-radius: 5px;">
-      <img src="./backend/img/node.webp" alt="Node.js" style="height: 100px; width: auto; border-radius: 5px;">
-      <img src="./backend/img/vuex.webp" alt="Vuex" style="height: 100px; width: auto; border-radius: 5px;">
-      <img src="./backend/img/js.webp" alt="JavaScript" style="height: 100px; width: auto; border-radius: 5px;">
-      <img src="./backend/img/vue.webp" alt="Vue.js" style="height: 100px; width: auto; border-radius: 5px;">
-      <img src="./backend/img/html.webp" alt="HTML" style="height: 100px; width: auto; border-radius: 5px;">
-    </div>
+## Tecnologias Utilizadas
+
+<div style="width: 100%; overflow-x: auto; margin: 20px 0;">
+  <div style="display: flex; gap: 10px;">
+    <img src="./backend/img/css.webp" alt="CSS" style="height: 100px; width: auto; border-radius: 5px;">
+    <img src="./backend/img/graphql.webp" alt="GraphQL" style="height: 100px; width: auto; border-radius: 5px;">
+    <img src="./backend/img/js.webp" alt="JavaScript" style="height: 100px; width: auto; border-radius: 5px;">
+    <img src="./backend/img/node.webp" alt="Node.js" style="height: 100px; width: auto; border-radius: 5px;">
+    <img src="./backend/img/vuex.webp" alt="Vuex" style="height: 100px; width: auto; border-radius: 5px;">
+    <img src="./backend/img/vue.webp" alt="Vue.js" style="height: 100px; width: auto; border-radius: 5px;">
+    <img src="./backend/img/html.webp" alt="HTML" style="height: 100px; width: auto; border-radius: 5px;">
   </div>
+</div>
 
 ---
 
-# Projeto Full Stack
-
 ## Introdução
 
-**Projeto de Desenvolvimento Full Stack - Nível 5: Software Sem Segurança Não Serve**
-**Faculdade Estácio de Sá**  
-**Curso**: Desenvolvimento Full Stack  
-**Aluno**: João Luiz Silva Tavares
+Este projeto demonstra a criação de um sistema Full Stack com foco em práticas de segurança. O objetivo é proteger dados sensíveis, implementar controle de acesso eficiente e minimizar vulnerabilidades com as melhores práticas do setor.
 
-Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades que me permitem criar sistemas seguros, com foco na proteção de dados e no controle de acesso robusto. Este projeto visa demonstrar a criação de um sistema que implementa um alto grau de segurança, com ênfase na proteção de dados sensíveis, controle de acesso robusto e práticas de desenvolvimento seguro.
+---
 
 ## Objetivos Técnicos da Prática
 
 ### Controle Básico de Acesso a uma API REST
 
-A implementação foi projetada com um sistema de autenticação baseado em tokens (JWT). Esse mecanismo garante que somente usuários autorizados possam acessar recursos protegidos da API, minimizando riscos de acesso não autorizado.
+- **Autenticação JWT**: Tokens garantem que apenas usuários autorizados acessem a API.
 
 ### Tratamento de Dados Sensíveis e Log de Erros
 
-- **Proteção de Senhas**: Utilização de algoritmos de hashing, como `bcrypt`.
-- **Log de Erros Seguros**: Configuração para não exibir informações detalhadas que possam ser exploradas por atacantes.
+- **Hashing de Senhas**: Implementado com `bcrypt`.
+- **Log Seguro de Erros**: Configurações para ocultar detalhes técnicos em mensagens de erro.
 
 ### Prevenção de Ameaças
 
-- **Gerenciamento de Tokens**: Expiração automática e renovação segura para mitigar riscos de uso de tokens comprometidos.
-- **Proteção Contra SQL Injection**: Uso de bibliotecas como `knex` para consultas parametrizadas.
-- **Sanitização de Entradas**: Implementação de técnicas de sanitização para evitar injeções CRLF.
-- **Proteção Contra CSRF**: Utilização de tokens de validação específicos para requisições críticas.
+- **Gerenciamento Seguro de Tokens**: Expiração e renovação de tokens.
+- **Proteção Contra SQL Injection**: Consultas parametrizadas com `knex`.
+- **Sanitização de Entradas**: Evita injeções CRLF.
+- **Proteção CSRF**: Tokens de validação são usados para proteger requisições críticas.
+
+---
 
 ## Tecnologias e Frameworks Utilizados
 
 ### Backend
 
-- **Node.js**: Plataforma principal de desenvolvimento.
-- **GraphQL**: Eficiência no retorno de dados e maior flexibilidade.
-- **Knex.js**: Query Builder para facilitar o uso do SQL.
-- **JWT**: Autenticação robusta.
+- **Node.js**: Plataforma principal.
+- **GraphQL com Apollo Server**: Consultas eficientes e seguras.
+- **Knex.js**: Query Builder SQL.
+- **JWT**: Autenticação.
 
 ### Frontend
 
-- **Vue.js**: Framework de front-end.
-- **Vuetify**: Biblioteca para design responsivo.
+- **Vue.js**: Framework front-end.
+- **Vuetify**: Componentes de UI responsivos.
+
+---
+
+## Passos para a Implementação
+
+1. **Instalação das Dependências**:
+   ```bash
+   npm install
+   ```
+2. **Configuração de Variáveis de Ambiente**:  
+   Crie o arquivo `.env` com as variáveis necessárias.
+3. **Instale o MySQL** e configure conforme os dados de conexão fornecidos.
+4. **Execução do Projeto**:
+   - Iniciar o servidor de desenvolvimento:
+     ```bash
+     npm start
+     ```
+   - Fechar a aplicação:
+     ```bash
+     ctrl + c
+     s + enter
+     ```
+   - Executar as migrations:
+     ```bash
+     knex migrate:latest
+     ```
+   - Executar as seeds:
+     ```bash
+     knex seed:run
+     ```
+   - Reiniciar o sistema:
+     ```bash
+     npm start
+     ```
+
+---
 
 ## Querys
 
@@ -121,6 +162,8 @@ query {
   }
 }
 ```
+
+---
 
 ## Mutations
 
@@ -184,32 +227,8 @@ mutation {
     id
     nome
     email
-    status
-    perfil {
-      id
-      nome
-      rotulo
-    }
   }
 }
 ```
 
-### Excluir Usuários
-
-```graphql
-mutation {
-  excluirUsuario(filtro: { id: 2 }) {
-    nome
-    id
-    email
-    status
-    dataCriacao
-    perfil {
-      nome
-      rotulo
-    }
-  }
-}
-```
-
-© 2024 João Luiz Silva Tavares
+Se precisar de mais informações ou quiser fazer ajustes específicos, posso ajudar a formatar ou expandir algum tópico!
