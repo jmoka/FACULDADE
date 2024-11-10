@@ -15,10 +15,10 @@ Claro! Aqui está a estrutura final organizada e formatada com botões de navega
 ## Botões de Navegação
 
 <div style="display:flex; justify-content: space-around; margin: 20px 0;">
-  <span style="text-align: center;">
+  <span style="text-align: center; margin:20px">
     <a href="#querys">Querys</a>
   </span>
-  <span style="text-align: center;">
+  <span style="text-align: center;margin:20px">
     <a href="#mutations">Mutations</a>
   </span>
 </div>
