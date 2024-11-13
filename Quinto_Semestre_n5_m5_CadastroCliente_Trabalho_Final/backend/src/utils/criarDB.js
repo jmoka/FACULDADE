@@ -1,14 +1,14 @@
 import dotenv from 'dotenv'; // Importando dotenv usando ES Modules
 import mysql from 'mysql2'; // Importando a biblioteca mysql2
 
-dotenv.config(); // Carregando variáveis de ambiente
+//dotenv.config(); // Carregando variáveis de ambiente
 
 // Função de conexão sem banco de dados especificado
 function conexaoSemDB() {
     const dadosConexao = {
-        host: '127.0.0.1',
-        user: 'root',
-        password: '123',
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
     };
 
     const conectar = mysql.createConnection(dadosConexao); // estabelece a conexao com o banco de dados
@@ -27,10 +27,10 @@ function conexaoSemDB() {
 // Função de conexão com o banco de dados
 export default function conexaoComDB() {
     const dadosConexao = {
-        host: '127.0.0.1',
-        user: 'root',
-        password: '12345678',
-        database: "baseCliente",
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
         port: "3306"
     };
 

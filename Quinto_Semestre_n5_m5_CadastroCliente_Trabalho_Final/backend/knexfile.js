@@ -3,10 +3,10 @@ export default {
   development: {
     client: 'mysql2',
     connection: {
-      host: '127.0.0.1', // ou 'localhost'
-      user: 'root',
-      password: '123',
-      database: 'baseCliente',
+      host: process.env.DB_HOST, // ou 'localhost'
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
     },
     migrations: {
       directory: './src/database/migrations'
@@ -18,10 +18,10 @@ export default {
   production: {
     client: 'mysql2',
     connection: {
-      host: '127.0.0.1', // ou 'localhost'
-      user: 'root',
-      password: '123',
-      database: 'baseCliente',
+      host: process.env.DB_HOST, // ou 'localhost'
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       ssl: { rejectUnauthorized: false }
     },
     migrations: {
