@@ -10,7 +10,9 @@
     "build": "webpack --mode production"
   },
   "babel": {
-    "presets": ["@babel/preset-env"]
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
   "keywords": [],
   "author": "joao tavares",
@@ -29,7 +31,7 @@
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",
     "mysql": "^2.18.1",
-    "mysql2": "^3.11.3",
+    "mysql2": "^3.11.4",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {

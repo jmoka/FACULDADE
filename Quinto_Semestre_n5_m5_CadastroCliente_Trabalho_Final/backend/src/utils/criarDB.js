@@ -8,7 +8,7 @@ function conexaoSemDB() {
     const dadosConexao = {
         host: '127.0.0.1',
         user: 'root',
-        password: '12345678',
+        password: '123',
     };
 
     const conectar = mysql.createConnection(dadosConexao); // estabelece a conexao com o banco de dados

@@ -1,15 +1,12 @@
-import { config } from 'dotenv';
-config();
-
+import mysql from 'mysql2';
 export default {
   development: {
     client: 'mysql2',
     connection: {
-      host: process.env.DB_HOST || '127.0.0.1',
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASSWORD || '12345678',
-      database: process.env.DB_NAME || 'baseCliente',
-      port: process.env.DB_PORT || 3306
+      host: '127.0.0.1', // ou 'localhost'
+      user: 'root',
+      password: '123',
+      database: 'baseCliente',
     },
     migrations: {
       directory: './src/database/migrations'
@@ -21,11 +18,10 @@ export default {
   production: {
     client: 'mysql2',
     connection: {
-      host: process.env.DB_HOST || '127.0.0.1',
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASSWORD || '12345678',
-      database: process.env.DB_NAME || 'baseCliente',
-      port: process.env.DB_PORT || 3306,
+      host: '127.0.0.1', // ou 'localhost'
+      user: 'root',
+      password: '123',
+      database: 'baseCliente',
       ssl: { rejectUnauthorized: false }
     },
     migrations: {
