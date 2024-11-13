@@ -8,7 +8,7 @@ import config from '../../knexfile.js';
 import knex from 'knex';
 
 // Define a variável 'env' para pegar o ambiente de execução (desenvolvimento ou produção) a partir da variável de ambiente 'NODE_ENV', ou usa 'production' como padrão
-const env = process.env.NODE_ENV || 'production';
+const env = process.env.NODE_ENV || 'development';
 
 // Se o ambiente for 'development', exibe um log indicando que está em desenvolvimento
 if (env === 'development') {
