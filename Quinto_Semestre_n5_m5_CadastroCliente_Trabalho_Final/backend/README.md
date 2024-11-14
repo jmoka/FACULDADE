@@ -218,11 +218,18 @@ DB_PORT=3306
 DB_SECRET= $2y$10$9HgMnwLBwrlqJV/jf01YDe4HatluuYRPgkpaHGhNq5W9iNdUPafpa
 ```
 
+- Obs: Os dados fornecidos para conexão devem ser os mesmos quando configurar seu banco de dados no Mysql
+- Obs: O recomendado é sempre usar as variáveis de ambiente configuradas no computador (Windows). Caso vocÊ ja tenha configurado as variáveis de ambiente no windows e gostaria de usar o arquivo `.env` para testes, se faz necessário apagar as variáveis do windows, pois sepre vai prevalecer as variáveis configuradas no sistema operacional.
+- Obs: DB_SECRET - pode ser qualquer uma a sua escolha
+- Crie a sua hash no site <a href="https://bcrypt.online/">https://bcrypt.online/</a>
+
 ### Usando o Ambiente Windows
 
-- nesse caso não precisa criar o arquivo `.env` precisa fazer o seguinte:
+- Nesse caso não precisa criar o arquivo `.env` precisa fazer o seguinte:
 
-1.  Em seu windows pesquise por `Editar variaveis de ambiente` depois clique em `variavais de ambiente` na caixa de diálogo que vai abrir , após isso em `variavais do sistema` va em novo e crie todas avariaveis de ambiente igual o arquivo acima criado na pasta `.env`
+1.  Em seu windows pesquise por `Editar variaveis de ambiente` depois clique em `variavais de ambiente` na caixa de diálogo que vai abrir , após isso em `variavais do sistema` vá em novo e crie todas avariaveis de ambiente igual o arquivo acima criado na pasta `.env`
+
+- OBS: Ao realizar qualquer alteração nas variaveis de ambiente do windows precisa ser reiniciado o windows , reiniciar a máquina!
 
 ### 3. **Instale o MySQL** e configure conforme os dados de conexão fornecidos.
 
@@ -236,31 +243,97 @@ port: "3306"
 
 ## 4. **Execução do Projeto**:
 
-- Iniciar o servidor de desenvolvimento:
-  ```bash
-  npm start
-  ```
-- Fechar a aplicação:
-  ```bash
-  ctrl + c
-  s + enter
-  ```
-- Executar as migrations:
-  ```bash
-  knex migrate:latest
-  ```
-- Executar as seeds:
-  ```bash
-  knex seed:run
-  ```
-- Reiniciar o sistema:
-  ```bash
-  npm start
-  ```
+1.  Iniciar o servidor de desenvolvimento:
 
----
+#### Primeiro Momento:
+
+- Nesse Primeiro momento será criado um banco de dados caso as cofigurações de conexao estejam certas.
+
+```bash
+npm start
+```
+
+2.  Fechar a aplicação:
+
+- Fechar a aplicação, o banco de dados ja foi criado e os passos é criar as tabelas e povoar as mesmas
+
+- Para parar a aplicação digite no terminal:
+
+```bash
+ctrl + c
+depois fonfirme com a letra "s" e aperte "entre"
+```
+
+3.  Executar as migrations:
+
+- OBS: Cria as Tabelas:
+  `usuarios` e a tabela `perfis`
+
+```bash
+knex migrate:latest
+```
+
+4.  Executar as seed:
+
+```bash
+knex seed:run
+```
+
+- OBS: Cria os seguintes usuários na na tabela "usuarios" Padrão do Sistema:
+
+```bash
+   {
+              nome: "UserMaster",
+              email: 'master@jotaempresa.com',
+              senha: master, // Senha do Master já criptografada
+              perfil: 1, // Perfil Master
+              status: "ATIVO" // Status do usuário
+          },
+          {
+              nome: "UserDev",
+              email: 'dev@jotaempresas.com',
+              senha: dev, // Senha do Developer já criptografada
+              perfil: 2, // Perfil Developer
+              status: "ATIVO" // Status do usuário
+          },
+          {
+              nome: "UserAdmin",
+              email: "admin@jotaempresas.com",
+              senha: admin, // Senha do Admin já criptografada
+              perfil: 3, // Perfil Admin
+              status: "ATIVO" // Status do usuário
+          },
+```
+
+- Essas informações podem ser mudadas caso secessário no caminho `backend/src/database/seeds`
+
+5. Reiniciar o sistema:
+
+#### Segundo Momento:
+
+- Agora depois do banco criado as tabelas criadas e povoadas , agora é colocar a api para rodar!
+
+```bash
+npm start
+```
+
+- O servidor estará rodando :
+  Servidor GraphQL rodando em http://localhost:4000/
+
+- OBS: caso a porta 4000 já estaja sendo usado por outra aplicação, mude a porta no arquivo `src/index.js` no seguinte trecho:
+
+```bash
+// Inicia o servidor na porta 4000 e imprime a URL onde ele está sendo executado
+server.listen({ port: 4000 }).then(({ url }) => {
+    console.log(`Servidor GraphQL rodando em ${url}`);
+});
+```
 
 ## Querys
+
+- Acesse a http://localhost:4000/
+- Realize as `Consultas` e as `Mutations` abaixo
+- CRUD completo!
 
 ### Consultar Todos Usuários
 
