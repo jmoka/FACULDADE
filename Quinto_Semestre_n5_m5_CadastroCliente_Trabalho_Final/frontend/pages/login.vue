@@ -1,6 +1,7 @@
 <template>
   <v-container fluid fill-height>
     <div class="pa-4 text-center">
+
       <v-dialog v-model="dialog" max-width="600">
         <v-card prepend-icon="mdi-account" title="User Profile">
           <v-card-text>
@@ -34,7 +35,9 @@
               </v-col>
 
               <v-col cols="12" sm="6">
-                <v-autocomplete :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']" label="Interests" auto-select-first multiple></v-autocomplete>
+                <v-autocomplete
+                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
+                  label="Interests" auto-select-first multiple></v-autocomplete>
               </v-col>
             </v-row>
 
@@ -42,6 +45,7 @@
           </v-card-text>
 
           <v-divider></v-divider>
+
 
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -55,39 +59,31 @@
     </div>
 
     <v-row justify="center" align="center" class="fill-height">
-      <v-col cols="12" md="6">
+      <v-col cols="12" justify="center" align="center" class="m-0">
+        <v-img :width="500" aspect-ratio="16/9" cover src="../public/img/stacio.webp"></v-img>
+      </v-col>
+
+      <v-col cols="12" md="4">
         <v-card>
           <v-card-title class="text-h5 ml-2">Login</v-card-title>
           <v-card-text>
             <!-- Formulário de login -->
             <v-form ref="form" v-model="valid">
               <!-- Campo de Email -->
-              <v-text-field
-              autocomplete="off"
-                v-model="email"
-                label="Email"
-                type="email"
-                :rules="[rules.required, rules.email]"
-                :error-messages="emailErrors"
-                required
-                class="ml-2"
-              ></v-text-field>
+              <v-text-field autocomplete="off" v-model="email" label="Email" type="email"
+                :rules="[rules.required, rules.email]" :error-messages="emailErrors" required
+                class="ml-2"></v-text-field>
 
               <!-- Campo de Senha -->
-              <v-text-field
-              autocomplete="off"
-                v-model="password"
-                label="Senha"
-                type="password"
-                :rules="[rules.required, rules.password]"
-                :error-messages="passwordErrors"
-                required
-                class="ml-2"
-              ></v-text-field>
-              <btn color="primary" @btnAcao="login" :nome="logar"></btn>
-              <btn color="primary" @btnAcao="openRegisterDialog" :nome="Cadastrar" class="ml-2"></btn>
-              <btn color="red" @btnAcao="sair" :nome="Sair" class="ml-2"></btn>
-              
+              <v-text-field autocomplete="off" v-model="password" label="Senha" type="password"
+                :rules="[rules.required, rules.password]" :error-messages="passwordErrors" required
+                class="ml-2"></v-text-field>
+              <btn color="primary" @btnAcao="login" :text=logar></btn>
+              <btn color="light-green-darken-3" @btnAcao="openRegisterDialog" :text="Cadastrar" class="ml-2"></btn>
+              <btn color="red" @btnAcao="apagar" :text="Apagar" class="ml-2"></btn>
+              <v-btn @click="voltar" variant="plain">
+                voltar
+              </v-btn>
             </v-form>
           </v-card-text>
         </v-card>
@@ -99,14 +95,14 @@
 <script>
 import btn from "../componets/btns/btn.vue"
 export default {
-  components:{
+  components: {
     btn
   },
   data() {
     return {
-      logar:"Logar",
-      Cadastrar:"Cadastrar",
-      Sair:"sair",
+      logar: "Logar",
+      Cadastrar: "Cadastrar",
+      Apagar: "Apagar",
       dialog: false, // Controls visibility of the modal dialog
       email: '',
       password: '',
@@ -123,10 +119,15 @@ export default {
     };
   },
   methods: {
+    voltar() {
+      this.$router.push('/');
+    },
     // Função para simular login
-    login() {
+    login(text) {
+      console.log(text);
+
       console.log("Chamou login");
-      
+
       if (this.$refs.form.validate()) {
         // Lógica de autenticação (exemplo)
         console.log('Login bem-sucedido', this.email, this.password);
@@ -141,10 +142,11 @@ export default {
       this.dialog = true; // Show the dialog when clicking on "Cadastrar"
     },
     // Função para logout
-    sair() {
+    apagar() {
       this.email = '';
       this.password = '';
       console.log('Usuário deslogado');
+
     },
   },
 };
@@ -155,14 +157,17 @@ export default {
   width: 100%;
   margin-top: 10px;
 }
+
 .v-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Garante que ocupe 100% da altura da tela */
+  height: 100vh;
+  /* Garante que ocupe 100% da altura da tela */
 }
 
 .v-row {
-  width: 100%; /* Garante que a linha ocupe 100% da largura */
+  width: 100%;
+  /* Garante que a linha ocupe 100% da largura */
 }
 </style>
