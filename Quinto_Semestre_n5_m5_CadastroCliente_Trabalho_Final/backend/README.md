@@ -323,15 +323,15 @@ npm start
 - OBS: caso a porta 4000 já estaja sendo usado por outra aplicação, mude a porta no arquivo `src/index.js` no seguinte trecho:
 
 ```bash
-// Inicia o servidor na porta 4000 e imprime a URL onde ele está sendo executado
-server.listen({ port: 4000 }).then(({ url }) => {
+// Inicia o servidor na porta 4001 e imprime a URL onde ele está sendo executado
+server.listen({ port: 4001 }).then(({ url }) => {
     console.log(`Servidor GraphQL rodando em ${url}`);
 });
 ```
 
 ## Querys
 
-- Acesse a http://localhost:4000/
+- Acesse a http://localhost:4001/
 - Realize as `Consultas` e as `Mutations` abaixo
 - CRUD completo!
 

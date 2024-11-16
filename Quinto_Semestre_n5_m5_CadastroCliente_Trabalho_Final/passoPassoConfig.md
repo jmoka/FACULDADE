@@ -6,7 +6,18 @@
  npx nuxi@latest init gerenciamentoUsuarios_n5m5
 ```
 
-- Apollo Server
+- Apollo Client
+
+npm install -g @nuxt/cli
+
+npm install -g nuxt
+
+npm install @nuxt/kit
+
+npm install nuxt@latest
+
+npm install nuxt@2.x
+
 
 ```bash
 npm install @apollo/client graphql
@@ -145,22 +156,20 @@ export default apolloClient;
 
 ```bash
 // Configuração Padão
-import Vue from 'vue'
-import Vuetify from 'vuetify/lib'
-import 'vuetify/src/stylus/app.styl'
+import { createVuetify } from 'vuetify';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
 
-Vue.use(Vuetify, {
-  iconfont: 'md',
-  theme: {
-    primary: '#1976D2',
-    secondary: '#424242',
-    accent: '#82B1FF',
-    error: '#FF5252',
-    info: '#2196F3',
-    success: '#4CAF50',
-    warning: '#FFC107'
-  }
-})
+export default defineNuxtPlugin((nuxtApp) => {
+  const vuetify = createVuetify({
+    components,
+    directives,
+    // Add your Vuetify theme or configuration here
+  });
+
+  nuxtApp.vueApp.use(vuetify);
+});
+
 
 
 ```

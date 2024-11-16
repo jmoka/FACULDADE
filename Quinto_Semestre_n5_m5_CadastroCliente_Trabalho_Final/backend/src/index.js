@@ -36,6 +36,6 @@ const server = new ApolloServer({
 criarBaseDados();
 
 // Inicia o servidor na porta 4000 e imprime a URL onde ele está sendo executado
-server.listen({ port: 4000 }).then(({ url }) => {
+server.listen({ port: 4001 }).then(({ url }) => {
     console.log(`Servidor GraphQL rodando em ${url}`);
 });

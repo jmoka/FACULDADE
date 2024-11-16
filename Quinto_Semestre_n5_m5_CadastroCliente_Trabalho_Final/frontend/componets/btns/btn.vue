@@ -12,9 +12,12 @@ export default {
             type: String,
             Required: true
         },
+
         btnAcao: {
+
             type: Function,
             default: () => { }
+
 
         }
 
