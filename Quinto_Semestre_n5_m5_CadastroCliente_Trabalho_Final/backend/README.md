@@ -1,3 +1,5 @@
+# Backend
+
 # Projeto Final de Desenvolvimento Full Stack
 
 ## Nível 5: Software Sem Segurança Não Serve
@@ -40,7 +42,7 @@
 
 ---
 
-![João Luiz](./backend/img/imag.webp)
+![João Luiz](./backen.d/img/imag.webp)
 
 **João Luiz Silva Tavares**  
 Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades que me permitem criar sistemas seguros, com foco na proteção de dados e no controle de acesso robusto.
@@ -117,11 +119,32 @@ Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades
 
 ### Backend
 
-- **Node.js**: Plataforma principal.
-- **GraphQL com Apollo Server**: Consultas eficientes e seguras.
-- **Knex.js**: Query Builder SQL.
-- **JWT**: Autenticação.
+- **Iniciar Projeto**
+```
+npm init
+```
 
+- **Node.js**: Plataforma principal.
+```
+https://nodejs.org/pt
+```
+- **GraphQL com Apollo Server**: Consultas eficientes e seguras.
+```
+npm install apollo-server graphql
+```
+- **Knex.js**: Query Builder SQL.
+```
+npm install knex
+npm install -g knex
+```
+- **Mysql2**
+```
+npm install mysql2
+```
+- **JWT**: Autenticação.
+```
+npm install jsonwebtoken
+```
 ### Frontend
 
 - **Vue.js**: Framework front-end.
@@ -200,6 +223,9 @@ OBS. **Localizar o Repositório**:
 
 ```bash
 npm install
+npm install --legacy-peer-deps
+npm audit fix --force
+
 ```
 
 ### 2. **Configuração de Variáveis de Ambiente**:
@@ -318,7 +344,7 @@ npm start
 ```
 
 - O servidor estará rodando :
-  Servidor GraphQL rodando em http://localhost:4000/
+  Servidor GraphQL rodando em http://localhost:4001/
 
 - OBS: caso a porta 4000 já estaja sendo usado por outra aplicação, mude a porta no arquivo `src/index.js` no seguinte trecho:
 

@@ -1,7 +1,11 @@
 import mysql from 'mysql2';
+import dotenv from 'dotenv'; // Importando dotenv usando ES Modules
+
+dotenv.config(); // Carregando variáveis de ambiente 
+
 export default {
   development: {
-    client: 'mysql2',
+    client: "mysql2",
     connection: {
       host: process.env.DB_HOST, // ou 'localhost'
       user: process.env.DB_USER,
@@ -16,7 +20,7 @@ export default {
     }
   },
   production: {
-    client: 'mysql2',
+    client: "mysql2",
     connection: {
       host: process.env.DB_HOST, // ou 'localhost'
       user: process.env.DB_USER,

@@ -14,6 +14,9 @@ export const seed = async (knex) => {
         const admin = await criarHash("Admin@123"); // Senha do Admin
         const master = await criarHash("Master@123"); // Senha do Master
         const dev = await criarHash("Dev@123"); // Senha do Developer
+        const user = await criarHash("User@123"); // Senha do Usuario
+       
+        
 
         // Insere os usuários na tabela 'usuarios'
         await knex('usuarios').insert([
@@ -36,6 +39,13 @@ export const seed = async (knex) => {
                 email: "admin@jotaempresas.com",
                 senha: admin, // Senha do Admin já criptografada
                 perfil: 3, // Perfil Admin
+                status: "ATIVO" // Status do usuário
+            },
+            {
+                nome: "User",
+                email: "user@jotaempresas.com",
+                senha: user, // Senha do Admin já criptografada
+                perfil: 4, // Perfil Usuario
                 status: "ATIVO" // Status do usuário
             },
         ]);
