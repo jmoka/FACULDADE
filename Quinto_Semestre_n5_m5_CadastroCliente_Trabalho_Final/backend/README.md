@@ -40,36 +40,7 @@
   </span>
 </div>
 
----
 
-![João Luiz](./backen.d/img/imag.webp)
-
-**João Luiz Silva Tavares**  
-Durante dois anos de estudo na Faculdade Estácio de Sá, desenvolvi habilidades que me permitem criar sistemas seguros, com foco na proteção de dados e no controle de acesso robusto.
-
----
-
-## <a id="tecnologias_utilizadas"></a>Tecnologias Utilizadas
-
-<div style="width: 100%; overflow-x: auto; margin: 20px 0;">
-  <div style="display: flex; gap: 10px;">
-    <img src="./backend/img/css.webp" alt="CSS" style="height: 100px; width: auto; border-radius: 5px;">
-    <img src="./backend/img/graphql.webp" alt="GraphQL" style="height: 100px; width: auto; border-radius: 5px;">
-    <img src="./backend/img/js.webp" alt="JavaScript" style="height: 100px; width: auto; border-radius: 5px;">
-    <img src="./backend/img/node.webp" alt="Node.js" style="height: 100px; width: auto; border-radius: 5px;">
-    <img src="./backend/img/vuex.webp" alt="Vuex" style="height: 100px; width: auto; border-radius: 5px;">
-    <img src="./backend/img/vue.webp" alt="Vue.js" style="height: 100px; width: auto; border-radius: 5px;">
-    <img src="./backend/img/html.webp" alt="HTML" style="height: 100px; width: auto; border-radius: 5px;">
-     <img src="./backend/img/mysql.webp" alt="HTML" style="height: 100px; width: auto; border-radius: 5px;">
-  </div>
-</div>
-
----
-
-## <a id="introducao"></a>Introdução
-
-- **Este projeto implementa um sistema Full Stack focado em segurança de dados, controle de acesso e prevenção de vulnerabilidades. A API gerencia informações de clientes e integra GraphQL para consultas e manipulações eficientes de dados, com Apollo Server. A segurança é reforçada por autenticação JWT para acesso restrito e bcrypt para criptografar senhas, alinhando-se às melhores práticas.**:
-- **O projeto utiliza bibliotecas essenciais para um sistema seguro e eficiente. No backend, e posui as seguintes dependencias:**
 
 ## <a id="dependencias"></a>Dependências
 
