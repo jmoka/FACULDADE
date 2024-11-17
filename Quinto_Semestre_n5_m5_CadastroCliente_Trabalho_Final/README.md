@@ -7,6 +7,7 @@
 - **Aluno:** João Luiz Silva Tavares
 
 ---
+OBS: Leia os README'S de cada (FRONTEND E BANCKEND)
 ---
 
 ![João Luiz](./img/imag.webp)
